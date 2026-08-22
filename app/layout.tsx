@@ -1,9 +1,9 @@
-import { Footer, Header, Main, Title } from "@/components/elements/layout"
+import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
 import "./reset.css"
 
 export const metadata = {
-  title: "Page title",
-  description: "Page description",
+  title: "上野ナビ | 上野地域メディア",
+  description: "上野エリアのイベント・新店舗・セール・展示会などの最新情報",
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -11,11 +11,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="ja">
       <body>
         <Header>
-          <Title>Page title</Title>
+          <Title>
+            <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
+              上野ナビ
+            </a>
+          </Title>
+          <Nav />
         </Header>
         <Main>{children}</Main>
         <Footer>
-          <p>&copy; My organization</p>
+          <p>&copy; 上野ナビ</p>
         </Footer>
       </body>
     </html>

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "gongcha-ueno-marui",
+    "name": "ゴンチャ 上野マルイ店",
+    "category": "ドリンク",
+    "address": "東京都台東区上野6-15-1 上野マルイ 1F",
+    "lat": 35.7091,
+    "lng": 139.7746,
+    "hours": "11:00-21:00",
+    "openingDate": "2026-08-08",
+    "officialUrl": "https://www.gongcha.co.jp/",
+    "sns": ["https://www.instagram.com/gongcha_japan/"],
+    "source": "https://prtimes.jp/",
+    "area": "上野駅前"
+  },
+  {
+    "id": "curry-house-ueno",
+    "name": "上野スパイスカレー食堂",
+    "category": "飲食",
+    "address": "東京都台東区上野2-3-4",
+    "lat": 35.7106,
+    "lng": 139.7758,
+    "hours": "11:00-22:00",
+    "openingDate": "2026-08-20",
+    "officialUrl": "https://example.com/ueno-spice-curry",
+    "source": "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/",
+    "area": "上野広小路"
+  },
+  {
+    "id": "book-cafe-ueno",
+    "name": "上野ブックカフェ Leaf",
+    "category": "カフェ・書店",
+    "address": "東京都台東区上野4-8-1",
+    "lat": 35.7121,
+    "lng": 139.7749,
+    "hours": "9:00-20:00",
+    "openingDate": "2026-07-15",
+    "officialUrl": "https://example.com/ueno-bookcafe-leaf",
+    "source": "https://prtimes.jp/",
+    "area": "上野駅前"
+  },
+  {
+    "id": "select-shop-ecute",
+    "name": "コンパクトセレクト エキュート上野店",
+    "category": "雑貨",
+    "address": "東京都台東区上野7-1-1 エキュート上野",
+    "lat": 35.7138,
+    "lng": 139.7773,
+    "hours": "8:00-22:00",
+    "openingDate": "2025-11-01",
+    "officialUrl": "https://www.ecute.jp/ueno/",
+    "source": "https://www.ecute.jp/ueno/limitedshop",
+    "area": "上野駅"
+  }
+]

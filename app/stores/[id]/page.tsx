@@ -1,0 +1,76 @@
+import { notFound } from "next/navigation"
+import { FC } from "react"
+import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { getArticlesByStore, getStore, stores } from "@/lib/data"
+import { formatDateJp } from "@/lib/date"
+
+export const generateStaticParams = () => stores.map((s) => ({ id: s.id }))
+
+const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
+  const { id } = await params
+  const store = getStore(id)
+  if (!store) notFound()
+  const articles = getArticlesByStore(store.id)
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <div>
+        <span
+          style={{
+            display: "inline-block",
+            fontSize: ".75rem",
+            background: "#555",
+            borderRadius: ".25rem",
+            padding: ".125rem .5rem",
+            marginBottom: ".5rem",
+          }}
+        >
+          {store.category}
+        </span>
+        <h2 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{store.name}</h2>
+        <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem", color: "#ccc" }}>
+          <li>住所: {store.address}</li>
+          <li>営業時間: {store.hours}</li>
+          {store.openingDate && <li>オープン日: {formatDateJp(store.openingDate)}</li>}
+          <li>エリア: {store.area}</li>
+          <li>
+            公式サイト:{" "}
+            <a href={store.officialUrl} target="_blank" rel="noreferrer" style={{ color: "#8ecbff" }}>
+              {store.officialUrl}
+            </a>
+          </li>
+          {store.sns && store.sns.length > 0 && (
+            <li>
+              SNS:{" "}
+              {store.sns.map((url) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#8ecbff", marginRight: ".5rem" }}
+                >
+                  {url}
+                </a>
+              ))}
+            </li>
+          )}
+          <li>情報源: {store.source}</li>
+        </ul>
+      </div>
+
+      {articles.length > 0 && (
+        <div>
+          <h3 style={{ fontSize: "1rem", marginBottom: ".75rem" }}>関連記事</h3>
+          <CardGrid>
+            {articles.map((a) => (
+              <ArticleCard key={a.id} article={a} />
+            ))}
+          </CardGrid>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default Page

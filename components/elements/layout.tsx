@@ -1,4 +1,36 @@
+import Link from "next/link"
 import { ComponentProps, FC, ReactNode } from "react"
+
+const NAV_ITEMS = [
+  { href: "/", label: "最新情報" },
+  { href: "/events", label: "イベント" },
+  { href: "/new-stores", label: "新店舗" },
+  { href: "/closures", label: "閉店" },
+  { href: "/sales", label: "セール" },
+  { href: "/popup", label: "POP UP" },
+  { href: "/exhibitions", label: "展示・アート" },
+  { href: "/stores", label: "店舗" },
+  { href: "/spots", label: "施設・スポット" },
+  { href: "/areas", label: "エリア" },
+] as const
+
+export const Nav: FC = () => (
+  <nav
+    style={{
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "1rem",
+      marginTop: ".5rem",
+      fontSize: ".875rem",
+    }}
+  >
+    {NAV_ITEMS.map((item) => (
+      <Link key={item.href} href={item.href} style={{ color: "#f0f0f0" }}>
+        {item.label}
+      </Link>
+    ))}
+  </nav>
+)
 
 export const Title: FC<ComponentProps<"h1">> = ({
   style,

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ueno-park",
+    "name": "上野恩賜公園",
+    "type": "公園",
+    "address": "東京都台東区上野公園5-20",
+    "lat": 35.7147,
+    "lng": 139.7737,
+    "officialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
+    "area": "上野公園"
+  },
+  {
+    "id": "tobikan",
+    "name": "東京都美術館",
+    "type": "美術館",
+    "address": "東京都台東区上野公園8-36",
+    "lat": 35.7159,
+    "lng": 139.7727,
+    "officialUrl": "https://www.tobikan.jp/exhibition/",
+    "area": "上野公園"
+  },
+  {
+    "id": "tnm",
+    "name": "東京国立博物館",
+    "type": "博物館",
+    "address": "東京都台東区上野公園13-9",
+    "lat": 35.7188,
+    "lng": 139.7765,
+    "officialUrl": "https://www.tnm.jp/modules/r_free_page/index.php?id=1255",
+    "area": "上野公園"
+  },
+  {
+    "id": "kahaku",
+    "name": "国立科学博物館",
+    "type": "博物館",
+    "address": "東京都台東区上野公園7-20",
+    "lat": 35.7168,
+    "lng": 139.7756,
+    "officialUrl": "https://www.kahaku.go.jp/tenji/exhibitions.html",
+    "area": "上野公園"
+  },
+  {
+    "id": "ueno-zoo",
+    "name": "上野動物園",
+    "type": "動物園",
+    "address": "東京都台東区上野公園9-83",
+    "lat": 35.7166,
+    "lng": 139.7714,
+    "officialUrl": "https://www.tokyo-zoo.net/ueno/events/index.html",
+    "area": "上野公園"
+  },
+  {
+    "id": "ueno-marui",
+    "name": "上野マルイ",
+    "type": "商業施設",
+    "address": "東京都台東区上野6-15-1",
+    "lat": 35.7091,
+    "lng": 139.7746,
+    "officialUrl": "https://www.0101.co.jp/058/",
+    "area": "上野駅前"
+  },
+  {
+    "id": "ecute-ueno",
+    "name": "エキュート上野",
+    "type": "商業施設",
+    "address": "東京都台東区上野7-1-1",
+    "lat": 35.7138,
+    "lng": 139.7773,
+    "officialUrl": "https://www.ecute.jp/ueno/",
+    "area": "上野駅"
+  },
+  {
+    "id": "matsuzakaya-ueno",
+    "name": "松坂屋上野店",
+    "type": "百貨店",
+    "address": "東京都台東区上野3-29-5",
+    "lat": 35.7074,
+    "lng": 139.7745,
+    "officialUrl": "https://www.matsuzakaya.co.jp/ueno/",
+    "area": "上野広小路"
+  }
+]
