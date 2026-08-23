@@ -10,13 +10,21 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "scrape": "tsx scripts/1-scrape.ts",
+    "extract": "tsx scripts/2-extract.ts",
+    "dedupe": "tsx scripts/3-dedupe-and-link.ts",
+    "generate-articles": "tsx scripts/4-generate-articles.ts",
+    "publish-drafts": "tsx scripts/5-publish-drafts.ts",
+    "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe && pnpm generate-articles"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@11.22.0",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
+    "cheerio": "^1.2.0",
     "next": "^16.3.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
@@ -26,12 +34,14 @@
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
+    "esbuild": "^0.28.2",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "prettier": "^3.9.6",
+    "tsx": "^4.23.12",
     "typescript-eslint": "^8.67.0"
   }
 }

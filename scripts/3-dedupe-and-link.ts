@@ -1,0 +1,174 @@
+// README「3. 情報収集フロー」 分類 → 重複チェック → Entityと紐付け
+// 実行: pnpm dedupe
+// data/extracted配下の抽出結果を既存Entity(stores/spots)と突き合わせ、
+// 新規Entity候補・記事ドラフトを data/drafts/ に出力する。人手確認は後段(README「確認」)で行う。
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
+import path from "node:path"
+import { existsSync } from "node:fs"
+import { spots, stores } from "@/lib/data"
+import type { Category } from "@/lib/types"
+import { llmJudgeDuplicate, matchEntity } from "./lib/dedupe"
+import type { ExtractedItem } from "./lib/extract"
+
+const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
+const DRAFTS_DIR = path.join(process.cwd(), "data", "drafts")
+
+interface ExtractedFile {
+  sourceId: string
+  sourceName: string
+  url: string
+  fetchedAt: string
+  items: ExtractedItem[]
+}
+
+interface ArticleDraft {
+  id: string
+  title: string
+  category: Category
+  publishedAt: string
+  summary: string
+  body: string
+  source: string
+  area: string
+  relatedStoreIds: string[]
+  relatedSpotIds: string[]
+  relatedEventIds: string[]
+  // ドラフト用メタ情報。公開前の確認材料。
+  matchNotes: string[]
+  // 記事本文生成(pnpm generate-articles)で使う元の抽出データ
+  extracted: ExtractedItem
+}
+
+interface NewEntityCandidate {
+  name: string
+  kind: "store" | "spot"
+  source: string
+  reason: string
+}
+
+const slug = (text: string) =>
+  text
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")
+
+const resolveEntity = async (
+  itemName: string,
+  itemUrl: string | null,
+  itemAddress: string | null,
+  pool: typeof stores | typeof spots,
+  kind: "store" | "spot",
+  context: string
+): Promise<{ id: string | null; note: string; isNew: boolean }> => {
+  const matches = matchEntity(itemName, itemUrl, itemAddress, pool)
+  if (matches.length === 0) return { id: null, note: "", isNew: true }
+
+  const top = matches[0]
+  if (top.level === "exact" || top.level === "likely") {
+    return { id: top.entity.id, note: `既存${kind}に一致(${top.reason})`, isNew: false }
+  }
+  if (top.level === "ambiguous") {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return { id: null, note: `要確認: 「${itemName}」が既存「${top.entity.name}」と類似(LLM判定はAPIキー未設定でスキップ)`, isNew: true }
+    }
+    const isDup = await llmJudgeDuplicate(itemName, context, top.entity.name, top.entity.name)
+    if (isDup) return { id: top.entity.id, note: `LLM判定で既存${kind}と同一と判定`, isNew: false }
+  }
+  return { id: null, note: "", isNew: true }
+}
+
+const main = async () => {
+  if (!existsSync(EXTRACTED_DIR)) {
+    console.error("抽出データが無い。先に pnpm extract を実行。")
+    process.exit(1)
+  }
+  await mkdir(DRAFTS_DIR, { recursive: true })
+
+  const articleDrafts: ArticleDraft[] = []
+  const newEntityCandidates: NewEntityCandidate[] = []
+
+  const sourceIds = await readdir(EXTRACTED_DIR)
+  for (const sourceId of sourceIds) {
+    const dir = path.join(EXTRACTED_DIR, sourceId)
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"))
+
+    for (const file of files) {
+      const data: ExtractedFile = JSON.parse(await readFile(path.join(dir, file), "utf-8"))
+
+      for (const [idx, item] of data.items.entries()) {
+        const matchNotes: string[] = []
+        const relatedStoreIds: string[] = []
+        const relatedSpotIds: string[] = []
+
+        if (item.store) {
+          const result = await resolveEntity(
+            item.store,
+            item.official_url,
+            item.address,
+            stores,
+            "store",
+            item.summary
+          )
+          if (result.id) relatedStoreIds.push(result.id)
+          if (result.note) matchNotes.push(result.note)
+          if (result.isNew) {
+            newEntityCandidates.push({
+              name: item.store,
+              kind: "store",
+              source: data.url,
+              reason: matchNotes.at(-1) ?? "既存Entityに該当なし(新規候補)",
+            })
+          }
+        }
+
+        if (item.place) {
+          const result = await resolveEntity(
+            item.place,
+            item.official_url,
+            item.address,
+            spots,
+            "spot",
+            item.summary
+          )
+          if (result.id) relatedSpotIds.push(result.id)
+          if (result.note) matchNotes.push(result.note)
+        }
+
+        const draft: ArticleDraft = {
+          id: `draft-${sourceId}-${slug(item.title).slice(0, 40)}-${idx}`,
+          title: item.title,
+          category: item.category,
+          publishedAt: data.fetchedAt,
+          summary: item.summary,
+          body: item.summary,
+          source: data.url,
+          area: item.area || "上野",
+          relatedStoreIds,
+          relatedSpotIds,
+          relatedEventIds: [],
+          matchNotes,
+          extracted: item,
+        }
+        articleDrafts.push(draft)
+      }
+    }
+  }
+
+  await writeFile(
+    path.join(DRAFTS_DIR, "articles.json"),
+    JSON.stringify(articleDrafts, null, 2),
+    "utf-8"
+  )
+  await writeFile(
+    path.join(DRAFTS_DIR, "new-entities.json"),
+    JSON.stringify(newEntityCandidates, null, 2),
+    "utf-8"
+  )
+
+  console.log(`記事ドラフト ${articleDrafts.length}件 -> data/drafts/articles.json`)
+  console.log(`新規Entity候補 ${newEntityCandidates.length}件 -> data/drafts/new-entities.json`)
+  console.log("人手確認後、記事生成(pnpm generate-articles)または手動でnews.json/stores.jsonへ反映する。")
+}
+
+main()

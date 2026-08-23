@@ -44,3 +44,11 @@ lib-cov
 out/
 
 next-env.d.ts
+
+# 収集パイプラインの生成物(スクレイピング/抽出/ドラフト)
+data/raw/*
+!data/raw/.gitkeep
+data/extracted/*
+!data/extracted/.gitkeep
+data/drafts/*
+!data/drafts/.gitkeep
