@@ -1,5 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk"
 import type { Spot, Store } from "@/lib/types"
+import { runClaudeText } from "./claude-cli"
 
 // README「7. 重複管理」準拠
 // 判定に使う要素: 店舗名・住所・電話番号・URL・緯度経度・LLMによる判定
@@ -78,12 +78,6 @@ export const matchEntity = (
     .sort((a, b) => b.nameSimilarity - a.nameSimilarity)
 }
 
-let client: Anthropic | null = null
-const getClient = () => {
-  if (!client) client = new Anthropic()
-  return client
-}
-
 // ambiguousな候補のみLLMに最終判定を委ねる(README「LLMによる判定」)
 export const llmJudgeDuplicate = async (
   candidateName: string,
@@ -91,18 +85,11 @@ export const llmJudgeDuplicate = async (
   existingName: string,
   existingContext: string
 ): Promise<boolean> => {
-  const message = await getClient().messages.create({
-    model: "claude-sonnet-5",
-    max_tokens: 16,
-    system:
-      "2つの店舗・施設情報が同一の実体を指すかを判定する。表記ゆれ(全角半角/スペース/支店表記など)は同一とみなす。回答は yes か no のみ。",
-    messages: [
-      {
-        role: "user",
-        content: `A: ${candidateName} (${candidateContext})\nB: ${existingName} (${existingContext})\n同一か？`,
-      },
-    ],
-  })
-  const textBlock = message.content.find((b) => b.type === "text")
-  return textBlock?.type === "text" && textBlock.text.trim().toLowerCase().startsWith("y")
+  const prompt = `2つの店舗・施設情報が同一の実体を指すかを判定する。表記ゆれ(全角半角/スペース/支店表記など)は同一とみなす。
+A: ${candidateName} (${candidateContext})
+B: ${existingName} (${existingContext})
+同一か？ yes か no のみで答えよ。`
+
+  const result = await runClaudeText(prompt)
+  return result?.trim().toLowerCase().startsWith("y") ?? false
 }

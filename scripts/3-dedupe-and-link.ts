@@ -7,7 +7,7 @@ import path from "node:path"
 import { existsSync } from "node:fs"
 import { spots, stores } from "@/lib/data"
 import type { Category } from "@/lib/types"
-import { llmJudgeDuplicate, matchEntity } from "./lib/dedupe"
+import { llmJudgeDuplicate, matchEntity, normalizeName } from "./lib/dedupe"
 import type { ExtractedItem } from "./lib/extract"
 
 const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
@@ -69,9 +69,6 @@ const resolveEntity = async (
     return { id: top.entity.id, note: `既存${kind}に一致(${top.reason})`, isNew: false }
   }
   if (top.level === "ambiguous") {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return { id: null, note: `要確認: 「${itemName}」が既存「${top.entity.name}」と類似(LLM判定はAPIキー未設定でスキップ)`, isNew: true }
-    }
     const isDup = await llmJudgeDuplicate(itemName, context, top.entity.name, top.entity.name)
     if (isDup) return { id: top.entity.id, note: `LLM判定で既存${kind}と同一と判定`, isNew: false }
   }
@@ -87,8 +84,11 @@ const main = async () => {
 
   const articleDrafts: ArticleDraft[] = []
   const newEntityCandidates: NewEntityCandidate[] = []
+  const seenDraftIds = new Set<string>()
 
-  const sourceIds = await readdir(EXTRACTED_DIR)
+  const sourceIds = (await readdir(EXTRACTED_DIR, { withFileTypes: true }))
+    .filter((e) => e.isDirectory())
+    .map((e) => e.name)
   for (const sourceId of sourceIds) {
     const dir = path.join(EXTRACTED_DIR, sourceId)
     const files = (await readdir(dir)).filter((f) => f.endsWith(".json"))
@@ -97,6 +97,14 @@ const main = async () => {
       const data: ExtractedFile = JSON.parse(await readFile(path.join(dir, file), "utf-8"))
 
       for (const [idx, item] of data.items.entries()) {
+        // 同一ソースを日をまたいで複数回収集すると同じ項目が再度抽出されうる(会期中の展覧会等)。
+        // LLM抽出は非決定的でタイトル文字列が完全一致しない場合もあるため、
+        // 正規化した「ソース+タイトル」で重複判定する(idxはユニークid生成にのみ使う)。
+        const draftId = `draft-${sourceId}-${slug(item.title).slice(0, 40)}-${idx}`
+        const dedupeKey = `${sourceId}:${normalizeName(item.title)}`
+        if (seenDraftIds.has(dedupeKey)) continue
+        seenDraftIds.add(dedupeKey)
+
         const matchNotes: string[] = []
         const relatedStoreIds: string[] = []
         const relatedSpotIds: string[] = []
@@ -136,7 +144,7 @@ const main = async () => {
         }
 
         const draft: ArticleDraft = {
-          id: `draft-${sourceId}-${slug(item.title).slice(0, 40)}-${idx}`,
+          id: draftId,
           title: item.title,
           category: item.category,
           publishedAt: data.fetchedAt,

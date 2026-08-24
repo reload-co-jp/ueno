@@ -23,8 +23,12 @@ export interface Source {
   name: string
   url: string
   type: SourceType
-  // このソースから抽出されうる情報カテゴリ(ヒント。実際の分類はLLMが行う)
+  // このソースから抽出されうる情報カテゴリ(ヒント。キーワード一致が無い場合の既定カテゴリに使う)
   categoryHints: string[]
+  // true: 本文ブロックに「上野」を含むものだけ採用する(全国横断のキーワード検索結果ページ向け。
+  //       ノイズ記事の混入を防ぐ)
+  // false: URL自体が上野エリア専用なので無条件で採用する(店舗・施設の公式サイト等)
+  strictAreaFilter: boolean
 }
 
 export const SOURCES: Source[] = [
@@ -34,6 +38,7 @@ export const SOURCES: Source[] = [
     url: "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
     type: "government",
     categoryHints: ["event", "facility_news"],
+    strictAreaFilter: false,
   },
   {
     id: "taito-city-event",
@@ -41,6 +46,7 @@ export const SOURCES: Source[] = [
     url: "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html",
     type: "government",
     categoryHints: ["event", "local_news"],
+    strictAreaFilter: true,
   },
   {
     id: "taito-navi-event",
@@ -48,6 +54,7 @@ export const SOURCES: Source[] = [
     url: "https://t-navi.city.taito.lg.jp/event?keyword=%E4%B8%8A%E9%87%8E",
     type: "government",
     categoryHints: ["event"],
+    strictAreaFilter: true,
   },
   {
     id: "prtimes-ueno",
@@ -55,6 +62,7 @@ export const SOURCES: Source[] = [
     url: "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E",
     type: "press_release",
     categoryHints: ["new_opening", "event", "popup", "sale", "campaign", "new_product"],
+    strictAreaFilter: true,
   },
   {
     id: "prtimes-ueno-marui",
@@ -62,6 +70,7 @@ export const SOURCES: Source[] = [
     url: "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4",
     type: "press_release",
     categoryHints: ["new_opening", "event", "popup", "sale", "campaign"],
+    strictAreaFilter: true,
   },
   {
     id: "tabelog-ueno-new",
@@ -69,6 +78,7 @@ export const SOURCES: Source[] = [
     url: "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/",
     type: "database",
     categoryHints: ["new_opening"],
+    strictAreaFilter: false,
   },
   {
     id: "tobikan",
@@ -76,6 +86,7 @@ export const SOURCES: Source[] = [
     url: "https://www.tobikan.jp/exhibition/",
     type: "official_site",
     categoryHints: ["exhibition"],
+    strictAreaFilter: false,
   },
   {
     id: "tnm",
@@ -83,6 +94,7 @@ export const SOURCES: Source[] = [
     url: "https://www.tnm.jp/modules/r_free_page/index.php?id=1255",
     type: "official_site",
     categoryHints: ["exhibition"],
+    strictAreaFilter: false,
   },
   {
     id: "kahaku",
@@ -90,6 +102,7 @@ export const SOURCES: Source[] = [
     url: "https://www.kahaku.go.jp/tenji/exhibitions.html",
     type: "official_site",
     categoryHints: ["exhibition"],
+    strictAreaFilter: false,
   },
   {
     id: "ueno-zoo",
@@ -97,6 +110,7 @@ export const SOURCES: Source[] = [
     url: "https://www.tokyo-zoo.net/ueno/events/index.html",
     type: "official_site",
     categoryHints: ["event", "facility_news"],
+    strictAreaFilter: false,
   },
   {
     id: "ueno-marui",
@@ -104,6 +118,7 @@ export const SOURCES: Source[] = [
     url: "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event",
     type: "official_site",
     categoryHints: ["event", "popup", "sale", "campaign", "new_opening"],
+    strictAreaFilter: false,
   },
   {
     id: "ecute-ueno-campaign",
@@ -111,6 +126,7 @@ export const SOURCES: Source[] = [
     url: "https://www.ecute.jp/ueno/campaign",
     type: "official_site",
     categoryHints: ["campaign", "sale"],
+    strictAreaFilter: false,
   },
   {
     id: "ecute-ueno-limitedshop",
@@ -118,6 +134,7 @@ export const SOURCES: Source[] = [
     url: "https://www.ecute.jp/ueno/limitedshop",
     type: "official_site",
     categoryHints: ["popup", "new_opening"],
+    strictAreaFilter: false,
   },
   {
     id: "matsuzakaya-ueno",
@@ -125,6 +142,7 @@ export const SOURCES: Source[] = [
     url: "https://www.matsuzakaya.co.jp/ueno/event/",
     type: "official_site",
     categoryHints: ["event", "sale", "campaign", "popup"],
+    strictAreaFilter: false,
   },
 ]
 

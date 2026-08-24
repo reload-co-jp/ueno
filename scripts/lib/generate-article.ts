@@ -1,5 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk"
 import type { Category } from "@/lib/types"
+import { runClaudeText } from "./claude-cli"
 
 // README「9. 記事生成」準拠テンプレート
 const TEMPLATES: Partial<Record<Category, string>> = {
@@ -33,12 +33,6 @@ const TEMPLATES: Partial<Record<Category, string>> = {
 - アクセス`,
 }
 
-let client: Anthropic | null = null
-const getClient = () => {
-  if (!client) client = new Anthropic()
-  return client
-}
-
 export interface ArticleInput {
   category: Category
   title: string
@@ -57,16 +51,11 @@ export interface ArticleInput {
 export const generateArticleBody = async (input: ArticleInput): Promise<string> => {
   const template = TEMPLATES[input.category]
 
-  const message = await getClient().messages.create({
-    model: "claude-sonnet-5",
-    max_tokens: 1024,
-    system: `上野地域メディアの記事執筆担当。与えられた事実情報のみをもとに記事本文を書く。
-事実の誇張・推測での穴埋めは禁止。不明な項目は箇条書きから省く。
-${template ? `以下のテンプレート構成に従う:\n${template}` : "見出し・概要・箇条書き情報を含む簡潔な記事構成にする。"}`,
-    messages: [
-      {
-        role: "user",
-        content: `タイトル: ${input.title}
+  const prompt = `上野地域メディアの記事執筆担当として記事本文を書く。
+与えられた事実情報のみをもとに書き、事実の誇張・推測での穴埋めは禁止。不明な項目は箇条書きから省く。
+${template ? `以下のテンプレート構成に従う:\n${template}` : "見出し・概要・箇条書き情報を含む簡潔な記事構成にする。"}
+
+タイトル: ${input.title}
 カテゴリ: ${input.category}
 エリア: ${input.area}
 概要: ${input.summary}
@@ -78,11 +67,8 @@ ${template ? `以下のテンプレート構成に従う:\n${template}` : "見�
 料金: ${input.fee ?? "不明"}
 公式URL: ${input.officialUrl ?? "不明"}
 
-上記事実のみを用いて記事本文を書け。`,
-      },
-    ],
-  })
+上記事実のみを用いて記事本文を書け。本文以外の前置き・説明は出力しない。`
 
-  const textBlock = message.content.find((b) => b.type === "text")
-  return textBlock?.type === "text" ? textBlock.text.trim() : input.summary
+  const result = await runClaudeText(prompt)
+  return result ?? input.summary
 }

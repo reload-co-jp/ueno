@@ -1,5 +1,5 @@
 // README「3. 情報収集フロー」 店舗・施設・スポットと紐付け → 記事生成
-// 実行: ANTHROPIC_API_KEY=xxx pnpm generate-articles
+// 実行: pnpm generate-articles
 // data/drafts/articles.json の各ドラフトについて本文を生成し、上書き保存する。
 // 公開前に人手で内容を確認すること(README「確認 → 公開」)。
 import { readFile, writeFile } from "node:fs/promises"
@@ -28,10 +28,6 @@ interface ArticleDraft {
 }
 
 const main = async () => {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.error("ANTHROPIC_API_KEY未設定。記事生成にはAPIキーが必要。")
-    process.exit(1)
-  }
   if (!existsSync(DRAFTS_PATH)) {
     console.error("data/drafts/articles.json が無い。先に pnpm dedupe を実行。")
     process.exit(1)
