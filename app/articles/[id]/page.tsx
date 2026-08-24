@@ -29,6 +29,7 @@ export const generateMetadata = async ({
       description: article.summary,
       siteName: SITE_NAME,
       publishedTime: article.publishedAt,
+      images: article.imageUrl ? [article.imageUrl] : undefined,
     },
     twitter: {
       card: "summary",
@@ -80,6 +81,13 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       >
         {CATEGORY_LABELS[article.category]}
       </span>
+      {article.imageUrl && (
+        <img
+          src={article.imageUrl}
+          alt=""
+          style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
+        />
+      )}
       <h2 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h2>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateJp(article.publishedAt)} ・ {article.area}

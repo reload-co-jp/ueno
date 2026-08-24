@@ -33,7 +33,7 @@ const main = async () => {
       if (!source) continue
 
       process.stdout.write(`抽出中: ${raw.sourceName} (${file}) ... `)
-      const items = await extractFromHtml(source, raw.html)
+      const items = await extractFromHtml(source, raw.html, raw.url)
       await writeFile(
         outPath,
         JSON.stringify(

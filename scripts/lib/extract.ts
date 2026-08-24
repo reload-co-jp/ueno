@@ -19,6 +19,7 @@ export interface ExtractedItem {
   organizer: string | null
   official_url: string | null
   summary: string
+  image_url: string | null
 }
 
 const MAX_CHARS = 12000
@@ -29,6 +30,22 @@ export const htmlToText = (html: string): string => {
   $("script, style, noscript, nav, footer, header").remove()
   const text = $("body").text().replace(/\s+\n/g, "\n").replace(/[ \t]+/g, " ").trim()
   return text.slice(0, MAX_CHARS)
+}
+
+// ページのOGP画像URL取得。LLMにURLを生成させると幻覚のおそれがあるため、
+// HTMLから直接meta og:image(無ければtwitter:image)を読む。
+export const extractImageUrl = (html: string, pageUrl: string): string | null => {
+  const $ = cheerio.load(html)
+  const raw =
+    $('meta[property="og:image"]').attr("content") ||
+    $('meta[name="twitter:image"]').attr("content") ||
+    null
+  if (!raw) return null
+  try {
+    return new URL(raw, pageUrl).toString()
+  } catch {
+    return null
+  }
 }
 
 const CATEGORY_VALUES: Category[] = [
@@ -90,7 +107,11 @@ URL: ${source.url}
 本文:
 ${text}`
 
-export const extractFromHtml = async (source: Source, html: string): Promise<ExtractedItem[]> => {
+export const extractFromHtml = async (
+  source: Source,
+  html: string,
+  pageUrl: string
+): Promise<ExtractedItem[]> => {
   const text = htmlToText(html)
   if (!text) return []
 
@@ -98,5 +119,6 @@ export const extractFromHtml = async (source: Source, html: string): Promise<Ext
     buildPrompt(source, text),
     EXTRACT_SCHEMA
   )
-  return result?.items ?? []
+  const imageUrl = extractImageUrl(html, pageUrl)
+  return (result?.items ?? []).map((item) => ({ ...item, image_url: imageUrl }))
 }

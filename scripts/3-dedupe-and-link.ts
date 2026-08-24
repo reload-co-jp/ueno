@@ -34,6 +34,7 @@ interface ArticleDraft {
   relatedStoreIds: string[]
   relatedSpotIds: string[]
   relatedEventIds: string[]
+  imageUrl: string | null
   // ドラフト用メタ情報。公開前の確認材料。
   matchNotes: string[]
   // 記事本文生成(pnpm generate-articles)で使う元の抽出データ(マージ元のうち最初の1件)
@@ -162,6 +163,9 @@ const main = async () => {
             mergeTarget.summary = item.summary
             mergeTarget.body = item.summary
           }
+          if (!mergeTarget.imageUrl && item.image_url) {
+            mergeTarget.imageUrl = item.image_url
+          }
           mergeTarget.matchNotes.push(...matchNotes, `複数ソースに統合: ${data.url}`)
           continue
         }
@@ -178,6 +182,7 @@ const main = async () => {
           relatedStoreIds,
           relatedSpotIds,
           relatedEventIds: [],
+          imageUrl: item.image_url,
           matchNotes,
           extracted: item,
         }

@@ -86,4 +86,5 @@ export interface NewsArticle {
   relatedStoreIds: string[]
   relatedSpotIds: string[]
   relatedEventIds: string[]
+  imageUrl: string | null
 }

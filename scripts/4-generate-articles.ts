@@ -23,6 +23,7 @@ interface ArticleDraft {
   relatedStoreIds: string[]
   relatedSpotIds: string[]
   relatedEventIds: string[]
+  imageUrl: string | null
   matchNotes: string[]
   extracted: ExtractedItem
 }

@@ -16,7 +16,8 @@
     "relatedEventIds": [],
     "sources": [
       "https://prtimes.jp/"
-    ]
+    ],
+    "imageUrl": "https://prtimes.jp/common/pc_v4/og.png"
   },
   {
     "id": "news-curry-open",
@@ -33,7 +34,8 @@
     "relatedEventIds": [],
     "sources": [
       "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/"
-    ]
+    ],
+    "imageUrl": "https://tabelog.com/images/rst/area/fb_icon_tokyo.gif"
   },
   {
     "id": "news-ueno-park-marche",
@@ -52,7 +54,8 @@
     ],
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "imageUrl": "https://www.kensetsu.metro.tokyo.lg.jp/documents/158990/5052145/opg.png/3c79ba89-ab16-4589-4fad-b5b411615b25?version=1.1&t=1764164520819&imagePreview=1"
   },
   {
     "id": "news-tobikan-exhibition",
@@ -71,7 +74,8 @@
     ],
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "imageUrl": null
   },
   {
     "id": "news-kahaku-dinosaur",
@@ -90,7 +94,8 @@
     ],
     "sources": [
       "https://www.kahaku.go.jp/tenji/exhibitions.html"
-    ]
+    ],
+    "imageUrl": "https://www.kahaku.go.jp/ogp.png"
   },
   {
     "id": "news-marui-popup",
@@ -109,7 +114,8 @@
     ],
     "sources": [
       "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event"
-    ]
+    ],
+    "imageUrl": "https://www.0101.co.jp/assets/img/common/ogp.png"
   },
   {
     "id": "news-matsuzakaya-sale",
@@ -126,7 +132,8 @@
     "relatedEventIds": [],
     "sources": [
       "https://www.matsuzakaya.co.jp/ueno/event/"
-    ]
+    ],
+    "imageUrl": null
   },
   {
     "id": "news-select-shop-closing",
@@ -145,7 +152,8 @@
     "relatedEventIds": [],
     "sources": [
       "https://www.ecute.jp/ueno/"
-    ]
+    ],
+    "imageUrl": null
   },
   {
     "id": "news-zoo-panda-talk",
@@ -164,7 +172,8 @@
     ],
     "sources": [
       "https://www.tokyo-zoo.net/ueno/events/index.html"
-    ]
+    ],
+    "imageUrl": "https://www.tokyo-zoo.net/common/img/meta/ogp/ogp_ueno.png"
   },
   {
     "id": "news-bookcafe-anniv",
@@ -181,6 +190,7 @@
     "relatedEventIds": [],
     "sources": [
       "https://prtimes.jp/"
-    ]
+    ],
+    "imageUrl": "https://prtimes.jp/common/pc_v4/og.png"
   }
 ]
