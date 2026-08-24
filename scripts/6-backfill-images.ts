@@ -31,12 +31,12 @@ const fetchImageUrl = async (cache: Map<string, string | null>, url: string) => 
   return imageUrl
 }
 
-const backfill = async (filePath: string, cache: Map<string, string | null>) => {
+const backfill = async (filePath: string, cache: Map<string, string | null>, force: boolean) => {
   const raw = await readFile(filePath, "utf-8")
   const articles: (NewsArticle & { imageUrl?: string | null })[] = JSON.parse(raw)
 
   for (const [i, article] of articles.entries()) {
-    if (article.imageUrl) continue
+    if (article.imageUrl && !force) continue
     const url = article.sources[0]
     if (!url) continue
     process.stdout.write(`[${i + 1}/${articles.length}] ${article.title} ... `)
@@ -49,11 +49,12 @@ const backfill = async (filePath: string, cache: Map<string, string | null>) => 
 }
 
 const main = async () => {
+  const force = process.argv.includes("--force")
   const cache = new Map<string, string | null>()
   console.log("=== data/news.json ===")
-  await backfill(NEWS_PATH, cache)
+  await backfill(NEWS_PATH, cache, force)
   console.log("=== data/drafts/articles.json ===")
-  await backfill(DRAFTS_PATH, cache)
+  await backfill(DRAFTS_PATH, cache, force)
   console.log("完了")
 }
 

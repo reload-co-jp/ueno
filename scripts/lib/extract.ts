@@ -32,10 +32,42 @@ export const htmlToText = (html: string): string => {
   return text.slice(0, MAX_CHARS)
 }
 
-// ページのOGP画像URL取得。LLMにURLを生成させると幻覚のおそれがあるため、
-// HTMLから直接meta og:image(無ければtwitter:image)を読む。
+// 記事本文領域内の最初の画像をメイン画像として取得。
+// アイコン/ロゴ等の小画像を除外するため、width/height指定があり小さすぎるものは除外。
+const extractMainImageUrl = ($: cheerio.CheerioAPI, pageUrl: string): string | null => {
+  const MIN_SIZE = 100
+  const candidates = $(
+    "article img, main img, .entry-content img, .post-content img, .content img"
+  ).toArray()
+
+  for (const el of candidates) {
+    const $el = $(el)
+    const width = Number.parseInt($el.attr("width") ?? "", 10)
+    const height = Number.parseInt($el.attr("height") ?? "", 10)
+    if ((Number.isFinite(width) && width < MIN_SIZE) || (Number.isFinite(height) && height < MIN_SIZE)) {
+      continue
+    }
+    const raw = $el.attr("src") || $el.attr("data-src")
+    if (!raw) continue
+    if (/\.svg(\?|$)/i.test(raw) || /icon|logo|[-_]nav/i.test(raw)) continue
+    try {
+      return new URL(raw, pageUrl).toString()
+    } catch {
+      continue
+    }
+  }
+  return null
+}
+
+// ページの画像URL取得。まず記事本文内のメイン画像を探し、
+// 見つからなければOGP画像(og:image、無ければtwitter:image)にフォールバックする。
+// LLMにURLを生成させると幻覚のおそれがあるため、HTMLから直接読む。
 export const extractImageUrl = (html: string, pageUrl: string): string | null => {
   const $ = cheerio.load(html)
+
+  const mainImage = extractMainImageUrl($, pageUrl)
+  if (mainImage) return mainImage
+
   const raw =
     $('meta[property="og:image"]').attr("content") ||
     $('meta[name="twitter:image"]').attr("content") ||

@@ -55,7 +55,7 @@
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
     ],
-    "imageUrl": "https://www.kensetsu.metro.tokyo.lg.jp/documents/158990/5052145/opg.png/3c79ba89-ab16-4589-4fad-b5b411615b25?version=1.1&t=1764164520819&imagePreview=1"
+    "imageUrl": "https://www.kensetsu.metro.tokyo.lg.jp/documents/d/kensetsu/000043007"
   },
   {
     "id": "news-tobikan-exhibition",
@@ -75,7 +75,7 @@
     "sources": [
       "https://www.tobikan.jp/exhibition/"
     ],
-    "imageUrl": null
+    "imageUrl": "https://www.tobikan.jp/media/img/poster/2026_viewsofthisplace.jpg"
   },
   {
     "id": "news-kahaku-dinosaur",
@@ -153,7 +153,7 @@
     "sources": [
       "https://www.ecute.jp/ueno/"
     ],
-    "imageUrl": null
+    "imageUrl": "https://cdn.ecute.jp/resouces/campaign/4261/main/thumb_54f36ea7f1991a1d12d769dbf8c01adf.jpg"
   },
   {
     "id": "news-zoo-panda-talk",
