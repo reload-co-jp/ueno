@@ -33,13 +33,11 @@ const fetchImageUrl = async (cache: Map<string, string | null>, url: string) => 
 
 const backfill = async (filePath: string, cache: Map<string, string | null>) => {
   const raw = await readFile(filePath, "utf-8")
-  const articles: (NewsArticle & { imageUrl?: string | null; source?: string })[] =
-    JSON.parse(raw)
+  const articles: (NewsArticle & { imageUrl?: string | null })[] = JSON.parse(raw)
 
   for (const [i, article] of articles.entries()) {
     if (article.imageUrl) continue
-    // dedupeスクリプトの旧版で生成されたdraftは sources ではなく単数の source を持つ
-    const url = article.sources?.[0] ?? article.source
+    const url = article.sources[0]
     if (!url) continue
     process.stdout.write(`[${i + 1}/${articles.length}] ${article.title} ... `)
     const imageUrl = await fetchImageUrl(cache, url)
