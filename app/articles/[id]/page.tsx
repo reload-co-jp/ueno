@@ -1,11 +1,42 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { getArticle, getEvent, getSpot, getStore, news } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
+import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 import { CATEGORY_LABELS } from "@/lib/types"
 
 export const generateStaticParams = () => news.map((n) => ({ id: n.id }))
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> => {
+  const { id } = await params
+  const article = getArticle(id)
+  if (!article) return {}
+  const url = absoluteUrl(`/articles/${article.id}`)
+  return {
+    title: article.title,
+    description: article.summary,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description: article.summary,
+      siteName: SITE_NAME,
+      publishedTime: article.publishedAt,
+    },
+    twitter: {
+      card: "summary",
+      title: article.title,
+      description: article.summary,
+    },
+  }
+}
 
 const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { id } = await params
@@ -16,8 +47,25 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedSpots = article.relatedSpotIds.map(getSpot).filter(Boolean)
   const relatedEvents = article.relatedEventIds.map(getEvent).filter(Boolean)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.summary,
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    articleSection: CATEGORY_LABELS[article.category],
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    mainEntityOfPage: absoluteUrl(`/articles/${article.id}`),
+  }
+
   return (
     <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "40rem" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
+      />
       <span
         style={{
           display: "inline-block",

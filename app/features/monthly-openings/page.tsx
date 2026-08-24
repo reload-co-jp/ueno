@@ -3,7 +3,10 @@ import { ArticleListPage } from "@/components/elements/article-list-page"
 import { getArticlesByCategory } from "@/lib/data"
 import { thisMonthRange } from "@/lib/date"
 
-export const metadata = { title: "今月の新店舗 | 上野ナビ" }
+export const metadata = {
+  title: "今月の新店舗",
+  description: "今月オープンした上野エリアの新店舗情報",
+}
 
 const Page: FC = () => {
   const { start, end } = thisMonthRange()

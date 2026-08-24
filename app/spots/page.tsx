@@ -2,7 +2,10 @@ import { FC } from "react"
 import { CardGrid, SpotCard } from "@/components/elements/card"
 import { spots } from "@/lib/data"
 
-export const metadata = { title: "施設・スポット | 上野ナビ" }
+export const metadata = {
+  title: "施設・スポット",
+  description: "上野エリアの施設・観光スポット一覧",
+}
 
 const Page: FC = () => (
   <div>

@@ -3,7 +3,10 @@ import { CardGrid, EventCard } from "@/components/elements/card"
 import { getEventsInRange } from "@/lib/data"
 import { thisWeekendRange } from "@/lib/date"
 
-export const metadata = { title: "今週末の上野イベント | 上野ナビ" }
+export const metadata = {
+  title: "今週末の上野イベント",
+  description: "今週末開催の上野エリアのイベント情報",
+}
 
 const Page: FC = () => {
   const { start, end } = thisWeekendRange()

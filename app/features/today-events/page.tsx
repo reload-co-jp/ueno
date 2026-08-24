@@ -3,7 +3,10 @@ import { CardGrid, EventCard } from "@/components/elements/card"
 import { getEventsOnDate } from "@/lib/data"
 import { todayStr } from "@/lib/date"
 
-export const metadata = { title: "今日の上野イベント | 上野ナビ" }
+export const metadata = {
+  title: "今日の上野イベント",
+  description: "本日開催の上野エリアのイベント情報",
+}
 
 const Page: FC = () => {
   const events = getEventsOnDate(todayStr())

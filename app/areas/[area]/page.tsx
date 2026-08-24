@@ -1,10 +1,30 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { ArticleCard, CardGrid, SpotCard, StoreCard } from "@/components/elements/card"
 import { getAreas, getArticlesByArea, getSpotsByArea, getStoresByArea } from "@/lib/data"
+import { absoluteUrl } from "@/lib/seo"
 
 export const generateStaticParams = () =>
   getAreas().map((area) => ({ area: encodeURIComponent(area) }))
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ area: string }>
+}): Promise<Metadata> => {
+  const { area: raw } = await params
+  const area = decodeURIComponent(raw)
+  if (!getAreas().includes(area)) return {}
+  const url = absoluteUrl(`/areas/${raw}`)
+  const description = `${area}エリアの店舗・施設・最新情報一覧`
+  return {
+    title: area,
+    description,
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title: area, description },
+  }
+}
 
 const Page: FC<{ params: Promise<{ area: string }> }> = async ({ params }) => {
   const { area: raw } = await params

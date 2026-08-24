@@ -2,7 +2,10 @@ import Link from "next/link"
 import { FC } from "react"
 import { getAreas } from "@/lib/data"
 
-export const metadata = { title: "エリア | 上野ナビ" }
+export const metadata = {
+  title: "エリア別情報",
+  description: "上野エリア別の店舗・施設・最新情報一覧",
+}
 
 const Page: FC = () => {
   const areas = getAreas()

@@ -2,7 +2,10 @@ import { FC } from "react"
 import { CardGrid, StoreCard } from "@/components/elements/card"
 import { stores } from "@/lib/data"
 
-export const metadata = { title: "店舗 | 上野ナビ" }
+export const metadata = {
+  title: "店舗",
+  description: "上野エリアの店舗一覧",
+}
 
 const Page: FC = () => (
   <div>

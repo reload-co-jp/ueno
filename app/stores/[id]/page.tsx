@@ -1,10 +1,30 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticlesByStore, getStore, stores } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
+import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => stores.map((s) => ({ id: s.id }))
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> => {
+  const { id } = await params
+  const store = getStore(id)
+  if (!store) return {}
+  const url = absoluteUrl(`/stores/${store.id}`)
+  const description = `${store.name}（${store.category}）の店舗情報。所在地: ${store.address}`
+  return {
+    title: store.name,
+    description,
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title: store.name, description, siteName: SITE_NAME },
+  }
+}
 
 const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { id } = await params
@@ -12,8 +32,22 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   if (!store) notFound()
   const articles = getArticlesByStore(store.id)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: store.name,
+    address: { "@type": "PostalAddress", streetAddress: store.address, addressLocality: store.area },
+    geo: { "@type": "GeoCoordinates", latitude: store.lat, longitude: store.lng },
+    url: store.officialUrl,
+    openingHours: store.hours,
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
+      />
       <div>
         <span
           style={{

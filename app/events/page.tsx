@@ -2,7 +2,10 @@ import { FC } from "react"
 import { CardGrid, EventCard } from "@/components/elements/card"
 import { getUpcomingEvents } from "@/lib/data"
 
-export const metadata = { title: "イベント | 上野ナビ" }
+export const metadata = {
+  title: "イベント",
+  description: "上野エリアの開催予定イベント一覧",
+}
 
 const Page: FC = () => {
   const events = getUpcomingEvents()

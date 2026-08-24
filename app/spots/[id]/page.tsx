@@ -1,9 +1,29 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { ArticleCard, CardGrid, EventCard } from "@/components/elements/card"
 import { events, getArticlesBySpot, getSpot, spots } from "@/lib/data"
+import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => spots.map((s) => ({ id: s.id }))
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> => {
+  const { id } = await params
+  const spot = getSpot(id)
+  if (!spot) return {}
+  const url = absoluteUrl(`/spots/${spot.id}`)
+  const description = `${spot.name}（${spot.type}）の施設情報。所在地: ${spot.address}`
+  return {
+    title: spot.name,
+    description,
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title: spot.name, description, siteName: SITE_NAME },
+  }
+}
 
 const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { id } = await params
@@ -12,8 +32,21 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const articles = getArticlesBySpot(spot.id)
   const spotEvents = events.filter((e) => e.relatedSpotId === spot.id)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    name: spot.name,
+    address: { "@type": "PostalAddress", streetAddress: spot.address, addressLocality: spot.area },
+    geo: { "@type": "GeoCoordinates", latitude: spot.lat, longitude: spot.lng },
+    url: spot.officialUrl,
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
+      />
       <div>
         <span
           style={{
