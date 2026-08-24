@@ -22,16 +22,18 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         style={{
           display: "inline-block",
           fontSize: ".75rem",
-          background: "#555",
-          borderRadius: ".25rem",
-          padding: ".125rem .5rem",
+          fontWeight: 700,
+          background: "#f7e6e1",
+          color: "#c0483a",
+          borderRadius: "999px",
+          padding: ".125rem .75rem",
           width: "fit-content",
         }}
       >
         {CATEGORY_LABELS[article.category]}
       </span>
       <h2 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h2>
-      <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateJp(article.publishedAt)} ・ {article.area}
       </p>
 
@@ -40,19 +42,19 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       </div>
 
       {(relatedStores.length > 0 || relatedSpots.length > 0 || relatedEvents.length > 0) && (
-        <div style={{ borderTop: "1px solid #444", paddingTop: "1rem" }}>
+        <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
           <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h3>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
               <li key={s!.id}>
-                <Link href={`/stores/${s!.id}`} style={{ color: "#8ecbff" }}>
+                <Link href={`/stores/${s!.id}`} style={{ color: "#c0483a" }}>
                   店舗: {s!.name}
                 </Link>
               </li>
             ))}
             {relatedSpots.map((s) => (
               <li key={s!.id}>
-                <Link href={`/spots/${s!.id}`} style={{ color: "#8ecbff" }}>
+                <Link href={`/spots/${s!.id}`} style={{ color: "#c0483a" }}>
                   施設: {s!.name}
                 </Link>
               </li>
@@ -64,12 +66,12 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         </div>
       )}
 
-      <div style={{ fontSize: ".75rem", color: "#999" }}>
+      <div style={{ fontSize: ".75rem", color: "#a39c8c" }}>
         情報源:{" "}
         {article.sources.map((url, i) => (
           <span key={url}>
             {i > 0 && "、"}
-            <a href={url} target="_blank" rel="noreferrer" style={{ color: "#8ecbff" }}>
+            <a href={url} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
               {url}
             </a>
           </span>

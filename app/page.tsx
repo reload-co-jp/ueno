@@ -23,12 +23,15 @@ const Page: FC = () => {
             <Link
               key={f.href}
               href={f.href}
+              className="pill"
               style={{
-                border: "1px solid #555",
+                background: "#f7e6e1",
+                border: "1px solid #e8e1d3",
                 borderRadius: "999px",
                 padding: ".5rem 1rem",
                 fontSize: ".875rem",
-                color: "#f0f0f0",
+                fontWeight: 700,
+                color: "#c0483a",
                 textDecoration: "none",
               }}
             >

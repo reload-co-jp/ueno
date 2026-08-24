@@ -30,13 +30,11 @@ export const Nav: FC = () => (
         href={item.href}
         className="pill"
         style={{
-          color: "#2d2a26",
-          background: "#fff",
+          color: "#fff",
+          background: "rgba(255, 255, 255, 0.16)",
           borderRadius: "999px",
           padding: ".25rem .875rem",
-          fontWeight: 700,
           textDecoration: "none",
-          boxShadow: "0.125rem 0.125rem 0 #2d2a26",
         }}
       >
         {item.label}
@@ -50,7 +48,7 @@ export const Title: FC<ComponentProps<"h1">> = ({
   children,
   ...props
 }) => (
-  <h1 style={{ fontSize: "1.5rem", margin: 0, ...style }} {...props}>
+  <h1 style={{ fontSize: "1.375rem", margin: 0, ...style }} {...props}>
     {children}
   </h1>
 )
@@ -58,38 +56,41 @@ export const Title: FC<ComponentProps<"h1">> = ({
 export const Header: FC<{ children: ReactNode }> = ({ children }) => (
   <header
     style={{
-      background: "linear-gradient(90deg, #ff8fa3, #ffd93d)",
-      color: "#2d2a26",
-      padding: ".75rem 1.25rem",
+      background: "#c0483a",
+      color: "#fff",
       position: "relative",
     }}
   >
-    {children}
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: ".75rem 1.5rem" }}>
+      {children}
+    </div>
   </header>
 )
 
 export const Main: FC<{ children: ReactNode }> = ({ children }) => (
   <main
     style={{
-      background: "#fffaf0",
+      background: "#fdfbf7",
       minHeight: "calc(100dvh - 5.625rem)",
-      padding: "1.5rem 1rem",
     }}
   >
-    {children}
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1.5rem" }}>
+      {children}
+    </div>
   </main>
 )
 
 export const Footer: FC<{ children: ReactNode }> = ({ children }) => (
   <footer
     style={{
-      background: "#2d2a26",
-      color: "#fffaf0",
+      background: "#3a3530",
+      color: "#fdfbf7",
       fontSize: ".75rem",
-      padding: "1rem",
       textAlign: "center",
     }}
   >
-    {children}
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1rem 1.5rem" }}>
+      {children}
+    </div>
   </footer>
 )

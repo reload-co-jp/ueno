@@ -9,7 +9,7 @@ export const ArticleListPage: FC<{ title: string; articles: NewsArticle[] }> = (
   <div>
     <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>{title}</h2>
     {articles.length === 0 ? (
-      <p style={{ color: "#999" }}>該当する記事はまだない。</p>
+      <p style={{ color: "#a39c8c" }}>該当する記事はまだない。</p>
     ) : (
       <CardGrid>
         {articles.map((article) => (

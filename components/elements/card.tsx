@@ -1,46 +1,56 @@
 import Link from "next/link"
 import { FC } from "react"
-import { CATEGORY_LABELS, EventItem, NewsArticle, Spot, Store } from "@/lib/types"
+import { CATEGORY_LABELS, NewsArticle, Spot, Store, EventItem } from "@/lib/types"
 import { formatDateJp, formatDateRangeJp } from "@/lib/date"
 
 const cardStyle: React.CSSProperties = {
   display: "block",
-  border: "1px solid #444",
-  borderRadius: ".5rem",
+  background: "#fff",
+  border: "1px solid #e8e1d3",
+  borderRadius: ".75rem",
   padding: "1rem",
-  color: "#f0f0f0",
+  color: "#3a3530",
   textDecoration: "none",
+  boxShadow: "0 0.125rem 0.375rem rgba(58, 53, 48, 0.06)",
 }
 
 const badgeStyle: React.CSSProperties = {
   display: "inline-block",
   fontSize: ".75rem",
-  background: "#555",
-  borderRadius: ".25rem",
-  padding: ".125rem .5rem",
+  fontWeight: 700,
+  background: "#f7e6e1",
+  color: "#c0483a",
+  borderRadius: "999px",
+  padding: ".125rem .75rem",
   marginBottom: ".5rem",
 }
 
 export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
-  <Link href={`/articles/${article.id}`} style={cardStyle}>
+  <Link href={`/articles/${article.id}`} className="card" style={cardStyle}>
     <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{article.title}</h3>
-    <p style={{ fontSize: ".875rem", color: "#ccc", margin: "0 0 .5rem" }}>
+    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
       {article.summary}
     </p>
-    <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
       {formatDateJp(article.publishedAt)} ・ {article.area}
     </p>
   </Link>
 )
 
 export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
-  <a href={event.officialUrl} target="_blank" rel="noreferrer" style={cardStyle}>
+  <a
+    href={event.officialUrl}
+    target="_blank"
+    rel="noreferrer"
+    className="card"
+    style={cardStyle}
+  >
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
-    <p style={{ fontSize: ".875rem", color: "#ccc", margin: "0 0 .5rem" }}>
+    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
       {event.summary}
     </p>
-    <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
       {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.location} ・{" "}
       {event.fee}
     </p>
@@ -48,20 +58,20 @@ export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
 )
 
 export const StoreCard: FC<{ store: Store }> = ({ store }) => (
-  <Link href={`/stores/${store.id}`} style={cardStyle}>
+  <Link href={`/stores/${store.id}`} className="card" style={cardStyle}>
     <span style={badgeStyle}>{store.category}</span>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{store.name}</h3>
-    <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
       {store.address} ・ {store.hours}
     </p>
   </Link>
 )
 
 export const SpotCard: FC<{ spot: Spot }> = ({ spot }) => (
-  <Link href={`/spots/${spot.id}`} style={cardStyle}>
+  <Link href={`/spots/${spot.id}`} className="card" style={cardStyle}>
     <span style={badgeStyle}>{spot.type}</span>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
-    <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>{spot.address}</p>
+    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>{spot.address}</p>
   </Link>
 )
 
@@ -70,7 +80,7 @@ export const CardGrid: FC<{ children: React.ReactNode }> = ({ children }) => (
     style={{
       display: "grid",
       gridTemplateColumns: "repeat(auto-fill, minmax(16rem, 1fr))",
-      gap: "1rem",
+      gap: "1.25rem",
     }}
   >
     {children}
