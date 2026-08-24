@@ -1,0 +1,65 @@
+name: Collect & Draft Articles
+
+# README「3. 情報収集フロー」の scrape〜generate-articles(1〜4)を自動実行し、
+# 生成された data/drafts/articles.json を確認用PRとして起票する。
+# 公開(publish-drafts)は人手レビュー後、別workflowで手動実行する。
+
+on:
+  schedule:
+    - cron: "0 22 * * *" # JST 7:00
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Claude Code CLI
+        run: npm i -g @anthropic-ai/claude-code
+
+      - name: Scrape
+        run: pnpm scrape
+
+      - name: Extract
+        run: pnpm extract
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+      - name: Dedupe & link
+        run: pnpm dedupe
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+      - name: Generate article bodies
+        run: pnpm generate-articles
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+      - name: Open PR with drafts
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: data/drafts/articles.json
+          branch: auto/article-drafts
+          commit-message: "chore: 記事ドラフト自動生成"
+          title: "記事ドラフト自動生成"
+          body: |
+            scrape → extract → dedupe → generate-articles を自動実行した結果。
+            内容確認のうえマージし、`pnpm publish-drafts` workflow(手動)で公開する。
+          delete-branch: true

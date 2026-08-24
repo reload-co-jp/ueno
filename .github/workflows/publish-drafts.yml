@@ -1,0 +1,42 @@
+name: Publish Drafts
+
+# README「3. 情報収集フロー」の 確認 → 公開 ステップ。
+# collect-articles PRのマージ(=人手確認済み)後に手動実行する。
+# data/drafts/articles.json を data/news.json にマージし main へ直接コミットする
+# (push to main で deploy.yml が発火し自動デプロイされる)。
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish drafts
+        run: pnpm publish-drafts
+
+      - name: Commit published news
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/drafts/articles.json
+          git diff --cached --quiet && echo "変更無し" && exit 0
+          git commit -m "chore: 記事公開 (publish-drafts)"
+          git push
