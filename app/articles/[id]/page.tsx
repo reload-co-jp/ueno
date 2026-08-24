@@ -64,7 +64,17 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         </div>
       )}
 
-      <p style={{ fontSize: ".75rem", color: "#999" }}>情報源: {article.source}</p>
+      <div style={{ fontSize: ".75rem", color: "#999" }}>
+        情報源:{" "}
+        {article.sources.map((url, i) => (
+          <span key={url}>
+            {i > 0 && "、"}
+            <a href={url} target="_blank" rel="noreferrer" style={{ color: "#8ecbff" }}>
+              {url}
+            </a>
+          </span>
+        ))}
+      </div>
     </article>
   )
 }

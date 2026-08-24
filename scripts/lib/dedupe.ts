@@ -34,6 +34,20 @@ export const similarity = (a: string, b: string): number => {
   return 1 - distance / Math.max(s1.length, s2.length)
 }
 
+// 「東京都美術館開館100周年記念 ○○展」のように片方が接頭辞付きの長いタイトルの場合、
+// レーベンシュタイン類似度は低く出るため、正規化後の包含関係も別途チェックする
+export const titleOverlaps = (a: string, b: string): boolean => {
+  const na = normalizeName(a)
+  const nb = normalizeName(b)
+  const MIN_OVERLAP_LENGTH = 8 // 短すぎる共通部分での誤マージを避ける
+  if (na.length < MIN_OVERLAP_LENGTH || nb.length < MIN_OVERLAP_LENGTH) return false
+  return na.includes(nb) || nb.includes(na)
+}
+
+// 「別ソースだが同一実体を指す記事タイトルか」の判定(表記ゆれ・接頭辞違いを吸収)
+export const isSameArticle = (titleA: string, titleB: string): boolean =>
+  similarity(titleA, titleB) >= 0.7 || titleOverlaps(titleA, titleB)
+
 const normalizeUrl = (url: string) => url.replace(/^https?:\/\//, "").replace(/\/$/, "")
 
 export type MatchLevel = "exact" | "likely" | "ambiguous" | "none"

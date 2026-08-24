@@ -19,13 +19,26 @@ export const Nav: FC = () => (
     style={{
       display: "flex",
       flexWrap: "wrap",
-      gap: "1rem",
-      marginTop: ".5rem",
+      gap: ".5rem",
+      marginTop: ".75rem",
       fontSize: ".875rem",
     }}
   >
     {NAV_ITEMS.map((item) => (
-      <Link key={item.href} href={item.href} style={{ color: "#f0f0f0" }}>
+      <Link
+        key={item.href}
+        href={item.href}
+        className="pill"
+        style={{
+          color: "#2d2a26",
+          background: "#fff",
+          borderRadius: "999px",
+          padding: ".25rem .875rem",
+          fontWeight: 700,
+          textDecoration: "none",
+          boxShadow: "0.125rem 0.125rem 0 #2d2a26",
+        }}
+      >
         {item.label}
       </Link>
     ))}
@@ -37,7 +50,7 @@ export const Title: FC<ComponentProps<"h1">> = ({
   children,
   ...props
 }) => (
-  <h1 style={{ fontSize: "1rem", margin: 0, ...style }} {...props}>
+  <h1 style={{ fontSize: "1.5rem", margin: 0, ...style }} {...props}>
     {children}
   </h1>
 )
@@ -45,9 +58,9 @@ export const Title: FC<ComponentProps<"h1">> = ({
 export const Header: FC<{ children: ReactNode }> = ({ children }) => (
   <header
     style={{
-      backgroundColor: "#333",
-      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      padding: ".5rem 1rem",
+      background: "linear-gradient(90deg, #ff8fa3, #ffd93d)",
+      color: "#2d2a26",
+      padding: ".75rem 1.25rem",
       position: "relative",
     }}
   >
@@ -58,9 +71,9 @@ export const Header: FC<{ children: ReactNode }> = ({ children }) => (
 export const Main: FC<{ children: ReactNode }> = ({ children }) => (
   <main
     style={{
-      background: "#222",
+      background: "#fffaf0",
       minHeight: "calc(100dvh - 5.625rem)",
-      padding: "1rem",
+      padding: "1.5rem 1rem",
     }}
   >
     {children}
@@ -70,10 +83,11 @@ export const Main: FC<{ children: ReactNode }> = ({ children }) => (
 export const Footer: FC<{ children: ReactNode }> = ({ children }) => (
   <footer
     style={{
-      backgroundColor: "#333",
-      boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.1)",
+      background: "#2d2a26",
+      color: "#fffaf0",
       fontSize: ".75rem",
       padding: "1rem",
+      textAlign: "center",
     }}
   >
     {children}

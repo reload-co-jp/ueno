@@ -6,11 +6,17 @@
     "publishedAt": "2026-08-07T10:00:00+09:00",
     "summary": "台湾ティードリンク専門店「ゴンチャ」が上野マルイ1Fに新規オープン。",
     "body": "台湾発ティードリンク専門店「ゴンチャ」が2026年8月8日、上野マルイ1Fにオープンする。人気のミルクティーやフルーツティーに加え、上野店限定メニューも展開予定。\n\n店舗情報\n- 店名: ゴンチャ 上野マルイ店\n- 住所: 東京都台東区上野6-15-1 上野マルイ 1F\n- 営業時間: 11:00-21:00\n- オープン日: 2026年8月8日\n- アクセス: JR上野駅すぐ",
-    "source": "https://prtimes.jp/",
     "area": "上野駅前",
-    "relatedStoreIds": ["gongcha-ueno-marui"],
-    "relatedSpotIds": ["ueno-marui"],
-    "relatedEventIds": []
+    "relatedStoreIds": [
+      "gongcha-ueno-marui"
+    ],
+    "relatedSpotIds": [
+      "ueno-marui"
+    ],
+    "relatedEventIds": [],
+    "sources": [
+      "https://prtimes.jp/"
+    ]
   },
   {
     "id": "news-curry-open",
@@ -19,11 +25,15 @@
     "publishedAt": "2026-08-19T09:00:00+09:00",
     "summary": "本格スパイスカレーが楽しめる新店舗が上野広小路エリアに登場。",
     "body": "上野広小路エリアに本格スパイスカレー専門店「上野スパイスカレー食堂」が2026年8月20日にオープンする。\n\n店舗情報\n- 店名: 上野スパイスカレー食堂\n- 住所: 東京都台東区上野2-3-4\n- 営業時間: 11:00-22:00\n- オープン日: 2026年8月20日\n- アクセス: 上野広小路駅から徒歩3分",
-    "source": "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/",
     "area": "上野広小路",
-    "relatedStoreIds": ["curry-house-ueno"],
+    "relatedStoreIds": [
+      "curry-house-ueno"
+    ],
     "relatedSpotIds": [],
-    "relatedEventIds": []
+    "relatedEventIds": [],
+    "sources": [
+      "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/"
+    ]
   },
   {
     "id": "news-ueno-park-marche",
@@ -32,11 +42,17 @@
     "publishedAt": "2026-08-14T12:00:00+09:00",
     "summary": "上野恩賜公園でナイトマルシェが3日間開催。",
     "body": "上野恩賜公園の噴水広場で2026年8月21日から23日まで「夏のナイトマルシェ」が開催される。地元飲食店やクラフト作家が出店し、夕方から夜にかけて賑わいを見せる。\n\nイベント情報\n- 開催期間: 2026年8月21日〜23日\n- 場所: 上野恩賜公園 噴水広場\n- 料金: 入場無料\n- アクセス: JR上野駅から徒歩5分",
-    "source": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
     "area": "上野公園",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["ueno-park"],
-    "relatedEventIds": ["ueno-park-natsu-matsuri"]
+    "relatedSpotIds": [
+      "ueno-park"
+    ],
+    "relatedEventIds": [
+      "ueno-park-natsu-matsuri"
+    ],
+    "sources": [
+      "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
+    ]
   },
   {
     "id": "news-tobikan-exhibition",
@@ -45,11 +61,17 @@
     "publishedAt": "2026-08-15T09:00:00+09:00",
     "summary": "明治から昭和初期の日本美術をたどる特別展が開幕。",
     "body": "東京都美術館にて特別展「近代日本美術の系譜」が2026年8月15日に開幕した。会期は10月12日まで。\n\nイベント情報\n- 開催期間: 2026年8月15日〜10月12日\n- 場所: 東京都美術館\n- 料金: 一般2,000円\n- アクセス: JR上野駅公園口から徒歩7分",
-    "source": "https://www.tobikan.jp/exhibition/",
     "area": "上野公園",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["tobikan"],
-    "relatedEventIds": ["tobikan-modern-art-exhibition"]
+    "relatedSpotIds": [
+      "tobikan"
+    ],
+    "relatedEventIds": [
+      "tobikan-modern-art-exhibition"
+    ],
+    "sources": [
+      "https://www.tobikan.jp/exhibition/"
+    ]
   },
   {
     "id": "news-kahaku-dinosaur",
@@ -58,11 +80,17 @@
     "publishedAt": "2026-07-18T09:00:00+09:00",
     "summary": "最新研究に基づく恐竜化石・復元模型の特別展。",
     "body": "国立科学博物館にて「恐竜博2026」が開催中。最新の研究成果をもとにした恐竜化石や復元模型を展示する。会期は9月27日まで。\n\nイベント情報\n- 開催期間: 2026年7月19日〜9月27日\n- 場所: 国立科学博物館\n- 料金: 一般2,100円\n- アクセス: JR上野駅公園口から徒歩5分",
-    "source": "https://www.kahaku.go.jp/tenji/exhibitions.html",
     "area": "上野公園",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["kahaku"],
-    "relatedEventIds": ["kahaku-dinosaur-exhibition"]
+    "relatedSpotIds": [
+      "kahaku"
+    ],
+    "relatedEventIds": [
+      "kahaku-dinosaur-exhibition"
+    ],
+    "sources": [
+      "https://www.kahaku.go.jp/tenji/exhibitions.html"
+    ]
   },
   {
     "id": "news-marui-popup",
@@ -71,11 +99,17 @@
     "publishedAt": "2026-08-17T10:00:00+09:00",
     "summary": "夏限定コスメブランドが集結するPOP UPイベント。",
     "body": "上野マルイ1F特設会場にて「サマーコスメPOP UP」が2026年8月18日から31日まで開催される。夏限定コスメブランドが多数集結。\n\nイベント情報\n- 開催期間: 2026年8月18日〜31日\n- 場所: 上野マルイ 1F特設会場\n- 料金: 入場無料\n- アクセス: JR上野駅すぐ",
-    "source": "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event",
     "area": "上野駅前",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["ueno-marui"],
-    "relatedEventIds": ["marui-summer-popup"]
+    "relatedSpotIds": [
+      "ueno-marui"
+    ],
+    "relatedEventIds": [
+      "marui-summer-popup"
+    ],
+    "sources": [
+      "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event"
+    ]
   },
   {
     "id": "news-matsuzakaya-sale",
@@ -84,11 +118,15 @@
     "publishedAt": "2026-08-10T09:00:00+09:00",
     "summary": "衣料品・雑貨を中心とした夏のセールを実施中。",
     "body": "松坂屋上野店にて「夏の大処分市」が2026年8月10日から開催中。衣料品・雑貨を中心に最大70%オフとなる商品もある。\n\nセール情報\n- 開催期間: 2026年8月10日〜8月31日\n- 場所: 松坂屋上野店\n- 対象: 衣料品・雑貨\n- アクセス: 上野広小路駅すぐ",
-    "source": "https://www.matsuzakaya.co.jp/ueno/event/",
     "area": "上野広小路",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["matsuzakaya-ueno"],
-    "relatedEventIds": []
+    "relatedSpotIds": [
+      "matsuzakaya-ueno"
+    ],
+    "relatedEventIds": [],
+    "sources": [
+      "https://www.matsuzakaya.co.jp/ueno/event/"
+    ]
   },
   {
     "id": "news-select-shop-closing",
@@ -97,11 +135,17 @@
     "publishedAt": "2026-08-05T09:00:00+09:00",
     "summary": "雑貨店「コンパクトセレクト エキュート上野店」が9月末で営業終了。",
     "body": "エキュート上野に出店中の雑貨店「コンパクトセレクト エキュート上野店」が2026年9月30日をもって閉店することが発表された。閉店セールも実施予定。",
-    "source": "https://www.ecute.jp/ueno/",
     "area": "上野駅",
-    "relatedStoreIds": ["select-shop-ecute"],
-    "relatedSpotIds": ["ecute-ueno"],
-    "relatedEventIds": []
+    "relatedStoreIds": [
+      "select-shop-ecute"
+    ],
+    "relatedSpotIds": [
+      "ecute-ueno"
+    ],
+    "relatedEventIds": [],
+    "sources": [
+      "https://www.ecute.jp/ueno/"
+    ]
   },
   {
     "id": "news-zoo-panda-talk",
@@ -110,11 +154,17 @@
     "publishedAt": "2026-08-20T09:00:00+09:00",
     "summary": "8月22日、パンダ舎前で飼育員による特別トークを実施。",
     "body": "上野動物園は2026年8月22日、パンダ舎前にて飼育員によるトークイベントを開催する。パンダの生態や飼育の裏側を紹介する。\n\nイベント情報\n- 開催日: 2026年8月22日\n- 場所: 上野動物園 パンダ舎前\n- 料金: 入園料のみ\n- アクセス: JR上野駅公園口から徒歩5分",
-    "source": "https://www.tokyo-zoo.net/ueno/events/index.html",
     "area": "上野公園",
     "relatedStoreIds": [],
-    "relatedSpotIds": ["ueno-zoo"],
-    "relatedEventIds": ["ueno-zoo-panda-event"]
+    "relatedSpotIds": [
+      "ueno-zoo"
+    ],
+    "relatedEventIds": [
+      "ueno-zoo-panda-event"
+    ],
+    "sources": [
+      "https://www.tokyo-zoo.net/ueno/events/index.html"
+    ]
   },
   {
     "id": "news-bookcafe-anniv",
@@ -123,10 +173,14 @@
     "publishedAt": "2026-08-12T09:00:00+09:00",
     "summary": "地元書店併設カフェが1周年を記念しトークイベントを実施。",
     "body": "上野駅前の「上野ブックカフェ Leaf」が2026年7月で1周年を迎え、記念して地元作家によるトークイベントを開催した。",
-    "source": "https://prtimes.jp/",
     "area": "上野駅前",
-    "relatedStoreIds": ["book-cafe-ueno"],
+    "relatedStoreIds": [
+      "book-cafe-ueno"
+    ],
     "relatedSpotIds": [],
-    "relatedEventIds": []
+    "relatedEventIds": [],
+    "sources": [
+      "https://prtimes.jp/"
+    ]
   }
 ]

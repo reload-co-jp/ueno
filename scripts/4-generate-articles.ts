@@ -18,7 +18,7 @@ interface ArticleDraft {
   publishedAt: string
   summary: string
   body: string
-  source: string
+  sources: string[]
   area: string
   relatedStoreIds: string[]
   relatedSpotIds: string[]

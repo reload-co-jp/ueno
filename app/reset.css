@@ -1,11 +1,21 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
   margin: 0;
 }
 
 :root {
-  background: #333;
-  color: #f0f0f0;
-  color-scheme: dark;
+  background: #fffaf0;
+  color: #2d2a26;
+  color-scheme: light;
+}
+
+a {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover,
+.pill:hover {
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: 0.25rem 0.35rem 0 #2d2a26;
 }

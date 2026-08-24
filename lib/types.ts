@@ -72,6 +72,8 @@ export interface EventItem {
 }
 
 // README「5. 管理する情報 - ニュース」準拠
+// 同一内容が複数の情報源に掲載されている場合は1記事に統合し、sourcesに全URLを保持する
+// (README「6. Entity管理」「7. 重複管理」の考え方を記事にも適用)
 export interface NewsArticle {
   id: string
   title: string
@@ -79,7 +81,7 @@ export interface NewsArticle {
   publishedAt: string
   summary: string
   body: string
-  source: string
+  sources: string[]
   area: string
   relatedStoreIds: string[]
   relatedSpotIds: string[]

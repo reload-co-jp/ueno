@@ -7,7 +7,7 @@ import path from "node:path"
 import { existsSync } from "node:fs"
 import { spots, stores } from "@/lib/data"
 import type { Category } from "@/lib/types"
-import { llmJudgeDuplicate, matchEntity, normalizeName } from "./lib/dedupe"
+import { isSameArticle, llmJudgeDuplicate, matchEntity, normalizeName } from "./lib/dedupe"
 import type { ExtractedItem } from "./lib/extract"
 
 const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
@@ -28,14 +28,15 @@ interface ArticleDraft {
   publishedAt: string
   summary: string
   body: string
-  source: string
+  // 同一内容が複数の情報源に載っている場合、1記事にマージして全URLを保持する
+  sources: string[]
   area: string
   relatedStoreIds: string[]
   relatedSpotIds: string[]
   relatedEventIds: string[]
   // ドラフト用メタ情報。公開前の確認材料。
   matchNotes: string[]
-  // 記事本文生成(pnpm generate-articles)で使う元の抽出データ
+  // 記事本文生成(pnpm generate-articles)で使う元の抽出データ(マージ元のうち最初の1件)
   extracted: ExtractedItem
 }
 
@@ -143,6 +144,28 @@ const main = async () => {
           if (result.note) matchNotes.push(result.note)
         }
 
+        // 別ソースが同一内容を報じているケースは、新規記事にせず既存ドラフトへ統合する
+        // (README「6. Entity管理」「7. 重複管理」の考え方を記事にも適用)
+        const mergeTarget = articleDrafts.find(
+          (d) => d.category === item.category && !d.sources.includes(data.url) && isSameArticle(d.title, item.title)
+        )
+        if (mergeTarget) {
+          if (!mergeTarget.sources.includes(data.url)) mergeTarget.sources.push(data.url)
+          for (const id of relatedStoreIds) {
+            if (!mergeTarget.relatedStoreIds.includes(id)) mergeTarget.relatedStoreIds.push(id)
+          }
+          for (const id of relatedSpotIds) {
+            if (!mergeTarget.relatedSpotIds.includes(id)) mergeTarget.relatedSpotIds.push(id)
+          }
+          // より情報量の多い方をsummaryとして採用する
+          if (item.summary.length > mergeTarget.summary.length) {
+            mergeTarget.summary = item.summary
+            mergeTarget.body = item.summary
+          }
+          mergeTarget.matchNotes.push(...matchNotes, `複数ソースに統合: ${data.url}`)
+          continue
+        }
+
         const draft: ArticleDraft = {
           id: draftId,
           title: item.title,
@@ -150,7 +173,7 @@ const main = async () => {
           publishedAt: data.fetchedAt,
           summary: item.summary,
           body: item.summary,
-          source: data.url,
+          sources: [data.url],
           area: item.area || "上野",
           relatedStoreIds,
           relatedSpotIds,
