@@ -259,3 +259,33 @@ Entityやイベント情報を元に記事を生成する。
 ## 11. DB
 
 静的JSONで保存する。
+
+## 12. 記事生成パイプライン
+
+「3. 情報収集フロー」を実装したスクリプト群。`claude` CLI(サブスクリプション認証、`claude -p`)でLLM機能を利用する。事前に`claude`ログイン必須。
+
+### ローカル実行
+
+```bash
+pnpm install
+pnpm pipeline   # scrape → extract → dedupe → generate-articles を順次実行
+```
+
+| コマンド | スクリプト | 内容 |
+|---|---|---|
+| `pnpm scrape` | `1-scrape.ts` | Webサイトスクレイピング → `data/raw/` |
+| `pnpm extract` | `2-extract.ts` | LLMによる構造化データ抽出 → `data/extracted/` |
+| `pnpm dedupe` | `3-dedupe-and-link.ts` | 重複判定・店舗施設と紐付け → `data/drafts/articles.json` |
+| `pnpm generate-articles` | `4-generate-articles.ts` | ドラフト本文生成(LLM) → `articles.json`上書き |
+| `pnpm publish-drafts` | `5-publish-drafts.ts` | **人手確認後**実行。`data/news.json`へマージし公開、drafts空リセット |
+| `pnpm backfill-images` | `6-backfill-images.ts` | 画像補完(任意) |
+
+`pipeline`は1〜4まで。5(公開)は人手確認必須のため意図的に含めない。
+
+### GitHub Actions
+
+- `.github/workflows/collect-articles.yml` — 毎日JST7時自動実行。scrape〜generate-articlesを実行し、`data/drafts/articles.json`を確認用PRとして起票(`auto/article-drafts`ブランチ)
+- `.github/workflows/publish-drafts.yml` — 手動実行(`workflow_dispatch`)。上記PRマージ後に実行し、`pnpm publish-drafts`結果をmainへ直接コミット・push(→`deploy.yml`が発火し自動デプロイ)
+
+事前準備:
+- `claude setup-token`で発行した長期トークンをrepo secret `CLAUDE_CODE_OAUTH_TOKEN` に登録
