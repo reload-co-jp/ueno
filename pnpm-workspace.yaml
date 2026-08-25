@@ -2,7 +2,7 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAgeExclude:
-  - '@types/node@25.9.3 || 26.1.0'
+  - '@types/node@25.9.3 || 26.1.0 || 26.3.0'
   - '@next/env@16.2.10 || 16.3.2'
   - '@next/swc-darwin-arm64@16.2.10 || 16.3.2'
   - '@next/swc-darwin-x64@16.2.10 || 16.3.2'
@@ -13,3 +13,15 @@ minimumReleaseAgeExclude:
   - '@next/swc-win32-arm64-msvc@16.2.10 || 16.3.2'
   - '@next/swc-win32-x64-msvc@16.2.10 || 16.3.2'
   - next@16.2.10 || 16.3.2
+  - '@typescript-eslint/eslint-plugin@8.68.0'
+  - '@typescript-eslint/parser@8.68.0'
+  - '@typescript-eslint/project-service@8.68.0'
+  - '@typescript-eslint/scope-manager@8.68.0'
+  - '@typescript-eslint/tsconfig-utils@8.68.0'
+  - '@typescript-eslint/type-utils@8.68.0'
+  - '@typescript-eslint/types@8.68.0'
+  - '@typescript-eslint/typescript-estree@8.68.0'
+  - '@typescript-eslint/utils@8.68.0'
+  - '@typescript-eslint/visitor-keys@8.68.0'
+  - eslint@10.9.1
+  - typescript-eslint@8.68.0
