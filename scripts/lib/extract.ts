@@ -42,8 +42,10 @@ export const htmlToText = (html: string): string => {
 const MIN_ATTR_SIZE = 100
 
 // アイコン/ロゴ/バナー等、記事画像として不適切とみなすファイル名パターン。
+// "thumb"は除外しない: サムネイル=記事固有の縮小画像であるサイトが多く(例: ecute.jp)、
+// 誤って正当な記事画像まで除外してしまう。実サイズでの足切りは MIN_ATTR_SIZE / save-image.ts に任せる。
 const EXCLUDED_NAME_PATTERN =
-  /icon|logo|common|[-_]nav|banner|sprite|avatar|thumb|placeholder|noimage|no[-_]?image|blank|spacer|pixel|button|btn/i
+  /icon|logo|common|[-_]nav|banner|sprite|avatar|placeholder|noimage|no[-_]?image|blank|spacer|pixel|button|btn/i
 
 // lazy-load実装でsrcの代わりに使われがちな属性(ライブラリにより異なる)
 const LAZY_SRC_ATTRS = ["data-src", "data-original", "data-lazy-src", "data-lazy", "data-echo"]
