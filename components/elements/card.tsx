@@ -7,7 +7,6 @@ const cardStyle: React.CSSProperties = {
   display: "block",
   background: "#fff",
   borderBottom: "0.1875rem solid #111",
-  borderRadius: ".375rem",
   padding: "0 0 1rem",
   color: "#111",
   textDecoration: "none",
