@@ -31,19 +31,17 @@ const Page: FC = () => {
             href={`/articles/${hero.id}`}
             style={{ display: "block", color: "#111", textDecoration: "none" }}
           >
-            {hero.imageUrl && (
-              <img
-                src={hero.imageUrl}
-                alt=""
-                style={{
-                  width: "100%",
-                  aspectRatio: "21 / 9",
-                  objectFit: "cover",
-                  borderRadius: ".5rem",
-                  marginBottom: "1.25rem",
-                }}
-              />
-            )}
+            <img
+              src={hero.imageUrl ?? "/images/placeholder.jpg"}
+              alt=""
+              style={{
+                width: "100%",
+                aspectRatio: "21 / 9",
+                objectFit: "cover",
+                borderRadius: ".5rem",
+                marginBottom: "1.25rem",
+              }}
+            />
             <span style={badgeStyle}>{CATEGORY_LABELS[hero.category]}</span>
             <h2
               style={{
@@ -78,19 +76,17 @@ const Page: FC = () => {
                   textDecoration: "none",
                 }}
               >
-                {article.imageUrl && (
-                  <img
-                    src={article.imageUrl}
-                    alt=""
-                    style={{
-                      width: "9rem",
-                      aspectRatio: "4 / 3",
-                      objectFit: "cover",
-                      borderRadius: ".375rem",
-                      flexShrink: 0,
-                    }}
-                  />
-                )}
+                <img
+                  src={article.imageUrl ?? "/images/placeholder.jpg"}
+                  alt=""
+                  style={{
+                    width: "9rem",
+                    aspectRatio: "4 / 3",
+                    objectFit: "cover",
+                    borderRadius: ".375rem",
+                    flexShrink: 0,
+                  }}
+                />
                 <div style={{ minWidth: 0 }}>
                   <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
                   <h3 style={{ fontSize: "1.0625rem", margin: ".125rem 0 .375rem" }}>
