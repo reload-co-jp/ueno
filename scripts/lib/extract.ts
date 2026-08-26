@@ -37,10 +37,34 @@ export const htmlToText = (html: string): string => {
   return text.slice(0, MAX_CHARS)
 }
 
+// HTML属性ベースの粗い足切り閾値。誤除外を避けるため緩めに取る。
+// 実サイズでの確定判定は save-image.ts の MIN_SIZE(こちらより厳しい)で行う。
+const MIN_ATTR_SIZE = 100
+
+// アイコン/ロゴ/バナー等、記事画像として不適切とみなすファイル名パターン。
+const EXCLUDED_NAME_PATTERN =
+  /icon|logo|common|[-_]nav|banner|sprite|avatar|thumb|placeholder|noimage|no[-_]?image|blank|spacer|pixel|button|btn/i
+
+// lazy-load実装でsrcの代わりに使われがちな属性(ライブラリにより異なる)
+const LAZY_SRC_ATTRS = ["data-src", "data-original", "data-lazy-src", "data-lazy", "data-echo"]
+
+// srcset(候補の並び)から最大幅の画像URLを選ぶ。パース不能ならnull。
+const pickLargestFromSrcset = (srcset: string): string | null => {
+  const candidates = srcset
+    .split(",")
+    .map((entry) => entry.trim().split(/\s+/))
+    .filter((parts) => parts[0])
+    .map(([url, descriptor]) => ({
+      url,
+      width: descriptor && descriptor.endsWith("w") ? Number.parseInt(descriptor, 10) : 0,
+    }))
+  if (candidates.length === 0) return null
+  return candidates.reduce((a, b) => (b.width > a.width ? b : a)).url
+}
+
 // 記事本文領域内の画像候補を出現順に列挙する。
 // アイコン/ロゴ等の小画像を除外するため、width/height指定があり小さすぎるものは除外。
 const extractBodyImageCandidates = ($: cheerio.CheerioAPI, pageUrl: string): string[] => {
-  const MIN_SIZE = 100
   const els = $(
     "article img, main img, .entry-content img, .post-content img, .content img"
   ).toArray()
@@ -50,12 +74,17 @@ const extractBodyImageCandidates = ($: cheerio.CheerioAPI, pageUrl: string): str
     const $el = $(el)
     const width = Number.parseInt($el.attr("width") ?? "", 10)
     const height = Number.parseInt($el.attr("height") ?? "", 10)
-    if ((Number.isFinite(width) && width < MIN_SIZE) || (Number.isFinite(height) && height < MIN_SIZE)) {
+    if (
+      (Number.isFinite(width) && width < MIN_ATTR_SIZE) ||
+      (Number.isFinite(height) && height < MIN_ATTR_SIZE)
+    ) {
       continue
     }
-    const raw = $el.attr("src") || $el.attr("data-src")
+    const srcset = $el.attr("srcset") || $el.attr("data-srcset")
+    const lazySrc = LAZY_SRC_ATTRS.map((attr) => $el.attr(attr)).find(Boolean)
+    const raw = (srcset && pickLargestFromSrcset(srcset)) || lazySrc || $el.attr("src")
     if (!raw) continue
-    if (/\.svg(\?|$)/i.test(raw) || /icon|logo|common|[-_]nav/i.test(raw)) continue
+    if (/\.svg(\?|$)/i.test(raw) || EXCLUDED_NAME_PATTERN.test(raw)) continue
     try {
       const url = new URL(raw, pageUrl).toString()
       if (!urls.includes(url)) urls.push(url)

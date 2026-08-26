@@ -7,7 +7,9 @@ import { createHash } from "node:crypto"
 import { imageSize } from "image-size"
 import { USER_AGENT } from "./fetch-raw"
 
-const MIN_SIZE = 200 // これ未満は記事画像として採用しない(アイコン/バナー除外)
+// 実サイズでの確定採用基準(extract.tsの属性ベース足切り MIN_ATTR_SIZE=100 より厳しい)。
+// これ未満は記事画像として採用しない(アイコン/バナー除外)
+const MIN_SIZE = 200
 const SAVE_DIR = path.join(process.cwd(), "public", "images", "articles")
 
 const EXT_BY_TYPE: Record<string, string> = {
