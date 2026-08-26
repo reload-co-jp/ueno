@@ -6,6 +6,7 @@ import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { news } from "@/lib/data"
 import type { NewsArticle } from "@/lib/types"
+import { downloadAndSaveImage, isLocalArticleImage } from "./lib/save-image"
 
 const DRAFTS_PATH = path.join(process.cwd(), "data", "drafts", "articles.json")
 const NEWS_PATH = path.join(process.cwd(), "data", "news.json")
@@ -32,6 +33,12 @@ const main = async () => {
     }
     delete draft.matchNotes
     delete draft.extracted
+
+    // 外部URLのままの画像は自前保存に差し替える。他サイトへのホットリンクを避けるため。
+    if (draft.imageUrl && !isLocalArticleImage(draft.imageUrl)) {
+      draft.imageUrl = await downloadAndSaveImage(draft.imageUrl)
+    }
+
     toPublish.push(draft as NewsArticle)
   }
 

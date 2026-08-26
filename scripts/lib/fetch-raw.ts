@@ -5,7 +5,7 @@ import type { Source } from "./sources"
 // スクレイピング対象への配慮
 // - User-Agent明示、連続アクセス時は必ずインターバルを空ける (see scripts/1-scrape.ts)
 // - 各サイトのrobots.txt / 利用規約の許諾範囲内でのみ収集する
-const USER_AGENT = "UenoNaviBot/1.0 (+https://example.com/about; contact: yamamoto@reload.co.jp)"
+export const USER_AGENT = "UenoNaviBot/1.0 (+https://example.com/about; contact: yamamoto@reload.co.jp)"
 
 export interface RawRecord {
   sourceId: string
