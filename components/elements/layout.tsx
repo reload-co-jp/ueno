@@ -21,7 +21,8 @@ export const Nav: FC = () => (
       flexWrap: "wrap",
       gap: ".5rem",
       marginTop: ".75rem",
-      fontSize: ".875rem",
+      fontSize: ".8125rem",
+      fontWeight: 700,
     }}
   >
     {NAV_ITEMS.map((item) => (
@@ -31,9 +32,9 @@ export const Nav: FC = () => (
         className="pill"
         style={{
           color: "#fff",
-          background: "rgba(255, 255, 255, 0.16)",
+          background: "rgba(0, 0, 0, 0.2)",
           borderRadius: "999px",
-          padding: ".25rem .875rem",
+          padding: ".3rem .9rem",
           textDecoration: "none",
         }}
       >
@@ -48,7 +49,16 @@ export const Title: FC<ComponentProps<"h1">> = ({
   children,
   ...props
 }) => (
-  <h1 style={{ fontSize: "1.375rem", margin: 0, ...style }} {...props}>
+  <h1
+    style={{
+      fontSize: "1.5rem",
+      fontWeight: 800,
+      letterSpacing: "-0.02em",
+      margin: 0,
+      ...style,
+    }}
+    {...props}
+  >
     {children}
   </h1>
 )
@@ -61,7 +71,7 @@ export const Header: FC<{ children: ReactNode }> = ({ children }) => (
       position: "relative",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: ".75rem 1.5rem" }}>
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: ".875rem 1.5rem" }}>
       {children}
     </div>
   </header>
@@ -70,11 +80,11 @@ export const Header: FC<{ children: ReactNode }> = ({ children }) => (
 export const Main: FC<{ children: ReactNode }> = ({ children }) => (
   <main
     style={{
-      background: "#fdfbf7",
+      background: "#fff",
       minHeight: "calc(100dvh - 5.625rem)",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1.5rem" }}>
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "2rem 1.5rem" }}>
       {children}
     </div>
   </main>
@@ -83,13 +93,13 @@ export const Main: FC<{ children: ReactNode }> = ({ children }) => (
 export const Footer: FC<{ children: ReactNode }> = ({ children }) => (
   <footer
     style={{
-      background: "#3a3530",
-      color: "#fdfbf7",
+      background: "#111",
+      color: "#fff",
       fontSize: ".75rem",
       textAlign: "center",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1rem 1.5rem" }}>
+    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1.25rem 1.5rem" }}>
       {children}
     </div>
   </footer>

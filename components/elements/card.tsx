@@ -6,18 +6,17 @@ import { formatDateJp, formatDateRangeJp } from "@/lib/date"
 const cardStyle: React.CSSProperties = {
   display: "block",
   background: "#fff",
-  border: "1px solid #e8e1d3",
-  borderRadius: ".75rem",
-  padding: "1rem",
-  color: "#3a3530",
+  borderBottom: "0.1875rem solid #111",
+  borderRadius: ".375rem",
+  padding: "0 0 1rem",
+  color: "#111",
   textDecoration: "none",
-  boxShadow: "0 0.125rem 0.375rem rgba(58, 53, 48, 0.06)",
 }
 
-const badgeStyle: React.CSSProperties = {
+export const badgeStyle: React.CSSProperties = {
   display: "inline-block",
   fontSize: ".75rem",
-  fontWeight: 700,
+  fontWeight: 800,
   background: "#f7e6e1",
   color: "#c0483a",
   borderRadius: "999px",

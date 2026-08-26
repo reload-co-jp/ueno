@@ -1,7 +1,9 @@
 import Link from "next/link"
 import { FC } from "react"
-import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { badgeStyle } from "@/components/elements/card"
+import { formatDateJp } from "@/lib/date"
 import { getLatestArticles } from "@/lib/data"
+import { CATEGORY_LABELS } from "@/lib/types"
 
 const FEATURES = [
   { href: "/features/this-week", label: "今週の上野" },
@@ -11,46 +13,132 @@ const FEATURES = [
   { href: "/features/ongoing-sales", label: "現在開催中のセール" },
 ] as const
 
+const sectionTitleStyle: React.CSSProperties = {
+  fontSize: "1.125rem",
+  paddingBottom: ".5rem",
+  marginBottom: "1.25rem",
+  borderBottom: "0.1875rem solid #111",
+}
+
 const Page: FC = () => {
-  const latest = getLatestArticles(12)
+  const [hero, ...rest] = getLatestArticles(12)
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <section>
-        <h2 style={{ fontSize: "1.125rem", marginBottom: ".75rem" }}>特集</h2>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: ".75rem" }}>
-          {FEATURES.map((f) => (
-            <Link
-              key={f.href}
-              href={f.href}
-              className="pill"
+    <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+      {hero && (
+        <section>
+          <Link
+            href={`/articles/${hero.id}`}
+            style={{ display: "block", color: "#111", textDecoration: "none" }}
+          >
+            {hero.imageUrl && (
+              <img
+                src={hero.imageUrl}
+                alt=""
+                style={{
+                  width: "100%",
+                  aspectRatio: "21 / 9",
+                  objectFit: "cover",
+                  borderRadius: ".5rem",
+                  marginBottom: "1.25rem",
+                }}
+              />
+            )}
+            <span style={badgeStyle}>{CATEGORY_LABELS[hero.category]}</span>
+            <h2
               style={{
-                background: "#f7e6e1",
-                border: "1px solid #e8e1d3",
-                borderRadius: "999px",
-                padding: ".5rem 1rem",
-                fontSize: ".875rem",
-                fontWeight: 700,
-                color: "#c0483a",
-                textDecoration: "none",
+                fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                lineHeight: 1.25,
+                margin: ".5rem 0",
               }}
             >
-              {f.label}
-            </Link>
-          ))}
-        </div>
-      </section>
+              {hero.title}
+            </h2>
+            <p style={{ fontSize: ".875rem", color: "#666", margin: 0 }}>
+              {formatDateJp(hero.publishedAt)} ・ {hero.area}
+            </p>
+          </Link>
+        </section>
+      )}
 
-      <section>
-        <h2 style={{ fontSize: "1.125rem", marginBottom: ".75rem" }}>
-          上野の最新情報
-        </h2>
-        <CardGrid>
-          {latest.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
-        </CardGrid>
-      </section>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
+        <section style={{ flex: "3 1 22rem" }}>
+          <h2 style={sectionTitleStyle}>上野の最新情報</h2>
+          <div>
+            {rest.map((article) => (
+              <Link
+                key={article.id}
+                href={`/articles/${article.id}`}
+                style={{
+                  display: "flex",
+                  gap: "1.25rem",
+                  padding: "1.25rem 0",
+                  borderBottom: "1px solid #e5e5e5",
+                  color: "#111",
+                  textDecoration: "none",
+                }}
+              >
+                {article.imageUrl && (
+                  <img
+                    src={article.imageUrl}
+                    alt=""
+                    style={{
+                      width: "9rem",
+                      aspectRatio: "4 / 3",
+                      objectFit: "cover",
+                      borderRadius: ".375rem",
+                      flexShrink: 0,
+                    }}
+                  />
+                )}
+                <div style={{ minWidth: 0 }}>
+                  <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
+                  <h3 style={{ fontSize: "1.0625rem", margin: ".125rem 0 .375rem" }}>
+                    {article.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: ".875rem",
+                      color: "#666",
+                      margin: "0 0 .5rem",
+                    }}
+                  >
+                    {article.summary}
+                  </p>
+                  <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+                    {formatDateJp(article.publishedAt)} ・ {article.area}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <aside style={{ flex: "1 1 14rem" }}>
+          <h2 style={sectionTitleStyle}>特集</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+            {FEATURES.map((f) => (
+              <Link
+                key={f.href}
+                href={f.href}
+                className="pill"
+                style={{
+                  display: "block",
+                  background: "#f7e6e1",
+                  borderRadius: ".5rem",
+                  padding: ".75rem 1rem",
+                  fontSize: ".875rem",
+                  fontWeight: 800,
+                  color: "#c0483a",
+                  textDecoration: "none",
+                }}
+              >
+                {f.label}
+              </Link>
+            ))}
+          </div>
+        </aside>
+      </div>
     </div>
   )
 }
