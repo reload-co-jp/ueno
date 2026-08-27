@@ -29,12 +29,8 @@ export const Nav: FC = () => (
       <Link
         key={item.href}
         href={item.href}
-        className="pill"
         style={{
-          color: "#fff",
-          background: "rgba(0, 0, 0, 0.2)",
-          borderRadius: "999px",
-          padding: ".3rem .9rem",
+          color: "#c0483a",
           textDecoration: "none",
         }}
       >
@@ -66,8 +62,9 @@ export const Title: FC<ComponentProps<"h1">> = ({
 export const Header: FC<{ children: ReactNode }> = ({ children }) => (
   <header
     style={{
-      background: "#c0483a",
-      color: "#fff",
+      background: "transparent",
+      color: "#c0483a",
+      borderBottom: "1px solid #c0483a",
       position: "relative",
     }}
   >
