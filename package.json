@@ -13,11 +13,11 @@
     "typecheck": "tsc --noEmit",
     "scrape": "tsx scripts/1-scrape.ts",
     "extract": "tsx scripts/2-extract.ts",
-    "dedupe": "tsx scripts/3-dedupe-and-link.ts",
+    "dedupe-and-link": "tsx scripts/3-dedupe-and-link.ts",
     "generate-articles": "tsx scripts/4-generate-articles.ts",
     "publish-drafts": "tsx scripts/5-publish-drafts.ts",
     "backfill-images": "tsx scripts/6-backfill-images.ts",
-    "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe && pnpm generate-articles"
+    "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe-and-link && pnpm generate-articles"
   },
   "keywords": [],
   "author": "",

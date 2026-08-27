@@ -275,7 +275,7 @@ pnpm pipeline   # scrape → extract → dedupe → generate-articles を順次�
 |---|---|---|
 | `pnpm scrape` | `1-scrape.ts` | Webサイトスクレイピング → `data/raw/` |
 | `pnpm extract` | `2-extract.ts` | LLMによる構造化データ抽出 → `data/extracted/` |
-| `pnpm dedupe` | `3-dedupe-and-link.ts` | 重複判定・店舗施設と紐付け → `data/drafts/articles.json` |
+| `pnpm dedupe-and-link` | `3-dedupe-and-link.ts` | 重複判定・店舗施設と紐付け → `data/drafts/articles.json` |
 | `pnpm generate-articles` | `4-generate-articles.ts` | ドラフト本文生成(LLM) → `articles.json`上書き |
 | `pnpm publish-drafts` | `5-publish-drafts.ts` | **人手確認後**実行。`data/news.json`へマージし公開、drafts空リセット |
 | `pnpm backfill-images` | `6-backfill-images.ts` | 画像補完(任意) |

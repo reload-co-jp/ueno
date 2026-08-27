@@ -30,7 +30,7 @@ interface ArticleDraft {
 
 const main = async () => {
   if (!existsSync(DRAFTS_PATH)) {
-    console.error("data/drafts/articles.json が無い。先に pnpm dedupe を実行。")
+    console.error("data/drafts/articles.json が無い。先に pnpm dedupe-and-link を実行。")
     process.exit(1)
   }
 
