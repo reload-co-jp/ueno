@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
-import { getArticle, getEvent, getSpot, getStore, news } from "@/lib/data"
+import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { getArticle, getEvent, getRelatedArticles, getSpot, getStore, news } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
 import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 import { CATEGORY_LABELS } from "@/lib/types"
@@ -47,6 +48,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedStores = article.relatedStoreIds.map(getStore).filter(Boolean)
   const relatedSpots = article.relatedSpotIds.map(getSpot).filter(Boolean)
   const relatedEvents = article.relatedEventIds.map(getEvent).filter(Boolean)
+  const relatedArticles = getRelatedArticles(article)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -119,6 +121,17 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
               <li key={e!.id}>イベント: {e!.name}</li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {relatedArticles.length > 0 && (
+        <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
+          <h3 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>関連記事</h3>
+          <CardGrid>
+            {relatedArticles.map((a) => (
+              <ArticleCard key={a.id} article={a} />
+            ))}
+          </CardGrid>
         </div>
       )}
 

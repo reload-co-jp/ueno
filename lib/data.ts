@@ -38,6 +38,21 @@ export const getArticlesByStore = (storeId: string) =>
 export const getArticlesBySpot = (spotId: string) =>
   news.filter((n) => n.relatedSpotIds.includes(spotId))
 
+// 同カテゴリ→同エリアの順で補完し、自身を除いた関連記事を返す
+export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
+  const sameCategory = news
+    .filter((n) => n.id !== article.id && n.category === article.category)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+
+  const sameArea = news
+    .filter(
+      (n) => n.id !== article.id && n.area === article.area && n.category !== article.category
+    )
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+
+  return [...sameCategory, ...sameArea].slice(0, limit)
+}
+
 export const getUpcomingEvents = () =>
   [...events].sort((a, b) => a.startDate.localeCompare(b.startDate))
 
