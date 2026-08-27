@@ -5,7 +5,7 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { existsSync } from "node:fs"
-import { spots, stores } from "@/lib/data"
+import { news, spots, stores } from "@/lib/data"
 import type { Category } from "@/lib/types"
 import { isSameArticle, llmJudgeDuplicate, matchEntity, normalizeName } from "./lib/dedupe"
 import type { ExtractedItem } from "./lib/extract"
@@ -87,6 +87,7 @@ const main = async () => {
   const articleDrafts: ArticleDraft[] = []
   const newEntityCandidates: NewEntityCandidate[] = []
   const seenDraftIds = new Set<string>()
+  let skippedExisting = 0
 
   const sourceIds = (await readdir(EXTRACTED_DIR, { withFileTypes: true }))
     .filter((e) => e.isDirectory())
@@ -106,6 +107,13 @@ const main = async () => {
         const dedupeKey = `${sourceId}:${normalizeName(item.title)}`
         if (seenDraftIds.has(dedupeKey)) continue
         seenDraftIds.add(dedupeKey)
+
+        // 公開済み記事(news.json)と同一内容なら本文生成(pnpm generate-articles)前に除外し、
+        // LLM呼び出し=トークン消費を避ける
+        if (news.some((n) => isSameArticle(n.title, item.title))) {
+          skippedExisting++
+          continue
+        }
 
         const matchNotes: string[] = []
         const relatedStoreIds: string[] = []
@@ -202,6 +210,7 @@ const main = async () => {
     "utf-8"
   )
 
+  console.log(`公開済み記事と重複のため除外 ${skippedExisting}件`)
   console.log(`記事ドラフト ${articleDrafts.length}件 -> data/drafts/articles.json`)
   console.log(`新規Entity候補 ${newEntityCandidates.length}件 -> data/drafts/new-entities.json`)
   console.log("人手確認後、記事生成(pnpm generate-articles)または手動でnews.json/stores.jsonへ反映する。")
