@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { ArticleBody } from "@/components/elements/article-body"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticle, getEvent, getRelatedArticles, getSpot, getStore, news } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
@@ -95,9 +96,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         {formatDateJp(article.publishedAt)} ・ {article.area}
       </p>
 
-      <div style={{ fontSize: ".9375rem", lineHeight: 1.8, whiteSpace: "pre-wrap" }}>
-        {article.body}
-      </div>
+      <ArticleBody body={article.body} />
 
       {(relatedStores.length > 0 || relatedSpots.length > 0 || relatedEvents.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
