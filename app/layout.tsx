@@ -1,7 +1,10 @@
 import type { Metadata } from "next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
 import { jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
 import "./reset.css"
+
+const GA_MEASUREMENT_ID = "G-FXDVEZ8JN2"
 
 const description = "上野エリアのイベント・新店舗・セール・展示会などの最新情報"
 
@@ -53,6 +56,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <p>&copy; {SITE_NAME}</p>
         </Footer>
       </body>
+      {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   )
 }
