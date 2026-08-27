@@ -1597,7 +1597,7 @@
     "category": "exhibition",
     "publishedAt": "2026-08-27T08:10:30.397Z",
     "summary": "いきもの超ワールド展とのコラボ展示。2026年7月11日～8月31日開催。",
-    "body": "【上野】いきもの超エキュート展開催！7月11日から8月31日でエキュート上野\n\n## 概要\n\nエキュート上野にて、「いきもの超ワールド展」とのコラボ展示「いきもの超エキュート展」が開催される。開催期間は2026年7月11日から8月31日まで。\n\n## イベント情報\n\n- 開催期間：2026年7月11日～8月31日",
+    "body": "【上野】いきもの超エキュート展開催！7月11日から8月31日でエキュート上野\n\n## 概要\n\nJR上野駅構内の商業施設エキュート上野にて、人気企画「いきもの超ワールド展」とコラボした展示イベント「いきもの超エキュート展」が開催される。開催期間は2026年7月11日から8月31日までの約2か月間で、上野駅を利用する買い物客が気軽に立ち寄れる内容となっている。詳細はエキュート上野の公式サイトで案内されている。\n\n## イベント情報\n\n- 開催期間：2026年7月11日～8月31日\n- 会場：エキュート上野",
     "sources": [
       "https://www.ecute.jp/ueno/campaign"
     ],
@@ -1609,17 +1609,19 @@
   },
   {
     "id": "draft-ecute-ueno-campaign-menu-3",
-    "title": "エキナカグルメをmenuでまとめ買い",
+    "title": "人気店グルメをmenuでまとめ買い",
     "category": "campaign",
-    "publishedAt": "2026-08-27T08:10:30.397Z",
-    "summary": "エキュート上野の人気店グルメをmenuアプリでまとめ買いできるサービス。",
-    "body": "# エキナカグルメをmenuでまとめ買い\n\nエキュート上野の人気店グルメ、menuアプリでまとめ買い可能。\n\n- エリア: 上野\n- カテゴリ: キャンペーン\n- 内容: エキュート上野内 人気店グルメをmenuアプリでまとめ買いできるサービス",
+    "publishedAt": "2026-08-27T14:15:36.070Z",
+    "summary": "エキュート上野の人気店グルメをmenuアプリでお好きな場所へまとめ買いできるサービス。",
+    "body": "エキュート上野、人気店グルメをmenuアプリでまとめ買い\n\n## 概要\n\nエキュート上野内に出店する人気店のグルメが、デリバリー・テイクアウトアプリ「menu」でのまとめ買いに対応する。複数店舗の商品をアプリ上でまとめて注文し、指定の場所へ届けてもらえるサービスで、上野駅利用時の買い物や食事の受け取りを効率化できる内容となっている。\n\n## サービス情報\n\n- 施設名：エキュート上野\n- 内容：エキュート上野の人気店グルメをmenuアプリでまとめ買いできるサービス",
     "sources": [
       "https://www.ecute.jp/ueno/campaign"
     ],
     "area": "上野",
     "relatedStoreIds": [],
-    "relatedSpotIds": [],
+    "relatedSpotIds": [
+      "ecute-ueno"
+    ],
     "relatedEventIds": [],
     "imageUrl": "/images/articles/94eead6395fc8758.jpg"
   },
@@ -1629,7 +1631,7 @@
     "category": "campaign",
     "publishedAt": "2026-08-27T08:10:30.397Z",
     "summary": "エキュート上野でのJRE POINT付与・利用案内。",
-    "body": "# JRE POINTが貯まる！使える！\n\nエキュート上野でJRE POINTの付与・利用ができる。\n\n## 概要\n\nエキュート上野でのJRE POINT付与・利用案内。\n\n## ポイント\n\n- エリア:上野\n- 対象施設:エキュート上野\n- 内容:JRE POINT付与・利用",
+    "body": "# JRE POINTが貯まる！使える！\n\n## 概要\n\nエキュート上野の対象店舗で、JR東日本グループの共通ポイント「JRE POINT」の付与および利用ができる。買い物の際にポイントを貯めたり、貯まったポイントをそのまま支払いに充てたりできる案内となっており、上野駅を日常的に利用する客にとって活用しやすい内容となっている。\n\n## ポイント情報\n\n- エリア：上野\n- 対象施設：エキュート上野\n- 内容：JRE POINT付与・利用",
     "sources": [
       "https://www.ecute.jp/ueno/campaign"
     ],
@@ -1641,45 +1643,11 @@
   },
   {
     "id": "draft-ecute-ueno-campaign-jre-point-7",
-    "title": "『大人の休日倶楽部カード』ご利用でJRE POINT・賞品プレゼント",
-    "category": "campaign",
-    "publishedAt": "2026-08-27T08:10:30.397Z",
-    "summary": "エキュート・グランスタ・エスパル・CoCoLo対象、大人の休日倶楽部カード利用でJRE POINT・賞品プレゼント。2026年8月31日～9月12日実施。",
-    "body": "# 『大人の休日倶楽部カード』ご利用でJRE POINT・賞品プレゼント\n\n## 概要\nエキュート・グランスタ・エスパル・CoCoLo対象店舗にて、「大人の休日倶楽部カード」利用でJRE POINT・賞品が当たるキャンペーンを実施。\n\n- エリア：上野\n- 対象施設：エキュート・グランスタ・エスパル・CoCoLo\n- 内容：大人の休日倶楽部カード利用でJRE POINT・賞品プレゼント\n- 開催期間：2026年8月31日～9月12日",
-    "sources": [
-      "https://www.ecute.jp/ueno/campaign"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ce14fc4251e9caac.png"
-  },
-  {
-    "id": "draft-ecute-ueno-campaign-menu-3",
-    "title": "人気店をmenuでまとめ買い",
-    "category": "campaign",
-    "publishedAt": "2026-08-27T09:19:47.453Z",
-    "summary": "上野のエキナカグルメを好きな場所へ、エキュート上野人気店をmenuでまとめ買いできるサービス。",
-    "body": "上野エキナカグルメ、まとめ買いで。\n\nエキュート上野の人気店、menuで一括購入OK。好きな場所で受け取り可能。\n\n- カテゴリ: キャンペーン\n- エリア: 上野\n- 施設名: エキュート上野\n- サービス内容: エキュート上野人気店の商品、menuでまとめ買い可能",
-    "sources": [
-      "https://www.ecute.jp/ueno/campaign"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [
-      "ecute-ueno"
-    ],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/94eead6395fc8758.jpg"
-  },
-  {
-    "id": "draft-ecute-ueno-campaign-jre-point-7",
     "title": "大人の休日倶楽部カードご利用でJRE POINT・賞品プレゼント",
     "category": "campaign",
     "publishedAt": "2026-08-27T09:19:47.453Z",
     "summary": "エキュート・グランスタ・エスパル・CoCoLoにて大人の休日倶楽部カード利用でJRE POINT・賞品プレゼント。",
-    "body": "大人の休日倶楽部カードご利用でJRE POINT・賞品プレゼント\n\nエキュート・グランスタ・エスパル・CoCoLoにて、大人の休日倶楽部カード利用でJRE POINT・賞品がもらえるキャンペーンを実施。\n\n- エリア: 上野\n- 開催期間: 2026年8月31日〜2026年9月12日\n- 内容: 大人の休日倶楽部カード利用でJRE POINT・賞品プレゼント\n- 対象施設: エキュート・グランスタ・エスパル・CoCoLo",
+    "body": "大人の休日倶楽部カードご利用でJRE POINT・賞品プレゼント\n\n## 概要\n\nJR東日本の駅ナカ商業施設であるエキュート、グランスタ、エスパル、CoCoLoにて、「大人の休日倶楽部カード」を利用した買い物に対しJRE POINTや賞品がプレゼントされるキャンペーンが実施される。開催期間は2026年8月31日から9月12日までで、対象施設は上野のエキュートを含む複数のJR東日本エリア商業施設となっている。\n\n## キャンペーン情報\n\n- エリア：上野\n- 開催期間：2026年8月31日〜2026年9月12日\n- 内容：大人の休日倶楽部カード利用でJRE POINT・賞品プレゼント\n- 対象施設：エキュート・グランスタ・エスパル・CoCoLo",
     "sources": [
       "https://www.ecute.jp/ueno/campaign"
     ],
@@ -1688,24 +1656,6 @@
     "relatedSpotIds": [],
     "relatedEventIds": [],
     "imageUrl": "/images/articles/ce14fc4251e9caac.png"
-  },
-  {
-    "id": "draft-ecute-ueno-campaign-menu-3",
-    "title": "人気店グルメをmenuでまとめ買い",
-    "category": "campaign",
-    "publishedAt": "2026-08-27T14:15:36.070Z",
-    "summary": "エキュート上野の人気店グルメをmenuアプリでお好きな場所へまとめ買いできるサービス。",
-    "body": "エキュート上野、人気店グルメをmenuアプリでまとめ買い\n\nエキュート上野内 人気店グルメ、menuアプリで対応。お好きな場所へまとめ買い可能。\n\n- 施設名: エキュート上野\n- 内容: エキュート上野の人気店グルメをmenuアプリでまとめ買いできるサービス",
-    "sources": [
-      "https://www.ecute.jp/ueno/campaign"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [
-      "ecute-ueno"
-    ],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/94eead6395fc8758.jpg"
   },
   {
     "id": "draft-prtimes-ueno-all-e-2026-0",
@@ -1725,59 +1675,11 @@
   },
   {
     "id": "draft-prtimes-ueno--0",
-    "title": "上野で台湾カステラ専門店、本場製法そのまま再現の“ふわぁしゅぁ”食感で行列必須",
-    "category": "new_opening",
-    "publishedAt": "2026-08-27T08:10:12.530Z",
-    "summary": "上野に、日本の高品質な素材で本場の製法をそのまま再現した“ふわぁしゅぁ”食感の台湾カステラ店が登場。行列必須の人気店として紹介。",
-    "body": "【上野】台湾カステラ専門店が本場製法そのまま再現の\"ふわぁしゅぁ\"食感でオープン！\n\n## 概要\n\n上野に、日本の高品質な素材を使いながら本場の製法をそのまま再現した台湾カステラ専門店が登場。特徴は\"ふわぁしゅぁ\"という独特の食感で、行列必須の人気店として注目を集めている。",
-    "sources": [
-      "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/91ea3f9e20479fd1.png"
-  },
-  {
-    "id": "draft-prtimes-ueno-3-1",
-    "title": "写真集出版&重版記念「大パンダ展 東西パンダ大集合 〜上野ファミリーと浜家がやってきた〜」3日間限定開催",
-    "category": "exhibition",
-    "publishedAt": "2026-08-27T08:10:12.530Z",
-    "summary": "上野ファミリーと浜家（アドベンチャーワールド）のパンダが集合する写真集出版・重版記念の3日間限定展示会。",
-    "body": "【上野】写真集出版&重版記念「大パンダ展 東西パンダ大集合 〜上野ファミリーと浜家がやってきた〜」開催\n\n概要\n\n上野動物園の「上野ファミリー」と、アドベンチャーワールド（和歌山県）の「浜家」、東西のジャイアントパンダが集合する写真集の出版・重版を記念した展示会が、3日間限定で開催される。\n\nイベント情報\n\n現時点で判明している情報は上記のみ。開催期間・場所・料金・アクセスについては不明のため、続報を待って追記する。",
-    "sources": [
-      "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/91ea3f9e20479fd1.png"
-  },
-  {
-    "id": "draft-prtimes-ueno--0",
-    "title": "台湾カステラ専門店、上野に新規オープン（本場製法再現・行列必須）",
-    "category": "new_opening",
-    "publishedAt": "2026-08-27T09:19:29.668Z",
-    "summary": "台湾カステラ系新店舗、上野で本場製法そのまま再現。ふわしゅわ食感で行列必須の人気。",
-    "body": "【上野】台湾カステラ専門店、新規オープン！\n\n## 概要\n\n台湾カステラ系の新店舗が上野にオープンした。本場の製法をそのまま再現し、ふわしゅわとした食感が特徴。人気が高く、行列必須の店舗となっている。\n\n## 店舗情報\n\n現時点で店名・住所・営業時間・オープン日・アクセスの詳細情報は不明。",
-    "sources": [
-      "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/91ea3f9e20479fd1.png"
-  },
-  {
-    "id": "draft-prtimes-ueno--0",
     "title": "上野に台湾カステラ専門店、本場製法の“ふわぁしゅぁ”食感で行列必須",
     "category": "new_opening",
     "publishedAt": "2026-08-27T14:15:18.253Z",
     "summary": "上野で、日本の高品質な素材を使い本場の製法をそのまま再現した“ふわぁしゅぁ”食感の台湾カステラ店。行列必須の人気とされる。",
-    "body": "【上野】台湾カステラ専門店がオープン！\n\n上野に、台湾カステラ専門店がオープンする。日本の高品質な素材を使用しながら、本場台湾の製法をそのまま再現した\"ふわぁしゅぁ\"食感が特徴で、行列必須の人気になるとみられている。\n\n店舗情報については現時点で詳細不明。",
+    "body": "【上野】台湾カステラ専門店がオープン！\n\n## 概要\n\n上野に、台湾カステラ専門店が新規オープンする。日本国内で調達した高品質な素材を使用しながら、本場台湾の製法をそのまま再現しているのが特徴で、食感は現地さながらの\"ふわぁしゅぁ\"とした軽さを持つという。本場の味を忠実に再現した専門店として、行列必須の人気になるとみられている。\n\n店舗名・住所・営業時間などの詳細情報については現時点で不明。続報が待たれる。",
     "sources": [
       "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E"
     ],
@@ -1793,7 +1695,7 @@
     "category": "exhibition",
     "publishedAt": "2026-08-27T14:15:18.253Z",
     "summary": "写真集出版・重版を記念し、上野動物園パンダファミリーと浜家パンダを集めた「大パンダ展」を3日間限定で開催。",
-    "body": "不明項目多く、テンプレート大半埋まらず。判断: 「開催期間」不明→本文中「3日間限定」表記のみ使用、日付非記載。「場所」不明→書けない。record可能事実だけで記事化。\n\n---\n\n【上野】写真集出版・重版記念「大パンダ展」開催！3日間限定で上野ファミリーと浜家パンダ大集合\n\n## 概要\n\n写真集出版・重版を記念し、「大パンダ展　東西パンダ大集合 〜上野ファミリーと浜家がやってきた〜」が3日間限定で開催される。上野動物園のパンダファミリーと、浜家のパンダを集めた展示となる。\n\n## イベント情報\n\n- 開催期間：不明（3日間限定開催）\n- 場所：不明\n- 料金：不明\n- アクセス：不明",
+    "body": "【上野】写真集出版・重版記念「大パンダ展」開催！3日間限定で上野ファミリーと浜家パンダ大集合\n\n## 概要\n\n写真集の出版および重版を記念し、「大パンダ展　東西パンダ大集合 〜上野ファミリーと浜家がやってきた〜」が3日間限定で開催される。上野動物園のパンダファミリーと、浜家のパンダをあわせて紹介する展示で、東西のパンダの魅力を一度に楽しめる内容となっている。会場や開催日程など詳細は現時点で不明だが、3日間限定の企画として告知されている。\n\n## イベント情報\n\n- 開催期間：不明（3日間限定開催）\n- 場所：不明\n- 料金：不明\n- アクセス：不明",
     "sources": [
       "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E4%B8%8A%E9%87%8E"
     ],
@@ -1805,19 +1707,16 @@
   },
   {
     "id": "draft-prtimes-ueno-marui--0",
-    "title": "ゴンチャ、上野マルイ店を新規出店",
+    "title": "ゴンチャ 上野マルイ店 出店",
     "category": "new_opening",
-    "publishedAt": "2026-08-24T12:42:15.112Z",
-    "summary": "ティースタンド「ゴンチャ 上野マルイ店」が上野マルイ1Fに2026年7月17日オープン。",
-    "body": "【上野】ゴンチャ、上野マルイ店を7月17日にオープン！\n\n概要\nティースタンド「ゴンチャ 上野マルイ店」、上野マルイ1Fに2026年7月17日オープン。\n\n店舗情報\n- 店名: ゴンチャ 上野マルイ店\n- 施設名: 上野マルイ",
+    "publishedAt": "2026-08-27T08:10:14.717Z",
+    "summary": "JR上野駅前ファッションビル「上野マルイ」にゴンチャ出店。",
+    "body": "【上野】ゴンチャが上野マルイにオープン！\n\n## 概要\n\nJR上野駅前のファッションビル「上野マルイ」に、ドリンク専門店「ゴンチャ」が新規出店する。上野マルイ内での出店により、買い物客が館内で気軽に立ち寄れるようになる。\n\n## 店舗情報\n\n- 店名：ゴンチャ\n- 施設名：上野マルイ",
     "sources": [
-      "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4",
-      "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/"
+      "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
     "area": "上野",
-    "relatedStoreIds": [
-      "gongcha-ueno-marui"
-    ],
+    "relatedStoreIds": [],
     "relatedSpotIds": [
       "ueno-marui"
     ],
@@ -1879,30 +1778,12 @@
     "imageUrl": null
   },
   {
-    "id": "draft-prtimes-ueno-marui--0",
-    "title": "ゴンチャ 上野マルイ店 出店",
-    "category": "new_opening",
-    "publishedAt": "2026-08-27T08:10:14.717Z",
-    "summary": "JR上野駅前ファッションビル「上野マルイ」にゴンチャ出店。",
-    "body": "【上野】ゴンチャが上野マルイにオープン！\n\n概要\nJR上野駅前のファッションビル「上野マルイ」にゴンチャが出店する。\n\n店舗情報\n- 店名:ゴンチャ\n- 施設名:上野マルイ",
-    "sources": [
-      "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [
-      "ueno-marui"
-    ],
-    "relatedEventIds": [],
-    "imageUrl": null
-  },
-  {
     "id": "draft-prtimes-ueno-marui-pop-up-shop-l-2-2",
     "title": "POP UP SHOP「Lパチスロ 革命機ヴァルヴレイヴ2」開催決定",
     "category": "popup",
     "publishedAt": "2026-08-27T08:10:14.717Z",
     "summary": "上野マルイ5階にてパチスロ革命機ヴァルヴレイヴ2のPOP UP SHOP開催決定。",
-    "body": "# POP UP SHOP「Lパチスロ 革命機ヴァルヴレイヴ2」開催決定\n\n上野マルイ5階にて、パチスロ「革命機ヴァルヴレイヴ2」のPOP UP SHOP開催が決定した。\n\n## 概要\n\n- **カテゴリ**: POP UP\n- **エリア**: 上野\n- **施設名**: 上野マルイ5階\n\n詳細情報は続報を待ちたい。",
+    "body": "# POP UP SHOP「Lパチスロ 革命機ヴァルヴレイヴ2」開催決定\n\n## 概要\n\n上野マルイ5階にて、パチスロ「革命機ヴァルヴレイヴ2」をテーマにしたPOP UP SHOPの開催が決定した。ファン待望の関連グッズや展示などが予定されており、詳細情報は続報を待ちたい。\n\n## 開催情報\n\n- カテゴリ：POP UP\n- エリア：上野\n- 施設名：上野マルイ5階",
     "sources": [
       "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
@@ -1920,7 +1801,7 @@
     "category": "popup",
     "publishedAt": "2026-08-27T14:15:20.442Z",
     "summary": "上野マルイ5階にてパチスロ『革命機ヴァルヴレイヴ2』のPOP UP SHOP開催決定。",
-    "body": "上野マルイ5階にて、パチスロ『革命機ヴァルヴレイヴ2』のPOP UP SHOPが開催決定した。\n\n**開催情報**\n- 施設名：上野マルイ5階\n- エリア：上野\n\nZetsuka Contents Powered by Zetsuka",
+    "body": "上野マルイ5階にて、パチスロ『革命機ヴァルヴレイヴ2』のPOP UP SHOPが開催決定した。関連グッズなどの展開が見込まれる企画で、開催概要は以下の通り。\n\n## 開催情報\n\n- 施設名：上野マルイ5階\n- エリア：上野",
     "sources": [
       "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
@@ -1938,7 +1819,7 @@
     "category": "popup",
     "publishedAt": "2026-08-27T14:15:20.442Z",
     "summary": "上野マルイで「グッドグラス」POPUPショップ開催。話題の“でっかいハローキティ”も登場。",
-    "body": "「グッドグラス」POPUPショップ 上野マルイで開催\n\n上野マルイで「グッドグラス」POPUPショップ開催。話題の“でっかいハローキティ”も登場。\n\n- カテゴリ: POPUP\n- エリア: 上野\n- 施設名: 上野マルイ",
+    "body": "「グッドグラス」POPUPショップ 上野マルイで開催\n\n## 概要\n\n上野マルイにて「グッドグラス」のPOPUPショップが開催される。話題となっている\"でっかいハローキティ\"も登場する予定で、来店客の注目を集める企画となっている。\n\n## 開催情報\n\n- カテゴリ：POPUP\n- エリア：上野\n- 施設名：上野マルイ",
     "sources": [
       "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
@@ -1956,7 +1837,7 @@
     "category": "popup",
     "publishedAt": "2026-08-27T14:15:20.442Z",
     "summary": "前橋ウィッチーズPOP UP SHOP in OIOIが上野マルイ・スマーク伊勢崎で開催決定。夏祭りテーマの新規描き下ろしイラストグッズ販売。",
-    "body": "前橋ウィッチーズ POP UP SHOP in OIOI 上野マルイ・スマーク伊勢崎で開催\n\n前橋ウィッチーズのPOP UP SHOP、上野マルイとスマーク伊勢崎で開催決定。夏祭りテーマ新規描き下ろしイラストグッズ販売。\n\n- 施設名: 上野マルイ、スマーク伊勢崎\n- 内容: 前橋ウィッチーズ夏祭りテーマ新規描き下ろしイラストグッズ販売",
+    "body": "前橋ウィッチーズ POP UP SHOP in OIOI 上野マルイ・スマーク伊勢崎で開催\n\n## 概要\n\n前橋ウィッチーズのPOP UP SHOPが、上野マルイとスマーク伊勢崎の2会場で開催決定した。夏祭りをテーマにした新規描き下ろしイラストを使用したグッズが販売される予定で、ファンにとって夏らしい限定アイテムを入手できる機会となる。\n\n## 開催情報\n\n- 施設名：上野マルイ、スマーク伊勢崎\n- 内容：前橋ウィッチーズ夏祭りテーマ新規描き下ろしイラストグッズ販売",
     "sources": [
       "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
@@ -1972,7 +1853,7 @@
     "category": "popup",
     "publishedAt": "2026-08-27T14:15:20.442Z",
     "summary": "人気『そろ谷のアニメっち』と新作『ぽちゃーズ』のグッズが上野マルイに集結。",
-    "body": "『そろ谷のアニメっち』＆『ぽちゃーズ』グッズ 上野マルイに集結\n\n人気『そろ谷のアニメっち』と新作『ぽちゃーズ』のグッズが上野マルイに集結する。\n\n- 施設名：上野マルイ",
+    "body": "『そろ谷のアニメっち』＆『ぽちゃーズ』グッズ 上野マルイに集結\n\n## 概要\n\n人気コンテンツ『そろ谷のアニメっち』と新作『ぽちゃーズ』のグッズが、上野マルイに集結する。両コンテンツのファンが一度に楽しめるラインナップとなる見込み。\n\n## 開催情報\n\n- 施設名：上野マルイ",
     "sources": [
       "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4"
     ],
@@ -2002,11 +1883,11 @@
   },
   {
     "id": "draft-taito-city-event-10-1",
-    "title": "世界遺産登録10周年記念講演会「ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー」",
+    "title": "世界遺産登録10周年記念講演会（ル・コルビュジエ建築作品）",
     "category": "event",
-    "publishedAt": "2026-08-24T12:42:08.525Z",
-    "summary": "世界遺産「国立西洋美術館」登録10周年記念の講演会。事前申込制、受付開始は10月上旬予定。",
-    "body": "世界遺産「国立西洋美術館」登録10周年記念の講演会。事前申込制、受付開始は10月上旬予定。",
+    "publishedAt": "2026-08-27T14:15:13.981Z",
+    "summary": "世界遺産登録10周年記念講演会「ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー」。事前申込要（10月上旬受付開始予定）。",
+    "body": "# 世界遺産登録10周年記念講演会（ル・コルビュジエ建築作品）\n\n## 概要\n\n世界遺産登録10周年を記念した講演会「ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー」が開催される。参加には事前申込が必要で、受付は10月上旬に開始される予定となっている。\n\n## 講演会情報\n\n- 演題：ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー\n- 申込：事前申込制（10月上旬受付開始予定）",
     "sources": [
       "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
     ],
@@ -2034,11 +1915,11 @@
   },
   {
     "id": "draft-taito-city-event-2-3",
-    "title": "第2回「着せ替えドミノで工作する、あなただけのミュージアム」（建築ワークショップ）",
+    "title": "第2回 着せ替えドミノで工作する、あなただけのミュージアム（建築ワークショップ）",
     "category": "event",
-    "publishedAt": "2026-08-24T12:42:08.525Z",
-    "summary": "模型キット「着せ替えドミノ」を使い、世界遺産「国立西洋美術館」の建築的価値を学ぶワークショップ。区内在住・在学の小学3～6年生と保護者2名1組対象、各回15組30名、午前・午後2回開催。",
-    "body": "模型キット「着せ替えドミノ」を使い、世界遺産「国立西洋美術館」の建築的価値を学ぶワークショップ。区内在住・在学の小学3～6年生と保護者2名1組対象、各回15組30名、午前・午後2回開催。",
+    "publishedAt": "2026-08-27T14:15:13.981Z",
+    "summary": "模型キット「着せ替えドミノ」で国立西洋美術館の建築価値学ぶワークショップ。対象区内在住・在学小3〜6年と保護者、各回15組30名。",
+    "body": "# 第2回 着せ替えドミノで工作する、あなただけのミュージアム（建築ワークショップ）\n\n## 概要\n\n模型キット「着せ替えドミノ」を使い、国立西洋美術館の建築的な価値を学ぶ第2回ワークショップが開催される。対象は台東区内在住・在学の小学3〜6年生とその保護者で、定員は各回15組30名となっている。工作を通じて建築への理解を深められる企画となっている。\n\n## ワークショップ情報\n\n- 対象：区内在住・在学の小学3〜6年生と保護者\n- 定員：各回15組30名",
     "sources": [
       "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
     ],
@@ -2081,44 +1962,12 @@
     "imageUrl": "/images/articles/ba8ee1322f355750.png"
   },
   {
-    "id": "draft-taito-city-event-2-3",
-    "title": "第2回「着せ替えドミノで工作する、あなただけのミュージアム」建築ワークショップ",
-    "category": "event",
-    "publishedAt": "2026-08-25T03:33:39.039Z",
-    "summary": "模型キット『着せ替えドミノ』使用し、建築の面白さと世界遺産『国立西洋美術館』の価値を学ぶワークショップ。午前・午後2回開催、各回15組30名、区内在住・在学の小3〜6年生と保護者対象。",
-    "body": "模型キット『着せ替えドミノ』使用し、建築の面白さと世界遺産『国立西洋美術館』の価値を学ぶワークショップ。午前・午後2回開催、各回15組30名、区内在住・在学の小3〜6年生と保護者対象。",
-    "sources": [
-      "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
-  },
-  {
     "id": "draft-taito-city-event-10-4",
-    "title": "世界遺産登録10周年　ル・コルビュジエ設計　国立西洋美術館（オンライン講座）",
+    "title": "世界遺産登録10周年 ル・コルビュジエ設計 国立西洋美術館（オンライン区民講座）",
     "category": "event",
-    "publishedAt": "2026-08-25T03:33:39.039Z",
-    "summary": "NPO法人世界遺産アカデミー講師迎え、2016年世界遺産登録『国立西洋美術館』の建築の魅力とル・コルビュジエが日本近代建築に与えた影響を学ぶオンライン区民講座。",
-    "body": "NPO法人世界遺産アカデミー講師迎え、2016年世界遺産登録『国立西洋美術館』の建築の魅力とル・コルビュジエが日本近代建築に与えた影響を学ぶオンライン区民講座。",
-    "sources": [
-      "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
-  },
-  {
-    "id": "draft-taito-city-event-10-4",
-    "title": "世界遺産登録\"10周年\" ル・コルビュジエ設計 国立西洋美術館（オンライン区民講座）",
-    "category": "event",
-    "publishedAt": "2026-08-27T08:10:08.245Z",
-    "summary": "NPO法人世界遺産アカデミー講師による国立西洋美術館建築魅力・ル・コルビュジエの日本近代建築への影響学ぶオンライン講座。10時~11時30分。",
-    "body": "NPO法人世界遺産アカデミー講師による国立西洋美術館建築魅力・ル・コルビュジエの日本近代建築への影響学ぶオンライン講座。10時~11時30分。",
+    "publishedAt": "2026-08-27T14:15:13.981Z",
+    "summary": "国立西洋美術館建築の魅力とル・コルビュジエの日本近代建築への影響学ぶオンライン講座。",
+    "body": "# 世界遺産登録10周年 ル・コルビュジエ設計 国立西洋美術館（オンライン区民講座）\n\n## 概要\n\n国立西洋美術館の世界遺産登録10周年を記念し、同館建築の魅力と、設計者ル・コルビュジエが日本の近代建築に与えた影響を学べるオンライン講座が開催される。自宅からでも参加できるオンライン形式のため、遠方の区民や関心を持つ人が気軽に受講できる内容となっている。\n\n## 講座情報\n\n- 形式：オンライン開催\n- テーマ：国立西洋美術館建築の魅力とル・コルビュジエの日本近代建築への影響",
     "sources": [
       "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
     ],
@@ -2134,7 +1983,7 @@
     "category": "event",
     "publishedAt": "2026-08-27T14:15:13.981Z",
     "summary": "上野恩賜公園噴水前広場「ウエノデ.パンダビアフェスタ2026」世界遺産PRブース出展。名画ぬり絵・重ねスタンプ等体験。参加無料。",
-    "body": "上野恩賜公園噴水前広場「ウエノデ.パンダビアフェスタ2026」世界遺産PRブース出展。名画ぬり絵・重ねスタンプ等体験。参加無料。",
+    "body": "# ウエノデ.パンダビアフェスタ出展\n\n## 概要\n\n上野恩賜公園の噴水前広場で開催される「ウエノデ.パンダビアフェスタ2026」にて、世界遺産PRブースが出展される。名画のぬり絵や重ねスタンプなど、来場者が気軽に楽しめる体験企画が用意されており、参加は無料となっている。\n\n## イベント情報\n\n- 会場：上野恩賜公園噴水前広場\n- 内容：名画ぬり絵・重ねスタンプ等体験\n- 料金：参加無料",
     "sources": [
       "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
     ],
@@ -2147,96 +1996,12 @@
     "imageUrl": "/images/articles/ba8ee1322f355750.png"
   },
   {
-    "id": "draft-taito-city-event-10-1",
-    "title": "世界遺産登録10周年記念講演会（ル・コルビュジエ建築作品）",
-    "category": "event",
-    "publishedAt": "2026-08-27T14:15:13.981Z",
-    "summary": "世界遺産登録10周年記念講演会「ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー」。事前申込要（10月上旬受付開始予定）。",
-    "body": "世界遺産登録10周年記念講演会「ル・コルビュジエの建築作品ー近代建築運動への顕著な貢献ー」。事前申込要（10月上旬受付開始予定）。",
-    "sources": [
-      "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
-  },
-  {
-    "id": "draft-taito-city-event-2-3",
-    "title": "第2回 着せ替えドミノで工作する、あなただけのミュージアム（建築ワークショップ）",
-    "category": "event",
-    "publishedAt": "2026-08-27T14:15:13.981Z",
-    "summary": "模型キット「着せ替えドミノ」で国立西洋美術館の建築価値学ぶワークショップ。対象区内在住・在学小3〜6年と保護者、各回15組30名。",
-    "body": "模型キット「着せ替えドミノ」で国立西洋美術館の建築価値学ぶワークショップ。対象区内在住・在学小3〜6年と保護者、各回15組30名。",
-    "sources": [
-      "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
-  },
-  {
-    "id": "draft-taito-city-event-10-4",
-    "title": "世界遺産登録10周年 ル・コルビュジエ設計 国立西洋美術館（オンライン区民講座）",
-    "category": "event",
-    "publishedAt": "2026-08-27T14:15:13.981Z",
-    "summary": "国立西洋美術館建築の魅力とル・コルビュジエの日本近代建築への影響学ぶオンライン講座。",
-    "body": "国立西洋美術館建築の魅力とル・コルビュジエの日本近代建築への影響学ぶオンライン講座。",
-    "sources": [
-      "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
-  },
-  {
-    "id": "draft-tnm--0",
-    "title": "本館展示室番号の見直しについて",
-    "category": "facility_news",
-    "publishedAt": "2026-08-24T12:42:22.405Z",
-    "summary": "東京国立博物館、2026年4月8日(水)から本館展示室番号変更。",
-    "body": "東京国立博物館、2026年4月8日(水)から本館展示室番号変更。",
-    "sources": [
-      "https://www.tnm.jp/modules/r_free_page/index.php?id=1255"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [
-      "tnm"
-    ],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/f6a8227c5c9536ed.jpg"
-  },
-  {
-    "id": "draft-tnm--0",
-    "title": "本館展示室番号の見直し",
-    "category": "facility_news",
-    "publishedAt": "2026-08-25T03:33:52.543Z",
-    "summary": "東京国立博物館、2026年4月8日(水)より本館展示室番号を変更。",
-    "body": "東京国立博物館、2026年4月8日(水)より本館展示室番号を変更。",
-    "sources": [
-      "https://www.tnm.jp/modules/r_free_page/index.php?id=1255"
-    ],
-    "area": "上野",
-    "relatedStoreIds": [],
-    "relatedSpotIds": [
-      "tnm"
-    ],
-    "relatedEventIds": [],
-    "imageUrl": "/images/articles/f6a8227c5c9536ed.jpg"
-  },
-  {
     "id": "draft-tnm--0",
     "title": "本館展示室番号の変更",
     "category": "facility_news",
     "publishedAt": "2026-08-27T14:15:27.574Z",
     "summary": "東京国立博物館、2026年4月8日(水)より本館展示室番号を変更。",
-    "body": "東京国立博物館、2026年4月8日(水)より本館展示室番号を変更。",
+    "body": "# 本館展示室番号の変更\n\n## 概要\n\n東京国立博物館は、2026年4月8日(水)より本館の展示室番号を変更する。来館者は改定後の番号表示に沿って観覧することになるため、来館の際は最新の案内表示を確認することが呼びかけられている。\n\n## お知らせ内容\n\n- 変更日：2026年4月8日(水)\n- 内容：本館展示室番号の変更",
     "sources": [
       "https://www.tnm.jp/modules/r_free_page/index.php?id=1255"
     ],
@@ -2254,7 +2019,7 @@
     "category": "exhibition",
     "publishedAt": "2026-08-27T08:10:19.864Z",
     "summary": "東京都美術館特別展。ハマー美術館所蔵、レンブラントからモネ、ゴッホまでの作品展。",
-    "body": "東京都美術館特別展。ハマー美術館所蔵、レンブラントからモネ、ゴッホまでの作品展。",
+    "body": "# レンブラントからモネ、ゴッホ ハマー美術館展\n\n## 概要\n\n東京都美術館にて特別展が開催される。米国ハマー美術館が所蔵する作品群の中から、レンブラントからモネ、ゴッホに至る画家たちの作品が紹介される内容で、幅広い時代の西洋美術を一度に鑑賞できる展覧会となっている。\n\n## 展覧会情報\n\n- 会場：東京都美術館\n- 内容：ハマー美術館所蔵、レンブラントからモネ、ゴッホまでの作品展",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
     ],

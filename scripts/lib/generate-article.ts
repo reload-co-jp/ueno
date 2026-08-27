@@ -53,7 +53,8 @@ export const generateArticleBody = async (input: ArticleInput): Promise<string> 
 
   const prompt = `上野地域メディアの記事執筆担当として記事本文を書く。
 与えられた事実情報のみをもとに書き、事実の誇張・推測での穴埋めは禁止。不明な項目は箇条書きから省く。
-${template ? `以下のテンプレート構成に従う:\n${template}` : "見出し・概要・箇条書き情報を含む簡潔な記事構成にする。"}
+文字数は1200字以上を目安にし、概要部分は背景・魅力・周辺情報などを厚めに記述して読み応えのある文章にする。ただし事実にない内容の水増しは禁止。
+${template ? `以下のテンプレート構成に従う:\n${template}` : "見出し・概要・箇条書き情報を含む記事構成にする。"}
 
 タイトル: ${input.title}
 カテゴリ: ${input.category}

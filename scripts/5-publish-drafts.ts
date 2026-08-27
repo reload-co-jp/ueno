@@ -39,6 +39,7 @@ const main = async () => {
       draft.imageUrl = await downloadAndSaveImage(draft.imageUrl)
     }
 
+    existingIds.add(draft.id) // 同一バッチ内のドラフト重複も弾く
     toPublish.push(draft as NewsArticle)
   }
 
