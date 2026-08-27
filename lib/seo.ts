@@ -1,5 +1,5 @@
 export const SITE_URL = "https://ueno.reload.co.jp"
-export const SITE_NAME = "上野ナビ"
+export const SITE_NAME = "上野ライブ"
 
 export const absoluteUrl = (path: string) => `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`
 

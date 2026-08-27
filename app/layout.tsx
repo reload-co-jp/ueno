@@ -43,14 +43,14 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <Header>
           <Title>
             <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
-              上野ナビ
+              {SITE_NAME}
             </a>
           </Title>
           <Nav />
         </Header>
         <Main>{children}</Main>
         <Footer>
-          <p>&copy; 上野ナビ</p>
+          <p>&copy; {SITE_NAME}</p>
         </Footer>
       </body>
     </html>
