@@ -68,14 +68,16 @@ export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
         marginBottom: ".75rem",
       }}
     />
-    <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
-    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
-      {event.summary}
-    </p>
-    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-      {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.location} ・{" "}
-      {event.fee}
-    </p>
+    <div style={{ padding: "0 .5rem" }}>
+      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
+      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
+        {event.summary}
+      </p>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.location}{" "}
+        ・ {event.fee}
+      </p>
+    </div>
   </Link>
 )
 
