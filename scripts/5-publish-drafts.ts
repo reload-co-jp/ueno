@@ -22,15 +22,14 @@ const main = async () => {
     return
   }
 
-  const existingIds = new Set(news.map((n) => n.id))
+  // 記事idは連番の文字列("1", "2", ...)。ドラフト時点のid(draft-...)は
+  // dedupe用の一時idにすぎないため、公開時に既存news.jsonの最大番号+1から振り直す。
+  const numericIds = news.map((n) => Number(n.id)).filter((n) => Number.isInteger(n))
+  let nextId = (numericIds.length > 0 ? Math.max(...numericIds) : 0) + 1
+
   const toPublish: NewsArticle[] = []
-  const skipped: string[] = []
 
   for (const draft of drafts) {
-    if (existingIds.has(draft.id)) {
-      skipped.push(draft.id)
-      continue
-    }
     delete draft.matchNotes
     delete draft.extracted
 
@@ -39,7 +38,7 @@ const main = async () => {
       draft.imageUrl = await downloadAndSaveImage(draft.imageUrl)
     }
 
-    existingIds.add(draft.id) // 同一バッチ内のドラフト重複も弾く
+    draft.id = String(nextId++)
     toPublish.push(draft as NewsArticle)
   }
 
@@ -48,7 +47,6 @@ const main = async () => {
   await writeFile(DRAFTS_PATH, "[]\n", "utf-8")
 
   console.log(`${toPublish.length}件公開 -> data/news.json`)
-  if (skipped.length) console.log(`${skipped.length}件は既存id重複でスキップ`)
 }
 
 main()

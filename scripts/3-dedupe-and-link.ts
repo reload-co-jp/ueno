@@ -103,6 +103,7 @@ const main = async () => {
         // 同一ソースを日をまたいで複数回収集すると同じ項目が再度抽出されうる(会期中の展覧会等)。
         // LLM抽出は非決定的でタイトル文字列が完全一致しない場合もあるため、
         // 正規化した「ソース+タイトル」で重複判定する(idxはユニークid生成にのみ使う)。
+        // ここでのidはdedupe段階限定の一時id。公開記事idは連番で、公開時(5-publish-drafts.ts)に振り直す。
         const draftId = `draft-${sourceId}-${slug(item.title).slice(0, 40)}-${idx}`
         const dedupeKey = `${sourceId}:${normalizeName(item.title)}`
         if (seenDraftIds.has(dedupeKey)) continue
