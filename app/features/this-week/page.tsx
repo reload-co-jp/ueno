@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { ArticleCard, CardGrid, EventCard } from "@/components/elements/card"
-import { getEventsInRange, news } from "@/lib/data"
+import { compareArticles, getEventsInRange, news } from "@/lib/data"
 import { thisWeekRange, toDateStr } from "@/lib/date"
 
 export const metadata = {
@@ -16,7 +16,7 @@ const Page: FC = () => {
       const d = toDateStr(new Date(n.publishedAt))
       return d >= start && d <= end
     })
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .sort(compareArticles)
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>

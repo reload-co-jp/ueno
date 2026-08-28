@@ -15,22 +15,28 @@ export const getSpot = (id: string) => spots.find((s) => s.id === id)
 export const getEvent = (id: string) => events.find((e) => e.id === id)
 export const getArticle = (id: string) => news.find((n) => n.id === id)
 
+// 公開日降順。同日内は画像有無→本文量の充実度で優先表示
+export const compareArticles = (a: NewsArticle, b: NewsArticle) => {
+  const dateA = a.publishedAt.slice(0, 10)
+  const dateB = b.publishedAt.slice(0, 10)
+  if (dateA !== dateB) return dateB.localeCompare(dateA)
+  const imageA = a.imageUrl ? 1 : 0
+  const imageB = b.imageUrl ? 1 : 0
+  if (imageA !== imageB) return imageB - imageA
+  if (a.body.length !== b.body.length) return b.body.length - a.body.length
+  return b.publishedAt.localeCompare(a.publishedAt)
+}
+
 export const getArticlesByCategory = (category: Category | Category[]) => {
   const categories = Array.isArray(category) ? category : [category]
-  return news
-    .filter((n) => categories.includes(n.category))
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  return news.filter((n) => categories.includes(n.category)).sort(compareArticles)
 }
 
 export const getLatestArticles = (limit = 10) =>
-  [...news]
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
-    .slice(0, limit)
+  [...news].sort(compareArticles).slice(0, limit)
 
 export const getArticlesByArea = (area: string) =>
-  news
-    .filter((n) => n.area === area)
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  news.filter((n) => n.area === area).sort(compareArticles)
 
 export const getArticlesByStore = (storeId: string) =>
   news.filter((n) => n.relatedStoreIds.includes(storeId))
@@ -42,13 +48,13 @@ export const getArticlesBySpot = (spotId: string) =>
 export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
   const sameCategory = news
     .filter((n) => n.id !== article.id && n.category === article.category)
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .sort(compareArticles)
 
   const sameArea = news
     .filter(
       (n) => n.id !== article.id && n.area === article.area && n.category !== article.category
     )
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .sort(compareArticles)
 
   return [...sameCategory, ...sameArea].slice(0, limit)
 }
