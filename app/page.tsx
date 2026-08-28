@@ -37,7 +37,7 @@ const Page: FC = () => {
               style={{
                 width: "100%",
                 aspectRatio: "21 / 9",
-                objectFit: "cover",
+                objectFit: "contain",
                 borderRadius: ".5rem",
                 marginBottom: "1.25rem",
               }}
@@ -82,14 +82,22 @@ const Page: FC = () => {
                   style={{
                     width: "9rem",
                     aspectRatio: "4 / 3",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     borderRadius: ".375rem",
                     flexShrink: 0,
+                    maxHeight: "9rem",
                   }}
                 />
                 <div style={{ minWidth: 0 }}>
-                  <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
-                  <h3 style={{ fontSize: "1.0625rem", margin: ".125rem 0 .375rem" }}>
+                  <span style={badgeStyle}>
+                    {CATEGORY_LABELS[article.category]}
+                  </span>
+                  <h3
+                    style={{
+                      fontSize: "1.0625rem",
+                      margin: ".125rem 0 .375rem",
+                    }}
+                  >
                     {article.title}
                   </h3>
                   <p
@@ -112,7 +120,9 @@ const Page: FC = () => {
 
         <aside style={{ flex: "1 1 14rem" }}>
           <h2 style={sectionTitleStyle}>特集</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}
+          >
             {FEATURES.map((f) => (
               <Link
                 key={f.href}
