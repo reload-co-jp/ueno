@@ -7,7 +7,7 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticle, getEvent, getRelatedArticles, getSpot, getStore, news } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
+import { absoluteUrl, jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
 import { CATEGORY_LABELS, Category } from "@/lib/types"
 
 // 一覧ページを持つカテゴリのみ。それ以外はパンくずでリンクなし表示。
@@ -62,17 +62,20 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedEvents = article.relatedEventIds.map(getEvent).filter(Boolean)
   const relatedArticles = getRelatedArticles(article)
 
+  const url = absoluteUrl(`/articles/${article.id}`)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: article.title,
     description: article.summary,
+    image: [absoluteUrl(article.imageUrl ?? "/images/placeholder.jpg")],
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     articleSection: CATEGORY_LABELS[article.category],
-    author: { "@type": "Organization", name: SITE_NAME },
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    mainEntityOfPage: absoluteUrl(`/articles/${article.id}`),
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
   }
 
   return (

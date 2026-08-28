@@ -54,10 +54,18 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     name: event.name,
     startDate: event.startDate,
     endDate: event.endDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: { "@type": "Place", name: event.location },
     description: event.summary,
-    organizer: { "@type": "Organization", name: event.organizer },
-    offers: { "@type": "Offer", price: event.fee },
+    image: event.imageUrl ? [absoluteUrl(event.imageUrl)] : undefined,
+    organizer: { "@type": "Organization", name: event.organizer, url: event.officialUrl },
+    offers: {
+      "@type": "Offer",
+      price: event.fee,
+      priceCurrency: "JPY",
+      url: event.officialUrl,
+    },
     url: absoluteUrl(`/events/${event.id}`),
   }
 

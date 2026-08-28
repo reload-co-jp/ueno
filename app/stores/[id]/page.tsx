@@ -41,6 +41,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     geo: { "@type": "GeoCoordinates", latitude: store.lat, longitude: store.lng },
     url: store.officialUrl,
     openingHours: store.hours,
+    sameAs: store.sns,
   }
 
   return (
