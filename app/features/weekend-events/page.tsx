@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, EventCard } from "@/components/elements/card"
 import { getArticlesByEvent, getEventsInRange } from "@/lib/data"
 import { thisWeekendRange } from "@/lib/date"
@@ -14,6 +15,7 @@ const Page: FC = () => {
   const events = getEventsInRange(start, end)
   return (
     <div>
+      <Breadcrumb items={[{ label: "特集" }, { label: "今週末の上野イベント" }]} />
       <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今週末の上野イベント</h2>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>今週末開催のイベントはない。</p>

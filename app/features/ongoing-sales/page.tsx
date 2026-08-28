@@ -11,6 +11,7 @@ const Page: FC = () => (
   <ArticleListPage
     title="現在開催中のセール"
     articles={getArticlesByCategory(["sale", "campaign"])}
+    breadcrumbItems={[{ label: "特集" }, { label: "現在開催中のセール" }]}
   />
 )
 

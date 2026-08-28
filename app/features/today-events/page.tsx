@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, EventCard } from "@/components/elements/card"
 import { getArticlesByEvent, getEventsOnDate } from "@/lib/data"
 import { todayStr } from "@/lib/date"
@@ -13,6 +14,7 @@ const Page: FC = () => {
   const events = getEventsOnDate(todayStr())
   return (
     <div>
+      <Breadcrumb items={[{ label: "特集" }, { label: "今日の上野イベント" }]} />
       <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今日の上野イベント</h2>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>本日開催中のイベントはない。</p>

@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, EventCard } from "@/components/elements/card"
 import { getUpcomingEvents } from "@/lib/data"
 
@@ -11,6 +12,7 @@ const Page: FC = () => {
   const events = getUpcomingEvents()
   return (
     <div>
+      <Breadcrumb items={[{ label: "イベント" }]} />
       <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>イベント</h2>
       <CardGrid>
         {events.map((event) => (

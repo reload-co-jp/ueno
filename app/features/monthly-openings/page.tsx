@@ -15,8 +15,15 @@ const Page: FC = () => {
     return d >= start && d <= end
   })
   const month = `${start.slice(0, 4)}年${Number(start.slice(5, 7))}月`
+  const title = `${month}の新店舗`
 
-  return <ArticleListPage title={`${month}の新店舗`} articles={articles} />
+  return (
+    <ArticleListPage
+      title={title}
+      articles={articles}
+      breadcrumbItems={[{ label: "特集" }, { label: title }]}
+    />
+  )
 }
 
 export default Page

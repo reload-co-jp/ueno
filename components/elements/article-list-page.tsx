@@ -1,12 +1,15 @@
 import { FC } from "react"
+import { Breadcrumb, BreadcrumbItem } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { NewsArticle } from "@/lib/types"
 
-export const ArticleListPage: FC<{ title: string; articles: NewsArticle[] }> = ({
-  title,
-  articles,
-}) => (
+export const ArticleListPage: FC<{
+  title: string
+  articles: NewsArticle[]
+  breadcrumbItems?: BreadcrumbItem[]
+}> = ({ title, articles, breadcrumbItems = [{ label: title }] }) => (
   <div>
+    <Breadcrumb items={breadcrumbItems} />
     <h2
       style={{
         fontSize: "1.125rem",

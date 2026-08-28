@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid, EventCard } from "@/components/elements/card"
 import { compareArticles, getEventsInRange, news } from "@/lib/data"
 import { thisWeekRange, toDateStr } from "@/lib/date"
@@ -20,6 +21,7 @@ const Page: FC = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <Breadcrumb items={[{ label: "特集" }, { label: "今週の上野" }]} />
       <h2 style={{ fontSize: "1.125rem", margin: 0 }}>今週の上野</h2>
 
       <div>

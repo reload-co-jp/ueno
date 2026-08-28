@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { events, getArticlesByEvent, getEvent, getSpot, getStore } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
@@ -66,6 +67,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
+      <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: event.name }]} />
       {event.imageUrl && (
         <img
           src={event.imageUrl}

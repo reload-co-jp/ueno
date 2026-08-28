@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticlesByStore, getStore, stores } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
@@ -48,6 +49,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
+      <Breadcrumb items={[{ label: "店舗", href: "/stores" }, { label: store.name }]} />
       <div>
         <span
           style={{

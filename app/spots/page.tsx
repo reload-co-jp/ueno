@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, SpotCard } from "@/components/elements/card"
 import { spots } from "@/lib/data"
 
@@ -9,6 +10,7 @@ export const metadata = {
 
 const Page: FC = () => (
   <div>
+    <Breadcrumb items={[{ label: "施設・スポット" }]} />
     <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>施設・スポット</h2>
     <CardGrid>
       {spots.map((spot) => (

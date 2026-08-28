@@ -3,11 +3,22 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { ArticleBody } from "@/components/elements/article-body"
+import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticle, getEvent, getRelatedArticles, getSpot, getStore, news } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
 import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
-import { CATEGORY_LABELS } from "@/lib/types"
+import { CATEGORY_LABELS, Category } from "@/lib/types"
+
+// 一覧ページを持つカテゴリのみ。それ以外はパンくずでリンクなし表示。
+const CATEGORY_PATHS: Partial<Record<Category, string>> = {
+  new_opening: "/new-stores",
+  closing: "/closures",
+  sale: "/sales",
+  campaign: "/sales",
+  popup: "/popup",
+  exhibition: "/exhibitions",
+}
 
 export const generateStaticParams = () => news.map((n) => ({ id: n.id }))
 
@@ -69,6 +80,12 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
+      />
+      <Breadcrumb
+        items={[
+          { label: CATEGORY_LABELS[article.category], href: CATEGORY_PATHS[article.category] },
+          { label: article.title },
+        ]}
       />
       <span
         style={{
