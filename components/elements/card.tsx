@@ -1,13 +1,19 @@
 import Link from "next/link"
 import { FC } from "react"
-import { CATEGORY_LABELS, NewsArticle, Spot, Store, EventItem } from "@/lib/types"
+import {
+  CATEGORY_LABELS,
+  NewsArticle,
+  Spot,
+  Store,
+  EventItem,
+} from "@/lib/types"
 import { formatDateJp, formatDateRangeJp } from "@/lib/date"
 
 const cardStyle: React.CSSProperties = {
   display: "block",
   background: "#fff",
   borderBottom: "0.1875rem solid #111",
-  padding: "0 .75rem 1rem",
+  padding: "0 0 1rem",
   color: "#111",
   textDecoration: "none",
 }
@@ -31,19 +37,22 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
       style={{
         width: "100%",
         aspectRatio: "16 / 9",
-        objectFit: "cover",
-        borderRadius: ".5rem",
+        objectFit: "contain",
         marginBottom: ".75rem",
       }}
     />
-    <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
-    <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{article.title}</h3>
-    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
-      {article.summary}
-    </p>
-    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-      {formatDateJp(article.publishedAt)} ・ {article.area}
-    </p>
+    <div style={{ padding: "0 .5rem" }}>
+      <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
+      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>
+        {article.title}
+      </h3>
+      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
+        {article.summary}
+      </p>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        {formatDateJp(article.publishedAt)} ・ {article.area}
+      </p>
+    </div>
   </Link>
 )
 
@@ -85,7 +94,9 @@ export const SpotCard: FC<{ spot: Spot }> = ({ spot }) => (
   <Link href={`/spots/${spot.id}`} className="card" style={cardStyle}>
     <span style={badgeStyle}>{spot.type}</span>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
-    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>{spot.address}</p>
+    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+      {spot.address}
+    </p>
   </Link>
 )
 
@@ -93,7 +104,7 @@ export const CardGrid: FC<{ children: React.ReactNode }> = ({ children }) => (
   <div
     style={{
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(16rem, 1fr))",
+      gridTemplateColumns: "repeat(auto-fill, minmax(18rem, 1fr))",
       gap: "1.25rem",
     }}
   >

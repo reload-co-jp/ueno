@@ -65,7 +65,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   }
 
   return (
-    <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "40rem" }}>
+    <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "75rem" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
