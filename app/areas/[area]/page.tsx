@@ -5,18 +5,16 @@ import { ArticleCard, CardGrid, SpotCard, StoreCard } from "@/components/element
 import { getAreas, getArticlesByArea, getSpotsByArea, getStoresByArea } from "@/lib/data"
 import { absoluteUrl } from "@/lib/seo"
 
-export const generateStaticParams = () =>
-  getAreas().map((area) => ({ area: encodeURIComponent(area) }))
+export const generateStaticParams = () => getAreas().map((area) => ({ area }))
 
 export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ area: string }>
 }): Promise<Metadata> => {
-  const { area: raw } = await params
-  const area = decodeURIComponent(raw)
+  const { area } = await params
   if (!getAreas().includes(area)) return {}
-  const url = absoluteUrl(`/areas/${raw}`)
+  const url = absoluteUrl(`/areas/${encodeURIComponent(area)}`)
   const description = `${area}エリアの店舗・施設・最新情報一覧`
   return {
     title: area,
@@ -27,8 +25,7 @@ export const generateMetadata = async ({
 }
 
 const Page: FC<{ params: Promise<{ area: string }> }> = async ({ params }) => {
-  const { area: raw } = await params
-  const area = decodeURIComponent(raw)
+  const { area } = await params
   if (!getAreas().includes(area)) notFound()
 
   const articles = getArticlesByArea(area)
