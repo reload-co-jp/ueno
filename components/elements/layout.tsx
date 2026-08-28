@@ -18,10 +18,10 @@ export const Nav: FC = () => (
     style={{
       display: "flex",
       flexWrap: "wrap",
-      gap: ".5rem",
-      marginTop: ".75rem",
+      gap: ".25rem .75rem",
+      marginTop: ".5rem",
       fontSize: ".8125rem",
-      fontWeight: 700,
+      fontWeight: 400,
     }}
   >
     {NAV_ITEMS.map((item) => (
@@ -46,8 +46,8 @@ export const Title: FC<ComponentProps<"h1">> = ({
 }) => (
   <h1
     style={{
-      fontSize: "1.5rem",
-      fontWeight: 800,
+      fontSize: "3.5rem",
+      fontWeight: 250,
       letterSpacing: "-0.02em",
       margin: 0,
       ...style,
@@ -67,7 +67,9 @@ export const Header: FC<{ children: ReactNode }> = ({ children }) => (
       position: "relative",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: ".875rem 1.5rem" }}>
+    <div
+      style={{ maxWidth: "75rem", margin: "0 auto", padding: ".875rem 1.5rem" }}
+    >
       {children}
     </div>
   </header>
@@ -80,7 +82,9 @@ export const Main: FC<{ children: ReactNode }> = ({ children }) => (
       minHeight: "calc(100dvh - 5.625rem)",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "2rem 1.5rem" }}>
+    <div
+      style={{ maxWidth: "75rem", margin: "0 auto", padding: "2rem 1.5rem" }}
+    >
       {children}
     </div>
   </main>
@@ -95,7 +99,9 @@ export const Footer: FC<{ children: ReactNode }> = ({ children }) => (
       textAlign: "center",
     }}
   >
-    <div style={{ maxWidth: "75rem", margin: "0 auto", padding: "1.25rem 1.5rem" }}>
+    <div
+      style={{ maxWidth: "75rem", margin: "0 auto", padding: "1.25rem 1.5rem" }}
+    >
       {children}
     </div>
   </footer>
