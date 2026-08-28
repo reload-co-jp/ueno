@@ -1,6 +1,7 @@
+import Link from "next/link"
 import { FC } from "react"
 import { CardGrid, EventCard } from "@/components/elements/card"
-import { getEventsInRange } from "@/lib/data"
+import { getArticlesByEvent, getEventsInRange } from "@/lib/data"
 import { thisWeekendRange } from "@/lib/date"
 
 export const metadata = {
@@ -18,9 +19,34 @@ const Page: FC = () => {
         <p style={{ color: "#999" }}>今週末開催のイベントはない。</p>
       ) : (
         <CardGrid>
-          {events.map((e) => (
-            <EventCard key={e.id} event={e} />
-          ))}
+          {events.map((e) => {
+            const articles = getArticlesByEvent(e.id)
+            return (
+              <div key={e.id}>
+                <EventCard event={e} />
+                {articles.length > 0 && (
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: ".5rem 0 0",
+                      fontSize: ".8125rem",
+                      color: "#7a7468",
+                    }}
+                  >
+                    {articles.map((a) => (
+                      <li key={a.id}>
+                        関連記事:{" "}
+                        <Link href={`/articles/${a.id}`} style={{ color: "#c0483a" }}>
+                          {a.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )
+          })}
         </CardGrid>
       )}
     </div>
