@@ -38,7 +38,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
     />
     <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{article.title}</h3>
-    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
+    <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem", padding: "0 .75rem" }}>
       {article.summary}
     </p>
     <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
