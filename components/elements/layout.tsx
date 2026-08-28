@@ -11,7 +11,6 @@ const NAV_ITEMS = [
   { href: "/exhibitions", label: "展示・アート" },
   { href: "/stores", label: "店舗" },
   { href: "/spots", label: "施設・スポット" },
-  { href: "/areas", label: "エリア" },
 ] as const
 
 export const Nav: FC = () => (

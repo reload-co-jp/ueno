@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { getAreas, news, spots, stores } from "@/lib/data"
+import { news, spots, stores } from "@/lib/data"
 import { SITE_URL } from "@/lib/seo"
 
 export const dynamic = "force-static"
@@ -14,7 +14,6 @@ const STATIC_PATHS = [
   "/exhibitions",
   "/stores",
   "/spots",
-  "/areas",
   "/features/this-week",
   "/features/today-events",
   "/features/weekend-events",
@@ -48,13 +47,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: 0.5,
   }))
 
-  const areaEntries = getAreas().map((area) => ({
-    url: `${SITE_URL}/areas/${encodeURIComponent(area)}/`,
-    changeFrequency: "daily" as const,
-    priority: 0.6,
-  }))
-
-  return [...staticEntries, ...articleEntries, ...storeEntries, ...spotEntries, ...areaEntries]
+  return [...staticEntries, ...articleEntries, ...storeEntries, ...spotEntries]
 }
 
 export default sitemap
