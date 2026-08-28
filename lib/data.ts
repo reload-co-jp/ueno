@@ -44,6 +44,9 @@ export const getArticlesByStore = (storeId: string) =>
 export const getArticlesBySpot = (spotId: string) =>
   news.filter((n) => n.relatedSpotIds.includes(spotId))
 
+export const getArticlesByEvent = (eventId: string) =>
+  news.filter((n) => n.relatedEventIds.includes(eventId)).sort(compareArticles)
+
 // 同カテゴリ→同エリアの順で補完し、自身を除いた関連記事を返す
 export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
   const sameCategory = news

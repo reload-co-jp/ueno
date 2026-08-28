@@ -48,13 +48,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
 )
 
 export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
-  <a
-    href={event.officialUrl}
-    target="_blank"
-    rel="noreferrer"
-    className="card"
-    style={cardStyle}
-  >
+  <Link href={`/events/${event.id}`} className="card" style={cardStyle}>
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
     <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
       {event.summary}
@@ -63,7 +57,7 @@ export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
       {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.location} ・{" "}
       {event.fee}
     </p>
-  </a>
+  </Link>
 )
 
 export const StoreCard: FC<{ store: Store }> = ({ store }) => (
