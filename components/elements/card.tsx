@@ -82,21 +82,25 @@ export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
 
 export const StoreCard: FC<{ store: Store }> = ({ store }) => (
   <Link href={`/stores/${store.id}`} className="card" style={cardStyle}>
-    <span style={badgeStyle}>{store.category}</span>
-    <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{store.name}</h3>
-    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-      {store.address} ・ {store.hours}
-    </p>
+    <div style={{ padding: "1rem" }}>
+      <span style={badgeStyle}>{store.category}</span>
+      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{store.name}</h3>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        {store.address} ・ {store.hours}
+      </p>
+    </div>
   </Link>
 )
 
 export const SpotCard: FC<{ spot: Spot }> = ({ spot }) => (
   <Link href={`/spots/${spot.id}`} className="card" style={cardStyle}>
-    <span style={badgeStyle}>{spot.type}</span>
-    <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
-    <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-      {spot.address}
-    </p>
+    <div style={{ padding: "1rem" }}>
+      <span style={badgeStyle}>{spot.type}</span>
+      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        {spot.address}
+      </p>
+    </div>
   </Link>
 )
 
