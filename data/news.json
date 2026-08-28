@@ -50,7 +50,7 @@
       "ueno-park"
     ],
     "relatedEventIds": [
-      "ueno-park-natsu-matsuri"
+      "1"
     ],
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
@@ -70,7 +70,7 @@
       "tobikan"
     ],
     "relatedEventIds": [
-      "tobikan-modern-art-exhibition"
+      "2"
     ],
     "sources": [
       "https://www.tobikan.jp/exhibition/"
@@ -90,7 +90,7 @@
       "kahaku"
     ],
     "relatedEventIds": [
-      "kahaku-dinosaur-exhibition"
+      "4"
     ],
     "sources": [
       "https://www.kahaku.go.jp/tenji/exhibitions.html"
@@ -110,7 +110,7 @@
       "ueno-marui"
     ],
     "relatedEventIds": [
-      "marui-summer-popup"
+      "6"
     ],
     "sources": [
       "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event"
@@ -168,7 +168,7 @@
       "ueno-zoo"
     ],
     "relatedEventIds": [
-      "ueno-zoo-panda-event"
+      "5"
     ],
     "sources": [
       "https://www.tokyo-zoo.net/ueno/events/index.html"

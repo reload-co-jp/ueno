@@ -67,6 +67,7 @@ export interface EventItem {
   officialUrl: string
   source: string
   area: string
+  imageUrl: string | null
   relatedStoreId?: string
   relatedSpotId?: string
 }

@@ -1,5 +1,5 @@
-// 記事画像のダウンロード・サイズ検証・自前保存。
-// 他サイトへのホットリンクを避け、public/images/articles/ 配下に保存したローカルパスを返す。
+// 記事/イベント画像のダウンロード・サイズ検証・自前保存。
+// 他サイトへのホットリンクを避け、public/images/<dir>/ 配下に保存したローカルパスを返す。
 import { existsSync } from "node:fs"
 import { mkdir, writeFile } from "node:fs/promises"
 import path from "node:path"
@@ -10,7 +10,6 @@ import { USER_AGENT } from "./fetch-raw"
 // 実サイズでの確定採用基準(extract.tsの属性ベース足切り MIN_ATTR_SIZE=100 より厳しい)。
 // これ未満は記事画像として採用しない(アイコン/バナー除外)
 const MIN_SIZE = 200
-const SAVE_DIR = path.join(process.cwd(), "public", "images", "articles")
 
 const EXT_BY_TYPE: Record<string, string> = {
   jpg: "jpg",
@@ -45,29 +44,31 @@ export const fetchAndValidateImage = async (
 
 const hashUrl = (url: string) => createHash("sha1").update(url).digest("hex").slice(0, 16)
 
-// public/images/articles/ 配下に保存。同一URLのファイルが既にあれば再ダウンロードせずそのパスを返す。
+// public/images/<dir>/ 配下に保存。同一URLのファイルが既にあれば再ダウンロードせずそのパスを返す。
 // 呼び出し元は先に fetchAndValidateImage() を通した buffer/ext を渡すため、ここではI/Oのみ行う。
 export const saveImageToPublic = async (
+  dir: string,
   url: string,
   buffer: Buffer,
   ext: string
 ): Promise<string> => {
+  const saveDir = path.join(process.cwd(), "public", "images", dir)
   const filename = `${hashUrl(url)}.${ext}`
-  const filePath = path.join(SAVE_DIR, filename)
+  const filePath = path.join(saveDir, filename)
   if (!existsSync(filePath)) {
-    await mkdir(SAVE_DIR, { recursive: true })
+    await mkdir(saveDir, { recursive: true })
     await writeFile(filePath, buffer)
   }
-  return `/images/articles/${filename}`
+  return `/images/${dir}/${filename}`
 }
 
 // 既にローカル保存済みかどうか(このモジュールが払い出したパスかどうか)を判定する。
-export const isLocalArticleImage = (imageUrl: string | null): boolean =>
-  !!imageUrl && imageUrl.startsWith("/images/articles/")
+export const isLocalImage = (dir: string, imageUrl: string | null): boolean =>
+  !!imageUrl && imageUrl.startsWith(`/images/${dir}/`)
 
 // 画像URLを取得・検証・保存までまとめて行う。失敗時は null。
-export const downloadAndSaveImage = async (url: string): Promise<string | null> => {
+export const downloadAndSaveImage = async (dir: string, url: string): Promise<string | null> => {
   const validated = await fetchAndValidateImage(url)
   if (!validated) return null
-  return saveImageToPublic(url, validated.buffer, validated.ext)
+  return saveImageToPublic(dir, url, validated.buffer, validated.ext)
 }

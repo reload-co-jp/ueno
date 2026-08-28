@@ -1,6 +1,6 @@
 [
   {
-    "id": "ueno-park-natsu-matsuri",
+    "id": "1",
     "name": "上野公園 夏のナイトマルシェ",
     "startDate": "2026-08-21",
     "endDate": "2026-08-23",
@@ -11,10 +11,11 @@
     "officialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
     "source": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
     "area": "上野公園",
-    "relatedSpotId": "ueno-park"
+    "relatedSpotId": "ueno-park",
+    "imageUrl": "/images/events/94e77b6a446b8b47.jpg"
   },
   {
-    "id": "tobikan-modern-art-exhibition",
+    "id": "2",
     "name": "特別展 近代日本美術の系譜",
     "startDate": "2026-08-15",
     "endDate": "2026-10-12",
@@ -25,10 +26,11 @@
     "officialUrl": "https://www.tobikan.jp/exhibition/",
     "source": "https://www.tobikan.jp/exhibition/",
     "area": "上野公園",
-    "relatedSpotId": "tobikan"
+    "relatedSpotId": "tobikan",
+    "imageUrl": "/images/events/c5033d4be909f09f.jpg"
   },
   {
-    "id": "tnm-treasure-exhibition",
+    "id": "3",
     "name": "特別展 皇室の美術と工芸",
     "startDate": "2026-09-01",
     "endDate": "2026-11-08",
@@ -39,10 +41,11 @@
     "officialUrl": "https://www.tnm.jp/modules/r_free_page/index.php?id=1255",
     "source": "https://www.tnm.jp/modules/r_free_page/index.php?id=1255",
     "area": "上野公園",
-    "relatedSpotId": "tnm"
+    "relatedSpotId": "tnm",
+    "imageUrl": "/images/events/f6a8227c5c9536ed.jpg"
   },
   {
-    "id": "kahaku-dinosaur-exhibition",
+    "id": "4",
     "name": "恐竜博2026",
     "startDate": "2026-07-19",
     "endDate": "2026-09-27",
@@ -53,10 +56,11 @@
     "officialUrl": "https://www.kahaku.go.jp/tenji/exhibitions.html",
     "source": "https://www.kahaku.go.jp/tenji/exhibitions.html",
     "area": "上野公園",
-    "relatedSpotId": "kahaku"
+    "relatedSpotId": "kahaku",
+    "imageUrl": "/images/events/cfbd55dedb229cc0.png"
   },
   {
-    "id": "ueno-zoo-panda-event",
+    "id": "5",
     "name": "パンダ舎 夏の飼育員トークイベント",
     "startDate": "2026-08-22",
     "endDate": "2026-08-22",
@@ -67,10 +71,11 @@
     "officialUrl": "https://www.tokyo-zoo.net/ueno/events/index.html",
     "source": "https://www.tokyo-zoo.net/ueno/events/index.html",
     "area": "上野公園",
-    "relatedSpotId": "ueno-zoo"
+    "relatedSpotId": "ueno-zoo",
+    "imageUrl": "/images/events/92168def115b9115.png"
   },
   {
-    "id": "marui-summer-popup",
+    "id": "6",
     "name": "上野マルイ サマーコスメPOP UP",
     "startDate": "2026-08-18",
     "endDate": "2026-08-31",
@@ -81,6 +86,7 @@
     "officialUrl": "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event",
     "source": "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event",
     "area": "上野駅前",
-    "relatedSpotId": "ueno-marui"
+    "relatedSpotId": "ueno-marui",
+    "imageUrl": "/images/events/cff747446396ab22.png"
   }
 ]

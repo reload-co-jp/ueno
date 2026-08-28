@@ -49,6 +49,17 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
 
 export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
   <Link href={`/events/${event.id}`} className="card" style={cardStyle}>
+    <img
+      src={event.imageUrl ?? "/images/placeholder.jpg"}
+      alt=""
+      style={{
+        width: "100%",
+        aspectRatio: "16 / 9",
+        objectFit: "cover",
+        borderRadius: ".5rem",
+        marginBottom: ".75rem",
+      }}
+    />
     <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
     <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
       {event.summary}

@@ -1,21 +1,21 @@
-// 既存記事(data/news.json, data/drafts/articles.json)の画像を後付け・自前保存する1回限りのバックフィル。
-// 対象: imageUrlが無い記事、および外部URLのままローカル保存されていない記事(旧データ移行用)。
-// 同一sources[0](一覧ページ等)を複数記事が共有する場合、画像候補を出現順に1件ずつ割り当てる
-// (全記事が同じ画像になるのを避けるための簡易対応。意味的な対応関係の精度は保証しない)。
-// 実行: pnpm backfill-images [--force]
+// 既存イベント(data/events.json)の画像を後付け・自前保存する1回限りのバックフィル。
+// 対象: imageUrlが無いイベント、および外部URLのままローカル保存されていない記事(旧データ移行用)。
+// 同一sourceを複数イベントが共有する場合、画像候補を出現順に1件ずつ割り当てる
+// (全イベントが同じ画像になるのを避けるための簡易対応。意味的な対応関係の精度は保証しない)。
+// 実行: pnpm backfill-event-images [--force]
 import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { extractImageCandidates } from "./lib/extract"
 import { fetchAndValidateImage, isLocalImage, saveImageToPublic } from "./lib/save-image"
 import { sleep, USER_AGENT } from "./lib/fetch-raw"
-import type { NewsArticle } from "@/lib/types"
+import type { EventItem } from "@/lib/types"
 
 const REQUEST_INTERVAL_MS = 2000 // 対象サイトへの負荷配慮
+const IMAGE_DIR = "events"
 
-const NEWS_PATH = path.join(process.cwd(), "data", "news.json")
-const DRAFTS_PATH = path.join(process.cwd(), "data", "drafts", "articles.json")
+const EVENTS_PATH = path.join(process.cwd(), "data", "events.json")
 
-// 同一pageUrlを複数記事が共有する場合(一覧ページ等)に、画像候補を使い回さず
+// 同一pageUrlを複数イベントが共有する場合(一覧ページ等)に、画像候補を使い回さず
 // 出現順に1件ずつ割り当てるための消費状況。
 interface PageEntry {
   candidates: string[]
@@ -49,7 +49,7 @@ const fetchAndSaveImage = async (pageCache: Map<string, PageEntry>, pageUrl: str
     entry.nextIndex++
     const validated = await fetchAndValidateImage(candidateUrl)
     if (validated) {
-      localPath = await saveImageToPublic("articles", candidateUrl, validated.buffer, validated.ext)
+      localPath = await saveImageToPublic(IMAGE_DIR, candidateUrl, validated.buffer, validated.ext)
       break
     }
   }
@@ -57,31 +57,26 @@ const fetchAndSaveImage = async (pageCache: Map<string, PageEntry>, pageUrl: str
   return localPath
 }
 
-const backfill = async (filePath: string, cache: Map<string, PageEntry>, force: boolean) => {
-  const raw = await readFile(filePath, "utf-8")
-  const articles: (NewsArticle & { imageUrl?: string | null })[] = JSON.parse(raw)
-
-  for (const [i, article] of articles.entries()) {
-    const alreadyLocal = isLocalImage("articles", article.imageUrl ?? null)
-    if (alreadyLocal && !force) continue
-    const url = article.sources[0]
-    if (!url) continue
-    process.stdout.write(`[${i + 1}/${articles.length}] ${article.title} ... `)
-    const localPath = await fetchAndSaveImage(cache, url)
-    article.imageUrl = localPath
-    console.log(localPath ? "画像あり" : "画像なし")
-  }
-
-  await writeFile(filePath, JSON.stringify(articles, null, 2), "utf-8")
-}
-
 const main = async () => {
   const force = process.argv.includes("--force")
   const cache = new Map<string, PageEntry>()
-  console.log("=== data/news.json ===")
-  await backfill(NEWS_PATH, cache, force)
-  console.log("=== data/drafts/articles.json ===")
-  await backfill(DRAFTS_PATH, cache, force)
+
+  const raw = await readFile(EVENTS_PATH, "utf-8")
+  const eventItems: EventItem[] = JSON.parse(raw)
+
+  console.log("=== data/events.json ===")
+  for (const [i, event] of eventItems.entries()) {
+    const alreadyLocal = isLocalImage(IMAGE_DIR, event.imageUrl ?? null)
+    if (alreadyLocal && !force) continue
+    const url = event.officialUrl || event.source
+    if (!url) continue
+    process.stdout.write(`[${i + 1}/${eventItems.length}] ${event.name} ... `)
+    const localPath = await fetchAndSaveImage(cache, url)
+    event.imageUrl = localPath
+    console.log(localPath ? "画像あり" : "画像なし")
+  }
+
+  await writeFile(EVENTS_PATH, JSON.stringify(eventItems, null, 2) + "\n", "utf-8")
   console.log("完了")
 }
 

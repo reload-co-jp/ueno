@@ -17,6 +17,7 @@
     "generate-articles": "tsx scripts/4-generate-articles.ts",
     "publish-drafts": "tsx scripts/5-publish-drafts.ts",
     "backfill-images": "tsx scripts/6-backfill-images.ts",
+    "backfill-event-images": "tsx scripts/7-backfill-event-images.ts",
     "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe-and-link && pnpm generate-articles"
   },
   "keywords": [],

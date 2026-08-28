@@ -28,6 +28,7 @@ export const generateMetadata = async ({
       title: event.name,
       description: event.summary,
       siteName: SITE_NAME,
+      images: event.imageUrl ? [event.imageUrl] : undefined,
     },
     twitter: {
       card: "summary",
@@ -65,6 +66,13 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
+      {event.imageUrl && (
+        <img
+          src={event.imageUrl}
+          alt=""
+          style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
+        />
+      )}
       <h2 style={{ fontSize: "1.25rem", margin: 0 }}>{event.name}</h2>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.area}
