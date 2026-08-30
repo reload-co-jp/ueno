@@ -15,8 +15,27 @@ export const getSpot = (id: string) => spots.find((s) => s.id === id)
 export const getEvent = (id: string) => events.find((e) => e.id === id)
 export const getArticle = (id: string) => news.find((n) => n.id === id)
 
-// 公開日降順。同日内は画像有無→本文量の充実度で優先表示
+// 関連イベントの開催日と現在日時との差(ms・絶対値)。関連イベントなしはInfinity
+const getEventProximity = (article: NewsArticle): number => {
+  if (article.relatedEventIds.length === 0) return Infinity
+  const now = Date.now()
+  const diffs = article.relatedEventIds
+    .map((id) => getEvent(id))
+    .filter((e): e is EventItem => !!e)
+    .map((e) => Math.abs(new Date(e.startDate).getTime() - now))
+  return diffs.length > 0 ? Math.min(...diffs) : Infinity
+}
+
+// イベントカテゴリ優先→開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
 export const compareArticles = (a: NewsArticle, b: NewsArticle) => {
+  const isEventA = a.category === "event" ? 0 : 1
+  const isEventB = b.category === "event" ? 0 : 1
+  if (isEventA !== isEventB) return isEventA - isEventB
+
+  const proximityA = getEventProximity(a)
+  const proximityB = getEventProximity(b)
+  if (proximityA !== proximityB) return proximityA - proximityB
+
   const dateA = a.publishedAt.slice(0, 10)
   const dateB = b.publishedAt.slice(0, 10)
   if (dateA !== dateB) return dateB.localeCompare(dateA)
