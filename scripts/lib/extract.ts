@@ -64,8 +64,22 @@ const pickLargestFromSrcset = (srcset: string): string | null => {
   return candidates.reduce((a, b) => (b.width > a.width ? b : a)).url
 }
 
+// リサイズ用クエリパラメータでオリジナルより縮小されたサムネイルを配信するCDN。
+// 該当ドメインはクエリを除去し、元画像URLに正規化する(例: PR TIMESのFastly配信サムネは
+// width=295&height=195等が付き、表示100x66→実質195px程度しかなくMIN_SIZE足切りに掛かる)。
+const THUMBNAIL_CDN_HOSTS = ["fastly.net"]
+
+const normalizeImageUrl = (url: URL): URL => {
+  if (THUMBNAIL_CDN_HOSTS.some((host) => url.hostname.endsWith(host))) {
+    url.search = ""
+  }
+  return url
+}
+
 // 記事本文領域内の画像候補を出現順に列挙する。
-// アイコン/ロゴ等の小画像を除外するため、width/height指定があり小さすぎるものは除外。
+// アイコン/ロゴ等の小画像を除外するため、width/height指定が両方とも小さすぎるものは除外。
+// (幅か高さの片方だけが小さいのは横長/縦長サムネイルでも起こりうるため、AND条件にして
+//  PR TIMES一覧ページのような横長サムネ(width=100 height=66等)を誤って除外しない)
 const extractBodyImageCandidates = ($: cheerio.CheerioAPI, pageUrl: string): string[] => {
   const els = $(
     "article img, main img, .entry-content img, .post-content img, .content img"
@@ -77,8 +91,8 @@ const extractBodyImageCandidates = ($: cheerio.CheerioAPI, pageUrl: string): str
     const width = Number.parseInt($el.attr("width") ?? "", 10)
     const height = Number.parseInt($el.attr("height") ?? "", 10)
     if (
-      (Number.isFinite(width) && width < MIN_ATTR_SIZE) ||
-      (Number.isFinite(height) && height < MIN_ATTR_SIZE)
+      (Number.isFinite(width) ? width : Infinity) < MIN_ATTR_SIZE &&
+      (Number.isFinite(height) ? height : Infinity) < MIN_ATTR_SIZE
     ) {
       continue
     }
@@ -88,7 +102,7 @@ const extractBodyImageCandidates = ($: cheerio.CheerioAPI, pageUrl: string): str
     if (!raw) continue
     if (/\.svg(\?|$)/i.test(raw) || EXCLUDED_NAME_PATTERN.test(raw)) continue
     try {
-      const url = new URL(raw, pageUrl).toString()
+      const url = normalizeImageUrl(new URL(raw, pageUrl)).toString()
       if (!urls.includes(url)) urls.push(url)
     } catch {
       continue

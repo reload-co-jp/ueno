@@ -2,7 +2,7 @@
 // 対象: imageUrlが無い記事、および外部URLのままローカル保存されていない記事(旧データ移行用)。
 // 同一sources[0](一覧ページ等)を複数記事が共有する場合、画像候補を出現順に1件ずつ割り当てる
 // (全記事が同じ画像になるのを避けるための簡易対応。意味的な対応関係の精度は保証しない)。
-// 実行: pnpm backfill-images [--force]
+// 実行: pnpm backfill-images [--force] [--source=<URL部分一致文字列>]
 import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { extractImageCandidates } from "./lib/extract"
@@ -57,15 +57,21 @@ const fetchAndSaveImage = async (pageCache: Map<string, PageEntry>, pageUrl: str
   return localPath
 }
 
-const backfill = async (filePath: string, cache: Map<string, PageEntry>, force: boolean) => {
+const backfill = async (
+  filePath: string,
+  cache: Map<string, PageEntry>,
+  force: boolean,
+  sourceFilter: string | null
+) => {
   const raw = await readFile(filePath, "utf-8")
   const articles: (NewsArticle & { imageUrl?: string | null })[] = JSON.parse(raw)
 
   for (const [i, article] of articles.entries()) {
-    const alreadyLocal = isLocalImage("articles", article.imageUrl ?? null)
-    if (alreadyLocal && !force) continue
     const url = article.sources[0]
     if (!url) continue
+    if (sourceFilter && !url.includes(sourceFilter)) continue
+    const alreadyLocal = isLocalImage("articles", article.imageUrl ?? null)
+    if (alreadyLocal && !force) continue
     process.stdout.write(`[${i + 1}/${articles.length}] ${article.title} ... `)
     const localPath = await fetchAndSaveImage(cache, url)
     article.imageUrl = localPath
@@ -77,11 +83,13 @@ const backfill = async (filePath: string, cache: Map<string, PageEntry>, force: 
 
 const main = async () => {
   const force = process.argv.includes("--force")
+  const sourceArg = process.argv.find((a) => a.startsWith("--source="))
+  const sourceFilter = sourceArg ? sourceArg.slice("--source=".length) : null
   const cache = new Map<string, PageEntry>()
   console.log("=== data/news.json ===")
-  await backfill(NEWS_PATH, cache, force)
+  await backfill(NEWS_PATH, cache, force, sourceFilter)
   console.log("=== data/drafts/articles.json ===")
-  await backfill(DRAFTS_PATH, cache, force)
+  await backfill(DRAFTS_PATH, cache, force, sourceFilter)
   console.log("完了")
 }
 
