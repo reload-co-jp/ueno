@@ -1,5 +1,5 @@
 import type { Spot, Store } from "@/lib/types"
-import { runClaudeText } from "./claude-cli"
+import { runClaudeJson } from "./claude-cli"
 
 // README「7. 重複管理」準拠
 // 判定に使う要素: 店舗名・住所・電話番号・URL・緯度経度・LLMによる判定
@@ -92,18 +92,55 @@ export const matchEntity = (
     .sort((a, b) => b.nameSimilarity - a.nameSimilarity)
 }
 
-// ambiguousな候補のみLLMに最終判定を委ねる(README「LLMによる判定」)
-export const llmJudgeDuplicate = async (
-  candidateName: string,
-  candidateContext: string,
-  existingName: string,
+export interface DuplicateJudgePair {
+  key: string
+  candidateName: string
+  candidateContext: string
+  existingName: string
   existingContext: string
-): Promise<boolean> => {
-  const prompt = `2つの店舗・施設情報が同一の実体を指すかを判定する。表記ゆれ(全角半角/スペース/支店表記など)は同一とみなす。
-A: ${candidateName} (${candidateContext})
-B: ${existingName} (${existingContext})
-同一か？ yes か no のみで答えよ。`
+}
 
-  const result = await runClaudeText(prompt)
-  return result?.trim().toLowerCase().startsWith("y") ?? false
+const JUDGE_SCHEMA = {
+  type: "object",
+  properties: {
+    judgements: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          index: { type: "number" },
+          isSame: { type: "boolean" },
+        },
+        required: ["index", "isSame"],
+      },
+    },
+  },
+  required: ["judgements"],
+}
+
+const BATCH_CHUNK_SIZE = 50 // 1リクエストのペア数上限(プロンプト肥大化を避ける)
+
+// ambiguousな候補のみLLMに最終判定を委ねる(README「LLMによる判定」)。
+// 呼び出し元でペアをユニーク化(同一候補×既存Entityは1度だけ)した上で渡すこと。
+// 1件ずつ`claude -p`を起動すると件数分のプロセス起動コスト・システムプロンプト分の
+// トークンが重複するため、チャンク単位でまとめて1回のJSON構造化出力で判定する。
+export const llmJudgeDuplicateBatch = async (
+  pairs: DuplicateJudgePair[]
+): Promise<Map<string, boolean>> => {
+  const result = new Map<string, boolean>()
+  for (let i = 0; i < pairs.length; i += BATCH_CHUNK_SIZE) {
+    const chunk = pairs.slice(i, i + BATCH_CHUNK_SIZE)
+    const prompt = `以下の店舗・施設ペアがそれぞれ同一の実体を指すかを判定する。表記ゆれ(全角半角/スペース/支店表記など)は同一とみなす。各ペアについてindexとisSameを回答せよ。
+${chunk.map((p, i) => `${i + 1}. A: ${p.candidateName} (${p.candidateContext}) / B: ${p.existingName} (${p.existingContext})`).join("\n")}`
+
+    const res = await runClaudeJson<{ judgements: { index: number; isSame: boolean }[] }>(
+      prompt,
+      JUDGE_SCHEMA
+    )
+    for (const j of res?.judgements ?? []) {
+      const pair = chunk[j.index - 1]
+      if (pair) result.set(pair.key, j.isSame)
+    }
+  }
+  return result
 }
