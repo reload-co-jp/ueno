@@ -78,5 +78,95 @@
     "lng": 139.7745,
     "officialUrl": "https://www.matsuzakaya.co.jp/ueno/",
     "area": "上野広小路"
+  },
+  {
+    "id": "ueno-mori",
+    "name": "上野の森美術館",
+    "type": "美術館",
+    "address": "東京都台東区上野公園1-2",
+    "lat": 35.7129,
+    "lng": 139.7748,
+    "officialUrl": "https://www.ueno-mori.org/",
+    "area": "上野公園"
+  },
+  {
+    "id": "geidai",
+    "name": "東京藝術大学大学美術館",
+    "type": "美術館",
+    "address": "東京都台東区上野公園12-8",
+    "lat": 35.7192,
+    "lng": 139.7719,
+    "officialUrl": "https://museum.geidai.ac.jp/",
+    "area": "上野公園"
+  },
+  {
+    "id": "nmwa",
+    "name": "国立西洋美術館",
+    "type": "美術館",
+    "address": "東京都台東区上野公園7-7",
+    "lat": 35.7154,
+    "lng": 139.776,
+    "officialUrl": "https://www.nmwa.go.jp/jp/",
+    "area": "上野公園"
+  },
+  {
+    "id": "shitamachi-museum",
+    "name": "台東区立したまちミュージアム",
+    "type": "博物館",
+    "address": "東京都台東区上野公園2-1",
+    "lat": 35.7103,
+    "lng": 139.7727,
+    "officialUrl": "https://www.taitogeibun.net/shitamachi/",
+    "area": "上野公園"
+  },
+  {
+    "id": "t-bunka",
+    "name": "東京文化会館",
+    "type": "文化施設",
+    "address": "東京都台東区上野公園5-45",
+    "lat": 35.7144,
+    "lng": 139.7753,
+    "officialUrl": "https://www.t-bunka.jp/",
+    "area": "上野公園"
+  },
+  {
+    "id": "kodomo-library",
+    "name": "国際子ども図書館",
+    "type": "図書館",
+    "address": "東京都台東区上野公園12-49",
+    "lat": 35.7189,
+    "lng": 139.7726,
+    "officialUrl": "https://www.kodomo.go.jp/",
+    "area": "上野公園"
+  },
+  {
+    "id": "sougakudou",
+    "name": "旧東京音楽学校奏楽堂",
+    "type": "文化施設",
+    "address": "東京都台東区上野公園8-43",
+    "lat": 35.7181,
+    "lng": 139.7731,
+    "officialUrl": "https://www.taitogeibun.net/sougakudou/",
+    "area": "上野公園"
+  },
+  {
+    "id": "bentendo",
+    "name": "不忍池辯天堂",
+    "type": "寺院",
+    "address": "東京都台東区上野公園2-1",
+    "lat": 35.7118,
+    "lng": 139.7713,
+    "officialUrl": "https://bentendo.kaneiji.jp/",
+    "area": "上野公園"
+  },
+  {
+    "id": "kyu-iwasaki-tei",
+    "name": "旧岩崎邸庭園",
+    "type": "庭園",
+    "address": "東京都台東区池之端1-3-45",
+    "lat": 35.7095,
+    "lng": 139.7675,
+    "officialUrl": "https://www.tokyo-park.or.jp/park/kyu-iwasaki-tei/index.html",
+    "area": "池之端"
   }
 ]
