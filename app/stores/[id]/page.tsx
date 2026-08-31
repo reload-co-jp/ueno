@@ -64,7 +64,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         >
           {store.category}
         </span>
-        <h2 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{store.name}</h2>
+        <h1 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{store.name}</h1>
         <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem", color: "#ccc" }}>
           <li>住所: {store.address}</li>
           <li>営業時間: {store.hours}</li>

@@ -30,7 +30,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 
   const articleEntries = news.map((n) => ({
     url: `${SITE_URL}/articles/${n.id}/`,
-    lastModified: n.publishedAt,
+    lastModified: n.updatedAt ?? n.publishedAt,
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }))

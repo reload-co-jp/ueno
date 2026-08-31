@@ -70,7 +70,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     description: article.summary,
     image: [absoluteUrl(article.imageUrl ?? "/images/placeholder.jpg")],
     datePublished: article.publishedAt,
-    dateModified: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     articleSection: CATEGORY_LABELS[article.category],
     author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: { "@type": "Organization", name: SITE_NAME },
@@ -107,11 +107,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       {article.imageUrl && (
         <img
           src={article.imageUrl}
-          alt=""
+          alt={article.title}
           style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
         />
       )}
-      <h2 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h2>
+      <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h1>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateJp(article.publishedAt)} ・ {article.area}
       </p>
@@ -137,7 +137,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
               </li>
             ))}
             {relatedEvents.map((e) => (
-              <li key={e!.id}>イベント: {e!.name}</li>
+              <li key={e!.id}>
+                <Link href={`/events/${e!.id}`} style={{ color: "#c0483a" }}>
+                  イベント: {e!.name}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

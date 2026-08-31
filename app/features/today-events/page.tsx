@@ -15,7 +15,7 @@ const Page: FC = () => {
   return (
     <div>
       <Breadcrumb items={[{ label: "特集" }, { label: "今日の上野イベント" }]} />
-      <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今日の上野イベント</h2>
+      <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今日の上野イベント</h1>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>本日開催中のイベントはない。</p>
       ) : (

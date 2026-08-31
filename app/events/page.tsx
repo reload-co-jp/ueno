@@ -13,7 +13,7 @@ const Page: FC = () => {
   return (
     <div>
       <Breadcrumb items={[{ label: "イベント" }]} />
-      <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>イベント</h2>
+      <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>イベント</h1>
       <CardGrid>
         {events.map((event) => (
           <EventCard key={event.id} event={event} />

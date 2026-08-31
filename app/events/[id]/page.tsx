@@ -79,11 +79,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       {event.imageUrl && (
         <img
           src={event.imageUrl}
-          alt=""
+          alt={event.name}
           style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
         />
       )}
-      <h2 style={{ fontSize: "1.25rem", margin: 0 }}>{event.name}</h2>
+      <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{event.name}</h1>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.area}
       </p>

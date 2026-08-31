@@ -16,7 +16,7 @@ const Page: FC = () => {
   return (
     <div>
       <Breadcrumb items={[{ label: "特集" }, { label: "今週末の上野イベント" }]} />
-      <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今週末の上野イベント</h2>
+      <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>今週末の上野イベント</h1>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>今週末開催のイベントはない。</p>
       ) : (

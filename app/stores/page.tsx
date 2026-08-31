@@ -11,7 +11,7 @@ export const metadata = {
 const Page: FC = () => (
   <div>
     <Breadcrumb items={[{ label: "店舗" }]} />
-    <h2 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>店舗</h2>
+    <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>店舗</h1>
     <CardGrid>
       {stores.map((store) => (
         <StoreCard key={store.id} store={store} />

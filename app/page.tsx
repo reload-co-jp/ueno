@@ -33,7 +33,7 @@ const Page: FC = () => {
           >
             <img
               src={hero.imageUrl ?? "/images/placeholder.jpg"}
-              alt=""
+              alt={hero.title}
               style={{
                 width: "100%",
                 aspectRatio: "21 / 9",
@@ -61,7 +61,7 @@ const Page: FC = () => {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
         <section style={{ flex: "3 1 22rem" }}>
-          <h2 style={sectionTitleStyle}>上野の最新情報</h2>
+          <h1 style={sectionTitleStyle}>上野の最新情報</h1>
           <div>
             {rest.map((article) => (
               <Link
@@ -78,7 +78,7 @@ const Page: FC = () => {
               >
                 <img
                   src={article.imageUrl ?? "/images/placeholder.jpg"}
-                  alt=""
+                  alt={article.title}
                   style={{
                     width: "9rem",
                     aspectRatio: "4 / 3",

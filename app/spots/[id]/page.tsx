@@ -62,7 +62,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         >
           {spot.type}
         </span>
-        <h2 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{spot.name}</h2>
+        <h1 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{spot.name}</h1>
         <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem", color: "#ccc" }}>
           <li>住所: {spot.address}</li>
           <li>エリア: {spot.area}</li>

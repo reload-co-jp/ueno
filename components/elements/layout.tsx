@@ -39,12 +39,13 @@ export const Nav: FC = () => (
   </nav>
 )
 
-export const Title: FC<ComponentProps<"h1">> = ({
+// サイト名表示用。ページ固有の主題はh1で各ページが持つため、ここはpに留める。
+export const Title: FC<ComponentProps<"p">> = ({
   style,
   children,
   ...props
 }) => (
-  <h1
+  <p
     style={{
       fontSize: "3.5rem",
       fontWeight: 250,
@@ -55,7 +56,7 @@ export const Title: FC<ComponentProps<"h1">> = ({
     {...props}
   >
     {children}
-  </h1>
+  </p>
 )
 
 export const Header: FC<{ children: ReactNode }> = ({ children }) => (

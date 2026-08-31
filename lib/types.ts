@@ -80,6 +80,7 @@ export interface NewsArticle {
   title: string
   category: Category
   publishedAt: string
+  updatedAt?: string
   summary: string
   body: string
   sources: string[]

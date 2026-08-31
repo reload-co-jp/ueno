@@ -33,7 +33,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
   <Link href={`/articles/${article.id}`} className="card" style={cardStyle}>
     <img
       src={article.imageUrl ?? "/images/placeholder.jpg"}
-      alt=""
+      alt={article.title}
       style={{
         width: "100%",
         aspectRatio: "16 / 9",
@@ -60,7 +60,7 @@ export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
   <Link href={`/events/${event.id}`} className="card" style={cardStyle}>
     <img
       src={event.imageUrl ?? "/images/placeholder.jpg"}
-      alt=""
+      alt={event.name}
       style={{
         width: "100%",
         aspectRatio: "16 / 9",

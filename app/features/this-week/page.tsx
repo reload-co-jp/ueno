@@ -22,7 +22,7 @@ const Page: FC = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <Breadcrumb items={[{ label: "特集" }, { label: "今週の上野" }]} />
-      <h2 style={{ fontSize: "1.125rem", margin: 0 }}>今週の上野</h2>
+      <h1 style={{ fontSize: "1.125rem", margin: 0 }}>今週の上野</h1>
 
       <div>
         <h3 style={{ fontSize: "1rem", marginBottom: ".75rem" }}>開催中・開催予定イベント</h3>

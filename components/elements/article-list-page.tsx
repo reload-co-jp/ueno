@@ -10,7 +10,7 @@ export const ArticleListPage: FC<{
 }> = ({ title, articles, breadcrumbItems = [{ label: title }] }) => (
   <div>
     <Breadcrumb items={breadcrumbItems} />
-    <h2
+    <h1
       style={{
         fontSize: "1.125rem",
         paddingBottom: ".5rem",
@@ -19,7 +19,7 @@ export const ArticleListPage: FC<{
       }}
     >
       {title}
-    </h2>
+    </h1>
     {articles.length === 0 ? (
       <p style={{ color: "#a39c8c" }}>該当する記事はまだない。</p>
     ) : (
