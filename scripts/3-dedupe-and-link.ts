@@ -181,8 +181,14 @@ const main = async () => {
   // --- Pass2: 判定結果を使ってドラフト構築(LLM呼び出しなし) ---
   const articleDrafts: ArticleDraft[] = []
   const newEntityCandidates: NewEntityCandidate[] = []
+  // 一覧ページ内の別項目同士を誤マージしないためのガード。
+  // sources配列にはdetail_url(該当項目の詳細ページURL)を優先して入れるため、
+  // 一覧ページURLでの重複判定は別途このMapで行う(draftId -> 取り込み済みページキー)。
+  const draftPageKeys = new Map<string, string[]>()
 
   for (const { data, item, draftId, storeMatches, spotMatches } of prepared) {
+    const pageKey = `${data.url}#${data.fetchedAt}`
+    const sourceUrl = item.detail_url || data.url
     const matchNotes: string[] = []
     const relatedStoreIds: string[] = []
     const relatedSpotIds: string[] = []
@@ -195,7 +201,7 @@ const main = async () => {
         newEntityCandidates.push({
           name: item.store,
           kind: "store",
-          source: data.url,
+          source: sourceUrl,
           reason: matchNotes.at(-1) ?? "既存Entityに該当なし(新規候補)",
         })
       }
@@ -209,11 +215,16 @@ const main = async () => {
 
     // 別ソースが同一内容を報じているケースは、新規記事にせず既存ドラフトへ統合する
     // (README「6. Entity管理」「7. 重複管理」の考え方を記事にも適用)
+    // 同一ページ内の別項目同士は(タイトルが似ていても)誤マージしないよう pageKey で除外する。
     const mergeTarget = articleDrafts.find(
-      (d) => d.category === item.category && !d.sources.includes(data.url) && isSameArticle(d.title, item.title)
+      (d) =>
+        d.category === item.category &&
+        !(draftPageKeys.get(d.id) ?? []).includes(pageKey) &&
+        isSameArticle(d.title, item.title)
     )
     if (mergeTarget) {
-      if (!mergeTarget.sources.includes(data.url)) mergeTarget.sources.push(data.url)
+      draftPageKeys.get(mergeTarget.id)?.push(pageKey)
+      if (!mergeTarget.sources.includes(sourceUrl)) mergeTarget.sources.push(sourceUrl)
       for (const id of relatedStoreIds) {
         if (!mergeTarget.relatedStoreIds.includes(id)) mergeTarget.relatedStoreIds.push(id)
       }
@@ -228,7 +239,7 @@ const main = async () => {
       if (!mergeTarget.imageUrl && item.image_url) {
         mergeTarget.imageUrl = item.image_url
       }
-      mergeTarget.matchNotes.push(...matchNotes, `複数ソースに統合: ${data.url}`)
+      mergeTarget.matchNotes.push(...matchNotes, `複数ソースに統合: ${sourceUrl}`)
       continue
     }
 
@@ -239,7 +250,7 @@ const main = async () => {
       publishedAt: data.fetchedAt,
       summary: item.summary,
       body: item.summary,
-      sources: [data.url],
+      sources: [sourceUrl],
       area: item.area || "上野",
       relatedStoreIds,
       relatedSpotIds,
@@ -249,6 +260,7 @@ const main = async () => {
       extracted: item,
     }
     articleDrafts.push(draft)
+    draftPageKeys.set(draftId, [pageKey])
   }
 
   await writeFile(

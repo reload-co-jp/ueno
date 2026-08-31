@@ -29,6 +29,10 @@ export interface Source {
   //       ノイズ記事の混入を防ぐ)
   // false: URL自体が上野エリア専用なので無条件で採用する(店舗・施設の公式サイト等)
   strictAreaFilter: boolean
+  // 一覧ページ用: 個別記事詳細へのリンクを検出する部分文字列パターン。
+  // 設定すると、このパターンを含むhrefを詳細ページURL候補として収集し、
+  // sourcesには一覧ページURLでなく該当項目の詳細ページURLを採用する(extract.ts参照)。
+  detailLinkPattern?: string
 }
 
 export const SOURCES: Source[] = [
@@ -63,6 +67,7 @@ export const SOURCES: Source[] = [
     type: "press_release",
     categoryHints: ["new_opening", "event", "popup", "sale", "campaign", "new_product"],
     strictAreaFilter: true,
+    detailLinkPattern: "/main/html/rd/p/",
   },
   {
     id: "prtimes-ueno-marui",
@@ -71,6 +76,7 @@ export const SOURCES: Source[] = [
     type: "press_release",
     categoryHints: ["new_opening", "event", "popup", "sale", "campaign"],
     strictAreaFilter: true,
+    detailLinkPattern: "/main/html/rd/p/",
   },
   {
     id: "tabelog-ueno-new",

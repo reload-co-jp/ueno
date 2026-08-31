@@ -20,11 +20,16 @@ export interface ExtractedItem {
   official_url: string | null
   summary: string
   image_url: string | null
+  // 一覧ページ(source.detailLinkPattern設定時)における、この項目の詳細ページURL。
+  // 一覧ページURLでなくこちらをsourcesに採用する(scripts/3-dedupe-and-link.ts参照)。
+  detail_url: string | null
 }
 
-// LLM抽出の生出力用。image_indexは画像候補配列(ExtractImageCandidates)のインデックス。
-interface LlmExtractedItem extends Omit<ExtractedItem, "image_url"> {
+// LLM抽出の生出力用。image_indexは画像候補配列(extractImageCandidates)、
+// detail_url_indexは詳細リンク候補配列(extractDetailLinkCandidates)のインデックス。
+interface LlmExtractedItem extends Omit<ExtractedItem, "image_url" | "detail_url"> {
   image_index: number | null
+  detail_url_index: number | null
 }
 
 const MAX_CHARS = 12000
@@ -132,6 +137,27 @@ export const extractImageCandidates = (html: string, pageUrl: string): string[] 
   }
 }
 
+// 一覧ページ内の個別記事詳細へのリンクを出現順に列挙する(source.detailLinkPattern設定時のみ使用)。
+export const extractDetailLinkCandidates = (
+  html: string,
+  pageUrl: string,
+  pattern: string
+): string[] => {
+  const $ = cheerio.load(html)
+  const urls: string[] = []
+  $("a[href]").each((_, el) => {
+    const href = $(el).attr("href")
+    if (!href || !href.includes(pattern)) return
+    try {
+      const url = new URL(href, pageUrl).toString()
+      if (!urls.includes(url)) urls.push(url)
+    } catch {
+      // skip malformed href
+    }
+  })
+  return urls
+}
+
 const CATEGORY_VALUES: Category[] = [
   "event",
   "new_opening",
@@ -169,6 +195,7 @@ const EXTRACT_SCHEMA = {
           official_url: { type: ["string", "null"] },
           summary: { type: "string" },
           image_index: { type: ["integer", "null"] },
+          detail_url_index: { type: ["integer", "null"] },
         },
         required: ["category", "title", "area", "summary"],
       },
@@ -177,13 +204,22 @@ const EXTRACT_SCHEMA = {
   required: ["items"],
 }
 
-const buildPrompt = (source: Source, text: string, imageCandidates: string[]): string => {
+const buildPrompt = (
+  source: Source,
+  text: string,
+  imageCandidates: string[],
+  detailLinkCandidates: string[]
+): string => {
   // 画像候補がある場合、各項目にどの画像が対応するかLLMに選ばせる。
   // 候補が1件でも、1ページに複数記事が載るサイト(自治体イベント一覧等)では
   // その画像が特定の1項目にしか対応しないことがあるため、候補0件の時のみ省略する。
   const imageSection =
     imageCandidates.length > 0
       ? `\n画像候補(出現順、0始まりのインデックス):\n${imageCandidates.map((url, i) => `${i}: ${url}`).join("\n")}\n`
+      : ""
+  const detailLinkSection =
+    detailLinkCandidates.length > 0
+      ? `\n詳細ページリンク候補(出現順、0始まりのインデックス):\n${detailLinkCandidates.map((url, i) => `${i}: ${url}`).join("\n")}\n`
       : ""
 
   return `あなたは上野エリア地域メディアの情報整理担当。
@@ -195,9 +231,10 @@ const buildPrompt = (source: Source, text: string, imageCandidates: string[]): s
 - 本文に明記されていない項目はnullにする。推測で埋めない。
 - areaは「上野」に関連する情報のみを対象にする。無関係な地域の情報は含めない。
 ${imageCandidates.length > 0 ? "- 各項目のimage_indexには、その項目の内容に最も対応する画像候補のインデックスを入れる。1ページに複数項目がある場合、画像候補は特定の1項目にのみ対応することがある。対応する画像が無ければnullにする(他項目の画像を代用しない)。" : ""}
+${detailLinkCandidates.length > 0 ? "- 各項目のdetail_url_indexには、その項目の詳細ページに対応するリンク候補のインデックスを入れる。対応するリンクが無ければnullにする。" : ""}
 情報源: ${source.name}
 URL: ${source.url}
-${imageSection}
+${imageSection}${detailLinkSection}
 本文:
 ${text}`
 }
@@ -211,21 +248,28 @@ export const extractFromHtml = async (
   if (!text) return []
 
   const imageCandidates = extractImageCandidates(html, pageUrl)
+  const detailLinkCandidates = source.detailLinkPattern
+    ? extractDetailLinkCandidates(html, pageUrl, source.detailLinkPattern)
+    : []
   const result = await runClaudeJson<{ items: LlmExtractedItem[] }>(
-    buildPrompt(source, text, imageCandidates),
+    buildPrompt(source, text, imageCandidates, detailLinkCandidates),
     EXTRACT_SCHEMA
   )
 
-  // 候補0件ならimage_urlは常にnull。候補が1件でも、1ページに複数項目がある場合は
-  // その画像が特定の1項目にしか対応しないことがあるため、LLMのimage_index判定に従う
-  // (フォールバックで候補[0]を使い回さない。使い回すと無関係項目に誤った画像が付く)。
+  // 候補0件ならimage_url/detail_urlは常にnull。候補が1件でも、1ページに複数項目がある場合は
+  // その画像/リンクが特定の1項目にしか対応しないことがあるため、LLMのindex判定に従う
+  // (フォールバックで候補[0]を使い回さない。使い回すと無関係項目に誤った画像/リンクが付く)。
   const items = result?.items ?? []
   return items.map((item): ExtractedItem => {
-    const { image_index, ...rest } = item
+    const { image_index, detail_url_index, ...rest } = item
     const imageUrl =
       items.length <= 1 && imageCandidates.length <= 1
         ? (imageCandidates[0] ?? null)
         : (imageCandidates[image_index ?? -1] ?? null)
-    return { ...rest, image_url: imageUrl }
+    const detailUrl =
+      items.length <= 1 && detailLinkCandidates.length <= 1
+        ? (detailLinkCandidates[0] ?? null)
+        : (detailLinkCandidates[detail_url_index ?? -1] ?? null)
+    return { ...rest, image_url: imageUrl, detail_url: detailUrl }
   })
 }
