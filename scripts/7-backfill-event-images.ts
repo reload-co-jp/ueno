@@ -6,6 +6,7 @@
 import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { extractImageCandidates } from "./lib/extract"
+import { findOfficialUrl } from "./lib/find-official-page"
 import { fetchAndValidateImage, isLocalImage, saveImageToPublic } from "./lib/save-image"
 import { sleep, USER_AGENT } from "./lib/fetch-raw"
 import type { EventItem } from "@/lib/types"
@@ -71,7 +72,20 @@ const main = async () => {
     const url = event.officialUrl || event.source
     if (!url) continue
     process.stdout.write(`[${i + 1}/${eventItems.length}] ${event.name} ... `)
-    const localPath = await fetchAndSaveImage(cache, url)
+
+    // officialUrl===source: 一覧ページ(kensetsu.metro.tokyo.lg.jp等)に詳細ページ・画像が
+    // 無く、抽出時に詳細URLを特定できなかったイベント。イベント名でWeb検索し主催団体側の
+    // 公式詳細ページを探してから、そのページで画像取得を試みる。
+    let targetUrl = url
+    if (event.officialUrl === event.source) {
+      const found = await findOfficialUrl(event.name, event.organizer || null, event.area)
+      if (found) {
+        event.officialUrl = found
+        targetUrl = found
+      }
+    }
+
+    const localPath = await fetchAndSaveImage(cache, targetUrl)
     event.imageUrl = localPath
     console.log(localPath ? "画像あり" : "画像なし")
   }
