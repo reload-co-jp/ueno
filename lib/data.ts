@@ -15,6 +15,12 @@ export const getSpot = (id: string) => spots.find((s) => s.id === id)
 export const getEvent = (id: string) => events.find((e) => e.id === id)
 export const getArticle = (id: string) => news.find((n) => n.id === id)
 
+// 記事に画像が無い場合、関連スポットの画像をフォールバックとして使う
+export const getArticleImageUrl = (article: NewsArticle): string | null =>
+  article.imageUrl ??
+  article.relatedSpotIds.map(getSpot).find((s) => s?.imageUrl)?.imageUrl ??
+  null
+
 // 関連イベントの開催日と現在日時との差(ms・絶対値)。関連イベントなしはInfinity
 const getEventProximity = (article: NewsArticle): number => {
   if (article.relatedEventIds.length === 0) return Infinity

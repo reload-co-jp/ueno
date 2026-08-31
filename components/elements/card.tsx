@@ -8,6 +8,7 @@ import {
   EventItem,
 } from "@/lib/types"
 import { formatDateJp, formatDateRangeJp } from "@/lib/date"
+import { getArticleImageUrl } from "@/lib/data"
 
 const cardStyle: React.CSSProperties = {
   display: "block",
@@ -32,7 +33,7 @@ export const badgeStyle: React.CSSProperties = {
 export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
   <Link href={`/articles/${article.id}`} className="card" style={cardStyle}>
     <img
-      src={article.imageUrl ?? "/images/placeholder.jpg"}
+      src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
       alt={article.title}
       style={{
         width: "100%",

@@ -5,7 +5,15 @@ import { FC } from "react"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
-import { getArticle, getEvent, getRelatedArticles, getSpot, getStore, news } from "@/lib/data"
+import {
+  getArticle,
+  getArticleImageUrl,
+  getEvent,
+  getRelatedArticles,
+  getSpot,
+  getStore,
+  news,
+} from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
 import { absoluteUrl, jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
 import { CATEGORY_LABELS, Category } from "@/lib/types"
@@ -31,6 +39,7 @@ export const generateMetadata = async ({
   const article = getArticle(id)
   if (!article) return {}
   const url = absoluteUrl(`/articles/${article.id}`)
+  const imageUrl = getArticleImageUrl(article)
   return {
     title: article.title,
     description: article.summary,
@@ -42,7 +51,7 @@ export const generateMetadata = async ({
       description: article.summary,
       siteName: SITE_NAME,
       publishedTime: article.publishedAt,
-      images: article.imageUrl ? [article.imageUrl] : undefined,
+      images: imageUrl ? [imageUrl] : undefined,
     },
     twitter: {
       card: "summary",
@@ -61,6 +70,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedSpots = article.relatedSpotIds.map(getSpot).filter(Boolean)
   const relatedEvents = article.relatedEventIds.map(getEvent).filter(Boolean)
   const relatedArticles = getRelatedArticles(article)
+  const imageUrl = getArticleImageUrl(article)
 
   const url = absoluteUrl(`/articles/${article.id}`)
   const jsonLd = {
@@ -68,7 +78,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     "@type": "NewsArticle",
     headline: article.title,
     description: article.summary,
-    image: [absoluteUrl(article.imageUrl ?? "/images/placeholder.jpg")],
+    image: [absoluteUrl(imageUrl ?? "/images/placeholder.jpg")],
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     articleSection: CATEGORY_LABELS[article.category],
@@ -104,9 +114,9 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       >
         {CATEGORY_LABELS[article.category]}
       </span>
-      {article.imageUrl && (
+      {imageUrl && (
         <img
-          src={article.imageUrl}
+          src={imageUrl}
           alt={article.title}
           style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
         />
