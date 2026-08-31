@@ -95,7 +95,17 @@ export const StoreCard: FC<{ store: Store }> = ({ store }) => (
 
 export const SpotCard: FC<{ spot: Spot }> = ({ spot }) => (
   <Link href={`/spots/${spot.id}`} className="card" style={cardStyle}>
-    <div style={{ padding: "1rem" }}>
+    <img
+      src={spot.imageUrl ?? "/images/placeholder.jpg"}
+      alt={spot.name}
+      style={{
+        width: "100%",
+        aspectRatio: "16 / 9",
+        objectFit: "cover",
+        marginBottom: ".75rem",
+      }}
+    />
+    <div style={{ padding: "0 .5rem 1rem" }}>
       <span style={badgeStyle}>{spot.type}</span>
       <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>

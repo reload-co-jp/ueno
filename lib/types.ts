@@ -52,6 +52,7 @@ export interface Spot {
   lng: number
   officialUrl: string
   area: string
+  imageUrl?: string | null
 }
 
 // README「5. 管理する情報 - イベント」準拠

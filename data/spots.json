@@ -7,7 +7,8 @@
     "lat": 35.7147,
     "lng": 139.7737,
     "officialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/94e77b6a446b8b47.jpg"
   },
   {
     "id": "tobikan",
@@ -17,7 +18,8 @@
     "lat": 35.7159,
     "lng": 139.7727,
     "officialUrl": "https://www.tobikan.jp/exhibition/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/c5033d4be909f09f.jpg"
   },
   {
     "id": "tnm",
@@ -27,7 +29,8 @@
     "lat": 35.7188,
     "lng": 139.7765,
     "officialUrl": "https://www.tnm.jp/modules/r_free_page/index.php?id=1255",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/f6a8227c5c9536ed.jpg"
   },
   {
     "id": "kahaku",
@@ -37,7 +40,8 @@
     "lat": 35.7168,
     "lng": 139.7756,
     "officialUrl": "https://www.kahaku.go.jp/tenji/exhibitions.html",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/cfbd55dedb229cc0.png"
   },
   {
     "id": "ueno-zoo",
@@ -47,7 +51,8 @@
     "lat": 35.7166,
     "lng": 139.7714,
     "officialUrl": "https://www.tokyo-zoo.net/ueno/events/index.html",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/92168def115b9115.png"
   },
   {
     "id": "ueno-marui",
@@ -57,7 +62,8 @@
     "lat": 35.7091,
     "lng": 139.7746,
     "officialUrl": "https://www.0101.co.jp/058/",
-    "area": "上野駅前"
+    "area": "上野駅前",
+    "imageUrl": null
   },
   {
     "id": "ecute-ueno",
@@ -67,7 +73,8 @@
     "lat": 35.7138,
     "lng": 139.7773,
     "officialUrl": "https://www.ecute.jp/ueno/",
-    "area": "上野駅"
+    "area": "上野駅",
+    "imageUrl": "/images/spots/824f0ba050deb815.jpg"
   },
   {
     "id": "matsuzakaya-ueno",
@@ -77,7 +84,8 @@
     "lat": 35.7074,
     "lng": 139.7745,
     "officialUrl": "https://www.matsuzakaya.co.jp/ueno/",
-    "area": "上野広小路"
+    "area": "上野広小路",
+    "imageUrl": null
   },
   {
     "id": "ueno-mori",
@@ -87,7 +95,8 @@
     "lat": 35.7129,
     "lng": 139.7748,
     "officialUrl": "https://www.ueno-mori.org/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/5dd3c8581cf95db9.jpg"
   },
   {
     "id": "geidai",
@@ -97,7 +106,8 @@
     "lat": 35.7192,
     "lng": 139.7719,
     "officialUrl": "https://museum.geidai.ac.jp/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/2b55aac1d99ce650.jpg"
   },
   {
     "id": "nmwa",
@@ -107,7 +117,8 @@
     "lat": 35.7154,
     "lng": 139.776,
     "officialUrl": "https://www.nmwa.go.jp/jp/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/9341d74a5be84230.png"
   },
   {
     "id": "shitamachi-museum",
@@ -117,7 +128,8 @@
     "lat": 35.7103,
     "lng": 139.7727,
     "officialUrl": "https://www.taitogeibun.net/shitamachi/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": null
   },
   {
     "id": "t-bunka",
@@ -127,7 +139,8 @@
     "lat": 35.7144,
     "lng": 139.7753,
     "officialUrl": "https://www.t-bunka.jp/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": null
   },
   {
     "id": "kodomo-library",
@@ -137,7 +150,8 @@
     "lat": 35.7189,
     "lng": 139.7726,
     "officialUrl": "https://www.kodomo.go.jp/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": "/images/spots/601e143b5049e78e.webp"
   },
   {
     "id": "sougakudou",
@@ -147,7 +161,8 @@
     "lat": 35.7181,
     "lng": 139.7731,
     "officialUrl": "https://www.taitogeibun.net/sougakudou/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": null
   },
   {
     "id": "bentendo",
@@ -157,7 +172,8 @@
     "lat": 35.7118,
     "lng": 139.7713,
     "officialUrl": "https://bentendo.kaneiji.jp/",
-    "area": "上野公園"
+    "area": "上野公園",
+    "imageUrl": null
   },
   {
     "id": "kyu-iwasaki-tei",
@@ -167,6 +183,7 @@
     "lat": 35.7095,
     "lng": 139.7675,
     "officialUrl": "https://www.tokyo-park.or.jp/park/kyu-iwasaki-tei/index.html",
-    "area": "池之端"
+    "area": "池之端",
+    "imageUrl": "/images/spots/e6b0185c839cd308.jpg"
   }
 ]

@@ -49,6 +49,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
       <Breadcrumb items={[{ label: "施設・スポット", href: "/spots" }, { label: spot.name }]} />
+      <img
+        src={spot.imageUrl ?? "/images/placeholder.jpg"}
+        alt={spot.name}
+        style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", borderRadius: ".5rem" }}
+      />
       <div>
         <span
           style={{
