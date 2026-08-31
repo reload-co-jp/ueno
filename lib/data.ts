@@ -21,25 +21,26 @@ export const getArticleImageUrl = (article: NewsArticle): string | null =>
   article.relatedSpotIds.map(getSpot).find((s) => s?.imageUrl)?.imageUrl ??
   null
 
-// 関連イベントの開催日と現在日時との差(ms・絶対値)。関連イベントなしはInfinity
+// 関連イベントの開催日と現在日時との差(ms)。過去開催・関連イベントなしはInfinity
 const getEventProximity = (article: NewsArticle): number => {
   if (article.relatedEventIds.length === 0) return Infinity
   const now = Date.now()
   const diffs = article.relatedEventIds
     .map((id) => getEvent(id))
     .filter((e): e is EventItem => !!e)
-    .map((e) => Math.abs(new Date(e.startDate).getTime() - now))
+    .map((e) => new Date(e.startDate).getTime() - now)
+    .filter((diff) => diff >= 0)
   return diffs.length > 0 ? Math.min(...diffs) : Infinity
 }
 
-// イベントカテゴリ優先→開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
+// イベントカテゴリ(開催日が未来のもののみ)優先→開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
 export const compareArticles = (a: NewsArticle, b: NewsArticle) => {
-  const isEventA = a.category === "event" ? 0 : 1
-  const isEventB = b.category === "event" ? 0 : 1
-  if (isEventA !== isEventB) return isEventA - isEventB
-
   const proximityA = getEventProximity(a)
   const proximityB = getEventProximity(b)
+  const isEventA = a.category === "event" && proximityA !== Infinity ? 0 : 1
+  const isEventB = b.category === "event" && proximityB !== Infinity ? 0 : 1
+  if (isEventA !== isEventB) return isEventA - isEventB
+
   if (proximityA !== proximityB) return proximityA - proximityB
 
   const dateA = a.publishedAt.slice(0, 10)
