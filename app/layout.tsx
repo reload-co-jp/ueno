@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { WDXL_Lubrifont_JP_N } from "next/font/google"
 import Script from "next/script"
 import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
 import { jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
@@ -30,6 +31,13 @@ export const metadata: Metadata = {
   },
 }
 
+const lubrifont = WDXL_Lubrifont_JP_N({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+})
+
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -39,7 +47,7 @@ const websiteJsonLd = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="ja">
+    <html lang="ja" className={lubrifont.className}>
       <body>
         {process.env.NODE_ENV === "production" && (
           <Script
