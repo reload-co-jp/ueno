@@ -5,11 +5,11 @@ import { FC } from "react"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
-import { events, getArticlesByEvent, getEvent, getSpot, getStore } from "@/lib/data"
+import { getArticleImageUrl, getEvent, getRelatedArticles, getSpot, getStore, getUpcomingEvents } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
 import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 
-export const generateStaticParams = () => events.map((e) => ({ id: e.id }))
+export const generateStaticParams = () => getUpcomingEvents().map((e) => ({ id: e.id }))
 
 export const generateMetadata = async ({
   params,
@@ -20,21 +20,22 @@ export const generateMetadata = async ({
   const event = getEvent(id)
   if (!event) return {}
   const url = absoluteUrl(`/events/${event.id}`)
+  const imageUrl = getArticleImageUrl(event)
   return {
-    title: event.name,
+    title: event.title,
     description: event.summary,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       url,
-      title: event.name,
+      title: event.title,
       description: event.summary,
       siteName: SITE_NAME,
-      images: event.imageUrl ? [event.imageUrl] : undefined,
+      images: imageUrl ? [imageUrl] : undefined,
     },
     twitter: {
       card: "summary",
-      title: event.name,
+      title: event.title,
       description: event.summary,
     },
   }
@@ -45,27 +46,28 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const event = getEvent(id)
   if (!event) notFound()
 
-  const relatedStore = event.relatedStoreId ? getStore(event.relatedStoreId) : undefined
-  const relatedSpot = event.relatedSpotId ? getSpot(event.relatedSpotId) : undefined
-  const relatedArticles = getArticlesByEvent(event.id)
+  const relatedStores = event.relatedStoreIds.map(getStore).filter(Boolean)
+  const relatedSpots = event.relatedSpotIds.map(getSpot).filter(Boolean)
+  const relatedArticles = getRelatedArticles(event)
+  const imageUrl = getArticleImageUrl(event)
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: event.name,
-    startDate: event.startDate,
-    endDate: event.endDate,
+    name: event.title,
+    startDate: event.eventStartDate,
+    endDate: event.eventEndDate,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: { "@type": "Place", name: event.location },
+    location: { "@type": "Place", name: event.eventLocation },
     description: event.summary,
-    image: event.imageUrl ? [absoluteUrl(event.imageUrl)] : undefined,
-    organizer: { "@type": "Organization", name: event.organizer, url: event.officialUrl },
+    image: imageUrl ? [absoluteUrl(imageUrl)] : undefined,
+    organizer: { "@type": "Organization", name: event.eventOrganizer, url: event.eventOfficialUrl },
     offers: {
       "@type": "Offer",
-      price: event.fee,
+      price: event.eventFee,
       priceCurrency: "JPY",
-      url: event.officialUrl,
+      url: event.eventOfficialUrl,
     },
     url: absoluteUrl(`/events/${event.id}`),
   }
@@ -76,51 +78,51 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
-      <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: event.name }]} />
-      {event.imageUrl && (
+      <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: event.title }]} />
+      {imageUrl && (
         <img
-          src={event.imageUrl}
-          alt={event.name}
+          src={imageUrl}
+          alt={event.title}
           style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
         />
       )}
-      <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{event.name}</h1>
+      <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{event.title}</h1>
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-        {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.area}
+        {formatDateRangeJp(event.eventStartDate, event.eventEndDate)} ・ {event.area}
       </p>
 
       <ArticleBody body={event.body} />
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: ".875rem" }}>
-        <li>開催場所: {event.location}</li>
-        <li>料金: {event.fee}</li>
-        <li>主催: {event.organizer}</li>
+        <li>開催場所: {event.eventLocation}</li>
+        <li>料金: {event.eventFee}</li>
+        <li>主催: {event.eventOrganizer}</li>
         <li>
           公式サイト:{" "}
-          <a href={event.officialUrl} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
-            {event.officialUrl}
+          <a href={event.eventOfficialUrl} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
+            {event.eventOfficialUrl}
           </a>
         </li>
       </ul>
 
-      {(relatedStore || relatedSpot) && (
+      {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
           <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h3>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
-            {relatedStore && (
-              <li>
-                <Link href={`/stores/${relatedStore.id}`} style={{ color: "#c0483a" }}>
-                  店舗: {relatedStore.name}
+            {relatedStores.map((s) => (
+              <li key={s!.id}>
+                <Link href={`/stores/${s!.id}`} style={{ color: "#c0483a" }}>
+                  店舗: {s!.name}
                 </Link>
               </li>
-            )}
-            {relatedSpot && (
-              <li>
-                <Link href={`/spots/${relatedSpot.id}`} style={{ color: "#c0483a" }}>
-                  施設: {relatedSpot.name}
+            ))}
+            {relatedSpots.map((s) => (
+              <li key={s!.id}>
+                <Link href={`/spots/${s!.id}`} style={{ color: "#c0483a" }}>
+                  施設: {s!.name}
                 </Link>
               </li>
-            )}
+            ))}
           </ul>
         </div>
       )}
@@ -138,9 +140,14 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       <div style={{ fontSize: ".75rem", color: "#a39c8c" }}>
         情報源:{" "}
-        <a href={event.source} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
-          {event.source}
-        </a>
+        {event.sources.map((url, i) => (
+          <span key={url}>
+            {i > 0 && "、"}
+            <a href={url} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
+              {url}
+            </a>
+          </span>
+        ))}
       </div>
     </article>
   )

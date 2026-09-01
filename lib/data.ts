@@ -1,19 +1,18 @@
 import storesJson from "@/data/stores.json"
 import spotsJson from "@/data/spots.json"
-import eventsJson from "@/data/events.json"
 import newsJson from "@/data/news.json"
-import type { Store, Spot, EventItem, NewsArticle, Category } from "@/lib/types"
+import { isEventArticle, type Store, type Spot, type NewsArticle, type Category } from "@/lib/types"
 
 export const stores = storesJson as Store[]
 export const spots = spotsJson as Spot[]
-export const events = eventsJson as EventItem[]
 export const news = newsJson as NewsArticle[]
 
 // 静的JSON DBからのidルックアップ
 export const getStore = (id: string) => stores.find((s) => s.id === id)
 export const getSpot = (id: string) => spots.find((s) => s.id === id)
-export const getEvent = (id: string) => events.find((e) => e.id === id)
 export const getArticle = (id: string) => news.find((n) => n.id === id)
+// イベントもnews.json内のcategory: "event"記事として管理する
+export const getEvent = (id: string) => news.find((n) => n.id === id && isEventArticle(n))
 
 // 記事に画像が無い場合、関連スポットの画像をフォールバックとして使う
 export const getArticleImageUrl = (article: NewsArticle): string | null =>
@@ -21,24 +20,19 @@ export const getArticleImageUrl = (article: NewsArticle): string | null =>
   article.relatedSpotIds.map(getSpot).find((s) => s?.imageUrl)?.imageUrl ??
   null
 
-// 関連イベントの開催日と現在日時との差(ms)。過去開催・関連イベントなしはInfinity
+// イベント記事の開催日と現在日時との差(ms)。過去開催・イベント記事でないものはInfinity
 const getEventProximity = (article: NewsArticle): number => {
-  if (article.relatedEventIds.length === 0) return Infinity
-  const now = Date.now()
-  const diffs = article.relatedEventIds
-    .map((id) => getEvent(id))
-    .filter((e): e is EventItem => !!e)
-    .map((e) => new Date(e.startDate).getTime() - now)
-    .filter((diff) => diff >= 0)
-  return diffs.length > 0 ? Math.min(...diffs) : Infinity
+  if (!isEventArticle(article)) return Infinity
+  const diff = new Date(article.eventStartDate).getTime() - Date.now()
+  return diff >= 0 ? diff : Infinity
 }
 
 // イベントカテゴリ(開催日が未来のもののみ)優先→開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
 export const compareArticles = (a: NewsArticle, b: NewsArticle) => {
   const proximityA = getEventProximity(a)
   const proximityB = getEventProximity(b)
-  const isEventA = a.category === "event" && proximityA !== Infinity ? 0 : 1
-  const isEventB = b.category === "event" && proximityB !== Infinity ? 0 : 1
+  const isEventA = proximityA !== Infinity ? 0 : 1
+  const isEventB = proximityB !== Infinity ? 0 : 1
   if (isEventA !== isEventB) return isEventA - isEventB
 
   if (proximityA !== proximityB) return proximityA - proximityB
@@ -70,9 +64,6 @@ export const getArticlesByStore = (storeId: string) =>
 export const getArticlesBySpot = (spotId: string) =>
   news.filter((n) => n.relatedSpotIds.includes(spotId))
 
-export const getArticlesByEvent = (eventId: string) =>
-  news.filter((n) => n.relatedEventIds.includes(eventId)).sort(compareArticles)
-
 // 同カテゴリ→同エリアの順で補完し、自身を除いた関連記事を返す
 export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
   const sameCategory = news
@@ -89,18 +80,20 @@ export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
 }
 
 export const getUpcomingEvents = () =>
-  [...events].sort((a, b) => a.startDate.localeCompare(b.startDate))
+  news
+    .filter(isEventArticle)
+    .sort((a, b) => a.eventStartDate.localeCompare(b.eventStartDate))
 
 const toDateOnly = (iso: string) => iso.slice(0, 10)
 
 export const getEventsOnDate = (dateStr: string) =>
   getUpcomingEvents().filter(
-    (e) => toDateOnly(e.startDate) <= dateStr && dateStr <= toDateOnly(e.endDate)
+    (e) => toDateOnly(e.eventStartDate) <= dateStr && dateStr <= toDateOnly(e.eventEndDate)
   )
 
 export const getEventsInRange = (startStr: string, endStr: string) =>
   getUpcomingEvents().filter(
-    (e) => toDateOnly(e.startDate) <= endStr && startStr <= toDateOnly(e.endDate)
+    (e) => toDateOnly(e.eventStartDate) <= endStr && startStr <= toDateOnly(e.eventEndDate)
   )
 
 export const getAreas = () => {

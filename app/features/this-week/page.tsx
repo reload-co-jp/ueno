@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
-import { ArticleCard, CardGrid, EventCard } from "@/components/elements/card"
+import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { compareArticles, getEventsInRange, news } from "@/lib/data"
 import { thisWeekRange, toDateStr } from "@/lib/date"
 
@@ -31,7 +31,7 @@ const Page: FC = () => {
         ) : (
           <CardGrid>
             {events.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <ArticleCard key={e.id} article={e} />
             ))}
           </CardGrid>
         )}

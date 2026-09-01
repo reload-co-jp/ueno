@@ -1,12 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
-import {
-  CATEGORY_LABELS,
-  NewsArticle,
-  Spot,
-  Store,
-  EventItem,
-} from "@/lib/types"
+import { CATEGORY_LABELS, NewsArticle, Spot, Store, isEventArticle } from "@/lib/types"
 import { formatDateJp, formatDateRangeJp } from "@/lib/date"
 import { getArticleImageUrl } from "@/lib/data"
 
@@ -30,57 +24,42 @@ export const badgeStyle: React.CSSProperties = {
   marginBottom: ".5rem",
 }
 
-export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => (
-  <Link href={`/articles/${article.id}`} className="card" style={cardStyle}>
-    <img
-      src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
-      alt={article.title}
-      style={{
-        width: "100%",
-        aspectRatio: "16 / 9",
-        objectFit: "contain",
-        marginBottom: ".75rem",
-      }}
-    />
-    <div style={{ padding: "0 .5rem" }}>
-      <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
-      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>
-        {article.title}
-      </h3>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
-        {article.summary}
-      </p>
-      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-        {formatDateJp(article.publishedAt)} ・ {article.area}
-      </p>
-    </div>
-  </Link>
-)
-
-export const EventCard: FC<{ event: EventItem }> = ({ event }) => (
-  <Link href={`/events/${event.id}`} className="card" style={cardStyle}>
-    <img
-      src={event.imageUrl ?? "/images/placeholder.jpg"}
-      alt={event.name}
-      style={{
-        width: "100%",
-        aspectRatio: "16 / 9",
-        objectFit: "cover",
-        marginBottom: ".75rem",
-      }}
-    />
-    <div style={{ padding: "0 .5rem" }}>
-      <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{event.name}</h3>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
-        {event.summary}
-      </p>
-      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-        {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.location}{" "}
-        ・ {event.fee}
-      </p>
-    </div>
-  </Link>
-)
+export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
+  const isEvent = isEventArticle(article)
+  return (
+    <Link
+      href={isEvent ? `/events/${article.id}` : `/articles/${article.id}`}
+      className="card"
+      style={cardStyle}
+    >
+      <img
+        src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
+        alt={article.title}
+        style={{
+          width: "100%",
+          aspectRatio: "16 / 9",
+          objectFit: "contain",
+          marginBottom: ".75rem",
+        }}
+      />
+      <div style={{ padding: "0 .5rem" }}>
+        <span style={badgeStyle}>{CATEGORY_LABELS[article.category]}</span>
+        <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>
+          {article.title}
+        </h3>
+        <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
+          {article.summary}
+        </p>
+        <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+          {isEvent
+            ? formatDateRangeJp(article.eventStartDate, article.eventEndDate)
+            : formatDateJp(article.publishedAt)}{" "}
+          ・ {isEvent ? article.eventLocation : article.area}
+        </p>
+      </div>
+    </Link>
+  )
+}
 
 export const StoreCard: FC<{ store: Store }> = ({ store }) => (
   <Link href={`/stores/${store.id}`} className="card" style={cardStyle}>

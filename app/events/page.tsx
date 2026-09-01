@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
-import { CardGrid, EventCard } from "@/components/elements/card"
+import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getUpcomingEvents } from "@/lib/data"
 
 export const metadata = {
@@ -16,7 +16,7 @@ const Page: FC = () => {
       <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>イベント</h1>
       <CardGrid>
         {events.map((event) => (
-          <EventCard key={event.id} event={event} />
+          <ArticleCard key={event.id} article={event} />
         ))}
       </CardGrid>
     </div>

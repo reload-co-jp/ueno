@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
-import { ArticleCard, CardGrid, EventCard } from "@/components/elements/card"
-import { events, getArticlesBySpot, getSpot, spots } from "@/lib/data"
+import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { getArticlesBySpot, getSpot, getUpcomingEvents, spots } from "@/lib/data"
 import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => spots.map((s) => ({ id: s.id }))
@@ -30,8 +30,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { id } = await params
   const spot = getSpot(id)
   if (!spot) notFound()
-  const articles = getArticlesBySpot(spot.id)
-  const spotEvents = events.filter((e) => e.relatedSpotId === spot.id)
+  const articles = getArticlesBySpot(spot.id).filter((a) => a.category !== "event")
+  const spotEvents = getUpcomingEvents().filter((e) => e.relatedSpotIds.includes(spot.id))
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -85,7 +85,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           <h3 style={{ fontSize: "1rem", marginBottom: ".75rem" }}>開催中・開催予定イベント</h3>
           <CardGrid>
             {spotEvents.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <ArticleCard key={e.id} article={e} />
             ))}
           </CardGrid>
         </div>

@@ -8,7 +8,6 @@ import { ArticleCard, CardGrid } from "@/components/elements/card"
 import {
   getArticle,
   getArticleImageUrl,
-  getEvent,
   getRelatedArticles,
   getSpot,
   getStore,
@@ -20,6 +19,7 @@ import { CATEGORY_LABELS, Category } from "@/lib/types"
 
 // 一覧ページを持つカテゴリのみ。それ以外はパンくずでリンクなし表示。
 const CATEGORY_PATHS: Partial<Record<Category, string>> = {
+  event: "/events",
   new_opening: "/new-stores",
   closing: "/closures",
   sale: "/sales",
@@ -68,7 +68,6 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
   const relatedStores = article.relatedStoreIds.map(getStore).filter(Boolean)
   const relatedSpots = article.relatedSpotIds.map(getSpot).filter(Boolean)
-  const relatedEvents = article.relatedEventIds.map(getEvent).filter(Boolean)
   const relatedArticles = getRelatedArticles(article)
   const imageUrl = getArticleImageUrl(article)
 
@@ -128,7 +127,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       <ArticleBody body={article.body} />
 
-      {(relatedStores.length > 0 || relatedSpots.length > 0 || relatedEvents.length > 0) && (
+      {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
           <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h3>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
@@ -143,13 +142,6 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
               <li key={s!.id}>
                 <Link href={`/spots/${s!.id}`} style={{ color: "#c0483a" }}>
                   施設: {s!.name}
-                </Link>
-              </li>
-            ))}
-            {relatedEvents.map((e) => (
-              <li key={e!.id}>
-                <Link href={`/events/${e!.id}`} style={{ color: "#c0483a" }}>
-                  イベント: {e!.name}
                 </Link>
               </li>
             ))}

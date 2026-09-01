@@ -55,28 +55,10 @@ export interface Spot {
   imageUrl?: string | null
 }
 
-// README「5. 管理する情報 - イベント」準拠
-export interface EventItem {
-  id: string
-  name: string
-  startDate: string
-  endDate: string
-  location: string
-  summary: string
-  body: string
-  fee: string
-  organizer: string
-  officialUrl: string
-  source: string
-  area: string
-  imageUrl: string | null
-  relatedStoreId?: string
-  relatedSpotId?: string
-}
-
 // README「5. 管理する情報 - ニュース」準拠
 // 同一内容が複数の情報源に掲載されている場合は1記事に統合し、sourcesに全URLを保持する
 // (README「6. Entity管理」「7. 重複管理」の考え方を記事にも適用)
+// イベント(category: "event")は開催日時・場所などの構造化情報をevent*フィールドに持つ
 export interface NewsArticle {
   id: string
   title: string
@@ -89,6 +71,18 @@ export interface NewsArticle {
   area: string
   relatedStoreIds: string[]
   relatedSpotIds: string[]
-  relatedEventIds: string[]
   imageUrl: string | null
+  // README「5. 管理する情報 - イベント」準拠。category: "event" の記事のみ設定
+  eventStartDate?: string
+  eventEndDate?: string
+  eventLocation?: string
+  eventFee?: string
+  eventOrganizer?: string
+  eventOfficialUrl?: string
 }
+
+// イベント記事(開催日時を持つ記事)の型ガード。カテゴリはevent以外(展示会/POP UP等)もありうる
+export const isEventArticle = (
+  article: NewsArticle
+): article is NewsArticle & { eventStartDate: string; eventEndDate: string } =>
+  !!article.eventStartDate && !!article.eventEndDate
