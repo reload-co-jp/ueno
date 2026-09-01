@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { events, getArticlesByEvent, getEvent, getSpot, getStore } from "@/lib/data"
@@ -70,7 +71,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   }
 
   return (
-    <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "40rem" }}>
+    <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "75rem" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
@@ -88,7 +89,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         {formatDateRangeJp(event.startDate, event.endDate)} ・ {event.area}
       </p>
 
-      <p style={{ fontSize: ".875rem", margin: 0 }}>{event.summary}</p>
+      <ArticleBody body={event.body} />
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: ".875rem" }}>
         <li>開催場所: {event.location}</li>

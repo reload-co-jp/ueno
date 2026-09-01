@@ -63,6 +63,7 @@ export interface EventItem {
   endDate: string
   location: string
   summary: string
+  body: string
   fee: string
   organizer: string
   officialUrl: string
