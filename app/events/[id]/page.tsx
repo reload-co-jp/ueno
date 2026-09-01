@@ -94,15 +94,17 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       <ArticleBody body={event.body} />
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: ".875rem" }}>
-        <li>開催場所: {event.eventLocation}</li>
-        <li>料金: {event.eventFee}</li>
-        <li>主催: {event.eventOrganizer}</li>
-        <li>
-          公式サイト:{" "}
-          <a href={event.eventOfficialUrl} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
-            {event.eventOfficialUrl}
-          </a>
-        </li>
+        {event.eventLocation && <li>開催場所: {event.eventLocation}</li>}
+        {event.eventFee && <li>料金: {event.eventFee}</li>}
+        {event.eventOrganizer && <li>主催: {event.eventOrganizer}</li>}
+        {event.eventOfficialUrl && (
+          <li>
+            公式サイト:{" "}
+            <a href={event.eventOfficialUrl} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
+              {event.eventOfficialUrl}
+            </a>
+          </li>
+        )}
       </ul>
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (

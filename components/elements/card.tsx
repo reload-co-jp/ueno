@@ -54,7 +54,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
           {isEvent
             ? formatDateRangeJp(article.eventStartDate, article.eventEndDate)
             : formatDateJp(article.publishedAt)}{" "}
-          ・ {isEvent ? article.eventLocation : article.area}
+          ・ {isEvent ? (article.eventLocation ?? article.area) : article.area}
         </p>
       </div>
     </Link>

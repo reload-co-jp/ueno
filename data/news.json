@@ -218,7 +218,10 @@
     "imageUrl": "/images/articles/6553134a3145878d.jpg",
     "sources": [
       "https://www.ecute.jp/ueno/campaign"
-    ]
+    ],
+    "eventStartDate": "2026-07-11",
+    "eventEndDate": "2026-08-31",
+    "eventLocation": "エキュート上野"
   },
   {
     "id": "12",
@@ -352,7 +355,9 @@
     "imageUrl": "/images/articles/6511a84e5620e7e0.jpg",
     "sources": [
       "https://prtimes.jp/main/html/rd/p/000000001.000188771.html"
-    ]
+    ],
+    "eventStartDate": "2026-09-04",
+    "eventEndDate": "2026-09-04"
   },
   {
     "id": "20",
@@ -890,7 +895,12 @@
     "imageUrl": null,
     "sources": [
       "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
-    ]
+    ],
+    "eventStartDate": "2026-08-21",
+    "eventEndDate": "2026-08-23",
+    "eventLocation": "上野恩賜公園噴水前広場",
+    "eventFee": "参加無料",
+    "eventOfficialUrl": "https://www.city.taito.lg.jp/bunka_kanko/sekaiisan/10kinen/gyoji.html"
   },
   {
     "id": "54",
@@ -905,7 +915,11 @@
     "imageUrl": "/images/articles/2eb6a4ce2f0cf217.png",
     "sources": [
       "https://t-navi.city.taito.lg.jp/event?keyword=%E4%B8%8A%E9%87%8E"
-    ]
+    ],
+    "eventStartDate": "2026-05-08",
+    "eventEndDate": "2026-05-08",
+    "eventLocation": "不明",
+    "eventFee": "不明"
   },
   {
     "id": "55",
@@ -920,7 +934,10 @@
     "imageUrl": "/images/articles/2eb6a4ce2f0cf217.png",
     "sources": [
       "https://t-navi.city.taito.lg.jp/event?keyword=%E4%B8%8A%E9%87%8E"
-    ]
+    ],
+    "eventStartDate": "2026-03-14",
+    "eventEndDate": "2026-04-05",
+    "eventLocation": "上野・御徒町エリア"
   },
   {
     "id": "56",
@@ -1042,7 +1059,11 @@
     "imageUrl": "/images/articles/be188b83a6ff18bf.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-07-23",
+    "eventEndDate": "2026-10-07",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "64",
@@ -1059,7 +1080,11 @@
     "imageUrl": "/images/articles/55af548bda37370e.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-07-25",
+    "eventEndDate": "2026-10-18",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "65",
@@ -1076,7 +1101,11 @@
     "imageUrl": "/images/articles/1ac533049a336b48.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-14",
+    "eventEndDate": "2027-03-28",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "66",
@@ -1093,7 +1122,12 @@
     "imageUrl": "/images/articles/b665afc9258cc794.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-19",
+    "eventEndDate": "2027-01-11",
+    "eventLocation": "東京都美術館",
+    "eventFee": "無料",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "67",
@@ -1110,7 +1144,12 @@
     "imageUrl": "/images/articles/df72501f4ca0299b.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-19",
+    "eventEndDate": "2027-01-11",
+    "eventLocation": "東京都美術館",
+    "eventFee": "無料",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "68",
@@ -1127,7 +1166,11 @@
     "imageUrl": "/images/articles/f8b36282b2c8b138.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2027-04-24",
+    "eventEndDate": "2027-08-22",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "69",
@@ -1144,7 +1187,11 @@
     "imageUrl": "/images/articles/f26ad1ed609d6a8a.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-07-23",
+    "eventEndDate": "2026-10-07",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "70",
@@ -1161,7 +1208,11 @@
     "imageUrl": "/images/articles/0c2f986a8cb4a3c6.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-07-25",
+    "eventEndDate": "2026-10-18",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "71",
@@ -1178,7 +1229,11 @@
     "imageUrl": "/images/articles/8da44c93a573cf5c.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-14",
+    "eventEndDate": "2027-03-28",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "72",
@@ -1195,7 +1250,12 @@
     "imageUrl": "/images/articles/185c09595dbf634b.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-19",
+    "eventEndDate": "2027-01-11",
+    "eventLocation": "東京都美術館",
+    "eventFee": "無料",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "73",
@@ -1212,7 +1272,12 @@
     "imageUrl": "/images/articles/1c4e40322455cc89.jpg",
     "sources": [
       "https://www.tobikan.jp/exhibition/"
-    ]
+    ],
+    "eventStartDate": "2026-11-19",
+    "eventEndDate": "2027-01-11",
+    "eventLocation": "東京都美術館",
+    "eventFee": "無料",
+    "eventOfficialUrl": "https://www.tobikan.jp/exhibition/"
   },
   {
     "id": "74",
@@ -1229,7 +1294,11 @@
     "imageUrl": "/images/articles/94e77b6a446b8b47.jpg",
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-02",
+    "eventEndDate": "2026-08-02",
+    "eventLocation": "不忍池周辺",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "75",
@@ -1246,7 +1315,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-02",
+    "eventEndDate": "2026-08-02",
+    "eventLocation": "上野恩賜公園 園内全域",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "76",
@@ -1263,7 +1336,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-06",
+    "eventEndDate": "2026-08-09",
+    "eventLocation": "竹の台広場（噴水広場）"
   },
   {
     "id": "77",
@@ -1280,7 +1356,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-07",
+    "eventEndDate": "2026-08-09",
+    "eventLocation": "袴腰広場"
   },
   {
     "id": "78",
@@ -1297,7 +1376,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-08",
+    "eventEndDate": "2026-08-09",
+    "eventLocation": "ポケットパーク"
   },
   {
     "id": "79",
@@ -1314,7 +1396,12 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-14",
+    "eventEndDate": "2026-08-23",
+    "eventLocation": "竹の台広場（噴水広場）",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "80",
@@ -1331,7 +1418,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-22",
+    "eventEndDate": "2026-08-23",
+    "eventLocation": "弁天門前広場"
   },
   {
     "id": "81",
@@ -1348,7 +1438,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-27",
+    "eventEndDate": "2026-08-30",
+    "eventLocation": "弁天門前広場",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "82",
@@ -1365,7 +1459,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-08-28",
+    "eventEndDate": "2026-08-30",
+    "eventLocation": "竹の台広場（噴水広場）"
   },
   {
     "id": "83",
@@ -1382,7 +1479,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-14",
+    "eventEndDate": "2026-09-06",
+    "eventLocation": "東京国立博物館"
   },
   {
     "id": "84",
@@ -1399,7 +1499,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-07",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "国立西洋美術館"
   },
   {
     "id": "85",
@@ -1416,7 +1519,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-11",
+    "eventEndDate": "2026-10-12",
+    "eventLocation": "国立科学博物館",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "86",
@@ -1433,7 +1540,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-31",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "国立科学博物館",
+    "eventFee": "不明"
   },
   {
     "id": "87",
@@ -1450,7 +1561,10 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-23",
+    "eventEndDate": "2026-10-07",
+    "eventLocation": "東京都美術館"
   },
   {
     "id": "88",
@@ -1467,7 +1581,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-25",
+    "eventEndDate": "2026-10-18",
+    "eventLocation": "東京都美術館",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "89",
@@ -1484,7 +1602,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-24",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "東京藝術大学大学美術館",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "90",
@@ -1501,7 +1623,11 @@
     "imageUrl": null,
     "sources": [
       "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
-    ]
+    ],
+    "eventStartDate": "2026-07-14",
+    "eventEndDate": "2026-08-30",
+    "eventLocation": "国立国会図書館国際子ども図書館",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "91",
@@ -1533,7 +1659,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/bda888864753d623.jpg"
+    "imageUrl": "/images/articles/bda888864753d623.jpg",
+    "eventStartDate": "2026-07-11",
+    "eventEndDate": "2026-08-31",
+    "eventLocation": "エキュート上野"
   },
   {
     "id": "93",
@@ -1595,7 +1724,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/d47b91652d561ef2.jpg"
+    "imageUrl": "/images/articles/d47b91652d561ef2.jpg",
+    "eventStartDate": "2026-09-04",
+    "eventEndDate": "2026-09-04",
+    "eventLocation": "台東区上野"
   },
   {
     "id": "97",
@@ -1996,7 +2128,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-08-26",
+    "eventEndDate": "2026-09-06",
+    "eventLocation": "東京藝術大学大学美術館 陳列館",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "122",
@@ -2011,7 +2147,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-10",
+    "eventEndDate": "2026-09-14",
+    "eventLocation": "東京藝術大学大学美術館 陳列館",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "123",
@@ -2026,7 +2166,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-10",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "東京藝術大学大学美術館 陳列館",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "124",
@@ -2041,7 +2185,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-31",
+    "eventEndDate": "2026-11-08",
+    "eventLocation": "東京藝術大学大学美術館 陳列館",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "125",
@@ -2056,7 +2204,12 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-04-21",
+    "eventEndDate": "2027-03-30",
+    "eventLocation": "東京藝術大学大学美術館 取手館",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "126",
@@ -2071,7 +2224,9 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-11-15",
+    "eventEndDate": "2026-11-15"
   },
   {
     "id": "127",
@@ -2086,7 +2241,9 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-27",
+    "eventEndDate": "2026-09-27"
   },
   {
     "id": "128",
@@ -2101,7 +2258,9 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-08-06",
+    "eventEndDate": "2026-10-28"
   },
   {
     "id": "129",
@@ -2131,7 +2290,9 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-03-31",
+    "eventEndDate": "2027-03-31"
   },
   {
     "id": "131",
@@ -2191,7 +2352,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/e882293814cc640c.webp"
+    "imageUrl": "/images/articles/e882293814cc640c.webp",
+    "eventStartDate": "2026-07-11",
+    "eventEndDate": "2026-09-27",
+    "eventLocation": "旧岩崎邸庭園（東京都台東区池之端1-3-45）ほか都立9庭園",
+    "eventFee": "不明"
   },
   {
     "id": "135",
@@ -2206,7 +2371,12 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-18",
+    "eventEndDate": "2026-11-29",
+    "eventLocation": "旧岩崎邸庭園（東京都台東区池之端1-3-45）",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://www.tokyo-park.or.jp/park/kyu-iwasaki-tei/index.html"
   },
   {
     "id": "136",
@@ -2266,7 +2436,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/094d891e8fe7edca.png"
+    "imageUrl": "/images/articles/094d891e8fe7edca.png",
+    "eventStartDate": "2026-03-28",
+    "eventEndDate": "2026-03-28",
+    "eventLocation": "国立西洋美術館 本館2階・新館1階",
+    "eventFee": "不明"
   },
   {
     "id": "140",
@@ -2281,7 +2455,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-06-30",
+    "eventEndDate": "2027-01-11",
+    "eventLocation": "本館1階19世紀ホール"
   },
   {
     "id": "141",
@@ -2296,7 +2473,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-07-22",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "新館2階（常設展示室内）",
+    "eventFee": "不明"
   },
   {
     "id": "142",
@@ -2311,7 +2492,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/ac06d317e93f17ae.jpg"
+    "imageUrl": "/images/articles/ac06d317e93f17ae.jpg",
+    "eventStartDate": "2026-06-30",
+    "eventEndDate": "2026-10-12",
+    "eventLocation": "版画素描展示室（常設展示室 新館2階）",
+    "eventFee": "不明"
   },
   {
     "id": "143",
@@ -2326,7 +2511,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/dc502b35c473e5de.jpg"
+    "imageUrl": "/images/articles/dc502b35c473e5de.jpg",
+    "eventStartDate": "2026-10-24",
+    "eventEndDate": "2027-02-21",
+    "eventLocation": "国立西洋美術館 企画展示室",
+    "eventOfficialUrl": "https://www.nmwa.go.jp/jp/exhibitions/upcoming.html"
   },
   {
     "id": "144",
@@ -2471,7 +2660,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-03-03",
+    "eventEndDate": "2026-06-28",
+    "eventLocation": "したまちミュージアム"
   },
   {
     "id": "153",
@@ -2486,7 +2678,12 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-07-07",
+    "eventEndDate": "2026-11-01",
+    "eventLocation": "したまちミュージアム",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://www.taitogeibun.net/shitamachi/tenji/schedule/"
   },
   {
     "id": "154",
@@ -2501,7 +2698,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-11-03",
+    "eventEndDate": "2027-02-28",
+    "eventLocation": "したまちミュージアム",
+    "eventOfficialUrl": "https://www.taitogeibun.net/shitamachi/tenji/schedule/"
   },
   {
     "id": "155",
@@ -2516,7 +2717,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2027-03-02",
+    "eventEndDate": "2027-06-27",
+    "eventLocation": "したまちミュージアム",
+    "eventOfficialUrl": "https://www.taitogeibun.net/shitamachi/tenji/schedule/"
   },
   {
     "id": "156",
@@ -2561,7 +2766,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-08-30",
+    "eventEndDate": "2026-08-30",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "800円(全席指定)"
   },
   {
     "id": "159",
@@ -2591,7 +2800,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-23",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "不明"
   },
   {
     "id": "161",
@@ -2606,7 +2819,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/c72287fe540d818c.jpg"
+    "imageUrl": "/images/articles/c72287fe540d818c.jpg",
+    "eventStartDate": "2026-09-27",
+    "eventEndDate": "2026-09-27",
+    "eventLocation": "国立国会図書館国際子ども図書館 レンガ棟3階ホール"
   },
   {
     "id": "162",
@@ -2621,7 +2837,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/312b7b0548b7e9ad.jpg"
+    "imageUrl": "/images/articles/312b7b0548b7e9ad.jpg",
+    "eventStartDate": "2026-10-02",
+    "eventEndDate": "2026-10-02",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "不明"
   },
   {
     "id": "163",
@@ -2636,7 +2856,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-09",
+    "eventEndDate": "2026-10-09",
+    "eventLocation": "国立西洋美術館 本館1階ロビー"
   },
   {
     "id": "164",
@@ -2651,7 +2874,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-10",
+    "eventEndDate": "2026-10-10",
+    "eventLocation": "東京国立博物館 平成館1階ラウンジ",
+    "eventFee": "不明"
   },
   {
     "id": "165",
@@ -2666,7 +2893,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-12",
+    "eventEndDate": "2026-10-12",
+    "eventLocation": "東京都美術館 1階 佐藤慶太郎記念アートラウンジ"
   },
   {
     "id": "166",
@@ -2681,7 +2911,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-18",
+    "eventEndDate": "2026-10-18",
+    "eventLocation": "旧岩崎邸庭園 洋館1階ベランダ前芝庭（雨天時は洋館1階大食堂）"
   },
   {
     "id": "167",
@@ -2696,7 +2929,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-31",
+    "eventEndDate": "2026-10-31",
+    "eventLocation": "台東区立したまちミュージアム付設展示場 旧吉田屋酒店",
+    "eventFee": "不明"
   },
   {
     "id": "168",
@@ -2756,7 +2993,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/ba8ee1322f355750.png"
+    "imageUrl": "/images/articles/ba8ee1322f355750.png",
+    "eventStartDate": "2026-11-29",
+    "eventEndDate": "2026-11-29",
+    "eventLocation": "台東区生涯学習センター ミレニアムホール"
   },
   {
     "id": "172",
@@ -2788,7 +3028,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-08-28",
+    "eventEndDate": "2026-09-01",
+    "eventLocation": "上野の森美術館ギャラリー",
+    "eventOfficialUrl": "https://www.ueno-mori.org/exhibitions/"
   },
   {
     "id": "174",
@@ -2803,7 +3047,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-08-29",
+    "eventEndDate": "2026-08-31",
+    "eventLocation": "上野の森美術館 本館1F・本館2F",
+    "eventOfficialUrl": "https://www.ueno-mori.org/exhibitions/"
   },
   {
     "id": "175",
@@ -2850,7 +3098,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": "/images/articles/3860c878d0216378.jpg"
+    "imageUrl": "/images/articles/3860c878d0216378.jpg",
+    "eventStartDate": "2026-09-19",
+    "eventEndDate": "2026-09-19",
+    "eventLocation": "上野"
   },
   {
     "id": "178",
@@ -2961,7 +3212,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-10-03",
+    "eventEndDate": "2026-10-18",
+    "eventLocation": "東京藝術大学大学美術館 陳列館・正木記念館",
+    "eventOfficialUrl": "https://museum.geidai.ac.jp/exhibit/"
   },
   {
     "id": "185",
@@ -3102,7 +3357,11 @@
     "relatedSpotIds": [
       "sougakudou"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2025-11-15",
+    "eventEndDate": "2025-11-15",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "2,000円"
   },
   {
     "id": "194",
@@ -3119,7 +3378,11 @@
     "relatedSpotIds": [
       "sougakudou"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2025-12-14",
+    "eventEndDate": "2025-12-14",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "6,000円"
   },
   {
     "id": "195",
@@ -3136,7 +3399,11 @@
     "relatedSpotIds": [
       "sougakudou"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-01-18",
+    "eventEndDate": "2026-01-18",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "2,000円"
   },
   {
     "id": "196",
@@ -3153,7 +3420,11 @@
     "relatedSpotIds": [
       "sougakudou"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2025-02-23",
+    "eventEndDate": "2025-02-23",
+    "eventLocation": "旧東京音楽学校奏楽堂",
+    "eventFee": "500円（事前予約制）"
   },
   {
     "id": "197",
@@ -3221,7 +3492,10 @@
     "relatedSpotIds": [
       "kahaku"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-07-31",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "国立科学博物館(上野)"
   },
   {
     "id": "201",
@@ -3347,7 +3621,12 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-04",
+    "eventEndDate": "2026-09-06",
+    "eventLocation": "上野恩賜公園 園内全域",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "209",
@@ -3379,7 +3658,11 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-13",
+    "eventEndDate": "2026-09-13",
+    "eventLocation": "不忍池周辺",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "211",
@@ -3396,7 +3679,11 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-18",
+    "eventEndDate": "2026-09-23",
+    "eventLocation": "竹の台広場（噴水広場）",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "212",
@@ -3413,7 +3700,10 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-19",
+    "eventEndDate": "2026-09-20",
+    "eventLocation": "弁天門前広場（上野公園）"
   },
   {
     "id": "213",
@@ -3430,7 +3720,11 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-25",
+    "eventEndDate": "2026-10-05",
+    "eventLocation": "弁天門前広場",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "214",
@@ -3447,7 +3741,11 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-26",
+    "eventEndDate": "2026-09-27",
+    "eventLocation": "竹の台広場（噴水広場）",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "215",
@@ -3464,7 +3762,12 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-26",
+    "eventEndDate": "2026-09-26",
+    "eventLocation": "ポケットパーク",
+    "eventFee": "不明",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "216",
@@ -3481,7 +3784,11 @@
     "relatedSpotIds": [
       "ueno-park"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-29",
+    "eventEndDate": "2026-09-29",
+    "eventLocation": "竹の台広場（噴水広場）",
+    "eventFee": "不明"
   },
   {
     "id": "217",
@@ -3498,7 +3805,11 @@
     "relatedSpotIds": [
       "tnm"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-29",
+    "eventEndDate": "2026-12-20",
+    "eventLocation": "東京国立博物館",
+    "eventOfficialUrl": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event"
   },
   {
     "id": "218",
@@ -3513,7 +3824,10 @@
     "area": "上野",
     "relatedStoreIds": [],
     "relatedSpotIds": [],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-02",
+    "eventEndDate": "2026-09-07",
+    "eventLocation": "上野の森美術館 本館1F/2F/ギャラリー"
   },
   {
     "id": "219",
@@ -3530,7 +3844,10 @@
     "relatedSpotIds": [
       "ueno-mori"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-10",
+    "eventEndDate": "2026-09-29",
+    "eventLocation": "上野の森美術館 本館1F・2F"
   },
   {
     "id": "220",
@@ -3547,7 +3864,10 @@
     "relatedSpotIds": [
       "ueno-mori"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-10",
+    "eventEndDate": "2026-09-16",
+    "eventLocation": "上野の森美術館 ギャラリー"
   },
   {
     "id": "221",
@@ -3564,7 +3884,10 @@
     "relatedSpotIds": [
       "ueno-mori"
     ],
-    "imageUrl": null
+    "imageUrl": null,
+    "eventStartDate": "2026-09-18",
+    "eventEndDate": "2026-09-29",
+    "eventLocation": "上野の森美術館 ギャラリー"
   },
   {
     "id": "222",
