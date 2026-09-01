@@ -2,7 +2,7 @@ import Link from "next/link"
 import { FC } from "react"
 import { badgeStyle } from "@/components/elements/card"
 import { formatDateJp } from "@/lib/date"
-import { getLatestArticles } from "@/lib/data"
+import { getArticleImageUrl, getLatestArticles } from "@/lib/data"
 import { CATEGORY_LABELS } from "@/lib/types"
 
 const FEATURES = [
@@ -32,7 +32,7 @@ const Page: FC = () => {
             style={{ display: "block", color: "#111", textDecoration: "none" }}
           >
             <img
-              src={hero.imageUrl ?? "/images/placeholder.jpg"}
+              src={getArticleImageUrl(hero) ?? "/images/placeholder.jpg"}
               alt={hero.title}
               style={{
                 width: "100%",
@@ -77,7 +77,7 @@ const Page: FC = () => {
                 }}
               >
                 <img
-                  src={article.imageUrl ?? "/images/placeholder.jpg"}
+                  src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
                   alt={article.title}
                   style={{
                     width: "9rem",
