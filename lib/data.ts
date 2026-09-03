@@ -109,3 +109,25 @@ export const getStoresByArea = (area: string) =>
 
 export const getSpotsByArea = (area: string) =>
   spots.filter((s) => s.area === area)
+
+// 「上野 グルメ・カフェ新店」LP向け抽出。関連店舗のカテゴリが飲食系、
+// または店舗紐付けが無い記事はタイトルの飲食キーワードで判定する
+const GOURMET_STORE_CATEGORIES = ["飲食", "ドリンク", "カフェ・書店"]
+const GOURMET_KEYWORDS = [
+  "カフェ", "食堂", "ラーメン", "らぁめん", "酒場", "焼肉", "やきにく", "居酒屋",
+  "寿司", "カステラ", "パスタ", "チャンポン", "ひつまぶし", "うまいもん", "釜飯",
+  "カレー", "ダイニング", "バー", "和牛", "ホルモン", "海鮮", "商店", "ゴンチャ",
+  "串", "成吉思汗", "もつ", "おばんざい", "コーヒー", "珈琲", "ベーカリー", "スイーツ",
+]
+
+export const getGourmetNewOpenings = () =>
+  news
+    .filter((n) => {
+      if (n.category !== "new_opening") return false
+      const hasGourmetStore = n.relatedStoreIds.some((id) => {
+        const store = getStore(id)
+        return !!store && GOURMET_STORE_CATEGORIES.includes(store.category)
+      })
+      return hasGourmetStore || GOURMET_KEYWORDS.some((kw) => n.title.includes(kw))
+    })
+    .sort(compareArticles)

@@ -15,6 +15,7 @@ const STATIC_PATHS = [
   "/stores",
   "/spots",
   "/features/this-week",
+  "/features/gourmet-new-stores",
   "/features/today-events",
   "/features/weekend-events",
   "/features/monthly-openings",
