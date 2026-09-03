@@ -127,6 +127,7 @@ const SCHEMAS = {
   },
   news: {
     endpoint: "/api/news",
+    sort: (a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""), // 公開日降順
     columns: [
       { key: "imageUrl", label: "", render: (v) => v ? `<img class="thumb" src="${v}">` : "" },
       { key: "title", label: "タイトル" },
@@ -167,9 +168,9 @@ async function loadTab() {
 function renderTable() {
   const schema = SCHEMAS[state.tab];
   const q = $("#search").value.trim().toLowerCase();
-  const items = state.items.filter((item) =>
-    !q || JSON.stringify(item).toLowerCase().includes(q)
-  );
+  const items = state.items
+    .filter((item) => !q || JSON.stringify(item).toLowerCase().includes(q))
+    .sort(schema.sort ?? (() => 0));
 
   $("#thead").innerHTML = `<tr>${schema.columns.map((c) => `<th>${c.label}</th>`).join("")}<th></th></tr>`;
 
