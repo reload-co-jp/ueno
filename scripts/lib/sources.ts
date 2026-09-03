@@ -217,7 +217,7 @@ export const SOURCES: Source[] = [
   {
     id: "ueno-marui",
     name: "上野マルイ",
-    url: "https://www.0101.co.jp/058/event/?from=01_pc_st058_top_gnav-event",
+    url: "https://www.0101.co.jp/058/event/",
     type: "official_site",
     categoryHints: ["event", "popup", "sale", "campaign", "new_opening"],
     strictAreaFilter: false,
