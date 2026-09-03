@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>上野 Admin</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Hiragino Sans", sans-serif; margin: 0; background: #f5f5f7; color: #1d1d1f; }
+  header { background: #1d1d1f; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 20px; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  nav button { background: none; border: none; color: #ccc; font-size: 14px; padding: 6px 10px; cursor: pointer; border-radius: 4px; }
+  nav button.active { background: #444; color: #fff; }
+  main { max-width: 1100px; margin: 20px auto; padding: 0 16px; }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .toolbar input[type=search] { padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; width: 240px; }
+  button.primary { background: #0071e3; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  button.primary:hover { background: #0077ed; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  th, td { text-align: left; padding: 8px 10px; font-size: 13px; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { background: #fafafa; font-weight: 600; }
+  tr:hover td { background: #f9fbff; }
+  td.actions { white-space: nowrap; width: 1%; }
+  td.actions button { border: none; background: none; cursor: pointer; font-size: 13px; padding: 4px 6px; color: #0071e3; }
+  td.actions button.danger { color: #d70015; }
+  .empty { text-align: center; color: #888; padding: 30px; }
+  dialog { border: none; border-radius: 12px; padding: 0; width: 640px; max-width: 92vw; max-height: 88vh; overflow: auto; box-shadow: 0 10px 40px rgba(0,0,0,.2); }
+  dialog::backdrop { background: rgba(0,0,0,.35); }
+  .dialog-inner { padding: 20px 24px; }
+  .dialog-inner h2 { margin-top: 0; font-size: 16px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
+  .field .hint { font-weight: 400; color: #999; }
+  .field input, .field select, .field textarea { width: 100%; padding: 7px 9px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; font-family: inherit; }
+  .field textarea { min-height: 70px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  fieldset { border: 1px solid #eee; border-radius: 8px; margin: 16px 0; padding: 10px 14px; }
+  legend { font-size: 12px; color: #888; padding: 0 6px; }
+  .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  .dialog-actions button.secondary { background: #eee; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1d1d1f; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  .thumb { width: 40px; height: 40px; object-fit: cover; border-radius: 6px; background: #eee; }
+  .image-field { display: flex; align-items: center; gap: 8px; }
+  .image-field .thumb-lg { width: 56px; height: 56px; flex-shrink: 0; }
+  .image-field input { flex: 1; }
+  .image-field button { white-space: nowrap; background: #eee; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .image-field button:disabled { opacity: .5; cursor: default; }
+</style>
+</head>
+<body>
+<header>
+  <h1>上野 Admin</h1>
+  <nav>
+    <button data-tab="spots" class="active">スポット</button>
+    <button data-tab="news">ニュース</button>
+  </nav>
+</header>
+
+<main>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="検索…" />
+    <button class="primary" id="add-btn">+ 新規追加</button>
+  </div>
+  <table>
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</main>
+
+<dialog id="dialog">
+  <div class="dialog-inner">
+    <h2 id="dialog-title"></h2>
+    <form id="form"></form>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CATEGORY_LABELS = {
+  event: "イベント", new_opening: "新規オープン", closing: "閉店", renewal: "リニューアル",
+  sale: "セール", campaign: "キャンペーン", popup: "POP UP", new_product: "新商品",
+  exhibition: "展示会", facility_news: "施設ニュース", local_news: "地域ニュース",
+};
+
+const state = { tab: "spots", items: [], editingId: null };
+
+const $ = (sel) => document.querySelector(sel);
+const toast = (msg) => {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1800);
+};
+
+const api = async (path, opts) => {
+  const res = await fetch(path, opts);
+  const body = await res.json().catch(() => null);
+  if (!res.ok) throw new Error(body?.error ?? `HTTP ${res.status}`);
+  return body;
+};
+
+// --- スキーマ定義: 一覧の列とフォームの項目 ---
+const SCHEMAS = {
+  spots: {
+    endpoint: "/api/spots",
+    columns: [
+      { key: "imageUrl", label: "", render: (v) => v ? `<img class="thumb" src="${v}">` : "" },
+      { key: "name", label: "名称" },
+      { key: "type", label: "種別" },
+      { key: "area", label: "エリア" },
+      { key: "id", label: "id" },
+    ],
+    fields: [
+      { key: "id", label: "id", type: "text", required: true, lockOnEdit: true, hint: "例: ueno-park (英数-のみ)" },
+      { key: "name", label: "名称", type: "text", required: true },
+      { key: "type", label: "種別", type: "text", required: true, hint: "例: 公園, 美術館, 博物館" },
+      { key: "area", label: "エリア", type: "text", required: true, hint: "例: 上野公園" },
+      { key: "address", label: "住所", type: "text", required: true },
+      { key: "lat", label: "緯度", type: "number", step: "any", required: true },
+      { key: "lng", label: "経度", type: "number", step: "any", required: true },
+      { key: "officialUrl", label: "公式URL", type: "text", required: true },
+      { key: "imageUrl", label: "画像", type: "image", dir: "spots" },
+    ],
+  },
+  news: {
+    endpoint: "/api/news",
+    columns: [
+      { key: "imageUrl", label: "", render: (v) => v ? `<img class="thumb" src="${v}">` : "" },
+      { key: "title", label: "タイトル" },
+      { key: "category", label: "カテゴリ", render: (v) => CATEGORY_LABELS[v] ?? v },
+      { key: "area", label: "エリア" },
+      { key: "publishedAt", label: "公開日", render: (v) => (v ?? "").slice(0, 10) },
+    ],
+    fields: [
+      { key: "id", label: "id", type: "text", lockOnEdit: true, readonlyOnCreate: true, hint: "新規追加時は自動採番" },
+      { key: "title", label: "タイトル", type: "text", required: true },
+      { key: "category", label: "カテゴリ", type: "select", required: true,
+        options: Object.entries(CATEGORY_LABELS).map(([value, label]) => ({ value, label })) },
+      { key: "publishedAt", label: "公開日時", type: "text", required: true, hint: "例: 2026-08-07T10:00:00+09:00" },
+      { key: "area", label: "エリア", type: "text", required: true },
+      { key: "summary", label: "要約", type: "textarea", required: true },
+      { key: "body", label: "本文", type: "textarea", required: true, rows: 8 },
+      { key: "imageUrl", label: "画像", type: "image", dir: "articles" },
+      { key: "sources", label: "情報源URL", type: "list", hint: "1行1URL" },
+      { key: "relatedSpotIds", label: "関連スポットid", type: "list", hint: "1行1id (spots.jsonのid)" },
+      { key: "relatedStoreIds", label: "関連店舗id", type: "list", hint: "1行1id (stores.jsonのid)" },
+      { key: "_event", label: "イベント情報 (event/exhibition/popup等のみ)", type: "section" },
+      { key: "eventStartDate", label: "開始日", type: "text", hint: "YYYY-MM-DD" },
+      { key: "eventEndDate", label: "終了日", type: "text", hint: "YYYY-MM-DD" },
+      { key: "eventLocation", label: "開催場所", type: "text" },
+      { key: "eventFee", label: "料金", type: "text" },
+      { key: "eventOrganizer", label: "主催", type: "text" },
+      { key: "eventOfficialUrl", label: "イベント公式URL", type: "text" },
+    ],
+  },
+};
+
+async function loadTab() {
+  const schema = SCHEMAS[state.tab];
+  state.items = await api(schema.endpoint);
+  renderTable();
+}
+
+function renderTable() {
+  const schema = SCHEMAS[state.tab];
+  const q = $("#search").value.trim().toLowerCase();
+  const items = state.items.filter((item) =>
+    !q || JSON.stringify(item).toLowerCase().includes(q)
+  );
+
+  $("#thead").innerHTML = `<tr>${schema.columns.map((c) => `<th>${c.label}</th>`).join("")}<th></th></tr>`;
+
+  if (!items.length) {
+    $("#tbody").innerHTML = `<tr><td colspan="${schema.columns.length + 1}" class="empty">データなし</td></tr>`;
+    return;
+  }
+
+  $("#tbody").innerHTML = items.map((item) => `
+    <tr data-id="${item.id}">
+      ${schema.columns.map((c) => `<td>${c.render ? c.render(item[c.key]) : escapeHtml(item[c.key] ?? "")}</td>`).join("")}
+      <td class="actions">
+        <button data-edit="${item.id}">編集</button>
+        <button data-del="${item.id}" class="danger">削除</button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+function escapeHtml(v) {
+  return String(v).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+// --- フォーム描画 ---
+function openDialog(item) {
+  const schema = SCHEMAS[state.tab];
+  state.editingId = item ? item.id : null;
+  $("#dialog-title").textContent = item ? "編集" : "新規追加";
+
+  const form = $("#form");
+  form.innerHTML = schema.fields.map((f) => {
+    if (f.type === "section") return `<fieldset><legend>${f.label}</legend></fieldset>`;
+    return "";
+  }).join("");
+
+  // fieldsetでグルーピング: sectionフィールド以降を1つのfieldsetにまとめる
+  let html = "";
+  let inSection = false;
+  for (const f of schema.fields) {
+    if (f.type === "section") {
+      if (inSection) html += `</fieldset>`;
+      html += `<fieldset><legend>${f.label}</legend>`;
+      inSection = true;
+      continue;
+    }
+    html += renderField(f, item);
+  }
+  if (inSection) html += `</fieldset>`;
+  html += `<div class="dialog-actions">
+    <button type="button" class="secondary" id="cancel-btn">キャンセル</button>
+    <button type="submit" class="primary">保存</button>
+  </div>`;
+  form.innerHTML = html;
+  $("#cancel-btn").addEventListener("click", closeDialog);
+
+  $("#dialog").showModal();
+}
+
+function renderField(f, item) {
+  const raw = item ? item[f.key] : undefined;
+  const disabled = f.lockOnEdit && item ? "disabled" : (f.readonlyOnCreate && !item ? "disabled placeholder=\"自動採番\"" : "");
+  const req = f.required ? "required" : "";
+
+  let control;
+  if (f.type === "select") {
+    control = `<select name="${f.key}" ${req}>` +
+      f.options.map((o) => `<option value="${o.value}" ${raw === o.value ? "selected" : ""}>${o.label}</option>`).join("") +
+      `</select>`;
+  } else if (f.type === "textarea") {
+    control = `<textarea name="${f.key}" ${req} rows="${f.rows ?? 3}">${escapeHtml(raw ?? "")}</textarea>`;
+  } else if (f.type === "list") {
+    const lines = Array.isArray(raw) ? raw.join("\n") : "";
+    control = `<textarea name="${f.key}" rows="3">${escapeHtml(lines)}</textarea>`;
+  } else if (f.type === "image") {
+    const current = raw ?? "";
+    control = `<div class="image-field">
+      <img class="thumb thumb-lg" id="img-preview-${f.key}" src="${current}" onerror="this.style.visibility='hidden'">
+      <input type="hidden" name="${f.key}" id="img-value-${f.key}" value="${escapeHtml(current)}">
+      <input type="text" id="img-src-${f.key}" placeholder="画像URLを貼り付け">
+      <button type="button" data-fetch-image="${f.key}" data-dir="${f.dir}">取得して差替え</button>
+    </div>`;
+  } else {
+    control = `<input type="text" name="${f.key}" value="${escapeHtml(raw ?? "")}" ${req} ${disabled} ${f.type === "number" ? `inputmode="decimal"` : ""}>`;
+  }
+
+  return `<div class="field">
+    <label>${f.label} ${f.hint ? `<span class="hint">${f.hint}</span>` : ""}</label>
+    ${control}
+  </div>`;
+}
+
+function closeDialog() {
+  $("#dialog").close();
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  const schema = SCHEMAS[state.tab];
+  const fd = new FormData(e.target);
+  const payload = {};
+
+  for (const f of schema.fields) {
+    if (f.type === "section") continue;
+    if (!fd.has(f.key)) continue;
+    let v = fd.get(f.key);
+    if (f.type === "list") {
+      payload[f.key] = v.split("\n").map((s) => s.trim()).filter(Boolean);
+    } else if (f.type === "number") {
+      payload[f.key] = v === "" ? null : Number(v);
+    } else {
+      payload[f.key] = v === "" ? (f.key === "imageUrl" ? null : undefined) : v;
+    }
+  }
+  // news: relatedStoreIds/relatedSpotIds/sources が空でも配列必須
+  if (state.tab === "news") {
+    for (const k of ["relatedStoreIds", "relatedSpotIds", "sources"]) {
+      if (!payload[k]) payload[k] = [];
+    }
+    // イベント関連フィールドが全て空なら送らない(不要キーを残さない)
+    const eventKeys = ["eventStartDate", "eventEndDate", "eventLocation", "eventFee", "eventOrganizer", "eventOfficialUrl"];
+    const anyEvent = eventKeys.some((k) => payload[k]);
+    if (!anyEvent) eventKeys.forEach((k) => delete payload[k]);
+  }
+
+  try {
+    if (state.editingId) {
+      await api(`${schema.endpoint}/${encodeURIComponent(state.editingId)}`, {
+        method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      });
+      toast("保存した");
+    } else {
+      await api(schema.endpoint, {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      });
+      toast("追加した");
+    }
+    closeDialog();
+    await loadTab();
+  } catch (err) {
+    alert("保存失敗: " + err.message);
+  }
+}
+
+async function deleteItem(id) {
+  if (!confirm(`id: ${id} を削除する?`)) return;
+  const schema = SCHEMAS[state.tab];
+  try {
+    await api(`${schema.endpoint}/${encodeURIComponent(id)}`, { method: "DELETE" });
+    toast("削除した");
+    await loadTab();
+  } catch (err) {
+    alert("削除失敗: " + err.message);
+  }
+}
+
+// --- イベント配線 ---
+document.querySelectorAll("nav button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("nav button").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    state.tab = btn.dataset.tab;
+    $("#search").value = "";
+    loadTab();
+  });
+});
+
+$("#search").addEventListener("input", renderTable);
+$("#add-btn").addEventListener("click", () => openDialog(null));
+$("#form").addEventListener("submit", submitForm);
+document.addEventListener("click", (e) => {
+  const editId = e.target.closest("[data-edit]")?.dataset.edit;
+  const delId = e.target.closest("[data-del]")?.dataset.del;
+  const fetchImgBtn = e.target.closest("[data-fetch-image]");
+  if (editId) openDialog(state.items.find((i) => String(i.id) === editId));
+  if (delId) deleteItem(delId);
+  if (fetchImgBtn) fetchImage(fetchImgBtn);
+});
+
+async function fetchImage(btn) {
+  const key = btn.dataset.fetchImage;
+  const dir = btn.dataset.dir;
+  const srcInput = $(`#img-src-${key}`);
+  const url = srcInput.value.trim();
+  if (!url) { alert("画像URLを入力"); return; }
+
+  btn.disabled = true;
+  btn.textContent = "取得中…";
+  try {
+    const result = await api("/api/image", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, dir }),
+    });
+    $(`#img-value-${key}`).value = result.imageUrl;
+    const preview = $(`#img-preview-${key}`);
+    preview.src = result.imageUrl;
+    preview.style.visibility = "visible";
+    srcInput.value = "";
+    toast("画像を差替えた(保存ボタンで確定)");
+  } catch (err) {
+    alert("画像取得失敗: " + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "取得して差替え";
+  }
+}
+$("#dialog").addEventListener("click", (e) => {
+  if (e.target === $("#dialog")) closeDialog();
+});
+$("#dialog").addEventListener("close", () => { $("#form").innerHTML = ""; });
+
+loadTab();
+</script>
+</body>
+</html>
