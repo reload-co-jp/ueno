@@ -15,12 +15,16 @@ export const Breadcrumb: FC<{ items: BreadcrumbItem[] }> = ({ items }) => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: allItems.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.label,
-      ...(item.href ? { item: absoluteUrl(item.href) } : {}),
-    })),
+    // Google仕様: 最後の要素以外は"item"必須。リンク先のない中間要素（対応一覧ページがないカテゴリ等）は
+    // itemListElementから除外し、positionを振り直す（表示上のパンくずには残す）。
+    itemListElement: allItems
+      .filter((item, i) => item.href || i === allItems.length - 1)
+      .map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.label,
+        ...(item.href ? { item: absoluteUrl(item.href) } : {}),
+      })),
   }
 
   return (
