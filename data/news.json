@@ -4179,5 +4179,123 @@
     ],
     "relatedEventIds": [],
     "imageUrl": null
+  },
+  {
+    "id": "239",
+    "title": "保存修復工芸展",
+    "category": "exhibition",
+    "publishedAt": "2026-09-04T07:53:13.188Z",
+    "summary": "東京藝術大学 陳列館で開催予定の「保存修復工芸展」。保存修復研究室の学生の授業体験や、総合工房棟B1Fの保存修復工芸研究室の実態に迫る内容。会期は2026年9月10日から9月14日まで。",
+    "body": "東京藝術大学 陳列館で開催予定の「保存修復工芸展」。保存修復研究室の学生の授業体験や、総合工房棟B1Fの保存修復工芸研究室の実態に迫る内容。会期は2026年9月10日から9月14日まで。",
+    "sources": [
+      "https://museum.geidai.ac.jp/exhibit/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "240",
+    "title": "「(仮称)台東区松が谷４丁目賃貸レジデンス計画」新築工事に着工",
+    "category": "local_news",
+    "publishedAt": "2026-09-04T07:52:57.244Z",
+    "summary": "三井物産都市開発株式会社が手掛ける台東区松が谷4丁目の賃貸レジデンス計画が新築工事に着工。",
+    "body": "三井物産都市開発株式会社が手掛ける台東区松が谷4丁目の賃貸レジデンス計画が新築工事に着工。",
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000016.000165192.html"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "241",
+    "title": "したまちミュージアム 収蔵庫燻蒸・展示替えのため休館",
+    "category": "facility_news",
+    "publishedAt": "2026-09-04T07:53:20.526Z",
+    "summary": "収蔵庫燻蒸および展示替えのため、6月29日（月）から7月6日（月）まで休館。",
+    "body": "収蔵庫燻蒸および展示替えのため、6月29日（月）から7月6日（月）まで休館。",
+    "sources": [
+      "https://www.taitogeibun.net/shitamachi/tenji/schedule/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [
+      "shitamachi-museum"
+    ],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "242",
+    "title": "旧東京音楽学校奏楽堂 9月・10月の建物公開日",
+    "category": "facility_news",
+    "publishedAt": "2026-09-04T07:53:28.812Z",
+    "summary": "旧東京音楽学校奏楽堂の建物公開日を案内。9月は9/1・9/2・9/4・9/5・9/6・9/8・9/9・9/13・9/15・9/16・9/17・9/20・9/21・9/22・9/23・9/25・9/26・9/27・9/29・9/30、10月は10/4・10/6・10/7・10/11・10/12・10/14・10/18・10/20・10/21・10/22・10/23・10/25。明治建築のためバリアフリー非対応。舞台上でリハーサルやコンサートを行っている時間帯はホール内の撮影不可。",
+    "body": "旧東京音楽学校奏楽堂の建物公開日を案内。9月は9/1・9/2・9/4・9/5・9/6・9/8・9/9・9/13・9/15・9/16・9/17・9/20・9/21・9/22・9/23・9/25・9/26・9/27・9/29・9/30、10月は10/4・10/6・10/7・10/11・10/12・10/14・10/18・10/20・10/21・10/22・10/23・10/25。明治建築のためバリアフリー非対応。舞台上でリハーサルやコンサートを行っている時間帯はホール内の撮影不可。",
+    "sources": [
+      "https://www.taitogeibun.net/sougakudou/concert/",
+      "https://www.taitogeibun.net/sougakudou/contest_j/",
+      "https://www.taitogeibun.net/sougakudou/workshop/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [
+      "sougakudou"
+    ],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "243",
+    "title": "魚吉酒場 上野店がオープン",
+    "category": "new_opening",
+    "publishedAt": "2026-09-04T07:53:01.653Z",
+    "summary": "本まぐろ・鮮魚・活貝を堪能できる海鮮居酒屋「魚吉酒場 上野店」が2026年9月1日オープン。京成上野駅から148m、上野駅から徒歩0分。",
+    "body": "本まぐろ・鮮魚・活貝を堪能できる海鮮居酒屋「魚吉酒場 上野店」が2026年9月1日オープン。京成上野駅から148m、上野駅から徒歩0分。",
+    "sources": [
+      "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "244",
+    "title": "四万十屋 上野店がオープン",
+    "category": "new_opening",
+    "publishedAt": "2026-09-04T07:53:01.653Z",
+    "summary": "豪快な藁焼きと炊きたて土鍋ご飯、厳選日本酒を提供する居酒屋「四万十屋 上野店」が2026年9月1日オープン。上野駅徒歩1分。",
+    "body": "豪快な藁焼きと炊きたて土鍋ご飯、厳選日本酒を提供する居酒屋「四万十屋 上野店」が2026年9月1日オープン。上野駅徒歩1分。",
+    "sources": [
+      "https://tabelog.com/tokyo/C13106/C36324/rstLst/cond16-00-00/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [],
+    "relatedEventIds": [],
+    "imageUrl": null
+  },
+  {
+    "id": "245",
+    "title": "東京国立博物館 本館展示室番号を変更",
+    "category": "facility_news",
+    "publishedAt": "2026-09-04T07:53:06.651Z",
+    "summary": "東京国立博物館は2026年4月8日（水）から本館の展示室番号を変更する。",
+    "body": "東京国立博物館は2026年4月8日（水）から本館の展示室番号を変更する。",
+    "sources": [
+      "https://www.tnm.jp/modules/r_free_page/index.php?id=1255"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [],
+    "relatedEventIds": [],
+    "imageUrl": "/images/articles/f6a8227c5c9536ed.jpg"
   }
 ]
