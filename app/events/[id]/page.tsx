@@ -87,9 +87,24 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         />
       )}
       <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{event.title}</h1>
-      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-        {formatDateRangeJp(event.eventStartDate, event.eventEndDate)} ・ {event.area}
+      <p
+        style={{
+          display: "inline-flex",
+          alignItems: "baseline",
+          gap: ".5rem",
+          fontSize: "1rem",
+          fontWeight: 700,
+          color: "#c0483a",
+          background: "#f7e6e1",
+          borderRadius: ".5rem",
+          padding: ".5rem .875rem",
+          margin: 0,
+        }}
+      >
+        <span style={{ fontSize: ".75rem", fontWeight: 800 }}>開催日時</span>
+        {formatDateRangeJp(event.eventStartDate, event.eventEndDate)}
       </p>
+      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>{event.area}</p>
 
       <ArticleBody body={event.body} />
 

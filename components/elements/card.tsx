@@ -50,11 +50,29 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
         <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}>
           {article.summary}
         </p>
+        {isEvent && (
+          <p
+            style={{
+              display: "inline-flex",
+              alignItems: "baseline",
+              gap: ".375rem",
+              fontSize: ".8125rem",
+              fontWeight: 700,
+              color: "#c0483a",
+              background: "#f7e6e1",
+              borderRadius: ".375rem",
+              padding: ".1875rem .625rem",
+              margin: "0 0 .375rem",
+            }}
+          >
+            <span style={{ fontSize: ".6875rem", fontWeight: 800 }}>開催日時</span>
+            {formatDateRangeJp(article.eventStartDate, article.eventEndDate)}
+          </p>
+        )}
         <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
-          {isEvent
-            ? formatDateRangeJp(article.eventStartDate, article.eventEndDate)
-            : formatDateJp(article.publishedAt)}{" "}
-          ・ {isEvent ? (article.eventLocation ?? article.area) : article.area}
+          {isEvent ? "" : formatDateJp(article.publishedAt)}
+          {isEvent ? "" : " ・ "}
+          {isEvent ? (article.eventLocation ?? article.area) : article.area}
         </p>
       </div>
     </Link>
