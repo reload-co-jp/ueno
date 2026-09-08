@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm"
 const linkColor = "#c0483a"
 
 export const ArticleBody: FC<{ body: string }> = ({ body }) => (
-  <div style={{ fontSize: ".9375rem", lineHeight: 1.8 }}>
+  <div style={{ fontSize: ".9375rem", lineHeight: 1.8, fontFamily: "sans-serif" }}>
     <Markdown
       remarkPlugins={[remarkGfm]}
       components={{
