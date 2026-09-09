@@ -13,11 +13,22 @@ interface ClaudeResultJson {
   structured_output?: unknown
 }
 
+// 抽出/重複判定/記事生成はいずれもプロンプト→テキスト/JSON変換のみでツール不要。
+// 素の`-p`呼び出しはAGENTS.md(Next.jsドキュメント参照指示など本タスクと無関係な内容)の
+// 自動読み込みやツール定義がシステムプロンプトに乗り、呼び出し毎にトークンを消費するため、
+// --tools ""でツール無効化、--safe-modeでCLAUDE.md/AGENTS.md等の自動読み込みを止める。
+const BASE_ARGS = [
+  "--tools",
+  "",
+  "--safe-mode",
+  "--exclude-dynamic-system-prompt-sections",
+]
+
 const runClaude = async (prompt: string, extraArgs: string[] = []): Promise<ClaudeResultJson | null> => {
   try {
     const { stdout } = await execFileAsync(
       "claude",
-      ["-p", prompt, "--output-format", "json", ...extraArgs],
+      ["-p", prompt, "--output-format", "json", ...BASE_ARGS, ...extraArgs],
       { maxBuffer: MAX_BUFFER }
     )
     const parsed: ClaudeResultJson = JSON.parse(stdout)
