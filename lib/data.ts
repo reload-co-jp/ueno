@@ -82,7 +82,7 @@ export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
 export const getUpcomingEvents = () =>
   news
     .filter(isEventArticle)
-    .sort((a, b) => a.eventStartDate.localeCompare(b.eventStartDate))
+    .sort((a, b) => b.eventStartDate.localeCompare(a.eventStartDate))
 
 const toDateOnly = (iso: string) => iso.slice(0, 10)
 
