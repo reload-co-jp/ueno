@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { news, spots, stores } from "@/lib/data"
+import { GENRES, genreSlug, PERIODS } from "@/lib/genres"
 import { SITE_URL } from "@/lib/seo"
 
 export const dynamic = "force-static"
@@ -29,6 +30,14 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: path === "/" ? 1 : 0.7,
   }))
 
+  const genreEntries = PERIODS.flatMap((period) =>
+    GENRES.map((genre) => ({
+      url: `${SITE_URL}/features/genre/${genreSlug(period, genre)}/`,
+      changeFrequency: "daily" as const,
+      priority: 0.5,
+    }))
+  )
+
   const articleEntries = news.map((n) => ({
     url: `${SITE_URL}/articles/${n.id}/`,
     lastModified: n.updatedAt ?? n.publishedAt,
@@ -48,7 +57,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: 0.5,
   }))
 
-  return [...staticEntries, ...articleEntries, ...storeEntries, ...spotEntries]
+  return [...staticEntries, ...genreEntries, ...articleEntries, ...storeEntries, ...spotEntries]
 }
 
 export default sitemap
