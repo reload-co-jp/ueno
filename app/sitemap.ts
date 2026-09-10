@@ -26,8 +26,8 @@ const STATIC_PATHS = [
 const sitemap = (): MetadataRoute.Sitemap => {
   const staticEntries = STATIC_PATHS.map((path) => ({
     url: path === "/" ? SITE_URL + "/" : `${SITE_URL}${path}/`,
-    changeFrequency: "daily" as const,
-    priority: path === "/" ? 1 : 0.7,
+    changeFrequency: path === "/features/today-events" ? ("hourly" as const) : ("daily" as const),
+    priority: path === "/" ? 1 : path === "/features/today-events" ? 0.8 : 0.7,
   }))
 
   const genreEntries = PERIODS.flatMap((period) =>
