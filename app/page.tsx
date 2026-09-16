@@ -8,6 +8,7 @@ import { CATEGORY_LABELS } from "@/lib/types"
 const FEATURES = [
   { href: "/features/this-week", label: "今週の上野" },
   { href: "/features/gourmet-new-stores", label: "グルメ・カフェ新店" },
+  { href: "/features/museums", label: "上野の美術館まとめ" },
   { href: "/features/today-events", label: "今日の上野イベント" },
   { href: "/features/weekend-events", label: "今週末の上野イベント" },
   { href: "/features/monthly-openings", label: "今月の新店舗" },
