@@ -13,7 +13,9 @@
   nav button.active { background: #444; color: #fff; }
   main { max-width: 1100px; margin: 20px auto; padding: 0 16px; }
   .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .toolbar-filters { display: flex; align-items: center; gap: 8px; }
   .toolbar input[type=search] { padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; width: 240px; }
+  .toolbar select { padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; background: #fff; }
   button.primary { background: #0071e3; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
   button.primary:hover { background: #0077ed; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
@@ -53,14 +55,18 @@
 <header>
   <h1>上野 Admin</h1>
   <nav>
-    <button data-tab="spots" class="active">スポット</button>
-    <button data-tab="news">ニュース</button>
+    <button data-tab="spots">スポット</button>
+    <button data-tab="news" class="active">ニュース</button>
   </nav>
 </header>
 
 <main>
   <div class="toolbar">
-    <input type="search" id="search" placeholder="検索…" />
+    <div class="toolbar-filters">
+      <input type="search" id="search" placeholder="検索…" />
+      <select id="sort-select" hidden></select>
+      <select id="category-filter" hidden></select>
+    </div>
     <button class="primary" id="add-btn">+ 新規追加</button>
   </div>
   <table>
@@ -85,7 +91,7 @@ const CATEGORY_LABELS = {
   exhibition: "展示会", facility_news: "施設ニュース", local_news: "地域ニュース",
 };
 
-const state = { tab: "spots", items: [], editingId: null };
+const state = { tab: "news", items: [], editingId: null, sortKey: null, categoryFilter: "" };
 
 const $ = (sel) => document.querySelector(sel);
 const toast = (msg) => {
@@ -127,13 +133,18 @@ const SCHEMAS = {
   },
   news: {
     endpoint: "/api/news",
-    sort: (a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""), // 公開日降順
+    hasCategoryFilter: true,
+    sortOptions: [
+      { value: "publishedAt", label: "公開日が新しい順", fn: (a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "") },
+      { value: "eventStartDate", label: "イベント開始日が新しい順", fn: (a, b) => (b.eventStartDate ?? "").localeCompare(a.eventStartDate ?? "") },
+    ],
     columns: [
       { key: "imageUrl", label: "", render: (v) => v ? `<img class="thumb" src="${v}">` : "" },
       { key: "title", label: "タイトル" },
       { key: "category", label: "カテゴリ", render: (v) => CATEGORY_LABELS[v] ?? v },
       { key: "area", label: "エリア" },
       { key: "publishedAt", label: "公開日", render: (v) => (v ?? "").slice(0, 10) },
+      { key: "eventStartDate", label: "イベント期間", render: (v, item) => v ? `${escapeHtml(v)} 〜 ${escapeHtml(item.eventEndDate ?? "")}` : "" },
     ],
     fields: [
       { key: "id", label: "id", type: "text", lockOnEdit: true, readonlyOnCreate: true, hint: "新規追加時は自動採番" },
@@ -162,15 +173,36 @@ const SCHEMAS = {
 async function loadTab() {
   const schema = SCHEMAS[state.tab];
   state.items = await api(schema.endpoint);
+  state.sortKey = schema.sortOptions ? schema.sortOptions[0].value : null;
+  const sortSelect = $("#sort-select");
+  if (schema.sortOptions) {
+    sortSelect.innerHTML = schema.sortOptions.map((o) => `<option value="${o.value}">${o.label}</option>`).join("");
+    sortSelect.hidden = false;
+  } else {
+    sortSelect.innerHTML = "";
+    sortSelect.hidden = true;
+  }
+  state.categoryFilter = "";
+  const categoryFilter = $("#category-filter");
+  if (schema.hasCategoryFilter) {
+    categoryFilter.innerHTML = `<option value="">すべてのカテゴリ</option>` +
+      Object.entries(CATEGORY_LABELS).map(([value, label]) => `<option value="${value}">${label}</option>`).join("");
+    categoryFilter.hidden = false;
+  } else {
+    categoryFilter.innerHTML = "";
+    categoryFilter.hidden = true;
+  }
   renderTable();
 }
 
 function renderTable() {
   const schema = SCHEMAS[state.tab];
   const q = $("#search").value.trim().toLowerCase();
+  const sortFn = schema.sortOptions?.find((o) => o.value === state.sortKey)?.fn ?? (() => 0);
   const items = state.items
     .filter((item) => !q || JSON.stringify(item).toLowerCase().includes(q))
-    .sort(schema.sort ?? (() => 0));
+    .filter((item) => !state.categoryFilter || item.category === state.categoryFilter)
+    .sort(sortFn);
 
   $("#thead").innerHTML = `<tr>${schema.columns.map((c) => `<th>${c.label}</th>`).join("")}<th></th></tr>`;
 
@@ -181,7 +213,7 @@ function renderTable() {
 
   $("#tbody").innerHTML = items.map((item) => `
     <tr data-id="${item.id}">
-      ${schema.columns.map((c) => `<td>${c.render ? c.render(item[c.key]) : escapeHtml(item[c.key] ?? "")}</td>`).join("")}
+      ${schema.columns.map((c) => `<td>${c.render ? c.render(item[c.key], item) : escapeHtml(item[c.key] ?? "")}</td>`).join("")}
       <td class="actions">
         <button data-edit="${item.id}">編集</button>
         <button data-del="${item.id}" class="danger">削除</button>
@@ -327,6 +359,14 @@ async function deleteItem(id) {
 }
 
 // --- イベント配線 ---
+$("#sort-select").addEventListener("change", (e) => {
+  state.sortKey = e.target.value;
+  renderTable();
+});
+$("#category-filter").addEventListener("change", (e) => {
+  state.categoryFilter = e.target.value;
+  renderTable();
+});
 document.querySelectorAll("nav button").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll("nav button").forEach((b) => b.classList.remove("active"));
@@ -376,8 +416,10 @@ async function fetchImage(btn) {
     btn.textContent = "取得して差替え";
   }
 }
+let dialogMousedownTarget = null;
+$("#dialog").addEventListener("mousedown", (e) => { dialogMousedownTarget = e.target; });
 $("#dialog").addEventListener("click", (e) => {
-  if (e.target === $("#dialog")) closeDialog();
+  if (e.target === $("#dialog") && dialogMousedownTarget === $("#dialog")) closeDialog();
 });
 $("#dialog").addEventListener("close", () => { $("#form").innerHTML = ""; });
 
