@@ -20,14 +20,19 @@ export const getArticleImageUrl = (article: NewsArticle): string | null =>
   article.relatedSpotIds.map(getSpot).find((s) => s?.imageUrl)?.imageUrl ??
   null
 
-// イベント記事の開催日と現在日時との差(ms)。過去開催・イベント記事でないものはInfinity
+// イベント記事の開催近接度。開催期間中は0(最優先)、開催前は開始日時との差(ms)、
+// 終了済・イベント記事でないものはInfinity
 const getEventProximity = (article: NewsArticle): number => {
   if (!isEventArticle(article)) return Infinity
-  const diff = new Date(article.eventStartDate).getTime() - Date.now()
+  const now = Date.now()
+  const start = new Date(article.eventStartDate).getTime()
+  const end = new Date(`${article.eventEndDate}T23:59:59`).getTime()
+  if (now >= start && now <= end) return 0
+  const diff = start - now
   return diff >= 0 ? diff : Infinity
 }
 
-// イベントカテゴリ(開催日が未来のもののみ)優先→開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
+// イベント記事(開催中・開催前のもののみ)優先→開催中を最優先、次に開催時期の近さ→公開日降順。同日内は画像有無→本文量の充実度で優先表示
 export const compareArticles = (a: NewsArticle, b: NewsArticle) => {
   const proximityA = getEventProximity(a)
   const proximityB = getEventProximity(b)
