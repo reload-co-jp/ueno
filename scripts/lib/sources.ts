@@ -117,6 +117,8 @@ export const SOURCES: Source[] = [
     type: "official_site",
     categoryHints: ["exhibition"],
     strictAreaFilter: false,
+    // 一覧ページはカレンダー形式で画像を持たない。展示ごとの画像はarticle.cgi詳細ページのみにある。
+    detailLinkPattern: "article.cgi?id=",
   },
   {
     id: "geidai",

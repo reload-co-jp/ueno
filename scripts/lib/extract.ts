@@ -2,6 +2,7 @@ import * as cheerio from "cheerio"
 import type { Category } from "@/lib/types"
 import type { Source } from "./sources"
 import { runClaudeJson } from "./claude-cli"
+import { fetchHtml, sleep } from "./fetch-raw"
 
 // README「8. LLMによる情報抽出」準拠
 export interface ExtractedItem {
@@ -33,6 +34,9 @@ interface LlmExtractedItem extends Omit<ExtractedItem, "image_url" | "detail_url
 }
 
 const MAX_CHARS = 12000
+
+// 詳細ページ個別fetch(画像探索フォールバック)時のインターバル。対象サイトへの負荷配慮。
+const DETAIL_IMAGE_FETCH_INTERVAL_MS = 1000
 
 // HTML本文からノイズ(script/style/nav等)を除いたテキストを抽出
 export const htmlToText = (html: string): string => {
@@ -260,7 +264,7 @@ export const extractFromHtml = async (
   // その画像/リンクが特定の1項目にしか対応しないことがあるため、LLMのindex判定に従う
   // (フォールバックで候補[0]を使い回さない。使い回すと無関係項目に誤った画像/リンクが付く)。
   const items = result?.items ?? []
-  return items.map((item): ExtractedItem => {
+  const extracted = items.map((item): ExtractedItem => {
     const { image_index, detail_url_index, ...rest } = item
     const imageUrl =
       items.length <= 1 && imageCandidates.length <= 1
@@ -272,4 +276,21 @@ export const extractFromHtml = async (
         : (detailLinkCandidates[detail_url_index ?? -1] ?? null)
     return { ...rest, image_url: imageUrl, detail_url: detailUrl }
   })
+
+  // 一覧ページに画像が無いサイト(例: ueno-mori、カレンダー形式)向けフォールバック。
+  // image_urlが未確定でdetail_urlがある項目は、詳細ページを個別fetchして画像を探す
+  // (対象サイトへの負荷配慮で1件ごとにインターバルを空ける)。
+  if (imageCandidates.length === 0) {
+    for (const item of extracted) {
+      if (item.image_url || !item.detail_url) continue
+      const detailHtml = await fetchHtml(item.detail_url)
+      if (detailHtml) {
+        const candidates = extractImageCandidates(detailHtml, item.detail_url)
+        item.image_url = candidates[0] ?? null
+      }
+      await sleep(DETAIL_IMAGE_FETCH_INTERVAL_MS)
+    }
+  }
+
+  return extracted
 }

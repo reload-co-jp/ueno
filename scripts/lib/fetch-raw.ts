@@ -47,6 +47,19 @@ export const fetchRaw = async (source: Source): Promise<RawRecord> => {
   }
 }
 
+// 詳細ページ個別fetch用(一覧ページに画像が無いサイトで、記事詳細ページから画像を拾う場合等)。
+// 保存はせず、取得失敗時は空文字列を返す。
+export const fetchHtml = async (url: string): Promise<string> => {
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": USER_AGENT, "Accept-Language": "ja,en;q=0.5" },
+    })
+    return await res.text()
+  } catch {
+    return ""
+  }
+}
+
 export const saveRaw = async (record: RawRecord) => {
   const dir = path.join(RAW_DIR, record.sourceId)
   await mkdir(dir, { recursive: true })

@@ -110,6 +110,13 @@ export const getStoresByArea = (area: string) =>
 export const getSpotsByArea = (area: string) =>
   spots.filter((s) => s.area === area)
 
+export const getMuseumSpots = () => spots.filter((s) => s.type === "美術館")
+
+export const getMuseumArticles = () =>
+  news
+    .filter((n) => n.relatedSpotIds.some((id) => getMuseumSpots().some((m) => m.id === id)))
+    .sort(compareArticles)
+
 // 「上野 グルメ・カフェ新店」LP向け抽出。関連店舗のカテゴリが飲食系、
 // または店舗紐付けが無い記事はタイトルの飲食キーワードで判定する
 const GOURMET_STORE_CATEGORIES = ["飲食", "ドリンク", "カフェ・書店"]
