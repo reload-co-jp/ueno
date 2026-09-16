@@ -19,7 +19,7 @@
     "backfill-images": "tsx scripts/6-backfill-images.ts",
     "backfill-spot-images": "tsx scripts/8-backfill-spot-images.ts",
     "admin": "tsx scripts/admin-server.ts",
-    "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe-and-link && pnpm generate-articles"
+    "pipeline": "pnpm scrape && pnpm extract && pnpm dedupe-and-link && pnpm generate-articles && pnpm publish-drafts"
   },
   "keywords": [],
   "author": "",

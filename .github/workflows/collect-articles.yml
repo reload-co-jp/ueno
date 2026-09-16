@@ -1,8 +1,8 @@
 name: Collect & Draft Articles
 
-# README「3. 情報収集フロー」の scrape〜generate-articles(1〜4)を自動実行し、
-# 生成された data/drafts/articles.json を確認用PRとして起票する。
-# 公開(publish-drafts)は人手レビュー後、別workflowで手動実行する。
+# README「3. 情報収集フロー」の scrape〜publish-drafts(1〜5)を自動実行し、
+# data/news.json / data/drafts/articles.json を main へ直接コミットする
+# (push to main で deploy.yml が発火し自動デプロイされる)。
 
 on:
   schedule:
@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   generate:
@@ -52,14 +51,14 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
-      - name: Open PR with drafts
-        uses: peter-evans/create-pull-request@v6
-        with:
-          add-paths: data/drafts/articles.json
-          branch: auto/article-drafts
-          commit-message: "chore: 記事ドラフト自動生成"
-          title: "記事ドラフト自動生成"
-          body: |
-            scrape → extract → dedupe → generate-articles を自動実行した結果。
-            内容確認のうえマージし、`pnpm publish-drafts` workflow(手動)で公開する。
-          delete-branch: true
+      - name: Publish drafts
+        run: pnpm publish-drafts
+
+      - name: Commit published news
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/drafts/articles.json
+          git diff --cached --quiet && echo "変更無し" && exit 0
+          git commit -m "chore: 記事公開 (collect-articles)"
+          git push
