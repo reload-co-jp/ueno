@@ -75,6 +75,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <AdSlot />
         </Main>
         <Footer>
+          <a href="/about" style={{ color: "inherit" }}>
+            このサイトについて
+          </a>
           <p>&copy; {SITE_NAME}</p>
         </Footer>
       </body>
