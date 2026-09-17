@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { WDXL_Lubrifont_JP_N } from "next/font/google"
 import Script from "next/script"
+import { AdSlot } from "@/components/elements/ad-slot"
 import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
 import { jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
 import "./reset.css"
@@ -69,7 +70,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           </Title>
           <Nav />
         </Header>
-        <Main>{children}</Main>
+        <Main>
+          {children}
+          <AdSlot />
+        </Main>
         <Footer>
           <p>&copy; {SITE_NAME}</p>
         </Footer>
