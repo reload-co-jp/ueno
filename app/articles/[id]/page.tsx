@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { AdSlot } from "@/components/elements/ad-slot"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
@@ -126,6 +127,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       </p>
 
       <ArticleBody body={article.body} />
+
+      <AdSlot />
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>

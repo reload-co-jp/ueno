@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
+import { AdSlot } from "@/components/elements/ad-slot"
 import { badgeStyle } from "@/components/elements/card"
 import { formatDateJp } from "@/lib/date"
 import { getArticleImageUrl, getLatestArticles } from "@/lib/data"
@@ -60,6 +61,8 @@ const Page: FC = () => {
           </Link>
         </section>
       )}
+
+      <AdSlot />
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
         <section style={{ flex: "3 1 22rem" }}>
