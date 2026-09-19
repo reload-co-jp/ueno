@@ -5098,5 +5098,23 @@
     "relatedSpotIds": [],
     "relatedEventIds": [],
     "imageUrl": null
+  },
+  {
+    "id": "295",
+    "title": "よむよむ展",
+    "category": "exhibition",
+    "publishedAt": "2026-09-02T11:24:30.090Z",
+    "summary": "上野の森美術館ギャラリーで開催される展覧会。",
+    "body": "上野の森美術館ギャラリーで開催される展覧会。",
+    "sources": [
+      "https://www.ueno-mori.org/exhibitions/"
+    ],
+    "area": "上野",
+    "relatedStoreIds": [],
+    "relatedSpotIds": [
+      "ueno-mori"
+    ],
+    "relatedEventIds": [],
+    "imageUrl": null
   }
 ]
