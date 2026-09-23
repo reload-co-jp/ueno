@@ -89,14 +89,24 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   }
 
   return (
-    <article style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "75rem" }}>
+    <article
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        maxWidth: "75rem",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
       <Breadcrumb
         items={[
-          { label: CATEGORY_LABELS[article.category], href: CATEGORY_PATHS[article.category] },
+          {
+            label: CATEGORY_LABELS[article.category],
+            href: CATEGORY_PATHS[article.category],
+          },
           { label: article.title },
         ]}
       />
@@ -118,7 +128,13 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         <img
           src={imageUrl}
           alt={article.title}
-          style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
+          style={{
+            width: "100%",
+            maxHeight: "min(60vh, 480px)",
+            borderRadius: ".75rem",
+            objectFit: "contain",
+            background: "#f4efe5",
+          }}
         />
       )}
       <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h1>
@@ -132,7 +148,9 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h3>
+          <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>
+            関連情報
+          </h3>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
               <li key={s!.id}>
@@ -154,7 +172,9 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {relatedArticles.length > 0 && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>関連記事</h3>
+          <h3 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>
+            関連記事
+          </h3>
           <CardGrid>
             {relatedArticles.map((a) => (
               <ArticleCard key={a.id} article={a} />
@@ -168,7 +188,12 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         {article.sources.map((url, i) => (
           <span key={url}>
             {i > 0 && "、"}
-            <a href={url} target="_blank" rel="noreferrer" style={{ color: "#c0483a" }}>
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#c0483a" }}
+            >
               {url}
             </a>
           </span>
