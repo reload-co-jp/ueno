@@ -47,6 +47,7 @@ export const Title: FC<ComponentProps<"p">> = ({
 }) => (
   <p
     style={{
+      fontFamily: "var(--font-lubrifont)",
       fontSize: "3.5rem",
       fontWeight: 250,
       letterSpacing: "-0.02em",

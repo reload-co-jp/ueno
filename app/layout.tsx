@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
-import { WDXL_Lubrifont_JP_N } from "next/font/google"
+import { Noto_Sans_JP, WDXL_Lubrifont_JP_N } from "next/font/google"
 import Script from "next/script"
 import { AdSlot } from "@/components/elements/ad-slot"
 import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
@@ -37,6 +37,12 @@ const lubrifont = WDXL_Lubrifont_JP_N({
   subsets: ["latin"],
   display: "swap",
   adjustFontFallback: false,
+  variable: "--font-lubrifont",
+})
+
+const notoSans = Noto_Sans_JP({
+  subsets: ["latin"],
+  display: "swap",
 })
 
 const websiteJsonLd = {
@@ -48,7 +54,7 @@ const websiteJsonLd = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="ja" className={lubrifont.className}>
+    <html lang="ja" className={`${notoSans.className} ${lubrifont.variable}`}>
       <body>
         {process.env.NODE_ENV === "production" && (
           <Script
