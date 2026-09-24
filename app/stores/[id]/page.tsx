@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getArticlesByStore, getStore, stores } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
+import { jsonLdString, pageUrl, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => stores.map((s) => ({ id: s.id }))
 
@@ -17,7 +17,7 @@ export const generateMetadata = async ({
   const { id } = await params
   const store = getStore(id)
   if (!store) return {}
-  const url = absoluteUrl(`/stores/${store.id}`)
+  const url = pageUrl(`/stores/${store.id}`)
   const description = `${store.name}（${store.category}）の店舗情報。所在地: ${store.address}`
   return {
     title: store.name,
