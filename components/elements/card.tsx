@@ -2,7 +2,7 @@ import Link from "next/link"
 import { FC } from "react"
 import { CATEGORY_LABELS, NewsArticle, Spot, Store, isEventArticle } from "@/lib/types"
 import { formatDateJp, formatDateRangeJp } from "@/lib/date"
-import { getArticleImageUrl } from "@/lib/data"
+import { getArticleImage } from "@/lib/data"
 
 const cardStyle: React.CSSProperties = {
   display: "block",
@@ -26,6 +26,7 @@ export const badgeStyle: React.CSSProperties = {
 
 export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
   const isEvent = isEventArticle(article)
+  const image = getArticleImage(article)
   return (
     <Link
       href={isEvent ? `/events/${article.id}` : `/articles/${article.id}`}
@@ -33,8 +34,8 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
       style={cardStyle}
     >
       <img
-        src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
-        alt={article.title}
+        src={image?.url ?? "/images/placeholder.jpg"}
+        alt={image?.alt ?? ""}
         style={{
           width: "100%",
           aspectRatio: "16 / 9",

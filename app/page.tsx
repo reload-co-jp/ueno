@@ -3,7 +3,7 @@ import { FC } from "react"
 import { AdSlot } from "@/components/elements/ad-slot"
 import { badgeStyle } from "@/components/elements/card"
 import { formatDateJp } from "@/lib/date"
-import { getArticleImageUrl, getLatestArticles } from "@/lib/data"
+import { getArticleImage, getLatestArticles } from "@/lib/data"
 import { CATEGORY_LABELS, isEventArticle, type NewsArticle } from "@/lib/types"
 
 const FEATURES = [
@@ -41,8 +41,8 @@ const Page: FC = () => {
             style={{ display: "block", color: "#111", textDecoration: "none" }}
           >
             <img
-              src={getArticleImageUrl(hero) ?? "/images/placeholder.jpg"}
-              alt={hero.title}
+              src={getArticleImage(hero)?.url ?? "/images/placeholder.jpg"}
+              alt={getArticleImage(hero)?.alt ?? ""}
               style={{
                 width: "100%",
                 aspectRatio: "21 / 9",
@@ -88,8 +88,8 @@ const Page: FC = () => {
                 }}
               >
                 <img
-                  src={getArticleImageUrl(article) ?? "/images/placeholder.jpg"}
-                  alt={article.title}
+                  src={getArticleImage(article)?.url ?? "/images/placeholder.jpg"}
+                  alt={getArticleImage(article)?.alt ?? ""}
                   style={{
                     width: "9rem",
                     aspectRatio: "4 / 3",

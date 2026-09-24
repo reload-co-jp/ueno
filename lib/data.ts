@@ -14,11 +14,16 @@ export const getArticle = (id: string) => news.find((n) => n.id === id)
 // イベントもnews.json内のcategory: "event"記事として管理する
 export const getEvent = (id: string) => news.find((n) => n.id === id && isEventArticle(n))
 
-// 記事に画像が無い場合、関連スポットの画像をフォールバックとして使う
+// 記事に画像が無い場合、関連スポット(会場名一致を優先)の画像をフォールバックとして使う。
+// altは画像の実際の被写体に合わせ、フォールバック時は施設名にする
+export const getArticleImage = (article: NewsArticle): { url: string; alt: string } | null => {
+  if (article.imageUrl) return { url: article.imageUrl, alt: article.title }
+  const spot = getArticleSpots(article).find((s) => s.imageUrl)
+  return spot?.imageUrl ? { url: spot.imageUrl, alt: `上野の${spot.type}「${spot.name}」` } : null
+}
+
 export const getArticleImageUrl = (article: NewsArticle): string | null =>
-  article.imageUrl ??
-  article.relatedSpotIds.map(getSpot).find((s) => s?.imageUrl)?.imageUrl ??
-  null
+  getArticleImage(article)?.url ?? null
 
 // イベント記事の開催近接度。開催期間中は0(最優先)、開催前は開始日時との差(ms)、
 // 終了済・イベント記事でないものはInfinity
@@ -73,7 +78,8 @@ export const getArticleSpotIds = (article: NewsArticle): string[] => {
   if (cached) return cached
   const text = `${article.eventLocation ?? ""} ${article.title}`
   const matched = spots.filter((s) => text.includes(s.name)).map((s) => s.id)
-  const ids = Array.from(new Set([...article.relatedSpotIds, ...matched]))
+  // 会場名・タイトルで一致した施設を先頭に(収集時の紐付けより会場の特定精度が高い)
+  const ids = Array.from(new Set([...matched, ...article.relatedSpotIds]))
   articleSpotIdsCache.set(article.id, ids)
   return ids
 }

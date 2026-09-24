@@ -10,6 +10,7 @@ import { RelatedLinks } from "@/components/elements/related-links"
 import { SpotEvents } from "@/components/elements/spot-events"
 import {
   getArticle,
+  getArticleImage,
   getArticleImageUrl,
   getRelatedArticles,
   getArticleSpots,
@@ -73,7 +74,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedStores = article.relatedStoreIds.map(getStore).filter(Boolean)
   const relatedSpots = getArticleSpots(article)
   const relatedArticles = getRelatedArticles(article)
-  const imageUrl = getArticleImageUrl(article)
+  const image = getArticleImage(article)
+  const imageUrl = image?.url
 
   const url = pageUrl(`/articles/${article.id}`)
   const jsonLd = {
@@ -81,7 +83,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     "@type": "NewsArticle",
     headline: article.title,
     description: article.summary,
-    image: [absoluteUrl(imageUrl ?? "/images/placeholder.jpg")],
+    // ページ上に表示している画像のみ(プレースホルダは含めない)
+    image: imageUrl ? [absoluteUrl(imageUrl)] : undefined,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     articleSection: CATEGORY_LABELS[article.category],
@@ -130,7 +133,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       {imageUrl && (
         <img
           src={imageUrl}
-          alt={article.title}
+          alt={image?.alt}
           style={{
             width: "100%",
             maxHeight: "min(60vh, 480px)",

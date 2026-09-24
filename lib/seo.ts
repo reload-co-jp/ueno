@@ -57,3 +57,11 @@ export const eventListJsonLd = (
     },
   })),
 })
+
+// 料金表記→金額(円)。無料は0、金額が読み取れない表記(「入園料のみ」「不明」等)はnull
+export const parseFeeYen = (fee?: string): number | null => {
+  if (!fee) return null
+  if (fee.includes("無料")) return 0
+  const match = fee.match(/([\d,]+)円/)
+  return match ? Number(match[1].replace(/,/g, "")) : null
+}

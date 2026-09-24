@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
-import { absoluteUrl, jsonLdString } from "@/lib/seo"
+import { jsonLdString, pageUrl } from "@/lib/seo"
 
 export interface BreadcrumbItem {
   label: string
@@ -23,7 +23,7 @@ export const Breadcrumb: FC<{ items: BreadcrumbItem[] }> = ({ items }) => {
         "@type": "ListItem",
         position: i + 1,
         name: item.label,
-        ...(item.href ? { item: absoluteUrl(item.href) } : {}),
+        ...(item.href ? { item: pageUrl(item.href) } : {}),
       })),
   }
 

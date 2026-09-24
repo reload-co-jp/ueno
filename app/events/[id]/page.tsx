@@ -7,9 +7,9 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
 import { SpotEvents } from "@/components/elements/spot-events"
-import { getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, getUpcomingEvents } from "@/lib/data"
+import { getArticleImage, getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, getUpcomingEvents } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, pageUrl, SITE_NAME } from "@/lib/seo"
+import { absoluteUrl, jsonLdString, pageUrl, parseFeeYen, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => getUpcomingEvents().map((e) => ({ id: e.id }))
 
@@ -51,7 +51,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedStores = event.relatedStoreIds.map(getStore).filter(Boolean)
   const relatedSpots = getArticleSpots(event)
   const relatedArticles = getRelatedArticles(event)
-  const imageUrl = getArticleImageUrl(event)
+  const image = getArticleImage(event)
+  const imageUrl = image?.url
+  // 会場施設が1つに定まる場合のみ住所を表示・構造化データに含める
+  const venue = relatedSpots.length === 1 ? relatedSpots[0] : undefined
+  const price = parseFeeYen(event.eventFee)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -61,16 +65,24 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     endDate: event.eventEndDate,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: { "@type": "Place", name: event.eventLocation },
+    location: {
+      "@type": "Place",
+      name: event.eventLocation ?? venue?.name ?? event.area,
+      // 住所はページ上に会場施設として表示している場合のみ
+      ...(venue
+        ? { address: { "@type": "PostalAddress", streetAddress: venue.address, addressCountry: "JP" } }
+        : {}),
+    },
     description: event.summary,
     image: imageUrl ? [absoluteUrl(imageUrl)] : undefined,
-    organizer: { "@type": "Organization", name: event.eventOrganizer, url: event.eventOfficialUrl },
-    offers: {
-      "@type": "Offer",
-      price: event.eventFee,
-      priceCurrency: "JPY",
-      url: event.eventOfficialUrl,
-    },
+    organizer: event.eventOrganizer
+      ? { "@type": "Organization", name: event.eventOrganizer, url: event.eventOfficialUrl }
+      : undefined,
+    // 料金表記から金額が読み取れる場合のみ(「一般 2,000円」→2000、「入場無料」→0)
+    offers:
+      price !== null
+        ? { "@type": "Offer", price, priceCurrency: "JPY", url: event.eventOfficialUrl ?? pageUrl(`/events/${event.id}`) }
+        : undefined,
     url: pageUrl(`/events/${event.id}`),
   }
 
@@ -93,7 +105,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       {imageUrl && (
         <img
           src={imageUrl}
-          alt={event.title}
+          alt={image?.alt}
           style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
         />
       )}
@@ -121,6 +133,15 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: ".875rem" }}>
         {event.eventLocation && <li>開催場所: {event.eventLocation}</li>}
+        {venue && (
+          <li>
+            会場施設:{" "}
+            <Link href={`/spots/${venue.id}`} style={{ color: "#c0483a" }}>
+              {venue.name}
+            </Link>
+            (住所: {venue.address})
+          </li>
+        )}
         {event.eventFee && <li>料金: {event.eventFee}</li>}
         {event.eventOrganizer && <li>主催: {event.eventOrganizer}</li>}
         {event.eventOfficialUrl && (
