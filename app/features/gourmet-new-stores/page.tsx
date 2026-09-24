@@ -47,6 +47,7 @@ const Page: FC = () => {
         気になる店舗の記事から、住所・営業時間・関連情報もあわせて確認できる。
       </p>
 
+      <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>グルメ・カフェの新店舗({articles.length}件)</h2>
       {articles.length === 0 ? (
         <p style={{ color: "#a39c8c" }}>該当する記事はまだない。</p>
       ) : (

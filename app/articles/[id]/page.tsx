@@ -15,10 +15,11 @@ import {
   getRelatedArticles,
   getArticleSpots,
   getStore,
-  news,
+  allArticles,
+  getPrimaryArticle,
 } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, pageUrl, SITE_NAME, SITE_URL } from "@/lib/seo"
+import { absoluteUrl, articleDescription, jsonLdString, pageUrl, SITE_NAME, SITE_URL } from "@/lib/seo"
 import { CATEGORY_LABELS, Category, isEventArticle } from "@/lib/types"
 
 // 一覧ページを持つカテゴリのみ。それ以外はパンくずでリンクなし表示。
@@ -32,7 +33,7 @@ const CATEGORY_PATHS: Partial<Record<Category, string>> = {
   exhibition: "/exhibitions",
 }
 
-export const generateStaticParams = () => news.map((n) => ({ id: n.id }))
+export const generateStaticParams = () => allArticles.map((n) => ({ id: n.id }))
 
 export const generateMetadata = async ({
   params,
@@ -43,17 +44,19 @@ export const generateMetadata = async ({
   const article = getArticle(id)
   if (!article) return {}
   // イベント記事は /events/[id] と同内容のため、そちらを正規URLとする
-  const url = pageUrl(isEventArticle(article) ? `/events/${article.id}` : `/articles/${article.id}`)
+  // 重複記事は先行記事を正規URLとする
+  const primary = getPrimaryArticle(article) ?? article
+  const url = pageUrl(isEventArticle(primary) ? `/events/${primary.id}` : `/articles/${primary.id}`)
   const imageUrl = getArticleImageUrl(article)
   return {
     title: article.title,
-    description: article.summary,
+    description: articleDescription(article),
     alternates: { canonical: url },
     openGraph: {
       type: "article",
       url,
       title: article.title,
-      description: article.summary,
+      description: articleDescription(article),
       siteName: SITE_NAME,
       publishedTime: article.publishedAt,
       images: imageUrl ? [imageUrl] : undefined,
@@ -61,7 +64,7 @@ export const generateMetadata = async ({
     twitter: {
       card: "summary",
       title: article.title,
-      description: article.summary,
+      description: articleDescription(article),
     },
   }
 }

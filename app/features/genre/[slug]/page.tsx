@@ -40,6 +40,9 @@ const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
     <div>
       <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: title }]} />
       <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>{title}</h1>
+      <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
+        開催中のイベント({events.length}件)
+      </h2>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>{period.label}開催中の{genre.label}はない。</p>
       ) : (

@@ -18,6 +18,7 @@ const Page: FC = () => (
     <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
       上野の店舗一覧
     </h1>
+    <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>店舗一覧({stores.length}件)</h2>
     <CardGrid>
       {stores.map((store) => (
         <StoreCard key={store.id} store={store} />

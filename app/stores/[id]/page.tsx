@@ -98,7 +98,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {articles.length > 0 && (
         <div>
-          <h3 style={{ fontSize: "1rem", marginBottom: ".75rem" }}>関連記事</h3>
+          <h2 style={{ fontSize: "1rem", marginBottom: ".75rem" }}>関連記事</h2>
           <CardGrid>
             {articles.map((a) => (
               <ArticleCard key={a.id} article={a} />

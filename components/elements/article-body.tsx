@@ -4,6 +4,13 @@ import remarkGfm from "remark-gfm"
 
 const linkColor = "#c0483a"
 
+// 本文の最上位見出しを h1(→表示上h2) に揃える。「##」始まりの本文でページH1直下がh3になるのを防ぐ
+const normalizeHeadings = (body: string) => {
+  const levels = [...body.matchAll(/^(#{1,6}) /gm)].map((m) => m[1].length)
+  const shift = levels.length > 0 ? Math.min(...levels) - 1 : 0
+  return shift > 0 ? body.replace(/^(#{1,6}) /gm, (_, h: string) => `${h.slice(shift)} `) : body
+}
+
 export const ArticleBody: FC<{ body: string }> = ({ body }) => (
   <div style={{ fontSize: ".9375rem", lineHeight: 1.8 }}>
     <Markdown
@@ -80,7 +87,7 @@ export const ArticleBody: FC<{ body: string }> = ({ body }) => (
         ),
       }}
     >
-      {body}
+      {normalizeHeadings(body)}
     </Markdown>
   </div>
 )

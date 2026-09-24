@@ -47,6 +47,7 @@ const Page: FC = () => {
         展示・企画展の最新情報をあわせて確認できる。
       </p>
 
+      <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>上野の美術館一覧</h2>
       {museums.length === 0 ? (
         <p style={{ color: "#a39c8c" }}>該当する美術館はまだない。</p>
       ) : (

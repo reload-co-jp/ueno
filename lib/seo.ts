@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import type { NewsArticle } from "@/lib/types"
+import { formatDateRangeJp } from "@/lib/date"
+import { isEventArticle, type NewsArticle } from "@/lib/types"
 
 export const SITE_URL = "https://ueno.reload.co.jp"
 export const SITE_NAME = "上野ライブ"
@@ -64,4 +65,16 @@ export const parseFeeYen = (fee?: string): number | null => {
   if (fee.includes("無料")) return 0
   const match = fee.match(/([\d,]+)円/)
   return match ? Number(match[1].replace(/,/g, "")) : null
+}
+
+// 記事ページのmeta description。summaryが短く記事間で重複しやすいため、
+// イベントは開催日時・会場・料金(ページ上に表示している情報)を補って固有にする
+export const articleDescription = (article: NewsArticle) => {
+  if (!isEventArticle(article)) return article.summary
+  const details = [
+    `開催日時: ${formatDateRangeJp(article.eventStartDate, article.eventEndDate)}`,
+    article.eventLocation && `会場: ${article.eventLocation}`,
+    article.eventFee && article.eventFee !== "不明" && `料金: ${article.eventFee}`,
+  ].filter(Boolean)
+  return `${article.summary} ${details.join("。")}。`
 }

@@ -29,6 +29,9 @@ export const ArticleListPage: FC<{
     {lead && (
       <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 1.25rem", lineHeight: 1.7 }}>{lead}</p>
     )}
+    <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
+      記事一覧({articles.length}件)
+    </h2>
     {articles.length === 0 ? (
       <p style={{ color: "#a39c8c" }}>該当する記事はまだない。</p>
     ) : (

@@ -5,14 +5,39 @@ import { isEventArticle, type Store, type Spot, type NewsArticle, type Category 
 
 export const stores = storesJson as Store[]
 export const spots = spotsJson as Spot[]
-export const news = newsJson as NewsArticle[]
+// URL維持のため個別ページは全記事分生成する(generateStaticParams・idルックアップ用)
+export const allArticles = newsJson as NewsArticle[]
+
+// 収集時に統合しきれなかった重複記事の判定。同カテゴリで、タイトル一致、
+// またはイベント会期が完全一致しタイトルが包含関係にあるものを重複とみなし、先に公開された記事を正とする
+const isSameContent = (a: NewsArticle, b: NewsArticle) => {
+  if (a.category !== b.category) return false
+  if (a.title === b.title) return true
+  return (
+    isEventArticle(a) &&
+    isEventArticle(b) &&
+    a.eventStartDate === b.eventStartDate &&
+    a.eventEndDate === b.eventEndDate &&
+    (a.title.includes(b.title) || b.title.includes(a.title))
+  )
+}
+
+const isPublishedBefore = (a: NewsArticle, b: NewsArticle) =>
+  a.publishedAt !== b.publishedAt ? a.publishedAt < b.publishedAt : Number(a.id) < Number(b.id)
+
+// 重複記事なら正とする記事を返す(canonical用)。重複でなければundefined
+export const getPrimaryArticle = (article: NewsArticle) =>
+  allArticles.find((other) => other.id !== article.id && isSameContent(article, other) && isPublishedBefore(other, article))
+
+// 一覧・関連記事・sitemap用。重複記事を除く
+export const news = allArticles.filter((n) => !getPrimaryArticle(n))
 
 // 静的JSON DBからのidルックアップ
 export const getStore = (id: string) => stores.find((s) => s.id === id)
 export const getSpot = (id: string) => spots.find((s) => s.id === id)
-export const getArticle = (id: string) => news.find((n) => n.id === id)
+export const getArticle = (id: string) => allArticles.find((n) => n.id === id)
 // イベントもnews.json内のcategory: "event"記事として管理する
-export const getEvent = (id: string) => news.find((n) => n.id === id && isEventArticle(n))
+export const getEvent = (id: string) => allArticles.find((n) => n.id === id && isEventArticle(n))
 
 // 記事に画像が無い場合、関連スポット(会場名一致を優先)の画像をフォールバックとして使う。
 // altは画像の実際の被写体に合わせ、フォールバック時は施設名にする

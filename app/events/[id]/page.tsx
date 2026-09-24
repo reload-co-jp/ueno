@@ -7,11 +7,13 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
 import { SpotEvents } from "@/components/elements/spot-events"
-import { getArticleImage, getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, getUpcomingEvents } from "@/lib/data"
+import { getArticleImage, getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, allArticles, getPrimaryArticle } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, pageUrl, parseFeeYen, SITE_NAME } from "@/lib/seo"
+import { absoluteUrl, articleDescription, jsonLdString, pageUrl, parseFeeYen, SITE_NAME } from "@/lib/seo"
+import { isEventArticle } from "@/lib/types"
 
-export const generateStaticParams = () => getUpcomingEvents().map((e) => ({ id: e.id }))
+export const generateStaticParams = () =>
+  allArticles.filter(isEventArticle).map((e) => ({ id: e.id }))
 
 export const generateMetadata = async ({
   params,
@@ -21,24 +23,25 @@ export const generateMetadata = async ({
   const { id } = await params
   const event = getEvent(id)
   if (!event) return {}
-  const url = pageUrl(`/events/${event.id}`)
+  // 重複記事は先行記事を正規URLとする
+  const url = pageUrl(`/events/${(getPrimaryArticle(event) ?? event).id}`)
   const imageUrl = getArticleImageUrl(event)
   return {
     title: event.title,
-    description: event.summary,
+    description: articleDescription(event),
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       url,
       title: event.title,
-      description: event.summary,
+      description: articleDescription(event),
       siteName: SITE_NAME,
       images: imageUrl ? [imageUrl] : undefined,
     },
     twitter: {
       card: "summary",
       title: event.title,
-      description: event.summary,
+      description: articleDescription(event),
     },
   }
 }

@@ -103,14 +103,14 @@ const Page: FC = () => {
                   <span style={badgeStyle}>
                     {CATEGORY_LABELS[article.category]}
                   </span>
-                  <h3
+                  <h2
                     style={{
                       fontSize: "1.0625rem",
                       margin: ".125rem 0 .375rem",
                     }}
                   >
                     {article.title}
-                  </h3>
+                  </h2>
                   <p
                     style={{
                       fontSize: ".875rem",
