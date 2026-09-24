@@ -1,13 +1,17 @@
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import { Breadcrumb, BreadcrumbItem } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { RelatedLinks } from "@/components/elements/related-links"
 import { NewsArticle } from "@/lib/types"
 
 export const ArticleListPage: FC<{
   title: string
   articles: NewsArticle[]
   breadcrumbItems?: BreadcrumbItem[]
-}> = ({ title, articles, breadcrumbItems = [{ label: title }] }) => (
+  lead?: ReactNode
+  // 関連リンクから自ページを除外するためのパス
+  path?: string
+}> = ({ title, articles, breadcrumbItems = [{ label: title }], lead, path }) => (
   <div>
     <Breadcrumb items={breadcrumbItems} />
     <h1
@@ -20,6 +24,9 @@ export const ArticleListPage: FC<{
     >
       {title}
     </h1>
+    {lead && (
+      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 1.25rem", lineHeight: 1.7 }}>{lead}</p>
+    )}
     {articles.length === 0 ? (
       <p style={{ color: "#a39c8c" }}>該当する記事はまだない。</p>
     ) : (
@@ -29,5 +36,8 @@ export const ArticleListPage: FC<{
         ))}
       </CardGrid>
     )}
+    <div style={{ marginTop: "1.5rem" }}>
+      <RelatedLinks current={path} />
+    </div>
   </div>
 )

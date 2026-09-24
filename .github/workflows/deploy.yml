@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  # 日付特集(今日/今週末/今月のイベント等)はビルド時点の日付で生成されるため日次で再ビルドする。
+  # collect-articles のGITHUB_TOKENによるpushではこのworkflowが発火しないため、収集後にも実行する
+  schedule:
+    - cron: "5 15 * * *" # JST 0:05
+    - cron: "0 23 * * *" # JST 8:00 (collect-articles 完了後)
   workflow_dispatch:
 
 permissions:

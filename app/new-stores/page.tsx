@@ -1,14 +1,33 @@
+import type { Metadata } from "next"
+import Link from "next/link"
 import { FC } from "react"
 import { ArticleListPage } from "@/components/elements/article-list-page"
 import { getArticlesByCategory } from "@/lib/data"
+import { pageMetadata } from "@/lib/seo"
 
-export const metadata = {
-  title: "新店舗",
-  description: "上野エリアの新規オープン店舗情報一覧",
-}
+const title = "上野の新店舗・新規オープン情報"
+
+export const generateMetadata = (): Metadata =>
+  pageMetadata({
+    title,
+    description: `上野・御徒町エリアの新店舗・新規オープン情報${getArticlesByCategory("new_opening").length}件を紹介。上野駅周辺のグルメ・カフェ・ショップの新店をオープン日・場所つきで毎日更新。`,
+    path: "/new-stores",
+  })
 
 const Page: FC = () => (
-  <ArticleListPage title="新店舗" articles={getArticlesByCategory("new_opening")} />
+  <ArticleListPage
+    title={title}
+    articles={getArticlesByCategory("new_opening")}
+    breadcrumbItems={[{ label: "新店舗" }]}
+    path="/new-stores"
+    lead={
+      <>
+        上野駅・御徒町駅・上野公園周辺で新しくオープンした店舗・オープン予定の新店をまとめて紹介。
+        <Link href="/features/monthly-openings">今月オープンの新店舗</Link>や
+        <Link href="/features/gourmet-new-stores">グルメ・カフェの新店</Link>もあわせて確認できる。
+      </>
+    }
+  />
 )
 
 export default Page

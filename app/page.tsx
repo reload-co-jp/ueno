@@ -4,7 +4,7 @@ import { AdSlot } from "@/components/elements/ad-slot"
 import { badgeStyle } from "@/components/elements/card"
 import { formatDateJp } from "@/lib/date"
 import { getArticleImageUrl, getLatestArticles } from "@/lib/data"
-import { CATEGORY_LABELS } from "@/lib/types"
+import { CATEGORY_LABELS, isEventArticle, type NewsArticle } from "@/lib/types"
 
 const FEATURES = [
   { href: "/features/this-week", label: "今週の上野" },
@@ -12,9 +12,15 @@ const FEATURES = [
   { href: "/features/museums", label: "上野の美術館まとめ" },
   { href: "/features/today-events", label: "今日の上野イベント" },
   { href: "/features/weekend-events", label: "今週末の上野イベント" },
+  { href: "/features/month-events", label: "今月の上野イベント" },
+  { href: "/features/free-events", label: "上野の無料イベント" },
   { href: "/features/monthly-openings", label: "今月の新店舗" },
   { href: "/features/ongoing-sales", label: "現在開催中のセール" },
 ] as const
+
+// イベント記事は正規URLの /events/[id] へリンクする
+const articleHref = (article: NewsArticle) =>
+  isEventArticle(article) ? `/events/${article.id}` : `/articles/${article.id}`
 
 const sectionTitleStyle: React.CSSProperties = {
   fontSize: "1.125rem",
@@ -31,7 +37,7 @@ const Page: FC = () => {
       {hero && (
         <section>
           <Link
-            href={`/articles/${hero.id}`}
+            href={articleHref(hero)}
             style={{ display: "block", color: "#111", textDecoration: "none" }}
           >
             <img
@@ -71,7 +77,7 @@ const Page: FC = () => {
             {rest.map((article) => (
               <Link
                 key={article.id}
-                href={`/articles/${article.id}`}
+                href={articleHref(article)}
                 style={{
                   display: "flex",
                   gap: "1.25rem",

@@ -14,7 +14,7 @@ const description = "上野エリアのイベント・新店舗・セール・�
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: `${SITE_NAME} | 上野地域メディア`, template: `%s | ${SITE_NAME}` },
+  title: { default: `${SITE_NAME} | 上野地域メディア`, template: `%s｜${SITE_NAME}` },
   description,
   alternates: { canonical: "/" },
   openGraph: {

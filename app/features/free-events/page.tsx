@@ -5,10 +5,10 @@ import { getEventFeature } from "@/lib/event-features"
 import { pageMetadata } from "@/lib/seo"
 
 export const generateMetadata = (): Metadata => {
-  const feature = getEventFeature("today")
+  const feature = getEventFeature("free")
   return pageMetadata({ ...feature, noindex: feature.events.length === 0 })
 }
 
-const Page: FC = () => <EventFeaturePage feature={getEventFeature("today")} />
+const Page: FC = () => <EventFeaturePage feature={getEventFeature("free")} />
 
 export default Page

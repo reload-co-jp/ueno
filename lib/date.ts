@@ -1,4 +1,5 @@
-// 特集ページ(週/週末/月)の日付レンジ計算
+// 特集ページ(週/週末/月)の日付レンジ計算。
+// 静的exportのためビルド時点の日付で確定する(ビルドはTZ=Asia/Tokyoで日次実行)
 const pad = (n: number) => String(n).padStart(2, "0")
 
 export const toDateStr = (d: Date) =>
@@ -16,9 +17,20 @@ export const thisWeekRange = () => {
   return { start: toDateStr(monday), end: toDateStr(sunday) }
 }
 
+export const nextWeekRange = () => {
+  const { start } = thisWeekRange()
+  const monday = new Date(`${start}T00:00:00`)
+  monday.setDate(monday.getDate() + 7)
+  const sunday = new Date(monday)
+  sunday.setDate(monday.getDate() + 6)
+  return { start: toDateStr(monday), end: toDateStr(sunday) }
+}
+
+// 日曜は当日のみ(終了した土曜を含めない)。月〜土は直近の土日
 export const thisWeekendRange = () => {
   const now = new Date()
   const day = now.getDay()
+  if (day === 0) return { start: toDateStr(now), end: toDateStr(now) }
   const saturday = new Date(now)
   saturday.setDate(now.getDate() + ((6 - day + 7) % 7))
   const sunday = new Date(saturday)
@@ -41,4 +53,27 @@ export const formatDateJp = (iso: string) => {
 export const formatDateRangeJp = (startIso: string, endIso: string) => {
   if (startIso === endIso) return formatDateJp(startIso)
   return `${formatDateJp(startIso)}〜${formatDateJp(endIso)}`
+}
+
+export const formatMonthJp = (iso: string) => {
+  const d = new Date(iso)
+  return `${d.getFullYear()}年${d.getMonth() + 1}月`
+}
+
+const formatMonthDayJp = (iso: string) => {
+  const d = new Date(iso)
+  return `${d.getMonth() + 1}月${d.getDate()}日`
+}
+
+// 「2026年9月26日・27日」形式(週末等の連続2日向け)
+export const formatDayPairJp = (startIso: string, endIso: string) => {
+  if (startIso === endIso) return formatDateJp(startIso)
+  const sameMonth = startIso.slice(0, 7) === endIso.slice(0, 7)
+  return `${formatDateJp(startIso)}・${sameMonth ? `${new Date(endIso).getDate()}日` : formatMonthDayJp(endIso)}`
+}
+
+// 「9月21日〜27日」形式(年省略の期間表記)
+export const formatShortRangeJp = (startIso: string, endIso: string) => {
+  const sameMonth = startIso.slice(0, 7) === endIso.slice(0, 7)
+  return `${formatMonthDayJp(startIso)}〜${sameMonth ? `${new Date(endIso).getDate()}日` : formatMonthDayJp(endIso)}`
 }

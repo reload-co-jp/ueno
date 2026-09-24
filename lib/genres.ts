@@ -1,4 +1,6 @@
 // 「今日の公演」「今週の展示」等の検索クエリ向け特集ページのジャンル定義
+import { getEventsInRange, getEventsOnDate } from "@/lib/data"
+import { thisWeekRange, todayStr } from "@/lib/date"
 import type { NewsArticle } from "@/lib/types"
 
 export interface Genre {
@@ -45,4 +47,13 @@ export const parseGenreSlug = (slug: string) => {
   const genre = GENRES.find((g) => g.key === slug.slice(period.key.length + 1))
   if (!genre) return null
   return { period, genre }
+}
+
+// 該当0件のジャンルページはnoindex・sitemap除外(薄いページを検索対象にしない)
+export const genreEvents = (period: Period, genre: Genre) => {
+  const candidates =
+    period.key === "today"
+      ? getEventsOnDate(todayStr())
+      : getEventsInRange(thisWeekRange().start, thisWeekRange().end)
+  return candidates.filter((e) => matchesGenre(e, genre))
 }

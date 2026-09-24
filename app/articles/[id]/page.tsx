@@ -6,6 +6,7 @@ import { AdSlot } from "@/components/elements/ad-slot"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { RelatedLinks } from "@/components/elements/related-links"
 import {
   getArticle,
   getArticleImageUrl,
@@ -15,8 +16,8 @@ import {
   news,
 } from "@/lib/data"
 import { formatDateJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, SITE_NAME, SITE_URL } from "@/lib/seo"
-import { CATEGORY_LABELS, Category } from "@/lib/types"
+import { absoluteUrl, jsonLdString, pageUrl, SITE_NAME, SITE_URL } from "@/lib/seo"
+import { CATEGORY_LABELS, Category, isEventArticle } from "@/lib/types"
 
 // 一覧ページを持つカテゴリのみ。それ以外はパンくずでリンクなし表示。
 const CATEGORY_PATHS: Partial<Record<Category, string>> = {
@@ -39,7 +40,8 @@ export const generateMetadata = async ({
   const { id } = await params
   const article = getArticle(id)
   if (!article) return {}
-  const url = absoluteUrl(`/articles/${article.id}`)
+  // イベント記事は /events/[id] と同内容のため、そちらを正規URLとする
+  const url = pageUrl(isEventArticle(article) ? `/events/${article.id}` : `/articles/${article.id}`)
   const imageUrl = getArticleImageUrl(article)
   return {
     title: article.title,
@@ -72,7 +74,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const relatedArticles = getRelatedArticles(article)
   const imageUrl = getArticleImageUrl(article)
 
-  const url = absoluteUrl(`/articles/${article.id}`)
+  const url = pageUrl(`/articles/${article.id}`)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -148,9 +150,9 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>
+          <h2 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>
             関連情報
-          </h3>
+          </h2>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
               <li key={s!.id}>
@@ -172,9 +174,9 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {relatedArticles.length > 0 && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>
+          <h2 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>
             関連記事
-          </h3>
+          </h2>
           <CardGrid>
             {relatedArticles.map((a) => (
               <ArticleCard key={a.id} article={a} />
@@ -182,6 +184,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </CardGrid>
         </div>
       )}
+
+      <RelatedLinks />
 
       <div style={{ fontSize: ".75rem", color: "#a39c8c" }}>
         情報源:{" "}

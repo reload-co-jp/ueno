@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "lint": "eslint",
-    "build": "next build",
+    "build": "TZ=Asia/Tokyo next build",
     "start": "next start",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",

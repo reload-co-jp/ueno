@@ -101,6 +101,36 @@ export const getEventsInRange = (startStr: string, endStr: string) =>
     (e) => toDateOnly(e.eventStartDate) <= endStr && startStr <= toDateOnly(e.eventEndDate)
   )
 
+// 開催中(終了日が近い順)→開催予定(開始日が近い順)の並び
+export const compareEventsBySchedule = (
+  a: NewsArticle & { eventStartDate: string; eventEndDate: string },
+  b: NewsArticle & { eventStartDate: string; eventEndDate: string },
+  today: string
+) => {
+  const ongoingA = toDateOnly(a.eventStartDate) <= today ? 0 : 1
+  const ongoingB = toDateOnly(b.eventStartDate) <= today ? 0 : 1
+  if (ongoingA !== ongoingB) return ongoingA - ongoingB
+  return ongoingA === 0
+    ? a.eventEndDate.localeCompare(b.eventEndDate)
+    : a.eventStartDate.localeCompare(b.eventStartDate)
+}
+
+export const getOngoingEvents = (today: string) =>
+  getEventsOnDate(today).sort((a, b) => compareEventsBySchedule(a, b, today))
+
+export const getFutureEvents = (today: string) =>
+  getUpcomingEvents()
+    .filter((e) => toDateOnly(e.eventStartDate) > today)
+    .sort((a, b) => a.eventStartDate.localeCompare(b.eventStartDate))
+
+// 終了済イベント。個別ページは検索流入資産として残すため一覧からもリンクする
+export const getPastEvents = (today: string) =>
+  getUpcomingEvents()
+    .filter((e) => toDateOnly(e.eventEndDate) < today)
+    .sort((a, b) => b.eventEndDate.localeCompare(a.eventEndDate))
+
+export const isFreeEvent = (article: NewsArticle) => (article.eventFee ?? "").includes("無料")
+
 export const getAreas = () => {
   const areaSet = new Set<string>()
   stores.forEach((s) => areaSet.add(s.area))

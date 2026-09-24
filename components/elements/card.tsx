@@ -73,6 +73,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = ({ article }) => {
           {isEvent ? "" : formatDateJp(article.publishedAt)}
           {isEvent ? "" : " ・ "}
           {isEvent ? (article.eventLocation ?? article.area) : article.area}
+          {isEvent && article.eventFee && article.eventFee !== "不明" && ` ・ 料金: ${article.eventFee}`}
         </p>
       </div>
     </Link>

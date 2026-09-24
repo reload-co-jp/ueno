@@ -5,9 +5,10 @@ import { FC } from "react"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { RelatedLinks } from "@/components/elements/related-links"
 import { getArticleImageUrl, getEvent, getRelatedArticles, getSpot, getStore, getUpcomingEvents } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
-import { absoluteUrl, jsonLdString, SITE_NAME } from "@/lib/seo"
+import { absoluteUrl, jsonLdString, pageUrl, SITE_NAME } from "@/lib/seo"
 
 export const generateStaticParams = () => getUpcomingEvents().map((e) => ({ id: e.id }))
 
@@ -19,7 +20,7 @@ export const generateMetadata = async ({
   const { id } = await params
   const event = getEvent(id)
   if (!event) return {}
-  const url = absoluteUrl(`/events/${event.id}`)
+  const url = pageUrl(`/events/${event.id}`)
   const imageUrl = getArticleImageUrl(event)
   return {
     title: event.title,
@@ -69,7 +70,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       priceCurrency: "JPY",
       url: event.eventOfficialUrl,
     },
-    url: absoluteUrl(`/events/${event.id}`),
+    url: pageUrl(`/events/${event.id}`),
   }
 
   return (
@@ -124,7 +125,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h3>
+          <h2 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h2>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
               <li key={s!.id}>
@@ -146,7 +147,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
 
       {relatedArticles.length > 0 && (
         <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
-          <h3 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>関連記事</h3>
+          <h2 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>関連記事</h2>
           <CardGrid>
             {relatedArticles.map((a) => (
               <ArticleCard key={a.id} article={a} />
@@ -154,6 +155,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </CardGrid>
         </div>
       )}
+
+      <RelatedLinks />
 
       <div style={{ fontSize: ".75rem", color: "#a39c8c" }}>
         情報源:{" "}

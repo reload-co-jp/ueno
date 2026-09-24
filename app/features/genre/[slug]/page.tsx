@@ -3,9 +3,8 @@ import { notFound } from "next/navigation"
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
-import { getEventsInRange, getEventsOnDate } from "@/lib/data"
-import { thisWeekRange, todayStr } from "@/lib/date"
-import { GENRES, genreSlug, matchesGenre, parseGenreSlug, PERIODS } from "@/lib/genres"
+import { GENRES, genreEvents, genreSlug, parseGenreSlug, PERIODS } from "@/lib/genres"
+import { pageMetadata } from "@/lib/seo"
 
 export const generateStaticParams = () =>
   PERIODS.flatMap((period) => GENRES.map((genre) => ({ slug: genreSlug(period, genre) })))
@@ -19,11 +18,13 @@ export const generateMetadata = async ({
   const parsed = parseGenreSlug(slug)
   if (!parsed) return {}
   const { period, genre } = parsed
-  const title = `${period.label}の${genre.label}`
-  return {
-    title,
-    description: `${period.label}開催の上野エリアの${genre.label}情報`,
-  }
+  const events = genreEvents(period, genre)
+  return pageMetadata({
+    title: `上野で${period.label}開催の${genre.label}`,
+    description: `上野エリアで${period.label}開催中の${genre.label}${events.length}件を紹介。上野公園・美術館・博物館周辺の${genre.label}情報を開催日時・会場つきでまとめている。`,
+    path: `/features/genre/${slug}`,
+    noindex: events.length === 0,
+  })
 }
 
 const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
@@ -32,16 +33,12 @@ const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
   if (!parsed) notFound()
   const { period, genre } = parsed
 
-  const candidates =
-    period.key === "today"
-      ? getEventsOnDate(todayStr())
-      : getEventsInRange(thisWeekRange().start, thisWeekRange().end)
-  const events = candidates.filter((e) => matchesGenre(e, genre))
-  const title = `${period.label}の${genre.label}`
+  const events = genreEvents(period, genre)
+  const title = `上野で${period.label}開催の${genre.label}`
 
   return (
     <div>
-      <Breadcrumb items={[{ label: "特集" }, { label: title }]} />
+      <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: title }]} />
       <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>{title}</h1>
       {events.length === 0 ? (
         <p style={{ color: "#999" }}>{period.label}開催中の{genre.label}はない。</p>
