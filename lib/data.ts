@@ -66,23 +66,60 @@ export const getArticlesByArea = (area: string) =>
 export const getArticlesByStore = (storeId: string) =>
   news.filter((n) => n.relatedStoreIds.includes(storeId))
 
-export const getArticlesBySpot = (spotId: string) =>
-  news.filter((n) => n.relatedSpotIds.includes(spotId))
-
-// 同カテゴリ→同エリアの順で補完し、自身を除いた関連記事を返す
-export const getRelatedArticles = (article: NewsArticle, limit = 3) => {
-  const sameCategory = news
-    .filter((n) => n.id !== article.id && n.category === article.category)
-    .sort(compareArticles)
-
-  const sameArea = news
-    .filter(
-      (n) => n.id !== article.id && n.area === article.area && n.category !== article.category
-    )
-    .sort(compareArticles)
-
-  return [...sameCategory, ...sameArea].slice(0, limit)
+// relatedSpotIdsに加え、会場名・タイトルに施設名を含む記事も施設に紐付ける(収集時の紐付け漏れを補完)
+const articleSpotIdsCache = new Map<string, string[]>()
+export const getArticleSpotIds = (article: NewsArticle): string[] => {
+  const cached = articleSpotIdsCache.get(article.id)
+  if (cached) return cached
+  const text = `${article.eventLocation ?? ""} ${article.title}`
+  const matched = spots.filter((s) => text.includes(s.name)).map((s) => s.id)
+  const ids = Array.from(new Set([...article.relatedSpotIds, ...matched]))
+  articleSpotIdsCache.set(article.id, ids)
+  return ids
 }
+
+export const getArticleSpots = (article: NewsArticle) =>
+  getArticleSpotIds(article)
+    .map(getSpot)
+    .filter((s): s is Spot => !!s)
+
+export const getArticlesBySpot = (spotId: string) =>
+  news.filter((n) => getArticleSpotIds(n).includes(spotId))
+
+const DAY_MS = 24 * 60 * 60 * 1000
+
+// 開催期間同士の近さ(日数)。重なっていれば0、イベント記事でなければInfinity
+const eventGapDays = (a: NewsArticle, b: NewsArticle) => {
+  if (!isEventArticle(a) || !isEventArticle(b)) return Infinity
+  const gap = Math.max(
+    new Date(a.eventStartDate).getTime() - new Date(b.eventEndDate).getTime(),
+    new Date(b.eventStartDate).getTime() - new Date(a.eventEndDate).getTime(),
+    0
+  )
+  return gap / DAY_MS
+}
+
+// 関連度: 同じ施設 > 同じ店舗 > 同じカテゴリ > 開催時期が近い > 同じエリア。
+// 関連性の低い記事を並べないよう、同エリアのみの記事は他候補が足りない場合の補完に留める
+const relatedScore = (base: NewsArticle, other: NewsArticle) => {
+  const baseSpots = getArticleSpotIds(base)
+  let score = 0
+  if (getArticleSpotIds(other).some((id) => baseSpots.includes(id))) score += 8
+  if (other.relatedStoreIds.some((id) => base.relatedStoreIds.includes(id))) score += 6
+  if (other.category === base.category) score += 4
+  if (eventGapDays(base, other) <= 14) score += 2
+  if (other.area === base.area) score += 1
+  return score
+}
+
+export const getRelatedArticles = (article: NewsArticle, limit = 3) =>
+  news
+    .filter((n) => n.id !== article.id)
+    .map((n) => ({ n, score: relatedScore(article, n) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || compareArticles(a.n, b.n))
+    .slice(0, limit)
+    .map(({ n }) => n)
 
 export const getUpcomingEvents = () =>
   news
@@ -149,7 +186,7 @@ export const getMuseumSpots = () => spots.filter((s) => s.type === "美術館")
 
 export const getMuseumArticles = () =>
   news
-    .filter((n) => n.relatedSpotIds.some((id) => getMuseumSpots().some((m) => m.id === id)))
+    .filter((n) => getArticleSpotIds(n).some((id) => getMuseumSpots().some((m) => m.id === id)))
     .sort(compareArticles)
 
 // 「上野 グルメ・カフェ新店」LP向け抽出。関連店舗のカテゴリが飲食系、

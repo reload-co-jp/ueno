@@ -6,7 +6,8 @@ import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
-import { getArticleImageUrl, getEvent, getRelatedArticles, getSpot, getStore, getUpcomingEvents } from "@/lib/data"
+import { SpotEvents } from "@/components/elements/spot-events"
+import { getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, getUpcomingEvents } from "@/lib/data"
 import { formatDateRangeJp } from "@/lib/date"
 import { absoluteUrl, jsonLdString, pageUrl, SITE_NAME } from "@/lib/seo"
 
@@ -48,7 +49,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   if (!event) notFound()
 
   const relatedStores = event.relatedStoreIds.map(getStore).filter(Boolean)
-  const relatedSpots = event.relatedSpotIds.map(getSpot).filter(Boolean)
+  const relatedSpots = getArticleSpots(event)
   const relatedArticles = getRelatedArticles(event)
   const imageUrl = getArticleImageUrl(event)
 
@@ -79,7 +80,16 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
       />
-      <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: event.title }]} />
+      <Breadcrumb
+        items={[
+          { label: "イベント", href: "/events" },
+          // 会場施設が1つに定まる場合は施設ページを経由させる(イベント > 施設 > 個別イベント)
+          ...(relatedSpots.length === 1
+            ? [{ label: relatedSpots[0].name, href: `/spots/${relatedSpots[0].id}` }]
+            : []),
+          { label: event.title },
+        ]}
+      />
       {imageUrl && (
         <img
           src={imageUrl}
@@ -128,16 +138,16 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           <h2 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>関連情報</h2>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
-              <li key={s!.id}>
-                <Link href={`/stores/${s!.id}`} style={{ color: "#c0483a" }}>
-                  店舗: {s!.name}
+              <li key={s.id}>
+                <Link href={`/stores/${s.id}`} style={{ color: "#c0483a" }}>
+                  店舗: {s.name}
                 </Link>
               </li>
             ))}
             {relatedSpots.map((s) => (
-              <li key={s!.id}>
-                <Link href={`/spots/${s!.id}`} style={{ color: "#c0483a" }}>
-                  施設: {s!.name}
+              <li key={s.id}>
+                <Link href={`/spots/${s.id}`} style={{ color: "#c0483a" }}>
+                  施設: {s.name}
                 </Link>
               </li>
             ))}
@@ -155,6 +165,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </CardGrid>
         </div>
       )}
+
+      <SpotEvents article={event} spots={relatedSpots} />
 
       <RelatedLinks />
 

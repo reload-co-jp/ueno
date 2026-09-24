@@ -7,11 +7,12 @@ import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
+import { SpotEvents } from "@/components/elements/spot-events"
 import {
   getArticle,
   getArticleImageUrl,
   getRelatedArticles,
-  getSpot,
+  getArticleSpots,
   getStore,
   news,
 } from "@/lib/data"
@@ -70,7 +71,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   if (!article) notFound()
 
   const relatedStores = article.relatedStoreIds.map(getStore).filter(Boolean)
-  const relatedSpots = article.relatedSpotIds.map(getSpot).filter(Boolean)
+  const relatedSpots = getArticleSpots(article)
   const relatedArticles = getRelatedArticles(article)
   const imageUrl = getArticleImageUrl(article)
 
@@ -155,16 +156,16 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </h2>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map((s) => (
-              <li key={s!.id}>
-                <Link href={`/stores/${s!.id}`} style={{ color: "#c0483a" }}>
-                  店舗: {s!.name}
+              <li key={s.id}>
+                <Link href={`/stores/${s.id}`} style={{ color: "#c0483a" }}>
+                  店舗: {s.name}
                 </Link>
               </li>
             ))}
             {relatedSpots.map((s) => (
-              <li key={s!.id}>
-                <Link href={`/spots/${s!.id}`} style={{ color: "#c0483a" }}>
-                  施設: {s!.name}
+              <li key={s.id}>
+                <Link href={`/spots/${s.id}`} style={{ color: "#c0483a" }}>
+                  施設: {s.name}
                 </Link>
               </li>
             ))}
@@ -184,6 +185,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </CardGrid>
         </div>
       )}
+
+      <SpotEvents article={article} spots={relatedSpots} />
 
       <RelatedLinks />
 
