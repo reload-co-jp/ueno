@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next"
+import { getEventArchives, getNewStoreArchives } from "@/lib/archives"
 import { news, spots, stores } from "@/lib/data"
 import { EVENT_FEATURE_KEYS, getEventFeature } from "@/lib/event-features"
 import { GENRES, genreEvents, genreSlug, PERIODS } from "@/lib/genres"
@@ -39,6 +40,18 @@ const sitemap = (): MetadataRoute.Sitemap => {
       priority: f.key === "today" || f.key === "weekend" ? 0.8 : 0.7,
     }))
 
+  // 月別アーカイブ(当月分は今月の特集ページが正規URLのため除外)
+  const archiveEntries = [
+    ...getEventArchives().map((a) => ({ ...a, base: "/events" })),
+    ...getNewStoreArchives().map((a) => ({ ...a, base: "/new-stores" })),
+  ]
+    .filter((a) => !a.isCurrent)
+    .map((a) => ({
+      url: pageUrl(`${a.base}/${a.year}/${a.month}`),
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    }))
+
   const genreEntries = PERIODS.flatMap((period) =>
     GENRES.filter((genre) => genreEvents(period, genre).length > 0).map((genre) => ({
       url: `${SITE_URL}/features/genre/${genreSlug(period, genre)}/`,
@@ -67,7 +80,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: 0.5,
   }))
 
-  return [...staticEntries, ...eventFeatureEntries, ...genreEntries, ...articleEntries, ...storeEntries, ...spotEntries]
+  return [...staticEntries, ...eventFeatureEntries, ...archiveEntries, ...genreEntries, ...articleEntries, ...storeEntries, ...spotEntries]
 }
 
 export default sitemap

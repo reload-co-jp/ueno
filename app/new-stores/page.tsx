@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { FC } from "react"
 import { ArticleListPage } from "@/components/elements/article-list-page"
+import { MonthArchiveNav } from "@/components/elements/month-archive-page"
+import { getNewStoreArchives } from "@/lib/archives"
 import { getArticlesByCategory } from "@/lib/data"
 import { pageMetadata } from "@/lib/seo"
 
@@ -20,6 +22,14 @@ const Page: FC = () => (
     articles={getArticlesByCategory("new_opening")}
     breadcrumbItems={[{ label: "新店舗" }]}
     path="/new-stores"
+    footer={
+      <MonthArchiveNav
+        archives={getNewStoreArchives()}
+        basePath="/new-stores"
+        currentPath="/features/monthly-openings"
+        heading="月別の上野新店舗"
+      />
+    }
     lead={
       <>
         上野駅・御徒町駅・上野公園周辺で新しくオープンした店舗・オープン予定の新店をまとめて紹介。

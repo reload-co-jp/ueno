@@ -11,7 +11,9 @@ export const ArticleListPage: FC<{
   lead?: ReactNode
   // 関連リンクから自ページを除外するためのパス
   path?: string
-}> = ({ title, articles, breadcrumbItems = [{ label: title }], lead, path }) => (
+  // 一覧末尾(関連リンクの前)に差し込む追加コンテンツ
+  footer?: ReactNode
+}> = ({ title, articles, breadcrumbItems = [{ label: title }], lead, path, footer }) => (
   <div>
     <Breadcrumb items={breadcrumbItems} />
     <h1
@@ -36,6 +38,7 @@ export const ArticleListPage: FC<{
         ))}
       </CardGrid>
     )}
+    {footer && <div style={{ marginTop: "1.5rem" }}>{footer}</div>}
     <div style={{ marginTop: "1.5rem" }}>
       <RelatedLinks current={path} />
     </div>

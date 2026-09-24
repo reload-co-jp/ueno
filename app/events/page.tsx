@@ -3,7 +3,9 @@ import Link from "next/link"
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { MonthArchiveNav } from "@/components/elements/month-archive-page"
 import { RelatedLinks } from "@/components/elements/related-links"
+import { getEventArchives } from "@/lib/archives"
 import { getFutureEvents, getOngoingEvents, getPastEvents } from "@/lib/data"
 import { todayStr } from "@/lib/date"
 import { EVENT_FEATURE_KEYS, getEventFeature } from "@/lib/event-features"
@@ -100,6 +102,13 @@ const Page: FC = () => {
           </ul>
         </section>
       )}
+
+      <MonthArchiveNav
+        archives={getEventArchives()}
+        basePath="/events"
+        currentPath="/features/month-events"
+        heading="月別の上野イベント"
+      />
 
       <RelatedLinks current="/events" />
     </div>
