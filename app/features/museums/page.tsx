@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid, SpotCard } from "@/components/elements/card"
 import { getMuseumArticles, getMuseumSpots } from "@/lib/data"
@@ -46,6 +47,8 @@ const Page: FC = () => {
         上野の森美術館、東京藝術大学大学美術館など、それぞれの施設情報と開催中・開催予定の
         展示・企画展の最新情報をあわせて確認できる。
       </p>
+
+      <InArticleAd />
 
       <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>上野の美術館一覧</h2>
       {museums.length === 0 ? (

@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb, BreadcrumbItem } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -29,6 +30,9 @@ export const ArticleListPage: FC<{
     {lead && (
       <p style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 1.25rem", lineHeight: 1.7 }}>{lead}</p>
     )}
+    <div style={{ marginBottom: "1.25rem" }}>
+      <InArticleAd />
+    </div>
     <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
       記事一覧({articles.length}件)
     </h2>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -93,6 +94,8 @@ const Page: FC = () => {
         <br />
         上野エリアで今週開催中のイベント・展示会、今週の新店舗やPOP UP情報をまとめている。毎週更新。
       </p>
+
+      <InArticleAd />
 
       <Section heading="今週開催のイベント" articles={sections.events} empty="今週開催のイベントはない。" />
       <Section

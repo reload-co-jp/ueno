@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { MonthArchiveNav } from "@/components/elements/month-archive-page"
@@ -64,6 +65,7 @@ const Page: FC = () => {
         </section>
       )}
 
+      <InArticleAd />
       <section>
         <h2 style={sectionHeadingStyle}>開催中のイベント({ongoing.length}件)</h2>
         {ongoing.length === 0 ? (

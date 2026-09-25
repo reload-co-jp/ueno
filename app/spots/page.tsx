@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, SpotCard } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -31,6 +32,7 @@ const Page: FC = () => {
         <Breadcrumb items={[{ label: "施設・スポット" }]} />
         <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
       </div>
+      <InArticleAd />
       {types.map((type) => (
         <section key={type}>
           <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>{type}</h2>

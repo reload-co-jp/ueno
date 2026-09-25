@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
-import { AdSlot } from "@/components/elements/ad-slot"
+import { AdSlot, InArticleAd } from "@/components/elements/ad-slot"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
@@ -150,6 +150,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
         {formatDateJp(article.publishedAt)} ・ {article.area}
       </p>
+
+      <InArticleAd />
 
       <ArticleBody body={article.body} />
 

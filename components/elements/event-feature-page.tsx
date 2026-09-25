@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -34,6 +35,7 @@ export const EventFeaturePage: FC<{ feature: EventFeature }> = ({
       {feature.lead}
     </p>
 
+    <InArticleAd />
     <section>
       <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
         開催中・開催予定のイベント({feature.events.length}件)

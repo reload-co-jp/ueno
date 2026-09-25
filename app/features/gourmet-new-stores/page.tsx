@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getGourmetNewOpenings } from "@/lib/data"
@@ -46,6 +47,8 @@ const Page: FC = () => {
         ラーメン、焼肉、居酒屋、カフェ、スイーツなど、上野で今話題の新店舗を随時更新中。
         気になる店舗の記事から、住所・営業時間・関連情報もあわせて確認できる。
       </p>
+
+      <InArticleAd />
 
       <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>グルメ・カフェの新店舗({articles.length}件)</h2>
       {articles.length === 0 ? (

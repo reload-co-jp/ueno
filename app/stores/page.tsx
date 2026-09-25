@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { CardGrid, StoreCard } from "@/components/elements/card"
 import { stores } from "@/lib/data"
@@ -18,6 +19,9 @@ const Page: FC = () => (
     <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
       上野の店舗一覧
     </h1>
+    <div style={{ marginBottom: "1.25rem" }}>
+      <InArticleAd />
+    </div>
     <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>店舗一覧({stores.length}件)</h2>
     <CardGrid>
       {stores.map((store) => (

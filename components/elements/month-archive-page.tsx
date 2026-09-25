@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb, BreadcrumbItem } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -75,6 +76,7 @@ export const MonthArchivePage: FC<{
       <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
         {lead}
       </p>
+      <InArticleAd />
       <section>
         <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
           {archive.label}の掲載一覧({archive.articles.length}件)

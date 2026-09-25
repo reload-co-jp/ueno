@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { GENRES, genreEvents, genreSlug, parseGenreSlug, PERIODS } from "@/lib/genres"
@@ -40,6 +41,9 @@ const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
     <div>
       <Breadcrumb items={[{ label: "イベント", href: "/events" }, { label: title }]} />
       <h1 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>{title}</h1>
+      <div style={{ marginBottom: "1.25rem" }}>
+        <InArticleAd />
+      </div>
       <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>
         開催中のイベント({events.length}件)
       </h2>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -51,6 +52,7 @@ const Page: FC = () => {
         <Link href="/features/month-events">今月の上野イベント・展示会</Link>もあわせて確認できる。
       </p>
 
+      <InArticleAd />
       <section>
         <h2 style={sectionHeadingStyle}>開催中の展示・展覧会({ongoing.length}件)</h2>
         {ongoing.length === 0 ? (
