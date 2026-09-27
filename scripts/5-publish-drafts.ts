@@ -4,7 +4,7 @@
 // マージ後、data/drafts/articles.json は空配列にリセットする。
 import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
-import { news } from "@/lib/data"
+import { allArticles } from "@/lib/data"
 import type { NewsArticle } from "@/lib/types"
 import { downloadAndSaveImage, isLocalImage } from "./lib/save-image"
 
@@ -24,7 +24,7 @@ const main = async () => {
 
   // 記事idは連番の文字列("1", "2", ...)。ドラフト時点のid(draft-...)は
   // dedupe用の一時idにすぎないため、公開時に既存news.jsonの最大番号+1から振り直す。
-  const numericIds = news.map((n) => Number(n.id)).filter((n) => Number.isInteger(n))
+  const numericIds = allArticles.map((n) => Number(n.id)).filter((n) => Number.isInteger(n))
   let nextId = (numericIds.length > 0 ? Math.max(...numericIds) : 0) + 1
 
   const toPublish: NewsArticle[] = []
@@ -42,7 +42,8 @@ const main = async () => {
     toPublish.push(draft as NewsArticle)
   }
 
-  const merged = [...news, ...toPublish]
+  // 重複記事(duplicateOf等)もURL維持のため残すので、除外前の全記事に追記する
+  const merged = [...allArticles, ...toPublish]
   await writeFile(NEWS_PATH, JSON.stringify(merged, null, 2), "utf-8")
   await writeFile(DRAFTS_PATH, "[]\n", "utf-8")
 

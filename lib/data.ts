@@ -26,7 +26,8 @@ const isPublishedBefore = (a: NewsArticle, b: NewsArticle) =>
   a.publishedAt !== b.publishedAt ? a.publishedAt < b.publishedAt : Number(a.id) < Number(b.id)
 
 // 重複記事なら正とする記事を返す(canonical用)。重複でなければundefined
-export const getPrimaryArticle = (article: NewsArticle) =>
+export const getPrimaryArticle = (article: NewsArticle): NewsArticle | undefined =>
+  (article.duplicateOf ? allArticles.find((other) => other.id === article.duplicateOf) : undefined) ??
   allArticles.find((other) => other.id !== article.id && isSameContent(article, other) && isPublishedBefore(other, article))
 
 // 一覧・関連記事・sitemap用。重複記事を除く

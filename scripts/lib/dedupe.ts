@@ -1,4 +1,4 @@
-import type { Spot, Store } from "@/lib/types"
+import type { NewsArticle, Spot, Store } from "@/lib/types"
 import { runClaudeJson } from "./claude-cli"
 
 // README「7. 重複管理」準拠
@@ -140,6 +140,61 @@ ${chunk.map((p, i) => `${i + 1}. A: ${p.candidateName} (${p.candidateContext}) /
     for (const j of res?.judgements ?? []) {
       const pair = chunk[j.index - 1]
       if (pair) result.set(pair.key, j.isSame)
+    }
+  }
+  return result
+}
+
+const ARTICLE_DUP_SCHEMA = {
+  type: "object",
+  properties: {
+    results: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          index: { type: "number" },
+          duplicateOf: { type: "string" },
+        },
+        required: ["index", "duplicateOf"],
+      },
+    },
+  },
+  required: ["results"],
+}
+
+// 同一ページを再抽出するとLLM抽出が非決定的なためタイトル表記が毎回変わり
+// (例:「都民の日（10月1日）無料公開」→「都民の日は入園が無料」)、isSameArticleのタイトル類似度では拾えない。
+// タイトル一致しなかった候補のみ、公開済み記事一覧と照合させて同一内容の記事idをLLMに答えさせる。
+// 公開済み側はタイトルのみ(プロンプト肥大化を避ける)、候補側は要約も渡す。
+// 戻り値: 候補のindex(0始まり) -> 同一内容の公開済み記事id
+export const llmFindDuplicateArticles = async (
+  candidates: { title: string; summary: string }[],
+  existing: Pick<NewsArticle, "id" | "title" | "category" | "sources">[]
+): Promise<Map<number, string>> => {
+  const result = new Map<number, string>()
+  if (candidates.length === 0 || existing.length === 0) return result
+
+  const existingIds = new Set(existing.map((e) => e.id))
+  const existingList = existing
+    .map((e) => `${e.id}: [${e.category}] ${e.title} (${e.sources.map((s) => new URL(s).hostname).join(",")})`)
+    .join("\n")
+
+  for (let i = 0; i < candidates.length; i += BATCH_CHUNK_SIZE) {
+    const chunk = candidates.slice(i, i + BATCH_CHUNK_SIZE)
+    const prompt = `新規記事候補それぞれについて、公開済み記事の中に同一の内容(同じ店舗の同じ出店・同じイベント・同じキャンペーン・同じお知らせ等)を報じた記事があればそのidを、無ければ空文字をduplicateOfに回答せよ。タイトル表記の違い・情報源の違いは問わない。同じ施設でも別の催し・別の月・別の回は別内容とする。
+# 公開済み記事
+${existingList}
+
+# 新規記事候補
+${chunk.map((c, j) => `${j + 1}. ${c.title} — ${c.summary}`).join("\n")}`
+
+    const res = await runClaudeJson<{ results: { index: number; duplicateOf: string }[] }>(
+      prompt,
+      ARTICLE_DUP_SCHEMA
+    )
+    for (const r of res?.results ?? []) {
+      if (chunk[r.index - 1] && existingIds.has(r.duplicateOf)) result.set(i + r.index - 1, r.duplicateOf)
     }
   }
   return result

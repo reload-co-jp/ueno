@@ -72,6 +72,8 @@ export interface NewsArticle {
   relatedStoreIds: string[]
   relatedSpotIds: string[]
   imageUrl: string | null
+  // 重複記事の場合、正とする記事のid。URL維持のためページは残し、canonical・一覧除外に使う
+  duplicateOf?: string
   // README「5. 管理する情報 - イベント」準拠。category: "event" の記事のみ設定
   eventStartDate?: string
   eventEndDate?: string

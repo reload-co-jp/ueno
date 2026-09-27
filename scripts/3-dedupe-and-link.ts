@@ -5,10 +5,11 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { existsSync } from "node:fs"
-import { news, spots, stores } from "@/lib/data"
+import { allArticles, news, spots, stores } from "@/lib/data"
 import type { Category, Spot, Store } from "@/lib/types"
 import {
   isSameArticle,
+  llmFindDuplicateArticles,
   llmJudgeDuplicateBatch,
   matchEntity,
   normalizeName,
@@ -17,6 +18,8 @@ import {
 } from "./lib/dedupe"
 import type { ExtractedItem } from "./lib/extract"
 
+// LLMでの記事重複照合に渡す公開済み記事の範囲(プロンプト肥大化を避ける)
+const DUPLICATE_LOOKBACK_DAYS = 60
 const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
 const DRAFTS_DIR = path.join(process.cwd(), "data", "drafts")
 
@@ -111,7 +114,7 @@ const main = async () => {
   // ここでambiguousな(候補名, 既存Entity)ペアをユニーク集約する。
   // 個別にawaitでLLM判定すると同名店舗が複数記事に出るたびプロセス起動+
   // システムプロンプト分のトークンが件数分重複するため、後段で1回にまとめて問い合わせる。
-  const prepared: PreparedItem[] = []
+  const candidates: Pick<PreparedItem, "data" | "item" | "draftId">[] = []
   const seenDraftIds = new Set<string>()
   const ambiguousPairs = new Map<string, DuplicateJudgePair>()
   let skippedExisting = 0
@@ -134,45 +137,62 @@ const main = async () => {
         seenDraftIds.add(dedupeKey)
 
         // 公開済み記事(news.json)と同一内容なら本文生成(pnpm generate-articles)前に除外し、
-        // LLM呼び出し=トークン消費を避ける
-        if (news.some((n) => isSameArticle(n.title, item.title))) {
+        // LLM呼び出し=トークン消費を避ける。重複記事(duplicateOf)のタイトルも別表記として照合に使う
+        if (allArticles.some((n) => isSameArticle(n.title, item.title))) {
           skippedExisting++
           continue
         }
 
-        const storeName = item.store
-        const storeMatches = storeName ? matchEntity(storeName, item.official_url, item.address, stores) : []
-        const placeName = item.place
-        const spotMatches = placeName ? matchEntity(placeName, item.official_url, item.address, spots) : []
-
-        if (storeName && storeMatches[0]?.level === "ambiguous") {
-          const key = pairKey("store", storeName, storeMatches[0].entity)
-          if (!ambiguousPairs.has(key)) {
-            ambiguousPairs.set(key, {
-              key,
-              candidateName: storeName,
-              candidateContext: item.summary,
-              existingName: storeMatches[0].entity.name,
-              existingContext: storeMatches[0].entity.name,
-            })
-          }
-        }
-        if (placeName && spotMatches[0]?.level === "ambiguous") {
-          const key = pairKey("spot", placeName, spotMatches[0].entity)
-          if (!ambiguousPairs.has(key)) {
-            ambiguousPairs.set(key, {
-              key,
-              candidateName: placeName,
-              candidateContext: item.summary,
-              existingName: spotMatches[0].entity.name,
-              existingContext: spotMatches[0].entity.name,
-            })
-          }
-        }
-
-        prepared.push({ data, item, draftId, storeMatches, spotMatches })
+        candidates.push({ data, item, draftId })
       }
     }
+  }
+
+  // --- タイトルで判定できなかった候補を公開済み記事とまとめてLLM照合(再抽出での表記ゆれ・別ソースの同一内容) ---
+  const lookbackFrom = Date.now() - DUPLICATE_LOOKBACK_DAYS * 24 * 60 * 60 * 1000
+  const duplicates = await llmFindDuplicateArticles(
+    candidates.map(({ item }) => ({ title: item.title, summary: item.summary })),
+    news.filter((n) => Date.parse(n.publishedAt) >= lookbackFrom)
+  )
+
+  const prepared: PreparedItem[] = []
+  for (const [i, { data, item, draftId }] of candidates.entries()) {
+    if (duplicates.has(i)) {
+      skippedExisting++
+      continue
+    }
+
+    const storeName = item.store
+    const storeMatches = storeName ? matchEntity(storeName, item.official_url, item.address, stores) : []
+    const placeName = item.place
+    const spotMatches = placeName ? matchEntity(placeName, item.official_url, item.address, spots) : []
+
+    if (storeName && storeMatches[0]?.level === "ambiguous") {
+      const key = pairKey("store", storeName, storeMatches[0].entity)
+      if (!ambiguousPairs.has(key)) {
+        ambiguousPairs.set(key, {
+          key,
+          candidateName: storeName,
+          candidateContext: item.summary,
+          existingName: storeMatches[0].entity.name,
+          existingContext: storeMatches[0].entity.name,
+        })
+      }
+    }
+    if (placeName && spotMatches[0]?.level === "ambiguous") {
+      const key = pairKey("spot", placeName, spotMatches[0].entity)
+      if (!ambiguousPairs.has(key)) {
+        ambiguousPairs.set(key, {
+          key,
+          candidateName: placeName,
+          candidateContext: item.summary,
+          existingName: spotMatches[0].entity.name,
+          existingContext: spotMatches[0].entity.name,
+        })
+      }
+    }
+
+    prepared.push({ data, item, draftId, storeMatches, spotMatches })
   }
 
   // --- ambiguous候補をユニーク分だけまとめて1回(チャンク単位)のLLM呼び出しで判定 ---
