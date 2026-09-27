@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto"
 import * as cheerio from "cheerio"
 import type { Category } from "@/lib/types"
 import type { Source } from "./sources"
@@ -241,6 +242,17 @@ URL: ${source.url}
 ${imageSection}${detailLinkSection}
 本文:
 ${text}`
+}
+
+// LLMへの入力(本文テキスト+画像候補+詳細リンク候補)のハッシュ。
+// 取得日時が違っても入力が同一なら抽出結果も同一とみなし、LLM再抽出を省く(scripts/2-extract.ts)。
+export const extractInputHash = (source: Source, html: string, pageUrl: string): string => {
+  const detailLinks = source.detailLinkPattern
+    ? extractDetailLinkCandidates(html, pageUrl, source.detailLinkPattern)
+    : []
+  return createHash("sha256")
+    .update(JSON.stringify([htmlToText(html), extractImageCandidates(html, pageUrl), detailLinks]))
+    .digest("hex")
 }
 
 export const extractFromHtml = async (
