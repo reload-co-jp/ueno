@@ -1,7 +1,8 @@
 // イベント・新店舗の月別アーカイブ(/events/2026/09/ 等)。
 // 薄いページを作らないよう、掲載件数が MIN_ARCHIVE_ITEMS 未満の月は生成しない
 import { compareArticles, getArticlesByCategory, getEventsInRange, getUpcomingEvents } from "@/lib/data"
-import { thisMonthRange, toDateStr } from "@/lib/date"
+import { formatMonth, thisMonthRange, toDateStr } from "@/lib/date"
+import type { Locale } from "@/lib/i18n"
 import type { NewsArticle } from "@/lib/types"
 
 export const MIN_ARCHIVE_ITEMS = 3
@@ -10,7 +11,6 @@ export interface MonthArchive<T extends NewsArticle = NewsArticle> {
   year: string
   // ゼロ埋め2桁("09")
   month: string
-  label: string
   // 当月はアーカイブではなく今月の特集ページを正規URLとする
   isCurrent: boolean
   articles: T[]
@@ -24,7 +24,6 @@ const monthRange = (year: number, monthIndex: number) => ({
 const toArchive = <T extends NewsArticle>(start: string, articles: T[]): MonthArchive<T> => ({
   year: start.slice(0, 4),
   month: start.slice(5, 7),
-  label: `${Number(start.slice(0, 4))}年${Number(start.slice(5, 7))}月`,
   isCurrent: start === thisMonthRange().start,
   articles,
 })
@@ -60,6 +59,10 @@ export const getNewStoreArchives = () => {
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([start, articles]) => toArchive(start, articles.sort(compareArticles)))
 }
+
+// 「2026年9月」「September 2026」等の表示名
+export const archiveLabel = (archive: MonthArchive, locale: Locale) =>
+  formatMonth(`${archive.year}-${archive.month}-01T00:00:00`, locale)
 
 export const findArchive = <T extends NewsArticle>(archives: MonthArchive<T>[], year: string, month: string) =>
   archives.find((a) => a.year === year && a.month === month)

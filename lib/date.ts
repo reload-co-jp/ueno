@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/i18n"
+
 // 特集ページ(週/週末/月)の日付レンジ計算。
 // 静的exportのためビルド時点の日付で確定する(ビルドはTZ=Asia/Tokyoで日次実行)
 const pad = (n: number) => String(n).padStart(2, "0")
@@ -77,3 +79,60 @@ export const formatShortRangeJp = (startIso: string, endIso: string) => {
   const sameMonth = startIso.slice(0, 7) === endIso.slice(0, 7)
   return `${formatMonthDayJp(startIso)}〜${sameMonth ? `${new Date(endIso).getDate()}日` : formatMonthDayJp(endIso)}`
 }
+
+// 英語・簡体字版の日付表記。日本語は既存の表記(〜区切り等)を維持する
+const INTL_LOCALES: Record<Locale, string> = {
+  ja: "ja-JP",
+  en: "en-US",
+  "zh-cn": "zh-CN",
+}
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+}
+const dtf = (locale: Locale, options: Intl.DateTimeFormatOptions) =>
+  new Intl.DateTimeFormat(INTL_LOCALES[locale], options)
+const formatRange = (
+  locale: Locale,
+  options: Intl.DateTimeFormatOptions,
+  startIso: string,
+  endIso: string
+) => dtf(locale, options).formatRange(new Date(startIso), new Date(endIso))
+
+export const formatDate = (iso: string, locale: Locale) =>
+  locale === "ja"
+    ? formatDateJp(iso)
+    : dtf(locale, DATE_OPTIONS).format(new Date(iso))
+
+export const formatDateRange = (
+  startIso: string,
+  endIso: string,
+  locale: Locale
+) =>
+  locale === "ja"
+    ? formatDateRangeJp(startIso, endIso)
+    : formatRange(locale, DATE_OPTIONS, startIso, endIso)
+
+export const formatMonth = (iso: string, locale: Locale) =>
+  locale === "ja"
+    ? formatMonthJp(iso)
+    : dtf(locale, { year: "numeric", month: "long" }).format(new Date(iso))
+
+export const formatDayPair = (
+  startIso: string,
+  endIso: string,
+  locale: Locale
+) =>
+  locale === "ja"
+    ? formatDayPairJp(startIso, endIso)
+    : formatRange(locale, DATE_OPTIONS, startIso, endIso)
+
+export const formatShortRange = (
+  startIso: string,
+  endIso: string,
+  locale: Locale
+) =>
+  locale === "ja"
+    ? formatShortRangeJp(startIso, endIso)
+    : formatRange(locale, { month: "short", day: "numeric" }, startIso, endIso)

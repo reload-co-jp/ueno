@@ -1,43 +1,56 @@
-import Link from "next/link"
+import { Link } from "@/components/elements/link"
 import { ComponentProps, FC, ReactNode } from "react"
+import { getI18n, type Texts } from "@/lib/i18n"
 
-const NAV_ITEMS = [
-  { href: "/", label: "最新情報" },
-  { href: "/events", label: "イベント" },
-  { href: "/new-stores", label: "新店舗" },
-  { href: "/closures", label: "閉店" },
-  { href: "/sales", label: "セール" },
-  { href: "/popup", label: "POP UP" },
-  { href: "/exhibitions", label: "展示・アート" },
-  { href: "/stores", label: "店舗" },
-  { href: "/spots", label: "施設・スポット" },
-] as const
+const NAV_ITEMS: { href: string; label: Texts }[] = [
+  { href: "/", label: { ja: "最新情報", en: "Latest", "zh-cn": "最新资讯" } },
+  { href: "/events", label: { ja: "イベント", en: "Events", "zh-cn": "活动" } },
+  {
+    href: "/new-stores",
+    label: { ja: "新店舗", en: "New Shops", "zh-cn": "新店" },
+  },
+  { href: "/closures", label: { ja: "閉店", en: "Closures", "zh-cn": "闭店" } },
+  { href: "/sales", label: { ja: "セール", en: "Sales", "zh-cn": "促销" } },
+  { href: "/popup", label: { ja: "POP UP", en: "Pop-ups", "zh-cn": "快闪店" } },
+  {
+    href: "/exhibitions",
+    label: { ja: "展示・アート", en: "Exhibitions", "zh-cn": "展览・艺术" },
+  },
+  { href: "/stores", label: { ja: "店舗", en: "Shops", "zh-cn": "店铺" } },
+  {
+    href: "/spots",
+    label: { ja: "施設・スポット", en: "Places", "zh-cn": "设施・景点" },
+  },
+]
 
-export const Nav: FC = () => (
-  <nav
-    style={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: ".25rem .75rem",
-      marginTop: ".5rem",
-      fontSize: ".8125rem",
-      fontWeight: 400,
-    }}
-  >
-    {NAV_ITEMS.map((item) => (
-      <Link
-        key={item.href}
-        href={item.href}
-        style={{
-          color: "#c0483a",
-          textDecoration: "none",
-        }}
-      >
-        {item.label}
-      </Link>
-    ))}
-  </nav>
-)
+export const Nav: FC = async () => {
+  const { t } = await getI18n()
+  return (
+    <nav
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: ".25rem .75rem",
+        marginTop: ".5rem",
+        fontSize: ".8125rem",
+        fontWeight: 400,
+      }}
+    >
+      {NAV_ITEMS.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          style={{
+            color: "#c0483a",
+            textDecoration: "none",
+          }}
+        >
+          {t(item.label)}
+        </Link>
+      ))}
+    </nav>
+  )
+}
 
 // サイト名表示用。ページ固有の主題はh1で各ページが持つため、ここはpに留める。
 export const Title: FC<ComponentProps<"p">> = ({

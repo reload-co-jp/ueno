@@ -88,3 +88,38 @@ export const isEventArticle = (
   article: NewsArticle
 ): article is NewsArticle & { eventStartDate: string; eventEndDate: string } =>
   !!article.eventStartDate && !!article.eventEndDate
+
+// 翻訳スクリプト(scripts/9-translate.ts)が生成。hashは翻訳元の日本語フィールドのハッシュ(差分翻訳用)
+export const ARTICLE_TRANSLATABLE_FIELDS = [
+  "title",
+  "summary",
+  "body",
+  "area",
+  "eventLocation",
+  "eventFee",
+  "eventOrganizer",
+] as const
+export const SPOT_TRANSLATABLE_FIELDS = [
+  "name",
+  "type",
+  "area",
+  "address",
+] as const
+export const STORE_TRANSLATABLE_FIELDS = [
+  "name",
+  "category",
+  "area",
+  "address",
+  "hours",
+] as const
+
+interface Entry<F extends string> {
+  hash: string
+  fields: Partial<Record<F, string>>
+}
+
+export interface Translations {
+  news: Record<string, Entry<(typeof ARTICLE_TRANSLATABLE_FIELDS)[number]>>
+  spots: Record<string, Entry<(typeof SPOT_TRANSLATABLE_FIELDS)[number]>>
+  stores: Record<string, Entry<(typeof STORE_TRANSLATABLE_FIELDS)[number]>>
+}

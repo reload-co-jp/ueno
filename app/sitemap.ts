@@ -3,7 +3,8 @@ import { getEventArchives, getNewStoreArchives } from "@/lib/archives"
 import { news, spots, stores } from "@/lib/data"
 import { EVENT_FEATURE_KEYS, getEventFeature } from "@/lib/event-features"
 import { GENRES, genreEvents, genreSlug, PERIODS } from "@/lib/genres"
-import { pageUrl, SITE_URL } from "@/lib/seo"
+import { isArticleTranslated, LOCALES } from "@/lib/i18n"
+import { localeAlternates, pageUrl, SITE_URL } from "@/lib/seo"
 import { isEventArticle } from "@/lib/types"
 
 export const dynamic = "force-static"
@@ -32,7 +33,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
   }))
 
   // 日付特集は該当イベントがある場合のみ掲載(空ページはnoindex)
-  const eventFeatureEntries = EVENT_FEATURE_KEYS.map(getEventFeature)
+  const eventFeatureEntries = EVENT_FEATURE_KEYS.map((key) => getEventFeature(key))
     .filter((f) => f.events.length > 0)
     .map((f) => ({
       url: pageUrl(f.path),
@@ -61,6 +62,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
   )
 
   const articleEntries = news.map((n) => ({
+    id: n.id,
     // イベント記事は /events/[id] を正規URLとする(/articles/[id] のcanonicalも同様)
     url: pageUrl(isEventArticle(n) ? `/events/${n.id}` : `/articles/${n.id}`),
     lastModified: n.updatedAt ?? n.publishedAt,
@@ -80,7 +82,24 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: 0.5,
   }))
 
-  return [...staticEntries, ...eventFeatureEntries, ...archiveEntries, ...genreEntries, ...articleEntries, ...storeEntries, ...spotEntries]
+  const entries: (MetadataRoute.Sitemap[number] & { id?: string })[] = [
+    ...staticEntries,
+    ...eventFeatureEntries,
+    ...archiveEntries,
+    ...genreEntries,
+    ...articleEntries,
+    ...storeEntries,
+    ...spotEntries,
+  ]
+  // 各ページを言語別に掲載し、hreflangで相互参照する。未翻訳記事の英語・簡体字版は除外
+  return LOCALES.flatMap((locale) =>
+    entries
+      .filter(({ id }) => !id || isArticleTranslated(id, locale))
+      .map(({ id: _id, ...entry }) => {
+        const { canonical, languages } = localeAlternates(locale, new URL(entry.url).pathname)
+        return { ...entry, url: canonical, alternates: { languages } }
+      })
+  )
 }
 
 export default sitemap
