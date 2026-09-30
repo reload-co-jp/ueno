@@ -1,10 +1,13 @@
 import Link from "next/link"
-import { FC } from "react"
+import { FC, Fragment } from "react"
 import { AdSlot } from "@/components/elements/ad-slot"
 import { badgeStyle } from "@/components/elements/card"
 import { formatDateJp } from "@/lib/date"
 import { getArticleImage, getLatestArticles } from "@/lib/data"
 import { CATEGORY_LABELS, isEventArticle, type NewsArticle } from "@/lib/types"
+
+// 一覧に広告を挟む間隔（記事数）
+const AD_INTERVAL = 3
 
 const FEATURES = [
   { href: "/features/this-week", label: "今週の上野" },
@@ -74,57 +77,61 @@ const Page: FC = () => {
         <section style={{ flex: "3 1 22rem" }}>
           <h1 style={sectionTitleStyle}>上野の最新情報</h1>
           <div>
-            {rest.map((article) => (
-              <Link
-                key={article.id}
-                href={articleHref(article)}
-                style={{
-                  display: "flex",
-                  gap: "1.25rem",
-                  padding: "1.25rem 0",
-                  borderBottom: "1px solid #e5e5e5",
-                  color: "#111",
-                  textDecoration: "none",
-                }}
-              >
-                <img
-                  src={getArticleImage(article)?.url ?? "/images/placeholder.jpg"}
-                  alt={getArticleImage(article)?.alt ?? ""}
+            {rest.map((article, i) => (
+              <Fragment key={article.id}>
+                {i > 0 && i % AD_INTERVAL === 0 && <AdSlot />}
+                <Link
+                  href={articleHref(article)}
                   style={{
-                    width: "9rem",
-                    aspectRatio: "4 / 3",
-                    objectFit: "contain",
-                    borderRadius: ".375rem",
-                    flexShrink: 0,
-                    maxHeight: "9rem",
+                    display: "flex",
+                    gap: "1.25rem",
+                    padding: "1.25rem 0",
+                    borderBottom: "1px solid #e5e5e5",
+                    color: "#111",
+                    textDecoration: "none",
                   }}
-                />
-                <div style={{ minWidth: 0 }}>
-                  <span style={badgeStyle}>
-                    {CATEGORY_LABELS[article.category]}
-                  </span>
-                  <h2
+                >
+                  <img
+                    src={
+                      getArticleImage(article)?.url ?? "/images/placeholder.jpg"
+                    }
+                    alt={getArticleImage(article)?.alt ?? ""}
                     style={{
-                      fontSize: "1.0625rem",
-                      margin: ".125rem 0 .375rem",
+                      width: "9rem",
+                      aspectRatio: "4 / 3",
+                      objectFit: "contain",
+                      borderRadius: ".375rem",
+                      flexShrink: 0,
+                      maxHeight: "9rem",
                     }}
-                  >
-                    {article.title}
-                  </h2>
-                  <p
-                    style={{
-                      fontSize: ".875rem",
-                      color: "#666",
-                      margin: "0 0 .5rem",
-                    }}
-                  >
-                    {article.summary}
-                  </p>
-                  <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
-                    {formatDateJp(article.publishedAt)} ・ {article.area}
-                  </p>
-                </div>
-              </Link>
+                  />
+                  <div style={{ minWidth: 0 }}>
+                    <span style={badgeStyle}>
+                      {CATEGORY_LABELS[article.category]}
+                    </span>
+                    <h2
+                      style={{
+                        fontSize: "1.0625rem",
+                        margin: ".125rem 0 .375rem",
+                      }}
+                    >
+                      {article.title}
+                    </h2>
+                    <p
+                      style={{
+                        fontSize: ".875rem",
+                        color: "#666",
+                        margin: "0 0 .5rem",
+                      }}
+                    >
+                      {article.summary}
+                    </p>
+                    <p style={{ fontSize: ".75rem", color: "#999", margin: 0 }}>
+                      {formatDateJp(article.publishedAt)} ・ {article.area}
+                    </p>
+                  </div>
+                </Link>
+              </Fragment>
             ))}
           </div>
         </section>
