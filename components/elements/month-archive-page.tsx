@@ -42,7 +42,7 @@ export const MonthArchiveNav: FC<{
             ) : (
               <Link
                 href={a.isCurrent ? currentPath : archivePath(basePath, a)}
-                style={{ color: "#c0483a" }}
+                style={{ color: "var(--accent)" }}
               >
                 {archiveLabel(a, locale)}
                 {t({
@@ -96,7 +96,7 @@ export const MonthArchivePage: FC<{
       <p
         style={{
           fontSize: ".875rem",
-          color: "#7a7468",
+          color: "var(--secondary)",
           margin: 0,
           lineHeight: 1.7,
         }}

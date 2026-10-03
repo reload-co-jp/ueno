@@ -50,7 +50,7 @@ const Page: FC = async () => {
       />
       <Breadcrumb items={[{ label: t({ ja: "特集", en: "Features", "zh-cn": "专题" }) }, { label: title }]} />
       <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
+      <p style={{ fontSize: ".875rem", color: "var(--secondary)", margin: 0, lineHeight: 1.7 }}>
         {t({
           ja: "上野駅・御徒町駅周辺で新規オープンしたグルメ・カフェ・飲食店の情報をまとめている。ラーメン、焼肉、居酒屋、カフェ、スイーツなど、上野で今話題の新店舗を随時更新中。気になる店舗の記事から、住所・営業時間・関連情報もあわせて確認できる。",
           en: "New restaurants, cafés and eateries around Ueno Station and Okachimachi Station — ramen, yakiniku, izakaya, cafés, sweets and more. Each article includes the address, opening hours and related information.",
@@ -68,7 +68,7 @@ const Page: FC = async () => {
         })}
       </h2>
       {articles.length === 0 ? (
-        <p style={{ color: "#a39c8c" }}>
+        <p style={{ color: "var(--secondary)" }}>
           {t({ ja: "該当する記事はまだない。", en: "No articles yet.", "zh-cn": "暂无相关文章。" })}
         </p>
       ) : (
@@ -79,12 +79,12 @@ const Page: FC = async () => {
         </CardGrid>
       )}
 
-      <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem", fontSize: ".875rem" }}>
-        <Link href="/new-stores" style={{ color: "#c0483a" }}>
+      <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem", fontSize: ".875rem" }}>
+        <Link href="/new-stores" style={{ color: "var(--accent)" }}>
           {t({ ja: "上野の新店舗情報一覧を見る", en: "All new shops in Ueno", "zh-cn": "查看上野全部新店资讯" })}
         </Link>
         {" ・ "}
-        <Link href="/sales" style={{ color: "#c0483a" }}>
+        <Link href="/sales" style={{ color: "var(--accent)" }}>
           {t({ ja: "セール・キャンペーン情報を見る", en: "Sales & promotions", "zh-cn": "查看促销・优惠活动资讯" })}
         </Link>
       </div>

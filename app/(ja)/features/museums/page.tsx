@@ -46,7 +46,7 @@ const Page: FC = async () => {
       />
       <Breadcrumb items={[{ label: t({ ja: "特集", en: "Features", "zh-cn": "专题" }) }, { label: title }]} />
       <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
+      <p style={{ fontSize: ".875rem", color: "var(--secondary)", margin: 0, lineHeight: 1.7 }}>
         {t({
           ja: "上野公園周辺に集まる美術館をまとめて紹介している。東京都美術館、国立西洋美術館、上野の森美術館、東京藝術大学大学美術館など、それぞれの施設情報と開催中・開催予定の展示・企画展の最新情報をあわせて確認できる。",
           en: "The art museums clustered around Ueno Park, including the Tokyo Metropolitan Art Museum, National Museum of Western Art, Ueno Royal Museum and The University Art Museum of Tokyo University of the Arts, with visitor information and the latest current and upcoming exhibitions.",
@@ -60,7 +60,7 @@ const Page: FC = async () => {
         {t({ ja: "上野の美術館一覧", en: "Art museums in Ueno", "zh-cn": "上野美术馆列表" })}
       </h2>
       {museums.length === 0 ? (
-        <p style={{ color: "#a39c8c" }}>
+        <p style={{ color: "var(--secondary)" }}>
           {t({ ja: "該当する美術館はまだない。", en: "No museums yet.", "zh-cn": "暂无相关美术馆。" })}
         </p>
       ) : (
@@ -76,7 +76,7 @@ const Page: FC = async () => {
           {t({ ja: "展示・企画展の最新情報", en: "Latest exhibitions", "zh-cn": "展览・企划展最新资讯" })}
         </h2>
         {articles.length === 0 ? (
-          <p style={{ color: "#a39c8c" }}>
+          <p style={{ color: "var(--secondary)" }}>
             {t({ ja: "該当する記事はまだない。", en: "No articles yet.", "zh-cn": "暂无相关文章。" })}
           </p>
         ) : (

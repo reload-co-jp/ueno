@@ -53,7 +53,7 @@ const Page: FC = async () => {
       )}
       <Breadcrumb items={[{ label: t({ ja: "イベント", en: "Events", "zh-cn": "活动" }) }]} />
       <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
+      <p style={{ fontSize: ".875rem", color: "var(--secondary)", margin: 0, lineHeight: 1.7 }}>
         {t({
           ja: (
             <>
@@ -84,7 +84,7 @@ const Page: FC = async () => {
           <ul style={{ margin: 0, paddingLeft: "1.25rem", fontSize: ".875rem", lineHeight: 1.9 }}>
             {features.map((f) => (
               <li key={f.key}>
-                <Link href={f.path} style={{ color: "#c0483a" }}>
+                <Link href={f.path} style={{ color: "var(--accent)" }}>
                   {f.heading}
                 </Link>
                 {t({ ja: `(${f.events.length}件)`, en: ` (${f.events.length})`, "zh-cn": `(${f.events.length}场)` })}
@@ -139,7 +139,7 @@ const Page: FC = async () => {
           <ul style={{ margin: 0, paddingLeft: "1.25rem", fontSize: ".875rem", lineHeight: 1.9 }}>
             {past.map(i18n.article).map((e) => (
               <li key={e.id}>
-                <Link href={`/events/${e.id}`} style={{ color: "#c0483a" }}>
+                <Link href={`/events/${e.id}`} style={{ color: "var(--accent)" }}>
                   {e.title}
                 </Link>
               </li>

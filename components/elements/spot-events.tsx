@@ -7,13 +7,13 @@ import {
 } from "@/lib/data"
 import { formatDateRange, todayStr } from "@/lib/date"
 import { getI18n } from "@/lib/i18n"
-import type { NewsArticle, Spot } from "@/lib/types"
+import type { Spot } from "@/lib/types"
 
 const LIMIT = 5
 
-// 記事の関連施設ごとに、同じ施設で開催中・開催予定のイベントへリンクする(個別記事→施設→関連イベント)
-export const SpotEvents: FC<{ article: NewsArticle; spots: Spot[] }> = async ({
-  article,
+// 関連施設ごとに、施設詳細と同じ施設で開催中・開催予定のイベントへリンクする(記事/店舗→施設→関連イベント)
+export const SpotEvents: FC<{ excludeId?: string; spots: Spot[] }> = async ({
+  excludeId,
   spots,
 }) => {
   const i18n = await getI18n()
@@ -22,18 +22,38 @@ export const SpotEvents: FC<{ article: NewsArticle; spots: Spot[] }> = async ({
   const upcoming = [
     ...getOngoingEvents(today),
     ...getFutureEvents(today),
-  ].filter((e) => e.id !== article.id)
+  ].filter((e) => e.id !== excludeId)
 
   return spots.map((spot) => {
     const events = upcoming.filter((e) =>
       getArticleSpotIds(e).includes(spot.id)
     )
-    if (events.length === 0) return null
     const name = i18n.spot(spot).name
+    const spotLink = (
+      <Link href={`/spots/${spot.id}`} style={{ color: "var(--accent)" }}>
+        {events.length > 0
+          ? t({
+              ja: `${name}のイベント・展示情報をすべて見る`,
+              en: `See all events & exhibitions at ${name}`,
+              "zh-cn": `查看${name}的全部活动・展览`,
+            })
+          : t({
+              ja: `${name}のスポット情報を見る`,
+              en: `About ${name}`,
+              "zh-cn": `查看${name}的景点信息`,
+            })}
+      </Link>
+    )
+    if (events.length === 0)
+      return (
+        <p key={spot.id} style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem", fontSize: ".875rem" }}>
+          {spotLink}
+        </p>
+      )
     return (
       <section
         key={spot.id}
-        style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}
+        style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}
       >
         <h2 style={{ fontSize: ".9375rem", margin: "0 0 .5rem" }}>
           {t({
@@ -55,10 +75,10 @@ export const SpotEvents: FC<{ article: NewsArticle; spots: Spot[] }> = async ({
             .map(i18n.article)
             .map((e) => (
               <li key={e.id}>
-                <Link href={`/events/${e.id}`} style={{ color: "#c0483a" }}>
+                <Link href={`/events/${e.id}`} style={{ color: "var(--accent)" }}>
                   {e.title}
                 </Link>
-                <span style={{ color: "#a39c8c", fontSize: ".75rem" }}>
+                <span style={{ color: "var(--secondary)", fontSize: ".75rem" }}>
                   {" "}
                   ({formatDateRange(e.eventStartDate, e.eventEndDate, locale)})
                 </span>
@@ -66,13 +86,7 @@ export const SpotEvents: FC<{ article: NewsArticle; spots: Spot[] }> = async ({
             ))}
         </ul>
         <p style={{ fontSize: ".875rem", margin: ".5rem 0 0" }}>
-          <Link href={`/spots/${spot.id}`} style={{ color: "#c0483a" }}>
-            {t({
-              ja: `${name}のイベント・展示情報をすべて見る`,
-              en: `See all events & exhibitions at ${name}`,
-              "zh-cn": `查看${name}的全部活动・展览`,
-            })}
-          </Link>
+          {spotLink}
         </p>
       </section>
     )

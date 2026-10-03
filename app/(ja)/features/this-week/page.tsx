@@ -112,7 +112,7 @@ const Page: FC = async () => {
         ]}
       />
       <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
+      <p style={{ fontSize: ".875rem", color: "var(--secondary)", margin: 0, lineHeight: 1.7 }}>
         {t({ ja: "対象期間", en: "Period", "zh-cn": "时间范围" })}: {formatShortRange(start, end, locale)}
         <br />
         {t({
@@ -157,14 +157,14 @@ const Page: FC = async () => {
           <ul style={{ margin: 0, paddingLeft: "1.25rem", fontSize: ".875rem", lineHeight: 1.9 }}>
             {weekend.events.map(i18n.article).map((e) => (
               <li key={e.id}>
-                <Link href={`/events/${e.id}`} style={{ color: "#c0483a" }}>
+                <Link href={`/events/${e.id}`} style={{ color: "var(--accent)" }}>
                   {e.title}
                 </Link>
               </li>
             ))}
           </ul>
           <p style={{ fontSize: ".875rem", margin: ".5rem 0 0" }}>
-            <Link href={weekend.path} style={{ color: "#c0483a" }}>
+            <Link href={weekend.path} style={{ color: "var(--accent)" }}>
               {t({
                 ja: `${weekend.heading}をすべて見る`,
                 en: `See all: ${weekend.heading}`,

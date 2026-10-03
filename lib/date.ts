@@ -136,3 +136,32 @@ export const formatShortRange = (
   locale === "ja"
     ? formatShortRangeJp(startIso, endIso)
     : formatRange(locale, { month: "short", day: "numeric" }, startIso, endIso)
+
+// トップページ等のカードUI向け短縮表記。全言語共通の数字表記で統一する
+const WEEKDAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+const md = (d: Date) => `${pad(d.getMonth() + 1)}/${pad(d.getDate())}`
+const dateOnly = (iso: string) => new Date(`${iso.slice(0, 10)}T00:00:00`)
+
+// 「2026.10.04」
+export const formatDotDate = (iso: string) => {
+  const d = dateOnly(iso)
+  return `${d.getFullYear()}.${md(d).replace("/", ".")}`
+}
+
+// 「10/04 SUN」
+export const formatEventDay = (iso: string) => {
+  const d = dateOnly(iso)
+  return `${md(d)} ${WEEKDAYS[d.getDay()]}`
+}
+
+// 「10/01 - 10/20」。同日なら「10/04 SUN」、年をまたぐなら「2026.03.31 - 2027.03.31」
+export const formatEventSpan = (startIso: string, endIso: string) =>
+  startIso.slice(0, 10) === endIso.slice(0, 10)
+    ? formatEventDay(startIso)
+    : startIso.slice(0, 4) !== endIso.slice(0, 4)
+      ? `${formatDotDate(startIso)} - ${formatDotDate(endIso)}`
+      : `${md(dateOnly(startIso))} - ${md(dateOnly(endIso))}`
+
+// 今日から終了日までの残り日数(当日終了=0)
+export const daysUntil = (iso: string, today = todayStr()) =>
+  Math.round((dateOnly(iso).getTime() - dateOnly(today).getTime()) / 86400000)

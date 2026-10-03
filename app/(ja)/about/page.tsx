@@ -25,7 +25,7 @@ const sectionTitleStyle: React.CSSProperties = {
 
 const paragraphStyle: React.CSSProperties = {
   fontSize: ".875rem",
-  color: "#7a7468",
+  color: "var(--secondary)",
   lineHeight: 1.7,
   margin: 0,
 }

@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
-import { ArticleCard, CardGrid } from "@/components/elements/card"
-import { getArticlesByStore, getStore, stores } from "@/lib/data"
+import { ArticleCard, badgeStyle, CardGrid } from "@/components/elements/card"
+import { SpotEvents } from "@/components/elements/spot-events"
+import { getArticlesByStore, getStore, spots, stores } from "@/lib/data"
 import { formatDate } from "@/lib/date"
 import { getI18n } from "@/lib/i18n"
 import { jsonLdString, pageMetadata } from "@/lib/seo"
@@ -39,6 +40,14 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { locale, t } = i18n
   const store = i18n.store(original)
   const articles = getArticlesByStore(store.id)
+  // 店舗→近くのスポット→開催中イベントの導線。上野周辺の狭い範囲なので緯度経度の平面距離で十分
+  const nearbySpots = [...spots]
+    .sort(
+      (a, b) =>
+        Math.hypot(a.lat - store.lat, a.lng - store.lng) -
+        Math.hypot(b.lat - store.lat, b.lng - store.lng)
+    )
+    .slice(0, 2)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,17 +73,13 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         <span
           style={{
             display: "inline-block",
-            fontSize: ".75rem",
-            background: "#555",
-            borderRadius: ".25rem",
-            padding: ".125rem .5rem",
-            marginBottom: ".5rem",
+            ...badgeStyle,
           }}
         >
           {store.category}
         </span>
         <h1 style={{ fontSize: "1.25rem", margin: "0 0 1rem" }}>{store.name}</h1>
-        <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem", color: "#ccc" }}>
+        <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem", color: "var(--secondary)" }}>
           <li>
             {t({ ja: "住所", en: "Address", "zh-cn": "地址" })}: {store.address}
           </li>
@@ -91,7 +96,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </li>
           <li>
             {t({ ja: "公式サイト", en: "Official website", "zh-cn": "官方网站" })}:{" "}
-            <a href={store.officialUrl} target="_blank" rel="noreferrer" style={{ color: "#8ecbff" }}>
+            <a href={store.officialUrl} target="_blank" rel="noreferrer" style={{ color: "var(--accent)" }}>
               {store.officialUrl}
             </a>
           </li>
@@ -104,7 +109,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
                   href={url}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ color: "#8ecbff", marginRight: ".5rem" }}
+                  style={{ color: "var(--accent)", marginRight: ".5rem" }}
                 >
                   {url}
                 </a>
@@ -116,6 +121,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </li>
         </ul>
       </div>
+
+      <SpotEvents spots={nearbySpots} />
 
       {articles.length > 0 && (
         <div>

@@ -32,7 +32,7 @@ export const ArticleListPage: FC<{
           fontSize: "1.125rem",
           paddingBottom: ".5rem",
           marginBottom: "1.25rem",
-          borderBottom: "0.1875rem solid #111",
+          borderBottom: "0.1875rem solid var(--text)",
         }}
       >
         {title}
@@ -41,7 +41,7 @@ export const ArticleListPage: FC<{
         <p
           style={{
             fontSize: ".875rem",
-            color: "#7a7468",
+            color: "var(--secondary)",
             margin: "0 0 1.25rem",
             lineHeight: 1.7,
           }}
@@ -60,7 +60,7 @@ export const ArticleListPage: FC<{
         })}
       </h2>
       {articles.length === 0 ? (
-        <p style={{ color: "#a39c8c" }}>
+        <p style={{ color: "var(--secondary)" }}>
           {t({
             ja: "該当する記事はまだない。",
             en: "No articles yet.",

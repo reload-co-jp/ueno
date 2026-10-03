@@ -26,7 +26,6 @@ export const LanguageSwitcher: FC = () => {
       style={{
         display: "flex",
         gap: ".75rem",
-        marginTop: ".5rem",
         fontSize: ".75rem",
       }}
     >
@@ -42,7 +41,7 @@ export const LanguageSwitcher: FC = () => {
             href={`${l.prefix}${basePath === "/" && l.prefix ? "/" : basePath}`}
             hrefLang={l.hreflang}
             lang={l.hreflang}
-            style={{ color: "#c0483a", textDecoration: "none" }}
+            style={{ color: "var(--accent)", textDecoration: "none" }}
           >
             {l.label}
           </a>

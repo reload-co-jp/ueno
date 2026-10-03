@@ -2,7 +2,7 @@ import { FC } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-const linkColor = "#c0483a"
+const linkColor = "var(--accent)"
 
 // 本文の最上位見出しを h1(→表示上h2) に揃える。「##」始まりの本文でページH1直下がh3になるのを防ぐ
 const normalizeHeadings = (body: string) => {
@@ -44,14 +44,14 @@ export const ArticleBody: FC<{ body: string }> = ({ body }) => (
             style={{
               margin: "0 0 1rem",
               padding: ".5rem 1rem",
-              borderLeft: "3px solid #e8e1d3",
-              color: "#7a7468",
+              borderLeft: "3px solid var(--border)",
+              color: "var(--secondary)",
             }}
           >
             {children}
           </blockquote>
         ),
-        hr: () => <hr style={{ border: "none", borderTop: "1px solid #e8e1d3", margin: "1.5rem 0" }} />,
+        hr: () => <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "1.5rem 0" }} />,
         table: ({ children }) => (
           <div style={{ overflowX: "auto", marginBottom: "1rem" }}>
             <table style={{ borderCollapse: "collapse", width: "100%", fontSize: ".875rem" }}>
@@ -64,14 +64,14 @@ export const ArticleBody: FC<{ body: string }> = ({ body }) => (
             style={{
               textAlign: "left",
               padding: ".5rem",
-              borderBottom: "2px solid #e8e1d3",
+              borderBottom: "2px solid var(--border)",
             }}
           >
             {children}
           </th>
         ),
         td: ({ children }) => (
-          <td style={{ padding: ".5rem", borderBottom: "1px solid #e8e1d3" }}>{children}</td>
+          <td style={{ padding: ".5rem", borderBottom: "1px solid var(--border)" }}>{children}</td>
         ),
         code: ({ children }) => (
           <code

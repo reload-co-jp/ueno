@@ -36,7 +36,7 @@ export const EventFeaturePage: FC<{ feature: EventFeature }> = async ({
       <p
         style={{
           fontSize: ".875rem",
-          color: "#7a7468",
+          color: "var(--secondary)",
           margin: 0,
           lineHeight: 1.7,
         }}

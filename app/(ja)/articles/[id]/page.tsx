@@ -139,8 +139,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           display: "inline-block",
           fontSize: ".75rem",
           fontWeight: 700,
-          background: "#f7e6e1",
-          color: "#c0483a",
+          background: "var(--accent-soft)",
+          color: "var(--accent)",
           borderRadius: "999px",
           padding: ".125rem .75rem",
           width: "fit-content",
@@ -162,7 +162,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         />
       )}
       <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{article.title}</h1>
-      <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+      <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
         {formatDate(article.publishedAt, locale)}
         {t({ ja: " ・ ", en: " · ", "zh-cn": " · " })}
         {article.area}
@@ -175,21 +175,21 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       <AdSlot />
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
-        <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
           <h2 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>
             {t({ ja: "関連情報", en: "Related", "zh-cn": "相关信息" })}
           </h2>
           <ul style={{ listStyle: "none", padding: 0, fontSize: ".875rem" }}>
             {relatedStores.map(i18n.store).map((s) => (
               <li key={s.id}>
-                <Link href={`/stores/${s.id}`} style={{ color: "#c0483a" }}>
+                <Link href={`/stores/${s.id}`} style={{ color: "var(--accent)" }}>
                   {t({ ja: "店舗", en: "Shop", "zh-cn": "店铺" })}: {s.name}
                 </Link>
               </li>
             ))}
             {relatedSpots.map(i18n.spot).map((s) => (
               <li key={s.id}>
-                <Link href={`/spots/${s.id}`} style={{ color: "#c0483a" }}>
+                <Link href={`/spots/${s.id}`} style={{ color: "var(--accent)" }}>
                   {t({ ja: "施設", en: "Place", "zh-cn": "设施" })}: {s.name}
                 </Link>
               </li>
@@ -199,7 +199,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       )}
 
       {relatedArticles.length > 0 && (
-        <div style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
           <h2 style={{ fontSize: ".9375rem", marginBottom: ".75rem" }}>
             {t({ ja: "関連記事", en: "Related articles", "zh-cn": "相关文章" })}
           </h2>
@@ -211,11 +211,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         </div>
       )}
 
-      <SpotEvents article={original} spots={relatedSpots} />
+      <SpotEvents excludeId={original.id} spots={relatedSpots} />
 
       <RelatedLinks />
 
-      <div style={{ fontSize: ".75rem", color: "#a39c8c" }}>
+      <div style={{ fontSize: ".75rem", color: "var(--secondary)" }}>
         {t({ ja: "情報源", en: "Sources", "zh-cn": "信息来源" })}:{" "}
         {article.sources.map((url, i) => (
           <span key={url}>
@@ -224,7 +224,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
               href={url}
               target="_blank"
               rel="noreferrer"
-              style={{ color: "#c0483a" }}
+              style={{ color: "var(--accent)" }}
             >
               {url}
             </a>

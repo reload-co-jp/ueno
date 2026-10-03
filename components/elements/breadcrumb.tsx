@@ -41,7 +41,7 @@ export const Breadcrumb: FC<{ items: BreadcrumbItem[] }> = async ({
         en: "Breadcrumb",
         "zh-cn": "面包屑导航",
       })}
-      style={{ fontSize: ".75rem", color: "#a39c8c", marginBottom: "1rem" }}
+      style={{ fontSize: ".75rem", color: "var(--secondary)", marginBottom: "1rem" }}
     >
       <script
         type="application/ld+json"
@@ -55,7 +55,7 @@ export const Breadcrumb: FC<{ items: BreadcrumbItem[] }> = async ({
             {item.href && !isCurrent ? (
               <Link
                 href={item.href}
-                style={{ color: "#c0483a", textDecoration: "none" }}
+                style={{ color: "var(--accent)", textDecoration: "none" }}
               >
                 {item.label}
               </Link>

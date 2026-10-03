@@ -7,20 +7,23 @@ import { getI18n } from "@/lib/i18n"
 const cardStyle: React.CSSProperties = {
   display: "block",
   background: "#fff",
-  borderBottom: "0.1875rem solid #111",
+  border: "1px solid var(--border)",
+  borderRadius: ".5rem",
+  overflow: "hidden",
   padding: "0 0 1rem",
-  color: "#111",
+  color: "var(--text)",
   textDecoration: "none",
 }
 
 export const badgeStyle: React.CSSProperties = {
   display: "inline-block",
-  fontSize: ".75rem",
+  fontSize: ".6875rem",
   fontWeight: 800,
-  background: "#f7e6e1",
-  color: "#c0483a",
-  borderRadius: "999px",
-  padding: ".125rem .75rem",
+  letterSpacing: ".04em",
+  color: "var(--accent)",
+  border: "1px solid currentColor",
+  borderRadius: ".25rem",
+  padding: "0 .375rem",
   marginBottom: ".5rem",
 }
 
@@ -54,7 +57,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
           {article.title}
         </h3>
         <p
-          style={{ fontSize: ".875rem", color: "#7a7468", margin: "0 0 .5rem" }}
+          style={{ fontSize: ".875rem", color: "var(--secondary)", margin: "0 0 .5rem" }}
         >
           {article.summary}
         </p>
@@ -66,8 +69,8 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
               gap: ".375rem",
               fontSize: ".8125rem",
               fontWeight: 700,
-              color: "#c0483a",
-              background: "#f7e6e1",
+              color: "var(--accent)",
+              background: "var(--accent-soft)",
               borderRadius: ".375rem",
               padding: ".1875rem .625rem",
               margin: "0 0 .375rem",
@@ -83,7 +86,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
             )}
           </p>
         )}
-        <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
           {isEvent ? "" : formatDate(article.publishedAt, locale)}
           {isEvent ? "" : t({ ja: " ・ ", en: " · ", "zh-cn": " · " })}
           {isEvent ? (article.eventLocation ?? article.area) : article.area}
@@ -105,7 +108,7 @@ export const StoreCard: FC<{ store: Store }> = async ({ store: original }) => {
       <div style={{ padding: "1rem" }}>
         <span style={badgeStyle}>{store.category}</span>
         <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{store.name}</h3>
-        <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
           {store.address}
         {t({ ja: " ・ ", en: " · ", "zh-cn": " · " })}
         {store.hours}
@@ -132,13 +135,56 @@ export const SpotCard: FC<{ spot: Spot }> = async ({ spot: original }) => {
       <div style={{ padding: "0 .5rem 1rem" }}>
         <span style={badgeStyle}>{spot.type}</span>
         <h3 style={{ fontSize: "1rem", margin: "0 0 .25rem" }}>{spot.name}</h3>
-        <p style={{ fontSize: ".75rem", color: "#a39c8c", margin: 0 }}>
+        <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
           {spot.address}
         </p>
       </div>
     </Link>
   )
 }
+
+// 画像・カテゴリ・タイトル・補助情報の小型カード。画像が無い場合は文字のみのカードになる
+export const CompactCard: FC<{
+  href: string
+  image?: { url: string; alt: string } | null
+  label: string
+  title: string
+  meta?: React.ReactNode
+  note?: string
+}> = ({ href, image, label, title, meta, note }) => (
+  <Link href={href} className="card" style={{ ...cardStyle, padding: 0 }}>
+    {image && (
+      <img
+        src={image.url}
+        alt={image.alt}
+        loading="lazy"
+        style={{
+          width: "100%",
+          aspectRatio: "4 / 3",
+          objectFit: "cover",
+          display: "block",
+          background: "var(--border)",
+        }}
+      />
+    )}
+    <div style={{ padding: ".75rem .875rem 1rem" }}>
+      <span style={badgeStyle}>{label}</span>
+      <h3 style={{ fontSize: ".9375rem", lineHeight: 1.4, margin: "0 0 .375rem" }}>
+        {title}
+      </h3>
+      {meta && (
+        <p style={{ fontSize: ".8125rem", fontWeight: 700, color: "var(--accent)", margin: 0 }}>
+          {meta}
+        </p>
+      )}
+      {note && (
+        <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: ".25rem 0 0" }}>
+          {note}
+        </p>
+      )}
+    </div>
+  </Link>
+)
 
 export const CardGrid: FC<{ children: React.ReactNode }> = ({ children }) => (
   <div

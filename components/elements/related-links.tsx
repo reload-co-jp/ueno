@@ -117,7 +117,7 @@ export const RelatedLinks: FC<{ current?: string; heading?: string }> = async ({
   return (
     <nav
       aria-label={heading}
-      style={{ borderTop: "1px solid #e8e1d3", paddingTop: "1rem" }}
+      style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}
     >
       <h2 style={{ fontSize: "1rem", margin: "0 0 .75rem" }}>{heading}</h2>
       <ul
@@ -137,8 +137,8 @@ export const RelatedLinks: FC<{ current?: string; heading?: string }> = async ({
               href={l.href}
               style={{
                 display: "inline-block",
-                color: "#c0483a",
-                border: "1px solid #e8c9c1",
+                color: "var(--accent)",
+                border: "1px solid var(--border)",
                 borderRadius: "999px",
                 padding: ".25rem .75rem",
                 textDecoration: "none",

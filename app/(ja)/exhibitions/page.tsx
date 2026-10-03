@@ -54,7 +54,7 @@ const Page: FC = async () => {
       )}
       <Breadcrumb items={[{ label: t({ ja: "展示・アート", en: "Exhibitions", "zh-cn": "展览・艺术" }) }]} />
       <h1 style={{ fontSize: "1.125rem", margin: 0 }}>{title}</h1>
-      <p style={{ fontSize: ".875rem", color: "#7a7468", margin: 0, lineHeight: 1.7 }}>
+      <p style={{ fontSize: ".875rem", color: "var(--secondary)", margin: 0, lineHeight: 1.7 }}>
         {t({
           ja: (
             <>

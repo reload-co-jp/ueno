@@ -88,7 +88,7 @@ export const generateMetadata = async ({
 }
 
 const sectionHeadingStyle = { fontSize: "1rem", margin: "0 0 .75rem" }
-const linkStyle = { color: "#c0483a" }
+const linkStyle = { color: "var(--accent)" }
 
 const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   const { id } = await params
@@ -169,8 +169,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
             display: "inline-block",
             fontSize: ".75rem",
             fontWeight: 700,
-            background: "#f7e6e1",
-            color: "#c0483a",
+            background: "var(--accent-soft)",
+            color: "var(--accent)",
             borderRadius: "999px",
             padding: ".125rem .75rem",
             marginBottom: ".5rem",
@@ -188,7 +188,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         <p
           style={{
             fontSize: ".875rem",
-            color: "#7a7468",
+            color: "var(--secondary)",
             margin: "0 0 1rem",
             lineHeight: 1.7,
           }}

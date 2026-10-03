@@ -4,7 +4,16 @@ import { Noto_Sans_JP, WDXL_Lubrifont_JP_N } from "next/font/google"
 import Script from "next/script"
 import { AdSlot } from "@/components/elements/ad-slot"
 import { LanguageSwitcher } from "@/components/elements/language-switcher"
-import { Footer, Header, Main, Nav, Title } from "@/components/elements/layout"
+import {
+  BottomNav,
+  Footer,
+  FooterNav,
+  Header,
+  Main,
+  Nav,
+  SearchForm,
+  Title,
+} from "@/components/elements/layout"
 import { Link } from "@/components/elements/link"
 import { getI18n, getLocale, LOCALE_META, type Texts } from "@/lib/i18n"
 import {
@@ -73,7 +82,7 @@ const notoSans = Noto_Sans_JP({
 })
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const { locale, t, path } = await getI18n()
+  const { locale, path } = await getI18n()
   const siteName = SITE_NAMES[locale]
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -107,6 +116,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             </Link>
           </Title>
           <Nav />
+          <SearchForm />
           <LanguageSwitcher />
         </Header>
         <Main>
@@ -114,11 +124,10 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <AdSlot />
         </Main>
         <Footer>
-          <Link href="/about" style={{ color: "inherit" }}>
-            {t({ ja: "このサイトについて", en: "About", "zh-cn": "关于本站" })}
-          </Link>
+          <FooterNav />
           <p>&copy; {siteName}</p>
         </Footer>
+        <BottomNav />
       </body>
       {process.env.NODE_ENV === "production" && (
         <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
