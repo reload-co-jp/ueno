@@ -126,11 +126,8 @@ const Page: FC = async () => {
             <li key={e.id} style={{ borderBottom: "1px solid var(--border)" }}>
               <Link
                 href={`/events/${e.id}`}
-                className="row"
+                className="row event-row"
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "5.5rem 1fr auto",
-                  alignItems: "center",
                   gap: "1rem",
                   padding: ".875rem 0",
                   color: "var(--text)",
@@ -379,7 +376,7 @@ const Page: FC = async () => {
             title={t({ ja: "上野のスポット", en: "Places in Ueno", "zh-cn": "上野景点" })}
             more={{ href: "/spots", label: t({ ja: "スポット一覧", en: "All places", "zh-cn": "全部景点" }) }}
           />
-          <div className="grid">
+          <div className="scroller">
             {pickedSpots.map((original) => {
               const s = i18n.spot(original)
               const ongoing = getArticlesBySpot(s.id).filter(
