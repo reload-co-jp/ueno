@@ -1,6 +1,7 @@
 import { Link } from "@/components/elements/link"
 import { ComponentProps, FC, ReactNode } from "react"
-import { getI18n, type Texts } from "@/lib/i18n"
+import { SearchBox } from "@/components/elements/search-box"
+import { getI18n, localePath, type Texts } from "@/lib/i18n"
 
 type NavItem = { href: string; label: Texts }
 
@@ -83,33 +84,20 @@ export const BottomNav: FC = async () => {
   )
 }
 
-// 静的exportのためサイト内検索はGoogleのサイト限定検索に委ねる
-// ponytail: 外部検索依存。自前の横断検索・サジェストが必要になったらビルド時にインデックスJSONを生成する
+// サジェストはビルド時生成のインデックス(lib/search-index.ts)、Enterの全文検索はGoogleのサイト内検索に委ねる
 export const SearchForm: FC = async () => {
-  const { t } = await getI18n()
-  const label = t({
-    ja: "上野のイベント・店・スポットを検索",
-    en: "Search events, shops & places in Ueno",
-    "zh-cn": "搜索上野的活动・店铺・景点",
-  })
+  const { locale, t } = await getI18n()
   return (
-    <form action="https://www.google.com/search" role="search" style={{ flex: "1 1 16rem", maxWidth: "24rem" }}>
-      <input type="hidden" name="sitesearch" value="ueno.reload.co.jp" />
-      <input
-        type="search"
-        name="q"
-        aria-label={label}
-        placeholder={`🔍 ${label}`}
-        style={{
-          width: "100%",
-          padding: ".5rem .875rem",
-          border: "1px solid var(--border)",
-          borderRadius: "999px",
-          background: "#fff",
-          fontSize: ".875rem",
-        }}
-      />
-    </form>
+    <SearchBox
+      locale={locale}
+      prefix={localePath(locale, "/").replace(/\/$/, "")}
+      site="ueno.reload.co.jp"
+      label={t({
+        ja: "上野のイベント・店・スポットを検索",
+        en: "Search events, shops & places in Ueno",
+        "zh-cn": "搜索上野的活动・店铺・景点",
+      })}
+    />
   )
 }
 
