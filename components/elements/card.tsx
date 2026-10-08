@@ -42,7 +42,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
       style={cardStyle}
     >
       <img
-        src={image?.url ?? "/images/placeholder.jpg"}
+        src={image?.url ?? "/images/brand.jpeg"}
         alt={image?.alt ?? ""}
         style={{
           width: "100%",

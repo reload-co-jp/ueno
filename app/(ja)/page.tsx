@@ -102,7 +102,7 @@ const Page: FC = async () => {
 
   const localized = <T extends NewsArticle>(a: T) => ({
     ...i18n.article(a),
-    image: i18n.image(a),
+    image: i18n.image(a) ?? { url: "/images/brand.jpeg", alt: "" },
   })
 
   // 「いつまで？」の補助表示。本日のみ / あとN日 / 〜MM/DD
