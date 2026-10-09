@@ -39,6 +39,21 @@ const MAX_CHARS = 12000
 // 詳細ページ個別fetch(画像探索フォールバック)時のインターバル。対象サイトへの負荷配慮。
 const DETAIL_IMAGE_FETCH_INTERVAL_MS = 1000
 
+// RSSフィードを「item毎に<a href=link>title</a>」のHTMLへ変換し、以降のHTML前提の処理(本文テキスト・
+// detailLinkPatternによる詳細リンク収集)にそのまま流す。RSSでなければそのまま返す。
+const rssToHtml = (body: string): string => {
+  if (!/^\s*(<\?xml[^>]*>\s*)?<rss[\s>]/.test(body)) return body
+  const $ = cheerio.load(body, { xml: true })
+  const items = $("item")
+    .map((_, el) => {
+      const item = $(el)
+      const a = $("<a>").attr("href", item.find("link").text().trim()).text(item.find("title").text())
+      return `<li>${$.html(a)} ${item.find("pubDate").text()}</li>`
+    })
+    .get()
+  return `<html><body><ul>${items.join("\n")}</ul></body></html>`
+}
+
 // HTML本文からノイズ(script/style/nav等)を除いたテキストを抽出
 export const htmlToText = (html: string): string => {
   const $ = cheerio.load(html)
@@ -246,7 +261,8 @@ ${text}`
 
 // LLMへの入力(本文テキスト+画像候補+詳細リンク候補)のハッシュ。
 // 取得日時が違っても入力が同一なら抽出結果も同一とみなし、LLM再抽出を省く(scripts/2-extract.ts)。
-export const extractInputHash = (source: Source, html: string, pageUrl: string): string => {
+export const extractInputHash = (source: Source, body: string, pageUrl: string): string => {
+  const html = rssToHtml(body)
   const detailLinks = source.detailLinkPattern
     ? extractDetailLinkCandidates(html, pageUrl, source.detailLinkPattern)
     : []
@@ -257,9 +273,10 @@ export const extractInputHash = (source: Source, html: string, pageUrl: string):
 
 export const extractFromHtml = async (
   source: Source,
-  html: string,
+  body: string,
   pageUrl: string
 ): Promise<ExtractedItem[]> => {
+  const html = rssToHtml(body)
   const text = htmlToText(html)
   if (!text) return []
 

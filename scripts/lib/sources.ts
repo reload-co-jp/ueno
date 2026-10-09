@@ -70,13 +70,14 @@ export const SOURCES: Source[] = [
     detailLinkPattern: "/main/html/rd/p/",
   },
   {
-    id: "prtimes-ueno-marui",
-    name: "PR TIMES「上野マルイ」",
-    url: "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%83%9E%E3%83%AB%E3%82%A4",
-    type: "press_release",
-    categoryHints: ["new_opening", "event", "popup", "sale", "campaign"],
+    id: "google-news-ueno",
+    name: "Googleニュース「上野」",
+    url: "https://news.google.com/rss/search?q=%E4%B8%8A%E9%87%8E&hl=ja&gl=JP&ceid=JP:ja",
+    type: "media",
+    categoryHints: ["local_news"],
     strictAreaFilter: true,
-    detailLinkPattern: "/main/html/rd/p/",
+    // RSS。extract.tsでitem毎の<a href=link>に変換される
+    detailLinkPattern: "news.google.com/rss/articles/",
   },
   {
     id: "tabelog-ueno-new",
