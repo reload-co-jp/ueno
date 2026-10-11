@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
-import { Noto_Sans_JP, WDXL_Lubrifont_JP_N } from "next/font/google"
+import { Noto_Sans_JP, Shippori_Mincho } from "next/font/google"
 import Script from "next/script"
 import { AdSlot } from "@/components/elements/ad-slot"
 import { LanguageSwitcher } from "@/components/elements/language-switcher"
@@ -68,12 +68,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const lubrifont = WDXL_Lubrifont_JP_N({
-  weight: "400",
+// 見出し用の明朝体。本文・UIはNoto Sans JP
+const mincho = Shippori_Mincho({
+  weight: ["600", "700"],
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: false,
-  variable: "--font-lubrifont",
+  variable: "--font-serif",
 })
 
 const notoSans = Noto_Sans_JP({
@@ -82,7 +82,7 @@ const notoSans = Noto_Sans_JP({
 })
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const { locale, path } = await getI18n()
+  const { locale, path, t } = await getI18n()
   const siteName = SITE_NAMES[locale]
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -94,7 +94,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <html
       lang={LOCALE_META[locale].hreflang}
-      className={`${notoSans.className} ${lubrifont.variable}`}
+      className={`${notoSans.className} ${mincho.variable}`}
     >
       <body>
         {process.env.NODE_ENV === "production" && (
@@ -109,12 +109,17 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdString(websiteJsonLd) }}
         />
-        <Header>
-          <Title>
-            <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
-              {siteName}
-            </Link>
-          </Title>
+        <Header
+          title={
+            <Title>
+              <Link href="/">
+                <small>UENO LOCAL MAGAZINE</small>
+                {siteName}
+              </Link>
+            </Title>
+          }
+          menuLabel={t({ ja: "メニュー", en: "Menu", "zh-cn": "菜单" })}
+        >
           <Nav />
           <SearchForm />
           <LanguageSwitcher />
@@ -125,7 +130,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         </Main>
         <Footer>
           <FooterNav />
-          <p>&copy; {siteName}</p>
+          <p style={{ opacity: 0.7, borderTop: "1px solid rgba(255,255,255,.2)", paddingTop: "1.5rem" }}>
+            &copy; {siteName}
+          </p>
         </Footer>
         <BottomNav />
       </body>

@@ -6,7 +6,7 @@ import { getI18n, localePath, type Texts } from "@/lib/i18n"
 type NavItem = { href: string; label: Texts }
 
 // メインナビ。サブカテゴリはフッターのサイトマップに置き、既存ページへの内部リンクを維持する
-const NAV_GROUPS: (NavItem & { children: NavItem[] })[] = [
+const NAV_GROUPS: (NavItem & { short?: Texts; children: NavItem[] })[] = [
   {
     href: "/events",
     label: { ja: "イベント", en: "Events", "zh-cn": "活动" },
@@ -21,7 +21,8 @@ const NAV_GROUPS: (NavItem & { children: NavItem[] })[] = [
   },
   {
     href: "/new-stores",
-    label: { ja: "お店", en: "Shops", "zh-cn": "店铺" },
+    label: { ja: "新しいお店", en: "New Shops", "zh-cn": "新店" },
+    short: { ja: "お店", en: "Shops", "zh-cn": "店铺" },
     children: [
       { href: "/new-stores", label: { ja: "新店舗", en: "New shops", "zh-cn": "新店" } },
       { href: "/popup", label: { ja: "POP UP", en: "Pop-ups", "zh-cn": "快闪店" } },
@@ -35,7 +36,8 @@ const NAV_GROUPS: (NavItem & { children: NavItem[] })[] = [
   },
   {
     href: "/exhibitions",
-    label: { ja: "アート", en: "Art", "zh-cn": "艺术" },
+    label: { ja: "アート・施設", en: "Art & Museums", "zh-cn": "艺术・设施" },
+    short: { ja: "アート", en: "Art", "zh-cn": "艺术" },
     children: [
       { href: "/exhibitions", label: { ja: "展覧会", en: "Exhibitions", "zh-cn": "展览" } },
       { href: "/features/museums", label: { ja: "美術館・博物館", en: "Museums", "zh-cn": "美术馆・博物馆" } },
@@ -56,12 +58,9 @@ const NAV_GROUPS: (NavItem & { children: NavItem[] })[] = [
 export const Nav: FC = async () => {
   const { t } = await getI18n()
   return (
-    <nav
-      className="header-nav"
-      style={{ display: "flex", flexWrap: "wrap", gap: ".25rem 1.25rem", fontSize: ".9375rem", fontWeight: 700 }}
-    >
+    <nav className="header-nav" aria-label={t({ ja: "メインメニュー", en: "Main menu", "zh-cn": "主菜单" })}>
       {NAV_GROUPS.map((item) => (
-        <Link key={item.href} href={item.href} style={{ color: "var(--text)", textDecoration: "none" }}>
+        <Link key={item.href} href={item.href}>
           {t(item.label)}
         </Link>
       ))}
@@ -77,7 +76,7 @@ export const BottomNav: FC = async () => {
       <Link href="/">{t({ ja: "ホーム", en: "Home", "zh-cn": "首页" })}</Link>
       {NAV_GROUPS.slice(0, 4).map((item) => (
         <Link key={item.href} href={item.href}>
-          {t(item.label)}
+          {t(item.short ?? item.label)}
         </Link>
       ))}
     </nav>
@@ -105,26 +104,14 @@ export const SearchForm: FC = async () => {
 export const FooterNav: FC = async () => {
   const { t } = await getI18n()
   return (
-    <nav
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(9rem, 1fr))",
-        gap: "1.5rem",
-        textAlign: "left",
-        marginBottom: "2rem",
-      }}
-    >
+    <nav className="footer-nav">
       {NAV_GROUPS.map((group) => (
         <div key={group.href}>
-          <Link href={group.href} style={{ color: "#fff", fontWeight: 800, fontSize: ".875rem" }}>
-            {t(group.label)}
-          </Link>
-          <ul style={{ listStyle: "none", padding: 0, margin: ".5rem 0 0" }}>
+          <Link href={group.href}>{t(group.label)}</Link>
+          <ul>
             {group.children.map((c) => (
-              <li key={c.href} style={{ margin: ".25rem 0" }}>
-                <Link href={c.href} style={{ color: "#bbb", textDecoration: "none" }}>
-                  {t(c.label)}
-                </Link>
+              <li key={c.href}>
+                <Link href={c.href}>{t(c.label)}</Link>
               </li>
             ))}
           </ul>
@@ -135,60 +122,36 @@ export const FooterNav: FC = async () => {
 }
 
 // サイト名表示用。ページ固有の主題はh1で各ページが持つため、ここはpに留める。
-export const Title: FC<ComponentProps<"p">> = ({
-  style,
-  children,
-  ...props
-}) => (
-  <p
-    style={{
-      fontFamily: "var(--font-lubrifont)",
-      fontSize: "2.25rem",
-      fontWeight: 250,
-      letterSpacing: "-0.02em",
-      margin: 0,
-      ...style,
-    }}
-    {...props}
-  >
-    {children}
-  </p>
+export const Title: FC<ComponentProps<"p">> = ({ className, ...props }) => (
+  <p className={`site-title ${className ?? ""}`} {...props} />
 )
 
-export const Header: FC<{ children: ReactNode }> = ({ children }) => (
-  <header
-    style={{
-      background: "#fff",
-      color: "var(--text)",
-      borderBottom: "1px solid var(--border)",
-      position: "relative",
-    }}
-  >
-    <div
-      style={{
-        maxWidth: "75rem",
-        margin: "0 auto",
-        padding: ".75rem 1rem",
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        gap: ".5rem 2rem",
-      }}
-    >
-      {children}
+// スマホではチェックボックスでメニューを開閉する(静的export向けにCSSのみ)
+export const Header: FC<{ title: ReactNode; menuLabel: string; children: ReactNode }> = ({
+  title,
+  menuLabel,
+  children,
+}) => (
+  <header className="site-header">
+    <div className="header-inner">
+      {title}
+      <input type="checkbox" id="menu-toggle" className="menu-toggle" />
+      <label htmlFor="menu-toggle" className="menu-button">
+        {menuLabel}
+      </label>
+      <div className="header-menu">{children}</div>
     </div>
   </header>
 )
 
 export const Main: FC<{ children: ReactNode }> = ({ children }) => (
-  <main
-    style={{
-      background: "var(--bg)",
-      minHeight: "calc(100dvh - 5.625rem)",
-    }}
-  >
+  <main style={{ overflowX: "clip", minHeight: "calc(100dvh - 4rem)" }}>
     <div
-      style={{ maxWidth: "75rem", margin: "0 auto", padding: "2rem 1rem" }}
+      style={{
+        maxWidth: "var(--content)",
+        margin: "0 auto",
+        padding: "2rem var(--gutter) var(--section-gap)",
+      }}
     >
       {children}
     </div>
@@ -196,18 +159,7 @@ export const Main: FC<{ children: ReactNode }> = ({ children }) => (
 )
 
 export const Footer: FC<{ children: ReactNode }> = ({ children }) => (
-  <footer
-    style={{
-      background: "var(--text)",
-      color: "#fff",
-      fontSize: ".75rem",
-      textAlign: "center",
-    }}
-  >
-    <div
-      style={{ maxWidth: "75rem", margin: "0 auto", padding: "2.5rem 1rem 1.5rem" }}
-    >
-      {children}
-    </div>
+  <footer className="site-footer">
+    <div className="footer-inner">{children}</div>
   </footer>
 )

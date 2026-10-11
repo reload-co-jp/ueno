@@ -139,7 +139,7 @@ export const RelatedLinks: FC<{ current?: string; heading?: string }> = async ({
                 display: "inline-block",
                 color: "var(--accent)",
                 border: "1px solid var(--border)",
-                borderRadius: "999px",
+                borderRadius: "2px",
                 padding: ".25rem .75rem",
                 textDecoration: "none",
               }}

@@ -130,7 +130,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
         <img
           src={imageUrl}
           alt={image?.alt}
-          style={{ width: "100%", borderRadius: ".75rem", objectFit: "cover" }}
+          className="detail-image"
         />
       )}
       <h1 style={{ fontSize: "1.25rem", margin: 0 }}>{event.title}</h1>
@@ -143,7 +143,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           fontWeight: 700,
           color: "var(--accent)",
           background: "var(--accent-soft)",
-          borderRadius: ".5rem",
+          borderRadius: "2px",
           padding: ".5rem .875rem",
           margin: 0,
         }}

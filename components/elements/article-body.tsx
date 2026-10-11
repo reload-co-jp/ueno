@@ -77,7 +77,7 @@ export const ArticleBody: FC<{ body: string }> = ({ body }) => (
           <code
             style={{
               background: "#f3f0e8",
-              borderRadius: ".25rem",
+              borderRadius: "2px",
               padding: ".125rem .375rem",
               fontSize: ".875em",
             }}

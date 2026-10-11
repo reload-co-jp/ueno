@@ -160,7 +160,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           width: "100%",
           aspectRatio: "16 / 9",
           objectFit: "cover",
-          borderRadius: ".5rem",
+          borderRadius: "2px",
         }}
       />
       <div>
@@ -171,7 +171,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
             fontWeight: 700,
             background: "var(--accent-soft)",
             color: "var(--accent)",
-            borderRadius: "999px",
+            borderRadius: "2px",
             padding: ".125rem .75rem",
             marginBottom: ".5rem",
           }}

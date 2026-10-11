@@ -112,7 +112,7 @@ export const SearchBox = ({
           width: "100%",
           padding: ".5rem .875rem",
           border: "1px solid var(--border)",
-          borderRadius: "999px",
+          borderRadius: "2px",
           background: "#fff",
           fontSize: ".875rem",
         }}
@@ -133,7 +133,7 @@ export const SearchBox = ({
             padding: ".25rem 0",
             background: "#fff",
             border: "1px solid var(--border)",
-            borderRadius: ".5rem",
+            borderRadius: "2px",
             boxShadow: "0 .5rem 1.5rem rgba(0, 0, 0, .12)",
             maxHeight: "70vh",
             overflowY: "auto",
