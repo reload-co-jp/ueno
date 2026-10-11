@@ -70,3 +70,28 @@ export const saveRaw = async (record: RawRecord) => {
 }
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// Googleニュース RSSの記事URL(news.google.com/rss/articles/<id>)はHTTPリダイレクトせずJSで遷移するため、
+// そのままfetchするとGoogleのページ(og:image=Googleロゴ)が返る。記事ページの署名を取得し、
+// batchexecute API(garturlreq)で元記事URLにデコードする。非公開APIのため失敗時はnullを返す。
+export const resolveGoogleNewsUrl = async (url: string): Promise<string | null> => {
+  const id = url.match(/news\.google\.com\/(?:rss\/)?articles\/([^/?#]+)/)?.[1]
+  if (!id) return null
+  try {
+    const html = await fetchHtml(`https://news.google.com/articles/${id}`)
+    const sg = html.match(/data-n-a-sg="([^"]+)"/)?.[1]
+    const ts = html.match(/data-n-a-ts="([^"]+)"/)?.[1]
+    if (!sg || !ts) return null
+    const payload = `["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],"X","X",1,[1,1,1],1,1,null,0,0,null,0],"${id}",${ts},"${sg}"]`
+    const res = await fetch("https://news.google.com/_/DotsSplashUi/data/batchexecute", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8", "User-Agent": USER_AGENT },
+      body: `f.req=${encodeURIComponent(JSON.stringify([[["Fbv4je", payload, null, "generic"]]]))}`,
+    })
+    const text = await res.text()
+    const decoded = JSON.parse(JSON.parse(text.split("\n\n")[1])[0][2])[1]
+    return typeof decoded === "string" && decoded.startsWith("http") ? decoded : null
+  } catch {
+    return null
+  }
+}

@@ -3,7 +3,7 @@ import * as cheerio from "cheerio"
 import type { Category } from "@/lib/types"
 import type { Source } from "./sources"
 import { runClaudeJson } from "./claude-cli"
-import { fetchHtml, sleep } from "./fetch-raw"
+import { fetchHtml, resolveGoogleNewsUrl, sleep } from "./fetch-raw"
 
 // README「8. LLMによる情報抽出」準拠
 export interface ExtractedItem {
@@ -306,12 +306,20 @@ export const extractFromHtml = async (
     return { ...rest, image_url: imageUrl, detail_url: detailUrl }
   })
 
+  // Googleニュース RSSのリンクは元記事URLに置換する(sourcesに元記事を載せ、画像も元記事から拾うため)
+  for (const item of extracted) {
+    if (!item.detail_url?.includes("news.google.com/")) continue
+    item.detail_url = (await resolveGoogleNewsUrl(item.detail_url)) ?? item.detail_url
+    await sleep(DETAIL_IMAGE_FETCH_INTERVAL_MS)
+  }
+
   // 一覧ページに画像が無いサイト(例: ueno-mori、カレンダー形式)向けフォールバック。
   // image_urlが未確定でdetail_urlがある項目は、詳細ページを個別fetchして画像を探す
   // (対象サイトへの負荷配慮で1件ごとにインターバルを空ける)。
   if (imageCandidates.length === 0) {
     for (const item of extracted) {
-      if (item.image_url || !item.detail_url) continue
+      // 未解決のGoogleニュースURLはGoogleのページ(ロゴ画像)しか返らないため画像探索しない
+      if (item.image_url || !item.detail_url || item.detail_url.includes("news.google.com/")) continue
       const detailHtml = await fetchHtml(item.detail_url)
       if (detailHtml) {
         const candidates = extractImageCandidates(detailHtml, item.detail_url)

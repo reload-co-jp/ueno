@@ -76,7 +76,7 @@ export const SOURCES: Source[] = [
     type: "media",
     categoryHints: ["local_news"],
     strictAreaFilter: true,
-    // RSS。extract.tsでitem毎の<a href=link>に変換される
+    // RSS。extract.tsでitem毎の<a href=link>に変換され、詳細URLは元記事URLにデコードされる
     detailLinkPattern: "news.google.com/rss/articles/",
   },
   {
