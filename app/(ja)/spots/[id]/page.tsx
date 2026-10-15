@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Link } from "@/components/elements/link"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid, SpotCard } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
@@ -234,6 +235,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </li>
         </ul>
       </div>
+
+      <InArticleAd />
 
       <section>
         <h2 style={sectionHeadingStyle}>

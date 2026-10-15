@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { FC } from "react"
+import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, badgeStyle, CardGrid } from "@/components/elements/card"
 import { SpotEvents } from "@/components/elements/spot-events"
@@ -121,6 +122,8 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           </li>
         </ul>
       </div>
+
+      <InArticleAd />
 
       <SpotEvents spots={nearbySpots} />
 
