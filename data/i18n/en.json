@@ -107,29 +107,29 @@
       }
     },
     "12": {
-      "hash": "079acb6e30876401",
+      "hash": "acba90479fa061d3",
       "fields": {
         "title": "Chiketoku March 2026 Edition",
-        "summary": "A campaign where you can get special deals by showing an eligible ticket or membership card.",
-        "body": "## Chiketoku March 2026 Edition\n\n\"Chiketoku March 2026 Edition\" is now running in the Ueno area. Show an eligible ticket or membership card to get special deals.\n\n- **Area**: Ueno\n- **Store/Facility**: ecute Ueno\n- **Period**: March 1, 2026 – August 31, 2026\n- **Details**: Get special deals by showing an eligible ticket or membership card",
+        "summary": "A campaign offering special deals when you show an eligible ticket or membership card.",
+        "body": "## Chiketoku March 2026 Edition\n\nThe \"Chiketoku March 2026 Edition\" is now running in the Ueno area. Show an eligible ticket or membership card to get special deals.\n\n- **Area**: Ueno\n- **Shop/Facility**: ecute Ueno\n- **Location**: JR Ueno Station, 3F inside the ticket gates / outside the Park Exit ticket gates\n- **Period**: March 1, 2026 – August 31, 2026\n- **Details**: Show an eligible ticket or membership card to get special deals\n- **Opening hours (3F inside the ticket gates)**:\n  - Sweets, bento & deli, goods, fashion & services: 9:00–21:00 (until 22:00 on Fridays)\n  - Cafés & restaurants: 10:00–22:00 (until 21:00 on Sundays and holidays; during consecutive holidays, closes at 21:00 on the last day only)\n  - Bookstore: 7:00–21:00 (until 22:00 on Fridays)\n  - Convenience store: 5:50–24:10\n- **Opening hours (outside the Park Exit ticket gates)**:\n  - 1F convenience store: 8:00–20:00\n  - 2F cafés & restaurants: 10:00–20:00 (until 21:00 on Fridays)\n  - *Some shops have different opening hours",
         "area": "Ueno"
       }
     },
     "13": {
-      "hash": "ed7d945237a8b7de",
+      "hash": "b253973bec49ab02",
       "fields": {
-        "title": "Get Points Back on Station Admission Tickets with Touch Payment",
-        "summary": "A service that gives you points back when you touch in with an in-station (Ekinaka) admission ticket.",
-        "body": "Get Points Back on Station Admission Tickets with Touch Payment\n\necute Ueno has launched a service that gives you points back when you touch in with an in-station (Ekinaka) admission ticket.\n\n- Store name: ecute Ueno\n- Facility name: ecute Ueno\n- Area: Ueno\n- Details: A service that gives you points back when you touch in with an in-station (Ekinaka) admission ticket",
+        "title": "Get Points Back on Your Ekinaka Admission Ticket with a Tap",
+        "summary": "A service that gives you points back when you tap in with an Ekinaka admission ticket.",
+        "body": "Get Points Back on Your Ekinaka Admission Ticket with a Tap\n\necute Ueno has launched a service that gives you points back when you tap in with an Ekinaka admission ticket. It makes shopping inside the station even more convenient.\n\n- Shop: ecute Ueno\n- Facility: ecute Ueno\n- Area: Ueno\n- Location: JR Ueno Station, inside the ticket gates, 3F\n- Details: A service that gives you points back when you tap in with an Ekinaka admission ticket\n- Opening hours (inside the ticket gates, 3F):\n  - Sweets: 9:00–21:00 (Fri until 22:00)\n  - Bento & deli: 9:00–21:00 (Fri until 22:00)\n  - Cafés & restaurants: 10:00–22:00 (Sun & holidays until 21:00) *During consecutive holidays, closes at 21:00 on the last day only\n  - Goods, fashion & services: 9:00–21:00 (Fri until 22:00)\n  - Bookstore: 7:00–21:00 (Fri until 22:00)\n  - Convenience store: 5:50–24:10\n- Notes: Hours vary for some shops",
         "area": "Ueno"
       }
     },
     "14": {
-      "hash": "540cf6841f40db31",
+      "hash": "22e17ed017701a2e",
       "fields": {
-        "title": "Every Wednesday: Double JRE POINT on Both",
-        "summary": "JRE POINT bonus points promotion every Wednesday.",
-        "body": "Every Wednesday: Double JRE POINT on Both\n\necute Ueno is running a JRE POINT bonus points promotion every Wednesday.\n\n- Area: Ueno\n- Store/Facility: ecute Ueno\n- Details: JRE POINT bonus points every Wednesday",
+        "title": "Double JRE POINT on Both Every Wednesday",
+        "summary": "A JRE POINT bonus campaign held every Wednesday.",
+        "body": "Double JRE POINT on Both Every Wednesday\n\nEvery Wednesday, ecute Ueno is running the JRE POINT bonus campaign \"Double JRE POINT on Both Every Wednesday.\"\n\n- Area: Ueno\n- Shop/Facility: ecute Ueno\n- Details: JRE POINT bonus every Wednesday (Double JRE POINT on Both)\n- Dates: Every Wednesday\n- Location: JR Ueno Station, 3F inside the ticket gates / JR Ueno Station, outside the Park Gate (1F & 2F)\n- Hours (3F inside the ticket gates):\n  - Sweets: 9:00–21:00 (Fri until 22:00)\n  - Bento & deli: 9:00–21:00 (Fri until 22:00)\n  - Cafés & restaurants: 10:00–22:00 (Sun & holidays until 21:00) *During consecutive holidays, closes at 21:00 on the last day only\n  - Goods, fashion & services: 9:00–21:00 (Fri until 22:00)\n  - Bookstore: 7:00–21:00 (Fri until 22:00)\n  - Convenience store: 5:50–24:10\n- Hours (outside the Park Gate):\n  - 1F convenience store: 8:00–20:00\n  - 2F cafés & restaurants: 10:00–20:00 (Fri until 21:00)\n- Note: Some shops have different hours",
         "area": "Ueno"
       }
     },
@@ -170,191 +170,191 @@
       }
     },
     "19": {
-      "hash": "89f994c286a7b15b",
+      "hash": "31de0d5167f16a0c",
       "fields": {
-        "title": "Esports Event \"ALL Wasegaku eSports Tournament 2026\" to Be Held on Friday, September 4 in Ueno, Taito-ku",
-        "summary": "An esports tournament hosted by Wasegaku High School will be held on Friday, September 4 in Ueno, Taito-ku.",
-        "body": "[Ueno] Esports Tournament \"ALL Wasegaku eSports Tournament 2026\" Coming to Ueno from September 4!\n\nOverview\n\n\"ALL Wasegaku eSports Tournament 2026,\" an esports tournament hosted by Wasegaku High School, will be held on Friday, September 4 in Ueno, Taito-ku.\n\nEvent Information\n- Dates: From Friday, September 4, 2026",
+        "title": "Esports Event \"ALL Wasegaku Esports Tournament 2026\" to Be Held in Ueno, Taito-ku, on Friday, September 4",
+        "summary": "Esports tournament hosted by Wasegaku High School, held Friday, September 4 in Ueno, Taito-ku.",
+        "body": "[Ueno] Esports Tournament \"ALL Wasegaku Esports Tournament 2026\" Coming to Ueno on September 4!\n\nOverview\n\nThe \"ALL Wasegaku Esports Tournament 2026,\" hosted by Wasegaku High School, will take place on Friday, September 4, 2026, with esports Style UENO in Ueno, Taito-ku, serving as the main stadium. Wasegaku High School, a correspondence high school, is organizing the event jointly with its group schools, Wasegaku Muiku High School and Wasegaku PURE High School.\n\nOn the day, campus teams that won their way through in-school qualifiers at the three schools will come together for the final tournament in a \"fighting game.\" A \"Long Jump Rope Championship (VTR)\" will also be held between rounds of the final tournament. At the same time, each campus will take part in events such as a \"racing game,\" a \"quiz contest,\" and a \"grip strength contest,\" and the overall winning campus will be determined by the total points earned across all events.\n\nThe event will feature an MC and play-by-play commentary, and a live stream on YouTube is planned.\n\nThe tournament aims to deepen interaction among students beyond the boundaries of schools and campuses through esports, fostering teamwork and communication skills. Regardless of their gaming skills, it seeks to be an event where every student can shine and have fun working together with their peers.\n\nEvent Information\n- Event name: ALL Wasegaku Esports Tournament 2026\n- Date and time: Friday, September 4, 2026, 10:00–15:00\n- Venue: esports Style UENO (Ueno HS Building 3F, 2-7-7 Ueno, Taito-ku, Tokyo)\n- Events: Fighting game, racing game, quiz contest, grip strength contest, long jump rope championship\n- Organizers: Waseda Gakuen Educational Corporation — Wasegaku High School / Wasegaku Muiku High School / Wasegaku PURE High School\n- Operational support: Koyu Innotex Co., Ltd.\n- Guests: Kaori Horiuchi (main MC); Nobi, Tekken pro player (play-by-play and commentary)\n- Streaming: Live stream on YouTube planned\n- Inquiries: Wasegaku High School, TEL 047-480-7221 (weekdays 9:00–17:00)\n- Official website: https://www.wasegaku.ac.jp/",
         "area": "Ueno, Taito-ku"
       }
     },
     "20": {
-      "hash": "614ec8d9b6d85413",
+      "hash": "42da2f54dd98a7c1",
       "fields": {
-        "title": "Limited-Time Osamu Tezuka Shop at Marui Ueno [Kenelephant × Tezuka Osamu Characters Shop]",
-        "summary": "A limited-time Kenelephant × Tezuka Osamu Characters pop-up shop is being held at Marui Ueno.",
-        "body": "Tezuka Osamu Characters Shop Comes to Marui Ueno\n\nA pop-up shop from a collaboration between Kenelephant and Tezuka Osamu Characters is open for a limited time at Marui Ueno.\n\n- Category: Pop-up store\n- Area: Ueno\n- Venue: Marui Ueno\n\nDetails (shop name, address, dates, prices and official URL) are not yet known. Updates to follow.",
+        "title": "Limited-Time Osamu Tezuka Shop at Ueno Marui [Kenelephant × Osamu Tezuka Characters Shop]",
+        "summary": "The Kenelephant × Osamu Tezuka Characters pop-up shop opens at Ueno Marui for a limited time.",
+        "body": "Osamu Tezuka Characters Shop Opens at Ueno Marui\n\n[Kenelephant × Osamu Tezuka Characters Shop] is a pop-up shop selling Osamu Tezuka character goods, produced jointly by Chuku Kobo, Kenelephant's sofubi (soft vinyl) studio, and Tezuka Productions. It opens for a limited time from Friday, August 28 to Sunday, September 6, 2026 at Calendarium on the 5th floor of Ueno Marui. On sale are the <Osamu Tezuka Characters Sofvi Collection>, a sofubi series supervised by Tezuka Productions that brings famous scenes from the original manga to life in 3D, along with capsule toys and collaboration items Kenelephant has released so far.\n\n- Category: Pop-up store\n- Area: Ueno\n- Venue: Ueno Marui 5F Calendarium\n- Address: 6-15-1 Ueno, Taito-ku, Tokyo 110-8502\n- Dates: Friday, August 28 – Sunday, September 6, 2026 (open daily during the event)\n- Hours: 11:00–19:00 (differs from the building's opening hours)\n- Admission: Free\n- Official URL: https://kenelephant.co.jp/tezuka\n\n## Early Release & Featured Items\n\nThe 2nd color versions from the 4th series of the <Osamu Tezuka Characters Sofvi Collection>, scheduled for release on Friday, September 11, 2026, go on sale early from the first day of the event. Finished in monochrome, they let you appreciate the original sculpt and its details.\n\n- \"Osamu Tezuka Characters Sofvi Collection 007 Hosuke Sharaku 2nd color\" (from the \"Jar of Chaos\" episode of *The Three-Eyed One*): 9,350 yen (tax incl.)\n- \"Osamu Tezuka Characters Sofvi Collection 008 Unico 2nd color\" (from the \"Hill of the Bison\" episode of *Unico*): 12,100 yen (tax incl.)\n\nAlso on sale:\n\n- \"Osamu Tezuka Characters Sofvi Collection 001 Ambassador Atom 2nd color\" (restock; limit one per person)\n- \"Osamu Tezuka Characters Sofvi Collection 005 Black Jack 2nd color\"\n- \"Osamu Tezuka Characters Sofvi Collection 006 Pinoko 2nd color\"\n\n## Purchase Bonuses\n\n- During the event, purchases of 3,000 yen or more (tax incl.) receive one random sticker (10 designs in total). Get one extra sticker when paying with an EPOS card, or when paying in cash and showing an EPOS card (payment with credit cards other than EPOS card is not eligible).\n- During the event, sign up for a new EPOS card at the venue to receive a complete set of all 10 stickers (online sign-ups are not eligible).\n- Bonuses are valid only with same-day receipts; receipts cannot be combined. While supplies last.\n\n## Entry\n\nAs crowds are expected on Friday, August 28, entry that day will be by numbered lottery tickets distributed on the day. Details are on Ueno Marui's event page (https://www.0101.co.jp/058/event/detail.html?article_seq=143953&article_type=sto). Queue and sell-out information will be announced on the official Ueno & Kitasenju Marui Anime Event X account (https://x.com/marui_uekt_a) and elsewhere.\n\n*All details are subject to change or cancellation without notice.",
         "area": "Ueno"
       }
     },
     "21": {
-      "hash": "aa19c1693c861a80",
+      "hash": "bcd30bd3eeae1a38",
       "fields": {
         "title": "Ueno Park, Tokyo: Over 200 Dahlias of 120 Varieties Color the Autumn Garden at \"Ueno Toshogu Peony Garden Special Festival: Dahlia Aya\"",
-        "summary": "A special festival at the Ueno Toshogu Peony Garden showcases over 200 dahlia plants of 120 varieties.",
-        "body": "[Ueno] \"Dahlia Aya\" Dahlia Exhibition at the Ueno Toshogu Peony Garden! Over 200 Plants of 120 Varieties Color the Autumn Garden\n\n## Overview\n\nThe Ueno Toshogu Peony Garden is hosting \"Dahlia Aya,\" a special festival showcasing over 200 dahlia plants of 120 varieties. A colorful array of dahlias brightens the autumn garden in the Ueno Park area.\n\n## Event Information\n\n- Location: Ueno Toshogu Peony Garden (Ueno Park area)\n\n*Event dates, admission fees, address, opening date and official URL are not listed because they are unknown.",
+        "summary": "A special festival at Ueno Toshogu Peony Garden showcases over 200 dahlia plants of 120 varieties.",
+        "body": "[Ueno] Dahlia Exhibition \"Dahlia Aya-nasu Aki no Sono\" at Ueno Toshogu Peony Garden! Over 200 Plants of 120 Varieties Color the Autumn Garden\n\n## Overview\n\nUeno Toshogu Peony Garden is holding \"Dahlia Aya-nasu Aki no Sono\" (Autumn Garden Woven with Dahlias), a special festival featuring over 200 dahlia plants of 120 varieties, from Saturday, September 19 to Tuesday, November 3 (public holiday), 2026. A wide variety of dahlias color the autumn garden in the Ueno Park area. The event draws many visitors every year, with about 20,000 people visiting last year.\n\nEarly-blooming dahlias can be enjoyed at the start of the event, and the dahlias in the garden are expected to reach their peak around mid-October, when the heat eases. Blooming updates are posted daily on the official Instagram.\n\n## Highlights\n\n- **Akita Prefecture's original \"NAMAHAGE Dahlia\" series**: About 10 varieties are on display from this series, which was created in 2012 and now includes more than 40 varieties.\n- **Dahlias in a variety of forms**: These include \"Uwakigokoro,\" whose deep red, pink and white blooms mix unpredictably; \"Kokucho,\" a popular variety in a blackish deep red; and \"Mary Evelyn,\" with small petals layered inside neatly arranged petals. Varieties shown at the garden for the first time include \"Daisuisho\" (giant, formal decorative), \"Kisei\" (medium-large, semi-cactus) and \"Moco Purple\" (small, anemone-flowered). *Some may not be visible depending on growing conditions.\n- **Scenery unique to the Peony Garden**: Enjoy dahlias with displays featuring Japanese umbrellas and views of the Former Kan'eiji Five-Story Pagoda.\n- **Photo spots**: Seasonal decorative displays, container arrangements and bonsai are set up throughout the garden.\n- **Autumn flowers**: Besides dahlias, great burnet, fujibakama (thoroughwort), cosmos and other flowers bloom in succession.\n\n## Event Information\n\n- Dates: Saturday, September 19 – Tuesday, November 3 (public holiday), 2026 *Open every day during the event\n- Hours: 9:30–16:30 (last entry)\n- Admission: Adults (junior high school students and older) 800 yen; season pass 2,000 yen; elementary school students and younger free\n- Venue: Ueno Toshogu Peony Garden (9-88 Uenokoen, Taito-ku, Tokyo)\n- Access: 5-minute walk from the Park Exit of JR Ueno Station / 5-minute walk from the Ikenohata Exit of Keisei Ueno Station (Keisei Electric Railway) / 10-minute walk from Exit 2 of Nezu Station (Tokyo Metro)\n- Organizer: Ueno Tourism Federation (General Incorporated Association) (supported by Taito City)\n- Inquiries: 03-3822-3575 (Peony Garden)\n- Official website: https://uenobotanen.com/\n- Official Instagram: https://www.instagram.com/utbotanen_official/",
         "area": "Ueno Park"
       }
     },
     "22": {
-      "hash": "07ff587019e91bbb",
+      "hash": "d4d838ead8e60ed2",
       "fields": {
-        "title": "KOALA INN Ueno, an Apartment Hotel 5 Minutes' Walk from Ueno Station, Adds 2 Newly Designed Rooms",
-        "summary": "KOALA INN Ueno, an apartment hotel 5 minutes' walk from Ueno Station, adds 2 newly designed rooms.",
-        "body": "KOALA INN Ueno, an Apartment Hotel 5 Minutes' Walk from Ueno Station, Adds 2 Newly Designed Rooms\n\nKOALA INN Ueno, an apartment hotel in the Ueno area, has added 2 guest rooms with a new design.\n\n- Facility: KOALA INN Ueno\n- Area: Ueno (5 minutes' walk from Ueno Station)\n- Details: 2 newly designed guest rooms added",
+        "title": "Two Newly Designed Rooms Added to \"KOALA INN Ueno,\" an Apartment Hotel 5 Minutes' Walk from Ueno Station",
+        "summary": "KOALA INN Ueno, an apartment hotel 5 minutes' walk from Ueno Station, adds two newly designed rooms.",
+        "body": "Two Newly Designed Rooms Added to \"KOALA INN Ueno,\" an Apartment Hotel 5 Minutes' Walk from Ueno Station\n\nTwo newly designed guest rooms (Rooms 201 and 202) opened on Friday, August 21, 2026 at \"KOALA INN Ueno,\" an apartment hotel in the Ueno area. The hotel is operated by CROOZ Hotel Inc., a wholly owned subsidiary of CROOZ, Inc. With this addition, the property now has a total of 5 rooms in a single building.\n\nThe new rooms measure approximately 46㎡ and 52㎡, and each can accommodate up to 6 guests. They feature calm interiors with a Japanese touch, including the wallpaper. The layout separates the bedroom from the living room, and each room also has a kitchen and dining area. Room 201 has a bedroom with a double bed, while Room 202 has a bedroom with bunk beds. Families and groups of friends can stay together while still enjoying their privacy.\n\nThe property operates by converting an existing building into a hotel, an approach known as \"stock utilization,\" and has grown to 5 rooms within a year. More rooms are planned using vacant floors.\n\n- Facility: KOALA INN Ueno, Rooms 201/202\n- Area: Ueno (5 minutes' walk from Ueno Station)\n- Details: Two newly designed guest rooms added\n- Opening date: Friday, August 21, 2026\n- Address: KOALA BLDG.UENO, 7-12-13 Ueno, Taito-ku, Tokyo\n- Access: 5 minutes' walk from the Iriya Gate of JR Ueno Station\n- Room size: approx. 46㎡ / approx. 52㎡\n- Maximum occupancy: 6 people\n- Rate: From 66,000 yen per room per night (including consumption tax and service charge; varies by season and number of guests)\n- Reservations: Via Airbnb\n  - Room 201 https://www.airbnb.jp/rooms/1706815171019748421\n  - Room 202 https://www.airbnb.jp/rooms/1706818632949305683",
         "area": "Ueno"
       }
     },
     "23": {
-      "hash": "fd1d63511d10938f",
+      "hash": "0a461d2c5fee04d0",
       "fields": {
-        "title": "Gong cha Ueno Marui Opens in Fashion Building in Front of JR Ueno Station",
-        "summary": "Taiwanese tea drink brand Gong cha opens a new store at Ueno Marui.",
-        "body": "[Ueno] Taiwanese Tea Drink Brand \"Gong cha\" Opens New Store at Ueno Marui!\n\nOverview\n\nGong cha, a tea drink specialty shop from Taiwan, opens at Ueno Marui, a fashion building in front of JR Ueno Station.\n\nStore Information\n- Store name: Gong cha Ueno Marui\n- Facility: Ueno Marui\n- Address: Unknown\n- Hours: Unknown\n- Opening date: Unknown\n- Access: In front of JR Ueno Station",
+        "title": "Gong cha Opens at Ueno Marui, the Fashion Building in Front of JR Ueno Station",
+        "summary": "Taiwanese tea drink brand Gong cha opens a new shop at Ueno Marui.",
+        "body": "[Ueno] Taiwanese Tea Drink Brand Gong cha Opens New Shop at Ueno Marui!\n\nOverview\n\nGong cha, a tea drink specialty shop from Taiwan, opens on Friday, July 17, 2026, on the 1st floor of Ueno Marui, the fashion building in front of JR Ueno Station. The shop is a tea café with 21 seats.\n\nGong cha is a global tea café brand with more than 2,000 locations in about 30 countries. It arrived in Japan in 2015 and has about 200 shops nationwide. Using high-quality tea leaves, it serves tea carefully brewed in-store with close attention to water temperature and steeping time. Its drinks can be customized to suit your taste.\n\nShop Information\n- Shop name: Gong cha Ueno Marui\n- Facility: Ueno Marui 1F\n- Address: Ueno Marui 1F, 6-15-1 Ueno, Taito-ku, Tokyo\n- Hours: 11:00–20:00\n- Opening date: Friday, July 17, 2026\n- Seating: 21 seats (tea café)\n- Access: In front of JR Ueno Station",
         "area": "Ueno"
       }
     },
     "24": {
-      "hash": "271eb07611596a41",
+      "hash": "00d39a000aab4a59",
       "fields": {
         "title": "No Game No Life: Zero POP UP SHOP at Marui",
         "summary": "A POP UP SHOP for the anime No Game No Life: Zero is coming to Marui stores, including Ueno Marui.",
-        "body": "No Game No Life: Zero POP UP SHOP at Marui\n\nA POP UP SHOP for the anime No Game No Life: Zero is coming to Marui stores, including Ueno Marui.\n\n- Area: Ueno\n- Venue: Ueno Marui\n- Event: No Game No Life: Zero POP UP SHOP\n\nMore details (dates, address, prices, official URL, etc.) will be announced later.",
+        "body": "No Game No Life: Zero POP UP SHOP at Marui\n\nA POP UP SHOP for the anime No Game No Life: Zero is coming to Ueno Marui. A wide range of merchandise featuring newly drawn illustrations based on a \"gyaru school uniform\" concept will be sold here before general release. A purchase lottery and standee panels on display are also planned.\n\n- Area: Ueno\n- Venue: Ueno Marui 5F\n- Dates: May 29 (Fri) – June 7 (Sun), 2026\n- Hours: 11:00–19:00 (different from store hours)\n- Admission: Free\n- Event: No Game No Life: Zero POP UP SHOP\n- Official event site: https://event.amnibus.com/ngnl-0101/\n- Ueno Marui event page: https://www.0101.co.jp/058/event/detail.html?article_seq=141469&article_type=sto&hashtag=animeent\n- Store website: https://www.0101.co.jp/058/\n\n## Admission\n\nDuring certain hours on May 29 (Fri), entry requires an advance reservation through the LINE app (first come, first served). Free entry is planned from 14:00. Entry may be restricted or numbered tickets handed out depending on crowds. Entry details for May 30 (Sat) onward will be announced on the Marui event page and on X once decided.\n\n- Marui no Anime official X: https://x.com/marui_anime\n- Ueno & Kitasenju Marui Anime Events official X: https://x.com/marui_uekt_a\n\n## Purchase Lottery\n\nCustomers who spend 3,000 yen or more (tax included) on related merchandise and show an EPOS card can enter a lottery where every draw wins a prize (one draw per transaction; same-day receipts only; receipts cannot be combined). Anyone who signs up for a new EPOS card at the venue during the event period will receive Prize B (online sign-ups are not eligible).\n\n- Prize A: Canvas board (2 designs) *F3 size (220 mm wide × 273 mm tall); design chosen on a first-come, first-served basis\n- Prize B: Complete set of postcards (14 designs)\n- Prize C: 1 random postcard (out of 14 designs)\n\n## Main Merchandise Available Before General Release (tax included)\n\n- New Illustration Gyaru Uniform ver. Trading Glitter Can Badge (8 types): 605 yen each / 4,840 yen per BOX\n- New Illustration Gyaru Uniform ver. Trading Illustration Card (16 types): 275 yen each / 4,400 yen per BOX\n- New Illustration Gyaru Uniform ver. Trading Bromide (20 types): 275 yen each / 5,500 yen per BOX\n- New Illustration Gyaru Uniform ver. 75mm Hologram Can Badge (5 types): 770 yen each\n- New Illustration Gyaru Uniform ver. Ticket-Style BIG Acrylic Keychain (4 types): 1,100 yen each\n- New Illustration Gyaru Uniform ver. BIG Acrylic Stand (4 types): 1,980 yen each\n- New Illustration Gyaru Uniform ver. Extra-Large Acrylic Stand (4 types): 3,300 yen each\n- New Illustration Group Gyaru Uniform ver. BIG Acrylic Stand (1 type): 3,300 yen\n- New Illustration Gyaru Uniform ver. Extra-Large Die-Cut Acrylic Panel (4 types): 7,678 yen each\n- New Illustration Gyaru Uniform ver. Life-Size Tapestry (4 types): 10,780 yen each\n- New Illustration Gyaru Uniform ver. Multi Desk Mat (5 types): 3,960 yen each\n- Trading Chibi Character Uniform ver. Acrylic Keychain (8 types): 715 yen each / 5,720 yen per BOX\n- Trading Chibi Character Uniform ver. Acrylic Stand (8 types): 880 yen each / 7,040 yen per BOX\n- Trading Chibi Character Uniform ver. Illustration Card (16 types): 275 yen each / 4,400 yen per BOX\n\nTrading items are sold blind (random). They are also scheduled to be available later on the online store AMNIBUS and at animate. Purchase limits may apply depending on stock.\n\n## Event-Exclusive BOX Purchase Bonus\n\nBuy one BOX of the \"New Illustration Gyaru Uniform ver. Trading Glitter Can Badge\" to receive the \"New Illustration White Gyaru Uniform ver. 75mm Glitter Can Badge Event-Exclusive Bonus\" (first come, first served, while supplies last).\n\n## X Campaign\n\nFollow the AMNIBUS official X account (https://x.com/AMNIBUS) and repost the campaign post for a chance to win a \"Complete Set of Event Bonus Postcards (14 designs)\" (1 winner chosen by lottery).\n\n*Details are subject to change without notice.",
         "area": "Ueno"
       }
     },
     "25": {
-      "hash": "8c8119c3d771ba1f",
+      "hash": "0564aea91cd82b13",
       "fields": {
-        "title": "\"L Pachislot Valvrave the Liberator 2\" Pop-Up Shop Coming to Ueno Marui 5F!",
-        "summary": "A pop-up shop for the pachislot game \"Valvrave the Liberator 2\" is coming to the 5th floor of Ueno Marui.",
-        "body": "# \"L Pachislot Valvrave the Liberator 2\" Pop-Up Shop Coming to Ueno Marui 5F!\n\nA pop-up shop for the pachislot game \"Valvrave the Liberator 2\" is coming to the 5th floor of Ueno Marui.\n\n- Venue: Ueno Marui 5F\n- Area: Ueno\n\nMore details to be announced.",
+        "title": "POP UP SHOP for \"L Pachislot Valvrave the Liberator 2\" Coming to Ueno Marui 5F!",
+        "summary": "A POP UP SHOP for the pachislot \"Valvrave the Liberator 2\" will be held on the 5th floor of Ueno Marui.",
+        "body": "# POP UP SHOP for \"L Pachislot Valvrave the Liberator 2\" Coming to Ueno Marui 5F!\n\nA POP UP SHOP for the pachislot \"Valvrave the Liberator 2\" will be held on the 5th floor of Ueno Marui. SANKYO Co., Ltd. will have a booth at the POP UP SHOP organized by Bandai Namco Filmworks Inc. Some items will go on sale here before their general release.\n\n- Venue: Ueno Marui 5F\n- Area: Ueno\n- Address: 6-15-1 Ueno, Taito-ku, Tokyo\n- Dates: Fri, April 10 – Sun, April 19, 2026\n- Hours: 11:00–19:00 (may change in line with Ueno Marui's hours)\n- Organizer: Bandai Namco Filmworks Inc.\n\n## Event Details\n\n- Advance sale of new merchandise based on \"L Pachislot Valvrave the Liberator 2\"\n  - Blind-box items: up to 30 of each item per purchase\n  - Non-blind items: up to 10 of each type per purchase\n  - Purchase limits may be lifted without notice\n- Display of an actual \"L Pachislot Valvrave the Liberator 2\" machine and photos of its in-game scenes\n\n## Purchase Bonus\n\nFor every 3,000 yen (tax included) spent in one transaction, you get one draw in a lottery for prizes such as acrylic panels and shot glass sets. Draw the \"Revolution Prize\" to win an acrylic panel autographed by promotional ambassador Yusuke Yamamoto. Show an EPOS Card to get one extra draw.\n\n- Bonuses are available while supplies last\n- Only receipts from the day of purchase are valid; receipts cannot be combined\n- Splitting payment into two or more transactions is not allowed\n- EPOS Cards are valid only for the cardholder (you can also sign up at the venue)\n\n## SANKYO Booth Lineup\n\n- Giant PUSH Button Cushion\n- Neostella Frame Replica V-Controller\n- BIG Attacker Keychain (5 types)\n- Attacker Keychain (Red)\n- L Pachislot Valvrave the Liberator 2 1/11 Scale Cabinet Acrylic Keychain (5 types)\n- L Pachislot Valvrave the Liberator 2 Ballpoint Pen with Acrylic Charm\n- L Pachislot Valvrave the Liberator 2 Die-Cut Mouse Pad\n- L Pachislot Valvrave the Liberator 2 Mug\n\n## Online Sales\n\n- Order period: Tue, April 14, 2026, 12:00 – Fri, May 8, 23:59\n- Delivery: Expected around late June 2026\n- Online stores: FEVER STORE, A-on STORE, Premium Bandai\n- Sales may end before the order period closes once planned quantities sell out\n\n## Official Information\n\n- Ueno Marui: https://www.0101.co.jp/058/\n- X (formerly Twitter): @marui_uekt_a",
         "area": "Ueno"
       }
     },
     "26": {
-      "hash": "4adb29e2b2bd0f08",
+      "hash": "052ec6a939262e2b",
       "fields": {
-        "title": "Crocs Opens New Store on 1F of Marui Ueno on Saturday, March 7, 2026!",
-        "summary": "Crocs opens a new store on 1F of Marui Ueno on March 7, 2026.",
-        "body": "[Ueno] Crocs Opens on 1F of Marui Ueno on March 7, 2026!\n\nOverview\n\nCrocs is opening a new store on 1F of Marui Ueno. Opening date: Saturday, March 7, 2026.\n\nStore Information\n- Store name: Crocs Marui Ueno\n- Facility: Marui Ueno 1F\n- Opening date: Saturday, March 7, 2026",
+        "title": "Crocs Opens New Store on Ueno Marui 1F on Saturday, March 7, 2026!",
+        "summary": "Crocs opens a new store on the 1st floor of Ueno Marui on March 7, 2026.",
+        "body": "[Ueno] Crocs Opens on Ueno Marui 1F on March 7, 2026!\n\nOverview\n\nCrocs is opening a new store on the 1st floor of Ueno Marui, with an opening date of Saturday, March 7, 2026. The store carries a wide range of items for adults and children, from the iconic \"Classic Clog\" to sandals and new products such as the \"Classic Ballet.\" It also offers \"Jibbitz™ Charms,\" accessories that attach to the holes in the footwear, so you can create your own original clogs. In store, you can try on everything from new releases to classic models.\n\nGrand Opening Campaign\n- Details: The first 100 customers who spend 10,000 yen or more (tax included) will receive a free \"Lil Classic\"\n- Lil Classic: A clog-inspired figure featuring a smiling face. A limited-edition item that can be customized with Jibbitz™ Charms\n- Notes: Colors cannot be selected. Available while supplies last\n\nStore Information\n- Store name: Crocs Ueno Marui\n- Facility: Ueno Marui 1F\n- Address: Ueno Marui 1F, 6-15-1 Ueno, Taito-ku, Tokyo\n- Opening date: Saturday, March 7, 2026\n- Contact: 080-3622-8825",
         "area": "Ueno"
       }
     },
     "27": {
-      "hash": "3ac96c2a94ba1c46",
+      "hash": "2380c64d3846a0ae",
       "fields": {
         "title": "\"Nue's Exorcist POP UP SHOP in Marui\" Announced",
-        "summary": "A \"Nue's Exorcist\" POP UP SHOP has been announced for Marui stores, including Ueno Marui.",
-        "body": "# \"Nue's Exorcist POP UP SHOP in Marui\" Announced\n\nA \"Nue's Exorcist\" POP UP SHOP has been announced for Marui stores, including Ueno Marui.\n\n## Event Information\n\n- Venue: Ueno Marui",
+        "summary": "A \"Nue's Exorcist\" POP UP SHOP will be held at Marui stores, including Ueno Marui.",
+        "body": "# \"Nue's Exorcist POP UP SHOP in Marui\" Announced\n\nA \"Nue's Exorcist\" POP UP SHOP will be held at Marui stores, including Ueno Marui.\n\nThe shop will offer early sales of many new products featuring newly drawn artwork based on the original illustrations, along with a purchase lottery where you can win prizes available only at this event.\n\n## Event Information\n\n- Venue: Ueno Marui\n- Dates: Friday, December 26, 2025 – Monday, January 5, 2026\n- Location: Event Space, 5F, Ueno Marui\n- Hours: 11:00–19:00\n- Organizer: CRUX Co., Ltd.\n- *Event details are subject to change without notice.\n\n## Merchandise Information\n\n- Online sales: Available on \"Marui Web Channel\"\n- Sales start: Friday, November 21, 12:00\n- *The start time may vary slightly due to system conditions.\n- *Sales may end before the end of the sales period.\n- *Please check each product page for shipping dates.\n\n## Purchase Lottery\n\n- During the event, every purchase of 3,000 yen or more (tax included) at the shop earns one entry into a lottery for original merchandise.\n- Pay with or present an EPOS Card to get \"one extra entry\" per transaction.\n- Prizes:\n  - Prize A: Canvas art (1 design)\n  - Prize B: Postcards (6 designs), complete set\n  - Prize C: Postcards (6 designs), 1 random postcard\n- *Receipts cannot be combined, and purchases cannot be split into separate transactions.\n- *Only receipts from the day of purchase are valid for the lottery.\n- *Prizes are available while supplies last.\n- *EPOS Cards may only be used by the cardholder. New EPOS Card applications are also accepted at the venue (subject to screening; applicants must be 18 or older, excluding high school students).\n- *Lottery details are subject to change without notice.\n\n## Other Notices\n\n- Information on queues, sold-out items, and more will be posted on the official X accounts of Ueno & Kita-Senju Marui Anime Events (https://x.com/marui_uekt_a), Marui no Anime (https://twitter.com/marui_anime), and CRUX (https://twitter.com/crux_anime).\n- For news about the series, see the official \"Nue's Exorcist\" X account (https://x.com/NueNo_official).\n\n©Kota Kawae/Shueisha",
         "area": "Ueno"
       }
     },
     "28": {
-      "hash": "439c737f936c1ccc",
+      "hash": "4331445c6c3ae482",
       "fields": {
-        "title": "\"Good Glass\" Pop-Up Shop Opens at Ueno Marui, Featuring the Much-Talked-About \"Giant Hello Kitty\"",
-        "summary": "A pop-up shop for \"Good Glass,\" the upside-down glass, is being held at Ueno Marui, with an appearance by a giant Hello Kitty.",
-        "body": "\"Good Glass\" Pop-Up Shop Arrives at Ueno Marui, Featuring a \"Giant Hello Kitty\"\n\nA pop-up shop for \"Good Glass,\" the upside-down glass, is being held at Ueno Marui. The much-talked-about \"giant Hello Kitty\" will also make an appearance.\n\n- Venue: Ueno Marui\n- Details: Pop-up shop for \"Good Glass,\" the upside-down glass\n- Highlight: Appearance by the \"giant Hello Kitty\"",
+        "title": "Good Glas Pop-Up Shop at Ueno Marui, Featuring the Much-Talked-About \"Giant Hello Kitty\"",
+        "summary": "A pop-up shop for Good Glas, maker of \"upside-down\" glasses, is being held at Ueno Marui, featuring a giant Hello Kitty.",
+        "body": "Good Glas Pop-Up Shop Comes to Ueno Marui, Featuring a \"Giant Hello Kitty\"\n\nA pop-up shop for Good Glas, the brand known for its \"upside-down\" glasses, will be held for a limited time from Monday, December 22, 2025 to Thursday, January 8, 2026 in the 1st-floor event space at Ueno Marui. Along with a restock of the previously sold-out Hello Kitty glasses and straws, the shop will feature the much-talked-about \"giant Hello Kitty,\" officially the Premium Extra-Large Hello Kitty Ornament, which has about 10 times the volume of the regular size.\n\nThe shop will also carry the Miffy 70th Anniversary Glass Reusable Straw, limited to 500 pieces, along with original glassware featuring animal motifs. The Miffy straw and its included silicone case are decorated with the 70th anniversary logo and a flower motif, and the silicone case comes in orange, Miffy's signature color. Because production is limited, items may sell out before the event ends.\n\nGood Glas makes double-layered glassware featuring animal and character motifs. When a drink is poured in, the motif inside the glass appears clearly. Every product is handmade by glass artisans.\n\n- Venue: Ueno Marui (6-15-1 Ueno, Taito-ku, Tokyo)\n- Location: 1st-floor event space\n- Dates: Monday, December 22, 2025 – Thursday, January 8, 2026\n  - Closed from Wednesday, December 31, 2025 to Saturday, January 3, 2026, when Ueno Marui is closed\n  - Open until 18:00 on the final day\n- Event: Pop-up shop for Good Glas \"upside-down\" glasses\n- Highlights: The \"giant Hello Kitty\" (Premium Extra-Large Hello Kitty Ornament); restock of the previously sold-out Hello Kitty glasses and straws; the Miffy 70th Anniversary Glass Reusable Straw, limited to 500 pieces\n- Main products and prices (tax included):\n  - Hello Kitty Double-Wall Glass (250ml): 4,290 yen\n  - Premium Extra-Large HELLO KITTY Ornament, red (20.8cm diameter × 16.5cm high, decorative): 49,500 yen\n  - Hello Kitty Glass Reusable Straw (red bow): 3,300 yen\n  - Cinnamoroll Glass Reusable Straw (closed mouth): 3,300 yen\n  - Panda Glass (400ml): 3,850 yen\n- Official online store: https://official.goodglas-japan.shop",
         "area": "Ueno"
       }
     },
     "29": {
-      "hash": "57d1b19db3bc7c77",
+      "hash": "57a7728f50a90946",
       "fields": {
-        "title": "Maebashi Witches POP UP SHOP in OIOI Coming to Ueno Marui and Smark Isesaki!",
-        "summary": "A Maebashi Witches POP UP SHOP is coming to Ueno Marui and Smark Isesaki, selling newly illustrated merchandise with a summer festival theme.",
-        "body": "Maebashi Witches POP UP SHOP in OIOI Coming to Ueno Marui and Smark Isesaki!\n\nA Maebashi Witches POP UP SHOP is coming to Ueno Marui and Smark Isesaki. The shop will sell merchandise featuring new summer festival–themed illustrations.\n\n- Venue: Ueno Marui\n- Area: Ueno\n- Details: Sale of merchandise featuring new summer festival–themed illustrations",
+        "title": "Maebashi Witches POP UP SHOP in OIOI Coming to Ueno Marui and SMARK Isesaki!",
+        "summary": "A Maebashi Witches POP UP SHOP is coming to Ueno Marui and SMARK Isesaki, selling goods with new summer festival-themed illustrations.",
+        "body": "Maebashi Witches POP UP SHOP in OIOI Coming to Ueno Marui and SMARK Isesaki!\n\nA Maebashi Witches POP UP SHOP is coming to Ueno Marui and SMARK Isesaki. Many new items will be available, including an \"Acrylic Figure Stand\" and a \"Muffler Towel\" featuring new illustrations of the five girls in jinbei enjoying a \"summer festival,\" as well as a \"Sacoche\" that's perfect for everyday use. The shop opens at Ueno Marui on Friday, July 4, 2025, and items will also be sold on the Marui no Anime ONLINE SHOP.\n\n- Venue: Ueno Marui\n- Area: Ueno\n- Dates: Friday, July 4 – Sunday, July 13, 2025\n- Location: Ueno Marui 5F\n- Hours: 11:00–19:00 (differs from the building's opening hours; subject to change depending on circumstances)\n- Details: Sale of goods with new summer festival-themed illustrations\n- Event page: https://www.0101.co.jp/405/info/index.html?contents_id=0925\n\n## Merchandise\n\n- Acrylic Figure Stand Summer Festival ver. (5 types): 1,870 yen (tax incl.)\n  - Lineup: Yuina Akagi, Azu Niisato, Kyoka Kitahara, Choco Mitsumata, Mai Kamiizumi\n- Trading Glitter Can Badge Summer Festival ver. (5 types): 550 yen each (tax incl.) / 2,750 yen per set of 5 (tax incl.)\n- Polashot Collection Summer Festival ver. (10 types): 440 yen each (tax incl.) / 4,400 yen per set of 10 (tax incl.)\n- Name Acrylic Keychain Summer Festival ver. (5 types): 770 yen (tax incl.)\n- T-shirt Summer Festival ver. (size L): 3,850 yen (tax incl.)\n- Muffler Towel Summer Festival ver.: 2,200 yen (tax incl.)\n- Sacoche: 2,970 yen (tax incl.)\n\n*Trading items are sold blind; you cannot choose which design you get.\n\n## Purchase Lottery\n\nDuring the event, spend 3,000 yen or more (tax incl.) at the event space and either pay with or present an EPOS Card to enter a lottery for original goods, one entry per transaction.\n\n- Prize A: Acrylic panel (1 type)\n- Prize B: Complete set of postcards (6 types)\n- Prize C: 1 random postcard (6 types)\n\n*If presenting the card, only cash payments qualify. Receipts cannot be combined and payments cannot be split. Prizes are available while supplies last.\n\n## Other Venues and Online Sales\n\n- SMARK Isesaki: Saturday, July 19 – Sunday, July 27, 2025, 1F Smile Street special venue (in front of AMERICAN HOLIC), 10:00–18:00\n- Marui no Anime ONLINE SHOP: Around 12:00 on Friday, July 4, 2025 – 23:59 on Sunday, August 3, 2025\n\n©PROJECT MBW",
         "area": "Ueno"
       }
     },
     "30": {
-      "hash": "ce2bab8f2f7996a1",
+      "hash": "6c21d522ba6b6554",
       "fields": {
-        "title": "Merch from the Hit \"Sorotani no Animecchi\" and the New \"Pochars\" Comes Together at Ueno Marui!",
-        "summary": "Merchandise from \"Sorotani no Animecchi\" and \"Pochars\" is on sale together at Ueno Marui.",
-        "body": "Merch from the Hit \"Sorotani no Animecchi\" and the New \"Pochars\" Comes Together at Ueno Marui!\n\nMerchandise from \"Sorotani no Animecchi\" and \"Pochars\" is on sale together at Ueno Marui.\n\n- Category: Pop-up Store\n- Area: Ueno\n- Venue: Ueno Marui",
+        "title": "Goods from the Hit \"Sorotani no Animecchi\" and the New \"Pochars\" Come Together at Ueno Marui!",
+        "summary": "Goods from \"Sorotani no Animecchi\" and \"Pochars\" are on sale together at Ueno Marui.",
+        "body": "Goods from the Hit \"Sorotani no Animecchi\" and the New \"Pochars\" Come Together at Ueno Marui!\n\nGoods from \"Sorotani no Animecchi\" and \"Pochars\" are on sale together at Ueno Marui.\n\nDLE Inc. will hold \"Sorotani POP UP in Ueno Marui\" at Ueno Marui from Friday, April 4 to Sunday, April 20, 2025. The pop-up will sell new goods based on the works of creator Sorotani, known for \"Sorotani no Animecchi\" and \"Taeko no Nichijo.\" A photo spot where visitors can enjoy the world of the works is also planned.\n\nThe lineup features goods of popular characters, including \"Sorotani no Animecchi,\" whose YouTube channel has over 1 million subscribers; the new anime \"Pochars,\" now airing on Fuji TV; and \"Dokonjo Gaeru Yanen\" and \"Alps no Rojin Heidi no Ojiisan,\" from a web anime brand co-produced with KDDI Corporation.\n\nTo celebrate the pop-up, newly illustrated goods featuring \"Pocha Panda,\" a new character from \"Pochars,\" will make their debut.\n\n- Category: Pop-up store\n- Area: Ueno\n- Facility: Ueno Marui\n- Event: Sorotani POP UP in Ueno Marui\n- Dates: Friday, April 4 – Sunday, April 20, 2025\n- Venue: Calendarium, 5F, Ueno Marui (6-15-1 Ueno, Taito-ku, Tokyo)\n- Hours: 11:00–19:00 *Differs from the facility's business hours\n- Admission: Free\n- Official X: Marui Anime Limited-Time Shop (https://x.com/marui_limited_a)\n\n*Event details and opening dates/times are subject to change without notice. Please check the Ueno Marui official website for details.",
         "area": "Ueno"
       }
     },
     "31": {
-      "hash": "ec4007ac87d64838",
+      "hash": "871c7064dad4a874",
       "fields": {
-        "title": "Upside-Down \"Good Glass\" Available for a Limited Time at Ueno Marui!",
-        "summary": "The upside-down \"Good Glass\" is on sale for a limited time at Ueno Marui.",
-        "body": "Upside-Down \"Good Glass\" on Sale for a Limited Time at Ueno Marui\n\nOverview\n- The upside-down \"Good Glass\" is on sale for a limited time at Ueno Marui.\n\nEvent Information\n- Venue: Ueno Marui\n- Area: Ueno",
+        "title": "Upside-Down Glass Brand \"Good Glass\" Holds Limited-Time Sale at Ueno Marui!",
+        "summary": "Upside-down glass brand \"Good Glass\" holds a limited-time sale at Ueno Marui.",
+        "body": "Upside-Down Glass Brand \"Good Glass\" Holds Limited-Time Sale at Ueno Marui\n\nOverview\n- Upside-down glass brand \"Good Glass\" is holding a limited-time sale at Ueno Marui.\n- The pop-up shop is run by \"Good Glass Japan,\" the overseas business division of Aiwa Kogyo Co., Ltd.\n- The lineup centers on double-layered glasses and includes character-themed and original-design items.\n- Three items make their Ueno Marui debut: the new \"Premium Extra-Large HELLO KITTY Ornament,\" a newly designed \"Cinnamoroll\" glass, and glass reusable straws inspired by \"Mepple & Mipple\" from \"Futari wa Pretty Cure.\"\n\nEvent Information\n- Venue: Ueno Marui\n- Area: Ueno\n- Address: 6-15-1 Ueno, Taito-ku, Tokyo\n- Location: 1F Event Space\n- Dates: Saturday, February 15 – Friday, February 28, 2025\n- Note: Closes at 18:00 on the final day\n\nAbout Good Glass\n- A brand offering double-layered glasses, glass reusable straws and other items featuring animals and characters.\n- Its signature feature: the design inside the glass appears when you pour in a drink.\n- All products are handmade by glass artisans.\n\nFeatured Products\n- \"Premium Extra-Large HELLO KITTY Ornament\" (Red): 49,500 yen (tax included). 10 times the volume of the regular size; capacity 2000ml, 20.8cm in diameter at the rim, 16.5cm tall. This is an ornament, not a drinking glass.\n- \"Cinnamoroll\" Double Wall Glass: 4,950 yen (tax included). Two types: one hugging a bear and one hugging a bird. Capacity 230ml.\n- \"Mepple\" and \"Mipple\" Glass Reusable Straws: 3,300 yen each (tax included). 22cm long; comes with a silicone case (purple) and a cleaning brush.\n- \"Panda\" Glass: 3,850 yen (tax included). Capacity 400ml.\n- \"Shiba\" Series: 3,520 yen (tax included); mug 3,850 yen (tax included). Capacity 250ml.\n- All items are made of borosilicate glass (except straw accessories) and made in Taiwan. Glasses and ornaments are heat-resistant from -20℃ to 120℃.\n- As each item is handmade, size and capacity may vary slightly.",
         "area": "Ueno"
       }
     },
     "32": {
-      "hash": "670d081dc4899ac8",
+      "hash": "fd8ee9450d8b3ab5",
       "fields": {
-        "title": "\"PUI PUI Molcar Cyberpunk Party\" Pop-Up Store Announced to Coincide with New Film Release – Molcar PARKING Pop-Up Shop",
-        "summary": "To coincide with the release of the new film, a \"PUI PUI Molcar Cyberpunk Party\" pop-up store (Molcar PARKING pop-up shop) has been announced.",
-        "body": "\"PUI PUI Molcar Cyberpunk Party\" Pop-Up Store Announced\n\nTo coincide with the release of the new film, a \"PUI PUI Molcar Cyberpunk Party\" pop-up store (Molcar PARKING pop-up shop) has been announced.\n\n- Venue: Ueno Marui\n- Area: Ueno\n\nDetails (store name, address, dates, prices and official URL) are not yet available.",
+        "title": "Pop-Up Store \"PUI PUI Molcar Cyberpunk Party\" to Open for New Movie Release – Molcar PARKING Pop-Up Shop",
+        "summary": "To mark the release of the new movie, a \"PUI PUI Molcar Cyberpunk Party\" pop-up store (Molcar PARKING pop-up shop) will open.",
+        "body": "\"PUI PUI Molcar Cyberpunk Party\" Pop-Up Store Announced\n\nTo coincide with the release of the new movie \"PUI PUI Molcar The Movie MOLMAX,\" the \"PUI PUI Molcar Cyberpunk Party\" pop-up store (Molcar PARKING pop-up shop) will open for a limited time on the 5th floor of Ueno Marui. A temporary physical store of the official online shop \"PUI PUI Molcar PARKING,\" it will sell new merchandise featuring new artwork of the Molcars in cyberpunk-style outfits, and hold a prize draw with original gifts for customers.\n\n- Venue: Ueno Marui\n- Area: Ueno\n- Location: Ueno Marui 5F\n- Dates: Friday, November 29 – Sunday, December 15, 2024\n- Hours: 11:00–19:00\n- Organizer: Bandai Namco Filmworks Inc.\n- Official X: @molcar_cyber\n\nEvent Details\n\n- A wide range of merchandise featuring newly drawn illustrations created for the event\n- Purchase limits: up to 20 of each blind-box item and up to 3 of each type of non-blind item per transaction (limits may be lifted without notice)\n- Purchase bonus: for every 3,000 yen (tax included) spent in a single transaction, enter a draw to win a mirror PVC panel or flake stickers\n- From Friday, December 6, 2024, items are also scheduled to be available online at the official online shop \"PUI PUI Molcar PARKING\" (https://a-onstore.jp/shop/molcar-anime/)\n\nNotes for Visitors\n\n- Entry may be restricted, for example with numbered tickets, depending on how crowded the store is\n- Visitors are asked not to wait around the store entrance\n- Event details are subject to change\n\nThe new movie \"PUI PUI Molcar The Movie MOLMAX\" opens in theaters nationwide on Friday, November 29, 2024.",
         "area": "Ueno"
       }
     },
     "33": {
-      "hash": "b216b90413334140",
+      "hash": "dce1d60b1b762148",
       "fields": {
         "title": "BAR.ROOTS by DR.SKIN Ciqing Zhengji Opens",
-        "summary": "BAR.ROOTS by DR.SKIN Ciqing Zhengji, a new bar near Ueno-hirokoji Station, opened on August 15, 2026.",
-        "body": "[Ueno] BAR.ROOTS by DR.SKIN Ciqing Zhengji opens on August 15!\n\nOverview\n\nBAR.ROOTS by DR.SKIN Ciqing Zhengji, a new bar near Ueno-hirokoji Station, opened on August 15, 2026.\n\nStore Information\n- Name: BAR.ROOTS by DR.SKIN Ciqing Zhengji\n- Address: 88 Building 2F, 2-1-3 Ueno, Taito-ku, Tokyo\n- Opening date: August 15, 2026",
+        "summary": "BAR.ROOTS by DR.SKIN Ciqing Zhengji, a bar near Ueno-hirokoji Station, opened on August 15, 2026.",
+        "body": "[Ueno] BAR.ROOTS by DR.SKIN Ciqing Zhengji opened on August 15!\n\nOverview\n\nBAR.ROOTS by DR.SKIN Ciqing Zhengji, a bar near Ueno-hirokoji Station, opened on August 15, 2026. It is 81m from Ueno-hirokoji Station.\n\nShop Information\n- Name: BAR.ROOTS by DR.SKIN Ciqing Zhengji\n- Category: Bar\n- Address: 88 Building 2F, 2-1-3 Ueno, Taito-ku, Tokyo\n- Access: 81m from Ueno-hirokoji Station\n- Closed: Sundays\n- Opening date: August 15, 2026",
         "area": "Ueno"
       }
     },
     "34": {
-      "hash": "6cbfd90e02ec7d48",
+      "hash": "3b357b981dcdac1a",
       "fields": {
-        "title": "Sakaba Hakozaki Ueno-Hirokoji Opens",
-        "summary": "Sakaba Hakozaki Ueno-Hirokoji, an izakaya serving yakitori and seafood, opens on August 12, 2026 on the 1st floor of an APA Hotel.",
-        "body": "[Ueno] Sakaba Hakozaki Ueno-Hirokoji Opens August 12!\n\n## Overview\n\nSakaba Hakozaki Ueno-Hirokoji, an izakaya serving yakitori and seafood, opens on August 12, 2026 on the 1st floor of an APA Hotel.\n\n## Store Information\n\n- Name: Sakaba Hakozaki Ueno-Hirokoji\n- Address: 1F APA Hotel Keisei Ueno-Ekimae Minami, 2-6-11 Ueno, Taito-ku, Tokyo\n- Opening date: August 12, 2026",
+        "title": "Sakaba Hakozaki Ueno Hirokoji Opens",
+        "summary": "Sakaba Hakozaki Ueno Hirokoji, an izakaya serving yakitori and seafood, opens on the ground floor of an APA Hotel on August 12, 2026.",
+        "body": "[Ueno] Sakaba Hakozaki Ueno Hirokoji Opens August 12!\n\n## Overview\n\nSakaba Hakozaki Ueno Hirokoji, an izakaya serving yakitori and seafood, opens on the ground floor of an APA Hotel on August 12, 2026. The menu includes stews and sashimi made with fresh offal, plus fresh fish delivered straight from the market. Private bookings are available.\n\n## Restaurant Information\n\n- Name: Sakaba Hakozaki Ueno Hirokoji\n- Cuisine: Izakaya, yakitori, seafood\n- Address: 1F, APA Hotel Keisei Ueno-Ekimae Minami, 2-6-11 Ueno, Taito-ku, Tokyo\n- Access: 1-minute walk from Ueno-hirokoji Station; 107m from Ueno-okachimachi Station\n- Opening date: August 12, 2026\n- Budget (dinner): ¥4,000–¥4,999\n- Private bookings: Available\n- Online reservations: Available",
         "area": "Ueno"
       }
     },
     "35": {
-      "hash": "aae280c948939a52",
+      "hash": "9f044df60ab6455a",
       "fields": {
         "title": "Sushi Tori Shoten Okachimachi Reopens After Renovation",
         "summary": "Sushi and yakitori restaurant \"Sushi Tori Shoten Okachimachi\" reopened after renovation on August 10, 2026.",
-        "body": "# Sushi Tori Shoten Okachimachi Reopens After Renovation\n\nSushi and yakitori restaurant \"Sushi Tori Shoten Okachimachi\" reopened after renovation on August 10, 2026.\n\n- Store name: Sushi Tori Shoten Okachimachi (sushi and yakitori)\n- Address: 5-20-15 Ueno, Taito-ku, Tokyo\n- Opening date: August 10, 2026",
+        "body": "# Sushi Tori Shoten Okachimachi Reopens After Renovation\n\nThe sushi and yakitori restaurant \"Sushi Tori Shoten Okachimachi\" reopened after renovation on August 10, 2026. It is a casual izakaya where you can enjoy sushi and yakitori, located a 1-minute walk from Okachimachi Station.\n\n- Name: Sushi to Yakitori no Sushi Tori Shoten Okachimachi\n- Genre: Izakaya, yakitori, sushi\n- Address: 5-20-15 Ueno, Taito-ku, Tokyo\n- Access: 1-minute walk from Okachimachi Station (approx. 119m)\n- Opening date: August 10, 2026\n- Budget: Dinner ￥3,000～￥3,999 / Lunch ￥2,000～￥2,999\n- Online reservations: Available (Tabelog)\n- V Point: Earn and redeem",
         "area": "Ueno"
       }
     },
     "36": {
-      "hash": "3bcb8598d8eb315f",
+      "hash": "20e9fcc2e1f3b53a",
       "fields": {
-        "title": "Jingisukan Daruma Tokyo Main Store Opens",
-        "summary": "Jingisukan Daruma, the popular Sapporo restaurant specializing in jingisukan (grilled lamb), opens its Tokyo flagship store on July 31, 2026.",
-        "body": "[Ueno] Jingisukan Daruma Tokyo Main Store opens July 31!\n\n## Overview\n\nJingisukan Daruma Tokyo Main Store, the Tokyo flagship of the popular Sapporo jingisukan (grilled lamb) restaurant Jingisukan Daruma, opens on July 31, 2026.\n\n## Store Information\n\n- Name: Jingisukan Daruma Tokyo Main Store\n- Address: 2-2-8 Ueno, Taito-ku, Tokyo\n- Opening date: July 31, 2026",
+        "title": "Jingisukan Daruma Tokyo Honten Opens",
+        "summary": "The Tokyo flagship of Jingisukan Daruma, a popular Sapporo restaurant specializing in jingisukan (grilled lamb), opens on July 31, 2026.",
+        "body": "[Ueno] Jingisukan Daruma Tokyo Honten opens July 31!\n\n## Overview\n\nJingisukan Daruma Tokyo Honten, the Tokyo flagship of Jingisukan Daruma, a popular Sapporo restaurant specializing in jingisukan (grilled lamb), opens on July 31, 2026. As the new flagship of the renowned jingisukan restaurant Daruma, it serves the same traditional flavors as the original.\n\n## Restaurant Information\n\n- Name: Jingisukan Daruma Tokyo Honten\n- Cuisine: Jingisukan (grilled lamb)\n- Address: 2-2-8 Ueno, Taito-ku, Tokyo\n- Access: 102m from Ueno-hirokoji Station\n- Opening date: July 31, 2026\n- Budget: Dinner ￥5,000～￥5,999 / Lunch ￥4,000～￥4,999",
         "area": "Ueno"
       }
     },
     "37": {
-      "hash": "49290bed8ca1c532",
+      "hash": "bab317e2b44aab29",
       "fields": {
-        "title": "Taikiya-Lineage Iekei Ramen Taiseiya Opens",
-        "summary": "Iekei ramen shop \"Taikiya-Lineage Iekei Ramen Taiseiya\" opened on July 25, 2026.",
-        "body": "[Ueno] Taikiya-Lineage Iekei Ramen Taiseiya Opens July 25!\n\n## Overview\n\nIekei ramen shop \"Taikiya-Lineage Iekei Ramen Taiseiya\" opens on July 25, 2026.\n\n## Store Information\n\n- Name: Taikiya-Lineage Iekei Ramen Taiseiya\n- Address: 2-1-10 Ueno, Taito-ku, Tokyo\n- Opening date: July 25, 2026",
+        "title": "Taikiya Chokkei Iekei Ramen Taiseiya Opens",
+        "summary": "Iekei ramen shop \"Taikiya Chokkei Iekei Ramen Taiseiya\" opened on July 25, 2026.",
+        "body": "[Ueno] Taikiya Chokkei Iekei Ramen Taiseiya Opens July 25!\n\n## Overview\n\nIekei ramen shop \"Taikiya Chokkei Iekei Ramen Taiseiya\" opened on July 25, 2026. Located 58m from Ueno-okachimachi Station, it is an iekei ramen shop directly affiliated with Taikiya.\n\n## Shop Information\n\n- Name: Taikiya Chokkei Iekei Ramen Taiseiya\n- Genre: Ramen\n- Address: 2-1-10 Ueno, Taito-ku, Tokyo\n- Access: 58m from Ueno-okachimachi Station\n- Opening date: July 25, 2026\n- Budget: ￥1,000～￥1,999 for both lunch and dinner",
         "area": "Ueno"
       }
     },
     "38": {
-      "hash": "df63b13b28b92b54",
+      "hash": "c532f047836e1494",
       "fields": {
         "title": "Motsuyaki Nikomi Kaede Okachimachi Opens",
-        "summary": "A popular motsuyaki (grilled offal) and stew restaurant from Kinshicho opened in Ueno/Okachimachi on July 23, 2026.",
-        "body": "[Ueno] Motsuyaki Nikomi Kaede Okachimachi Opens on July 23!\n\nOverview\n\nA popular motsuyaki (grilled offal) and nikomi (stew) restaurant from Kinshicho opened a new branch in Ueno/Okachimachi on July 23, 2026.\n\nStore Information\n- Name: Motsuyaki Nikomi Kaede Okachimachi\n- Address: GB Building 1F, 3-18-6 Ueno, Taito-ku, Tokyo\n- Opening date: July 23, 2026",
+        "summary": "A popular motsuyaki and stew restaurant from Kinshicho opened in Ueno/Okachimachi on July 23, 2026.",
+        "body": "[Ueno] Motsuyaki Nikomi Kaede Okachimachi opened on July 23!\n\nOverview\n\nA long-loved Kinshicho restaurant serving \"motsuyaki\" (grilled offal skewers) and \"nikomi\" (simmered offal stew) opened a new branch in Ueno/Okachimachi on July 23, 2026. Enjoy very fresh \"motsu\" and a wide variety of skewers in a cozy, homey space. It also hosts parties and group banquets.\n\nRestaurant Information\n- Name: Motsuyaki Nikomi Kaede Okachimachi\n- Genre: Izakaya, motsuyaki, yakitori\n- Address: GB Building 1F, 3-18-6 Ueno, Taito-ku, Tokyo\n- Access: 3-minute walk from Okachimachi Station; 167m from Ueno-hirokoji Station\n- Opening date: July 23, 2026\n- Budget: Dinner ￥3,000–￥3,999 / Lunch ￥3,000–￥3,999\n- Reservations: Online reservations available",
         "area": "Ueno"
       }
     },
     "39": {
-      "hash": "60514eb00348f2f1",
+      "hash": "01eea1052ac00dba",
       "fields": {
         "title": "SHEEP MAN Opens",
-        "summary": "SHEEP MAN, an Asian and ethnic restaurant specializing in Uyghur cuisine, opens in Ueno on July 20, 2026.",
-        "body": "[Ueno] SHEEP MAN opens July 20!\n\n## Overview\n\nSHEEP MAN, an Asian and ethnic restaurant specializing in Uyghur cuisine, opens in Ueno on July 20, 2026.\n\n## Store Information\n\n- Name: SHEEP MAN\n- Address: New Ueno Building 3F, 7-2-5 Ueno, Taito-ku, Tokyo\n- Opening date: July 20, 2026",
+        "summary": "SHEEP MAN, an Asian and ethnic restaurant focused on Uyghur cuisine, opens in Ueno on July 20, 2026.",
+        "body": "[Ueno] SHEEP MAN opens on July 20!\n\n## Overview\n\nSHEEP MAN, an Asian and ethnic restaurant focused on Uyghur cuisine, opens in Ueno on July 20, 2026.\n\n## Restaurant Information\n\n- Name: SHEEP MAN\n- Cuisine: Asian / Ethnic (mainly Uyghur)\n- Address: New Ueno Bldg. 3F, 7-2-5 Ueno, Taito-ku, Tokyo\n- Access: About 165m from Ueno Station\n- Opening date: July 20, 2026",
         "area": "Ueno"
       }
     },
@@ -583,11 +583,11 @@
       }
     },
     "66": {
-      "hash": "5bed1d9f25d5e016",
+      "hash": "1fd4417dba61542e",
       "fields": {
-        "title": "Tokyo Metropolitan Art Museum 100th Anniversary: \"For You to Read the World\"",
-        "summary": "A special exhibition marking the 100th anniversary of the Tokyo Metropolitan Art Museum. Free admission.",
-        "body": "[Ueno] Tokyo Metropolitan Art Museum 100th Anniversary Exhibition! Opening November 19 at the Tokyo Metropolitan Art Museum\n\n## Overview\n\nThe Tokyo Metropolitan Art Museum will hold \"For You to Read the World,\" a special exhibition celebrating the 100th anniversary of its opening. Free admission.\n\n## Event Information\n\n- Dates: November 19, 2026 – January 11, 2027\n- Venue: Tokyo Metropolitan Art Museum\n- Admission: Free\n- Official URL: https://www.tobikan.jp/exhibition/",
+        "title": "Tokyo Metropolitan Art Museum 100th Anniversary Exhibition: For You to Read the World",
+        "summary": "A special exhibition celebrating the 100th anniversary of the Tokyo Metropolitan Art Museum. Admission is free.",
+        "body": "[Ueno] Tokyo Metropolitan Art Museum 100th Anniversary Exhibition opens November 19 at the Tokyo Metropolitan Art Museum\n\n## Overview\n\nThe Tokyo Metropolitan Art Museum will hold the special exhibition \"For You to Read the World\" to celebrate its 100th anniversary. The exhibition runs from Thursday, November 19, 2026 to Monday, January 11, 2027 (national holiday). Admission is free.\n\n## Event Information\n\n- Dates: Thursday, November 19, 2026 – Monday, January 11, 2027 (national holiday)\n- Venue: Tokyo Metropolitan Art Museum\n- Type: Special exhibition\n- Admission: Free\n- Official website: https://www.tobikan.jp/exhibition/",
         "area": "Ueno",
         "eventLocation": "Tokyo Metropolitan Art Museum",
         "eventFee": "Free"
@@ -696,11 +696,11 @@
       }
     },
     "82": {
-      "hash": "fb7b99166aaa60dc",
+      "hash": "f83901fdd351dbf0",
       "fields": {
-        "title": "Taiwan Hatsu Matsuri",
+        "title": "Taiwan Faasai",
         "summary": "A Taiwan festival held at Takenodai Plaza (Fountain Plaza).",
-        "body": "[Ueno] Taiwan Hatsu Matsuri comes to Takenodai Plaza (Fountain Plaza) from August 28\n\nTaiwan Hatsu Matsuri will be held at Takenodai Plaza (Fountain Plaza) in Ueno Onshi Park (Ueno Park).\n\nEvent Information\n- Dates: August 28 – August 30, 2026\n- Venue: Takenodai Plaza (Fountain Plaza)\n- Details and official information: https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
+        "body": "[Ueno] Taiwan Faasai Is Coming! From August 28 at Takenodai Plaza (Fountain Plaza)\n\nTaiwan Faasai will be held at Takenodai Plaza (Fountain Plaza) in Ueno Park. Admission is free.\n\nThe event brings the lively atmosphere of a Taiwanese night market to Ueno. Along with popular authentic Taiwanese food, visitors can enjoy Taiwanese culture and entertainment, including acrobatic troupe performances and lion dances.\n\nEvent Information\n- Name: Taiwan Faasai 2026 Ueno\n- Dates: August 28 (Fri) – August 30 (Sun), 2026\n- Hours: 11:00–20:00\n- Venue: Takenodai Plaza (Fountain Plaza), Ueno Park\n- Admission: Free\n- Organizers: Fukurai Bussan Co., Ltd.; Taiwan Faasai Executive Committee; Taiwan-Japan Cultural Exchange Foundation\n- Supported by: Taito City\n- Produced by: MATAHARI Inc.; 360WORLD LLC\n- Inquiries: MATAHARI Inc. (E-mail: info.taiwanfaasai@matahari.works / Tel: 080-1270-8958)\n- Official website: https://taiwanfaasai.com\n- Official Instagram: https://www.instagram.com/taiwanfaasai\n- Details and official information: https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
         "area": "Ueno",
         "eventLocation": "Takenodai Plaza (Fountain Plaza)"
       }
@@ -726,11 +726,11 @@
       }
     },
     "85": {
-      "hash": "d2eec1e33a0f7a6e",
+      "hash": "bd085423d814336a",
       "fields": {
-        "title": "Special Exhibition \"Super World of Living Things: National Museum of Nature and Science × Darwin's Amazing Animals!\"",
-        "summary": "A special exhibition themed on living creatures, held at the National Museum of Nature and Science.",
-        "body": "[Ueno] Special Exhibition \"Super World of Living Things: National Museum of Nature and Science × Darwin's Amazing Animals!\" opens July 11 at the National Museum of Nature and Science\n\n## Overview\n\nThe National Museum of Nature and Science hosts \"Super World of Living Things: National Museum of Nature and Science × Darwin's Amazing Animals!\", a special exhibition themed on living creatures.\n\n## Event Information\n\n- Dates: July 11 – October 12, 2026\n- Venue: National Museum of Nature and Science\n- Official URL: https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event",
+        "title": "Special Exhibition \"Super Amazing World of Life: National Museum of Nature and Science × Darwin's Amazing Animals\"",
+        "summary": "A special exhibition on the theme of living things, held at the National Museum of Nature and Science.",
+        "body": "[Ueno] Special Exhibition \"Super Amazing World of Life: National Museum of Nature and Science × Darwin's Amazing Animals\" opens July 11 at the National Museum of Nature and Science\n\n## Overview\n\nThe National Museum of Nature and Science hosts \"Ikimono Cho World-ten: National Museum of Nature and Science × Darwin's Amazing Animals\" (English title: Special Exhibition : Super amazing world of Life), a special exhibition on the theme of living things. It is organized by the National Museum of Nature and Science, NHK and NHK Promotions.\n\n## Event Information\n\n- Dates: July 11 – October 12, 2026\n- Venue: National Museum of Nature and Science\n- Organizers: National Museum of Nature and Science, NHK, NHK Promotions\n- Inquiries: 050-5541-8600 (Hello Dial), 03-5814-9898 (Fax)\n- Official URL: https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno/event\n\n*Schedules may change or events may be canceled. Please check each facility's website for the latest information.",
         "area": "Ueno",
         "eventLocation": "National Museum of Nature and Science"
       }
@@ -767,56 +767,56 @@
       }
     },
     "93": {
-      "hash": "b390879a16aac124",
+      "hash": "3cb83877a22a283b",
       "fields": {
-        "title": "Order Popular ecute Ueno Food Together with menu",
-        "summary": "A service that lets you order food from popular ecute Ueno shops together in one order on the menu app and have it delivered to a place of your choice.",
-        "body": "ecute Ueno: Order Food from Popular Shops Together on the menu App\n\n## Overview\n\nFood from popular shops inside ecute Ueno can now be ordered together in one order on the delivery and takeout app \"menu.\" You can order items from several shops at once in the app and have them delivered to a location you choose. The service makes shopping and picking up meals easier when you use Ueno Station.\n\n## Service Information\n\n- Facility: ecute Ueno\n- Details: A service for ordering food from popular ecute Ueno shops together in one order on the menu app",
+        "title": "Order Popular Gourmet Food in Bulk via the menu App",
+        "summary": "A service that lets you order gourmet food from popular shops at ecute Ueno in one batch via the menu app and have it delivered to a location of your choice.",
+        "body": "ecute Ueno: Order Popular Gourmet Food in Bulk via the menu App\n\n## Overview\n\nGourmet food from popular shops at ecute Ueno can now be ordered together in one batch through the delivery and takeout app \"menu.\" The service lets you order items from multiple shops at once in the app and have them delivered to a designated location, making it easier to shop and pick up meals when using Ueno Station.\n\necute Ueno is an in-station shopping facility with shops on the 3F inside the ticket gates of JR Ueno Station and outside the Park Exit. The 3F area inside the ticket gates offers sweets, bento and deli foods, cafes and restaurants, goods, fashion and services, a bookstore, and a convenience store. Outside the Park Exit, there is a convenience store on 1F and cafes and restaurants on 2F.\n\n## Service Information\n\n- Facility: ecute Ueno\n- Details: A service that lets you order popular gourmet food from ecute Ueno in one batch via the menu app\n- Location: JR Ueno Station, 3F inside the ticket gates / 1F and 2F outside the Park Exit\n\n## Facility Hours\n\n**JR Ueno Station, 3F inside the ticket gates**\n- Sweets: 9:00–21:00 (until 22:00 on Fridays)\n- Bento and deli: 9:00–21:00 (until 22:00 on Fridays)\n- Cafes and restaurants: 10:00–22:00 (until 21:00 on Sundays and public holidays)\n  - During consecutive holidays, closes at 21:00 on the last day only\n- Goods, fashion and services: 9:00–21:00 (until 22:00 on Fridays)\n- Bookstore: 7:00–21:00 (until 22:00 on Fridays)\n- Convenience store: 5:50–24:10\n\n**JR Ueno Station, outside the Park Exit**\n- 1F Convenience store: 8:00–20:00\n- 2F Cafes and restaurants: 10:00–20:00 (until 21:00 on Fridays)\n\n*Hours vary at some shops.",
         "area": "Ueno"
       }
     },
     "94": {
-      "hash": "18502d9507ab695c",
+      "hash": "1acdb53d29c492ab",
       "fields": {
         "title": "Earn and Use JRE POINT!",
-        "summary": "Information on earning and using JRE POINT at ecute Ueno.",
-        "body": "# Earn and Use JRE POINT!\n\n## Overview\n\nAt participating shops in ecute Ueno, you can earn and use JRE POINT, the shared points program of the JR East Group. You can collect points when you shop and use the points you've saved to pay for purchases. It's a handy perk for anyone who uses Ueno Station regularly.\n\n## Points Information\n\n- Area: Ueno\n- Facility: ecute Ueno\n- Details: Earn and use JRE POINT",
+        "summary": "How to earn and use JRE POINT at ecute Ueno.",
+        "body": "# Earn and Use JRE POINT!\n\n## Overview\n\nAt participating shops in ecute Ueno, you can earn and use JRE POINT, the shared loyalty points program of the JR East Group. You can collect points when you shop and put the points you have saved straight toward your purchases. This makes it handy for anyone who uses Ueno Station regularly.\n\nEvery Wednesday is also a bonus points day, with \"JRE POINT Double on Both\" (twice the points for both earning and using).\n\n## Points Information\n\n- Area: Ueno\n- Facility: ecute Ueno\n- Details: Earn and use JRE POINT\n- Bonus points: Every Wednesday (JRE POINT Double on Both)\n- Location: JR Ueno Station, inside the ticket gates, 3F / JR Ueno Station, outside the Park Exit gate (1F & 2F)\n\n## Business Hours\n\n**JR Ueno Station, inside the ticket gates, 3F**\n\n- Sweets: 9:00–21:00 (Fri until 22:00)\n- Bento and deli: 9:00–21:00 (Fri until 22:00)\n- Cafés and restaurants: 10:00–22:00 (Sun and holidays until 21:00) *During consecutive holidays, they close at 21:00 on the last day only\n- Goods, fashion and services: 9:00–21:00 (Fri until 22:00)\n- Bookstore: 7:00–21:00 (Fri until 22:00)\n- Convenience store: 5:50–24:10\n\n**JR Ueno Station, outside the Park Exit gate**\n\n- 1F Convenience store: 8:00–20:00\n- 2F Cafés and restaurants: 10:00–20:00 (Fri until 21:00)\n\n*Some shops have different business hours.",
         "area": "Ueno"
       }
     },
     "110": {
-      "hash": "9b3cedd22124e2a8",
+      "hash": "424db5c44e43b0d5",
       "fields": {
-        "title": "World Heritage Community Lecture: \"Kojiro Matsukata and the Matsukata Collection\"",
-        "summary": "A community lecture tracing how the Matsukata Collection was assembled and how the negotiations for its return after World War II led to the founding of the National Museum of Western Art. 15:00–16:00. Advance registration required.",
-        "body": "A community lecture tracing how the Matsukata Collection was assembled and how the negotiations for its return after World War II led to the founding of the National Museum of Western Art. 15:00–16:00. Advance registration required.",
+        "title": "World Heritage Lecture for Residents: \"Kojiro Matsukata and the Matsukata Collection\"",
+        "summary": "A lecture for residents tracing how the Matsukata Collection was assembled and how, after postwar negotiations for its return, the National Museum of Western Art came to be founded. 15:00–16:00; advance registration required.",
+        "body": "A lecture for residents tracing how the Matsukata Collection was assembled and how, after postwar negotiations for its return, the National Museum of Western Art came to be founded. 15:00–16:00; advance registration required.\n\nHeld on August 29, 2026 (Reiwa 8), this lecture for residents commemorated the 10th anniversary of the National Museum of Western Art's inscription as a World Heritage Site. Applications reached 120, exceeding capacity, and 93 people attended on the day to learn about topics such as how the Matsukata Collection was formed.\n\n- Title: World Heritage 10th Anniversary Lecture for Residents: \"Kojiro Matsukata and the Matsukata Collection\"\n- Date: August 29, 2026 (Reiwa 8)\n- Time: 15:00–16:00\n- Registration: Advance registration required (120 applicants)\n- Attendance: 93\n- Inquiries: Taito City Urban Exchange Division, World Heritage Section (Tel: 03-5246-1193)",
         "area": "Ueno"
       }
     },
     "111": {
-      "hash": "5f4222fcf512f2db",
+      "hash": "b9734beb76167b7a",
       "fields": {
-        "title": "Build Your Own Museum with the \"Kisekae Domino\" Kit, Session 2 (Architecture Workshop)",
-        "summary": "A workshop where participants use the \"Kisekae Domino\" model kit to learn about the architectural value of the National Museum of Western Art. Open to 3rd–6th graders who live or attend school in Taito City, with a parent or guardian. 15 pairs (30 people) per session.",
-        "body": "# Build Your Own Museum with the \"Kisekae Domino\" Kit, Session 2 (Architecture Workshop)\n\n## Overview\n\nThe second workshop on the architectural value of the National Museum of Western Art uses the \"Kisekae Domino\" model kit. It is open to 3rd–6th grade elementary school students who live or attend school in Taito City, together with a parent or guardian. Each session is limited to 15 pairs (30 people). Through hands-on model building, participants can gain a deeper understanding of architecture.\n\n## Workshop Information\n\n- Eligibility: 3rd–6th grade elementary school students who live or attend school in Taito City, with a parent or guardian\n- Capacity: 15 pairs (30 people) per session",
+        "title": "Session 2: Build Your Own Museum with \"Kisekae Domino\" (Architecture Workshop)",
+        "summary": "A workshop where participants learn about the architectural value of the National Museum of Western Art using the \"Kisekae Domino\" model kit. Open to 3rd–6th graders who live or attend school in Taito City, with their guardians; 15 pairs (30 people) per session.",
+        "body": "# Session 2: Build Your Own Museum with \"Kisekae Domino\" (Architecture Workshop)\n\n## Overview\n\nThe second workshop on the architectural value of the National Museum of Western Art, using the \"Kisekae Domino\" model kit, took place on Sunday, September 27, 2026 (Reiwa 8), with one morning and one afternoon session. It was open to 3rd–6th grade elementary school students who live or attend school in Taito City, together with their guardians. Each session had a capacity of 15 pairs (30 people). A total of 26 pairs (52 children and guardians) took part and learned more about architecture through hands-on model building.\n\nThe workshop is one of Taito City's projects marking the 10th anniversary of the National Museum of Western Art's inscription as a World Heritage Site. The first workshop was held on Saturday, January 31, 2026 (Reiwa 8), also with morning and afternoon sessions, and drew a total of 48 participants: 3rd–6th graders who live or attend school in the city and their guardians.\n\n## Workshop Information\n\n- Date: Sunday, September 27, 2026 (Reiwa 8)\n- Sessions: 2 (morning and afternoon)\n- Eligibility: 3rd–6th grade elementary school students who live or attend school in Taito City, with their guardians\n- Capacity: 15 pairs (30 people) per session\n- Participants: 26 pairs (52 people)\n- Inquiries: Taito City, Urban Exchange Division, World Heritage Section (Tel: 03-5246-1193)",
         "area": "Ueno"
       }
     },
     "112": {
-      "hash": "b0ab96bceeff3d24",
+      "hash": "fa910d9ee9480103",
       "fields": {
-        "title": "World Heritage Inscription 10th Anniversary Public Lecture: \"10 Years as a World Heritage Site: The National Museum of Western Art, Designed by Le Corbusier\" (Online)",
-        "summary": "An online public lecture led by an instructor from the NPO World Heritage Academy. It covers the architecture of the National Museum of Western Art and how Le Corbusier shaped modern Japanese architecture. 10:00 a.m.–11:30 a.m.",
-        "body": "An online public lecture led by an instructor from the NPO World Heritage Academy. It covers the architecture of the National Museum of Western Art and how Le Corbusier shaped modern Japanese architecture. 10:00 a.m.–11:30 a.m.",
+        "title": "Taito City Public Lecture for the 10th Anniversary of World Heritage Inscription: \"10 Years as a World Heritage Site: The National Museum of Western Art, Designed by Le Corbusier\" (Online)",
+        "summary": "An online public lecture by an instructor from the NPO World Heritage Academy on the architecture of the National Museum of Western Art and Le Corbusier's influence on modern Japanese architecture. 10:00–11:30 a.m.",
+        "body": "An online public lecture by an instructor from the NPO World Heritage Academy on the architecture of the National Museum of Western Art and Le Corbusier's influence on modern Japanese architecture. 10:00–11:30 a.m.\n\n## Overview\n\nAn instructor from the NPO World Heritage Academy will talk about the architecture of the National Museum of Western Art, which was inscribed as a World Heritage Site in 2016. The lecture will also look at Le Corbusier's influence on modern Japanese architecture, with the aim of helping participants see the museum's value in a new light.\n\n## Event Details\n\n- Date & time: Saturday, October 3, 2026, 10:00 a.m.–11:30 a.m. (including Q&A)\n- Format: Online\n- Organizer: Taito City (10th Anniversary of World Heritage Inscription project)\n\n## Contact\n\n- World Heritage Section, City Exchange Division, Taito City\n- Tel: 03-5246-1193",
         "area": "Ueno"
       }
     },
     "117": {
-      "hash": "45cdd6c55295496f",
+      "hash": "35f34ea3cba8ee81",
       "fields": {
-        "title": "From Rembrandt to Monet and Van Gogh: Masterpieces from the Hammer Museum",
-        "summary": "A special exhibition at the Tokyo Metropolitan Art Museum featuring works from the Hammer Museum collection, from Rembrandt to Monet and Van Gogh.",
-        "body": "# From Rembrandt to Monet and Van Gogh: Masterpieces from the Hammer Museum\n\n## Overview\n\nThe Tokyo Metropolitan Art Museum is holding a special exhibition of works from the collection of the Hammer Museum in the United States. It presents painters ranging from Rembrandt to Monet and Van Gogh, so visitors can see Western art from a wide range of periods in one exhibition.\n\n## Exhibition Information\n\n- Venue: Tokyo Metropolitan Art Museum\n- Content: Works from the Hammer Museum collection, from Rembrandt to Monet and Van Gogh",
+        "title": "From Rembrandt to Monet and Van Gogh: The Hammer Museum Exhibition",
+        "summary": "A special exhibition at the Tokyo Metropolitan Art Museum featuring works from Rembrandt to Monet and Van Gogh from the collection of the Hammer Museum.",
+        "body": "# From Rembrandt to Monet and Van Gogh: The Hammer Museum Exhibition\n\n## Overview\n\nThe Tokyo Metropolitan Art Museum will host a special exhibition of works from the collection of the Hammer Museum in the United States. Featuring artists from Rembrandt to Monet and Van Gogh, it lets visitors see Western art from a wide range of periods in one place. The exhibition runs from Saturday, September 11 to Sunday, December 12, 2027.\n\n## Exhibition Information\n\n- Dates: Saturday, September 11 – Sunday, December 12, 2027\n- Venue: Tokyo Metropolitan Art Museum\n- Type: Special exhibition\n- Content: Works from Rembrandt to Monet and Van Gogh from the Hammer Museum collection",
         "area": "Ueno"
       }
     },
@@ -1311,11 +1311,11 @@
       }
     },
     "177": {
-      "hash": "15b3a99c6fb3d48b",
+      "hash": "8c390713676aa02f",
       "fields": {
-        "title": "Ueno Zoku Summer Festival Announces Star-Studded Lineup",
-        "summary": "The Ueno Zoku Summer Festival, opening September 19, has announced its star-studded lineup of performers",
-        "body": "[Ueno] Ueno Zoku Summer Festival Coming to Ueno from September 19!\n\nOverview\n\nThe \"Ueno Zoku Summer Festival\" has been announced for the Ueno area, opening on September 19. The festival has also released its lineup of performers. Set in Ueno, the summer festival is expected to bring extra energy to the neighborhood. Details on the venue and program have not yet been announced.\n\nEvent Information\n- Dates: From September 19, 2026 (details TBA)\n- Location: Ueno",
+        "title": "Ueno Zoku Natsu Matsuri Announces Star-Studded Lineup",
+        "summary": "The \"Ueno Zoku Natsu Matsuri,\" opening September 19, has revealed its star-studded lineup",
+        "body": "[Ueno] Ueno Zoku Natsu Matsuri Coming to Ueno from September 19!\n\nOverview\n\nThe \"Ueno Zoku Natsu Matsuri\" has been announced for the Ueno area. The festival runs for five days over the Silver Week holidays, from Saturday, September 19 to Wednesday, September 23 (public holiday), 2026, at the Fountain Plaza in Ueno Park (Ueno Onshi Koen). Organized by UUUM Co., Ltd. and the Ueno Chuo-dori Shopping Association, it is a large-scale horror event and the first to be fully produced by popular video creator \"Takku TV Radio.\"\n\nThe lineup has also been revealed. A diverse group of guests connected to horror will gather in Ueno, spanning ghost stories, urban legends, the occult, film, games, comedy, short dramas, DJing and more. Additional performers will be announced in due course.\n\nMain Performers\n\nThe lineup includes producer Takku, along with Shuhei Shimada, Sequence Hayatomo, Yasuhiro Hayase and Makoto Kishimoto (Toshi Boys), Gandhi Yokosuka, Daiun Miki, Toshiyuki Tanaka, Yohei Hibiki, Tommy (Mizutamari Bond), Koyakky (Koyakky Studio), Silk Road (Fischer's), Tsumami Edamame, Norio Tsuruta, Toshikazu Nagae, Kotaro Terauchi (Fake Documentary Q), DJ Ichiro Yatsui and DJ YAHAGI. Performers are subject to change without notice.\n\nPaid \"Zoku Natsu Indoor Stage\" Also Planned\n\nIn addition to the free outdoor stage, a paid \"Zoku Natsu Indoor Stage\" will offer a deeper dive into the world of horror, with solo performances and collaborative programs by the featured guests. The venue is expected to be a facility near Ueno Park and will be announced soon.\n\n- September 22 (Tue, public holiday): 5 sessions, each with a storyteller: Gandhi Yokosuka, Takku, Shuhei Shimada, Yasuhiro Hayase (Toshi Boys) and Daiun Miki\n- September 23 (Wed, public holiday): 4 sessions featuring Momoka Asahi, Ayako Shibayama and Sakura Fukatsu; Makoto Kishimoto (Toshi Boys) and Sequence Hayatomo; Takku and Tommy (Mizutamari Bond); and Gandhi Yokosuka, Yohei Hibiki and Yasu\n- Tickets: 4,000 yen (tax included) per session\n- General sale: From 18:00 on Monday, September 7, 2026\n\nCostumes and Cosplay Welcome\n\nVisitors are welcome to join in costume or cosplay. On the yagura (festival tower) stage in the Fountain Plaza, a \"Horror BON Dance\" will be held, where attendees can dance with yokai (Japanese monsters) to DJ sets. A dedicated changing room with a cloakroom will be available on site so visitors can change into full costume and makeup. Interactive horror experiences, limited-edition merchandise, food, booths and more are also planned.\n\nEvent Information\n- Dates: Saturday, September 19 – Wednesday, September 23 (public holiday), 2026\n- Hours: 11:00–21:00 (held rain or shine; canceled in severe weather)\n- Location: Fountain Plaza, Ueno Park (Ueno Onshi Koen)\n- Admission: Free (some content and stages require payment)\n- Zoku Natsu Indoor Stage: 4,000 yen (tax included) per session\n- Program: Stage events, interactive content, booths, merchandise sales, food trucks and more\n- Organizers: UUUM Co., Ltd. / Ueno Chuo-dori Shopping Association\n- Supervision and production: Takku TV Radio\n- Official website: https://zokunatsu.com/\n- Official social media: X and Instagram (@zokunatsu)",
         "area": "Ueno",
         "eventLocation": "Ueno"
       }
@@ -1330,11 +1330,11 @@
       }
     },
     "184": {
-      "hash": "87e7ec308468810d",
+      "hash": "5d31e2cee6f1dccb",
       "fields": {
-        "title": "Ryo Mikami Retirement Exhibition: (Secret) Randomness of Action",
-        "summary": "A retirement exhibition has been announced at the Chinretsukan Gallery and Masaki Memorial Hall of The University Art Museum, Tokyo University of the Arts.",
-        "body": "[Ueno] Ryo Mikami Retirement Exhibition: (Secret) Randomness of Action opens October 3 at The University Art Museum, Tokyo University of the Arts\n\nOverview\n\n\"Ryo Mikami Retirement Exhibition: (Secret) Randomness of Action\" has been announced at the Chinretsukan Gallery and Masaki Memorial Hall of The University Art Museum, Tokyo University of the Arts. The exhibition will be held in these two venues within the museum in the Ueno area. Further details will be announced on the official website as they become available.\n\nEvent Information\n- Dates: October 3, 2026 – October 18, 2026\n- Venue: Chinretsukan Gallery and Masaki Memorial Hall, The University Art Museum, Tokyo University of the Arts\n- Official URL: https://museum.geidai.ac.jp/exhibit/",
+        "title": "Ryo Mikami Retirement Exhibition: (Secret) Randomness of Acts",
+        "summary": "Announcement of a retirement exhibition at the Chinretsukan Gallery and Masaki Memorial Hall of The University Art Museum, Tokyo University of the Arts.",
+        "body": "[Ueno] Ryo Mikami Retirement Exhibition: (Secret) Randomness of Acts Opens October 3 at The University Art Museum, Tokyo University of the Arts\n\nOverview\n\n\"Ryo Mikami Retirement Exhibition: (Secret) Randomness of Acts\" is now on at the Chinretsukan Gallery and Masaki Memorial Hall of The University Art Museum, Tokyo University of the Arts. The exhibition spans two venues within the museum in the Ueno area, the Chinretsukan Gallery and the Masaki Memorial Hall, and runs from Saturday, October 3 to Sunday, October 18, 2026. Further details will be announced on the official website as they become available.\n\nPlease note that the museum may close temporarily or change its opening hours due to weather, disasters or other circumstances. It is a good idea to check with Hello Dial (050-5541-8600) before visiting.\n\nEvent Information\n- Dates: Saturday, October 3, 2026 – Sunday, October 18, 2026\n- Venue: Chinretsukan Gallery and Masaki Memorial Hall, The University Art Museum, Tokyo University of the Arts\n- Inquiries: Hello Dial 050-5541-8600\n- Official website: https://museum.geidai.ac.jp/exhibit/",
         "area": "Ueno",
         "eventLocation": "Chinretsukan Gallery and Masaki Memorial Hall, The University Art Museum, Tokyo University of the Arts"
       }
@@ -1398,11 +1398,11 @@
       }
     },
     "195": {
-      "hash": "2f123d0afc5d88f7",
+      "hash": "c13dbda07e2aacc1",
       "fields": {
         "title": "New Year Concert 2026",
-        "summary": "New Year Concert 2026. Doors open 13:20, performance starts 14:00. All seats unreserved. This event has ended.",
-        "body": "[Ueno] New Year Concert 2026! From January 18 at the Former Tokyo Music School Sogakudo\n\nOverview\n\nThe \"New Year Concert 2026\" will be held at the Former Tokyo Music School Sogakudo in Ueno. The concert takes place on January 18, 2026. Doors open at 13:20 and the performance starts at 14:00. All seats are unreserved, and admission is 2,000 yen. This event has already ended.\n\nEvent Information\n\n- Date: January 18, 2026\n- Venue: Former Tokyo Music School Sogakudo\n- Admission: 2,000 yen",
+        "summary": "New Year Concert 2026. Doors open 13:20, performance starts 14:00, all seats unreserved. This event has ended.",
+        "body": "[Ueno] New Year Concert 2026! From January 18 at the Former Tokyo Music School Sogakudo\n\nOverview\n\n\"New Year Concert 2026\" will be held at the Former Tokyo Music School Sogakudo in Ueno on Sunday, January 18, 2026. Doors open at 13:20 and the performance starts at 14:00. All seats are unreserved, and admission is 2,000 yen. Preschool children are not admitted. This event has already ended.\n\nEvent Information\n\n- Date: Sunday, January 18, 2026\n- Time: Doors open 13:20, performance starts 14:00\n- Venue: Former Tokyo Music School Sogakudo (capacity: 310 seats)\n- Admission: 2,000 yen\n- Seating: All seats unreserved\n- Notes: Preschool children are not admitted. As the building dates from the Meiji era, it is not barrier-free.",
         "area": "Ueno",
         "eventLocation": "Former Tokyo Music School Sogakudo",
         "eventFee": "2,000 yen"
@@ -1465,11 +1465,11 @@
       }
     },
     "205": {
-      "hash": "a88762b4ad315d78",
+      "hash": "eb6bc5520cc2e958",
       "fields": {
         "title": "Uokichi Sakaba Ueno",
-        "summary": "A new seafood izakaya and robatayaki restaurant 148m from Keisei Ueno Station. Opens September 1, 2026.",
-        "body": "[Ueno] Uokichi Sakaba Ueno opens September 1!\n\nOverview\n\nUokichi Sakaba Ueno, a new seafood izakaya and robatayaki restaurant, is opening 148m from Keisei Ueno Station. It opens on September 1, 2026.\n\nIts location near the station makes it an easy place to drop by after work or a day of sightseeing. Robatayaki is a style of cooking in which seafood and vegetables are grilled over charcoal. It pairs well with a seafood izakaya, so the menu should offer plenty of dishes to enjoy with drinks. Ueno has a lot of competing restaurants, and this opening gives diners one more option.\n\nStore Information\n- Name: Uokichi Sakaba Ueno\n- Address: 1F, 6-13-7 Ueno, Taito-ku, Tokyo\n- Opening date: September 1, 2026\n- Access: 148m from Keisei Ueno Station",
+        "summary": "A new seafood izakaya and robatayaki restaurant 148m from Keisei Ueno Station, opening September 1, 2026.",
+        "body": "[Ueno] Uokichi Sakaba Ueno opens September 1!\n\nOverview\n\nUokichi Sakaba Ueno, a new seafood izakaya and robatayaki restaurant, is opening 148m from Keisei Ueno Station. It opens on September 1, 2026.\n\nBilled as \"0 minutes from Ueno Station,\" its location right by the station makes it an easy stop after work or a day of sightseeing. The restaurant presents itself as a seafood izakaya where diners can enjoy bluefin tuna, fresh fish and live shellfish. Robatayaki is a cooking style in which seafood and vegetables are grilled over charcoal. It goes well with a seafood izakaya, and the menu should offer plenty of dishes to enjoy with drinks.\n\nBudgets are affordable at ¥2,000–¥2,999 for dinner and ¥1,000–¥1,999 for lunch, and the restaurant is also open at lunchtime. One review describes it as \"a fish izakaya that welcomes daytime drinking and second-round parties.\" Online reservations are available, and V Point can be earned and used. The Ueno area is packed with competing restaurants, and this new opening adds another option.\n\nRestaurant Information\n- Name: Uokichi Sakaba Ueno\n- Cuisine: Seafood, Izakaya, Robatayaki\n- Address: 1F, 6-13-7 Ueno, Taito-ku, Tokyo\n- Opening date: September 1, 2026\n- Access: 148m from Keisei Ueno Station\n- Budget: Dinner ¥2,000–¥2,999 / Lunch ¥1,000–¥1,999\n- Reservations: Online reservations available\n- Other: V Point can be earned and used",
         "area": "Ueno"
       }
     },
@@ -1646,11 +1646,11 @@
       }
     },
     "224": {
-      "hash": "02de1298a1ad9c69",
+      "hash": "932999eefd0e2c66",
       "fields": {
-        "title": "The Best Food from Across Japan Comes to Ueno, Tokyo (Daimaru Matsuzakaya Regional Food Fair)",
-        "summary": "Daimaru Matsuzakaya Department Stores is holding its once-a-year regional food fair, bringing together popular shops from all over Japan, including 551 HORAI, Tamade Kimuraya and Shinasobaya.",
-        "body": "[Ueno] The Best Food from Across Japan in One Place! Daimaru Matsuzakaya Regional Food Fair\n\nOverview\n\nDaimaru Matsuzakaya Department Stores is holding its once-a-year regional food fair in Ueno. Popular shops from across Japan, including 551 HORAI, Tamade Kimuraya and Shinasobaya, are taking part. From a famous pork bun (butaman) maker and Osaka specialties to ramen shops known for long lines, the fair brings together flavors you would normally have to travel around the country to try.\n\nRegional food fairs feature carefully chosen renowned shops from different regions, which open stalls for a limited time. Their appeal is that you can sample food from all over Japan without traveling far. For Ueno residents and visitors, it's an easy chance to go on a food tour.\n\nEvent Information\n- Dates: Unknown\n- Venue: Unknown\n- Admission: Unknown\n- Access: Unknown",
+        "title": "The Best Regional Food from Across Japan Comes to Ueno, Tokyo (Daimaru Matsuzakaya Food Fair)",
+        "summary": "Daimaru Matsuzakaya Department Stores is holding its once-a-year regional food fair, bringing together popular shops from across Japan, including 551 HORAI, Tamade Kimuraya and Shinasobaya.",
+        "body": "[Ueno] The Best Food from All Over Japan! Matsuzakaya Ueno Holds Its \"Autumn Umaimono Food Fair\"\n\nOverview\n\nDaimaru Matsuzakaya Department Stores is holding its once-a-year regional food fair, the \"Autumn Umaimono Food Fair,\" at Matsuzakaya Ueno. Shops from all over Japan that draw long lines or are getting a lot of attention are taking part, including 551 HORAI, Tamade Kimuraya and Shinasobaya. Options range from Osaka's famous pork buns and a popular Osaka bakery to the first-ever eat-in counter from the famous ramen shop started by Minoru Sano, the \"Ramen Demon.\" Flavors you would normally have to travel across Japan to find are all in one place.\n\nAt a regional food fair, carefully chosen famous shops from different regions set up stalls for a limited time. The appeal is that you can explore food from all over Japan without traveling far. The fair runs for one week just before Silver Week, which this year is a five-day holiday for the first time in 11 years, so it is a chance to get into the travel mood early. For people who live in or visit the Ueno area, it is an easy way to go on a food adventure.\n\nMain Shops and Products (all prices include tax)\n\n- Osaka: 551 HORAI [Live cooking] [Numbered tickets] Pork buns (6 pcs) 1,500 yen, shumai (10 pcs) 950 yen, pan-fried gyoza (15 pcs) 660 yen\n- Osaka: Tamade Kimuraya Veneziana (1/2 size) 788 yen *Expected to arrive after opening (around 10:00–11:00) and sold on arrival\n- Kanagawa: Shinasobaya [First appearance] [Eat-in] Special shoyu ramen / Special shio ramen (1 bowl each) 2,300 yen *Limited to 40 bowls per day\n- Hiroshima: Micchan Yokogawa Branch [First appearance] [Live cooking] Beef tendon okonomiyaki (1 piece) 1,836 yen\n- Fukuoka: Torikawa Oichi [First appearance] [Live cooking] Rolled chicken skin skewers (10 skewers) 2,160 yen\n- Iwate: Ika Oji [First appearance] [Live cooking] The Prince's Luxurious Blissful Cod Fry Burger (1 pc) 864 yen *Limited to 80 on weekdays and 150 on Saturdays and Sundays\n\nSweets and Featured Products\n\n- Miyagi: Maison Coelacanth [First appearance] [Numbered tickets] Coelacanth Monaka (6 pcs) 2,350 yen *Weekdays only, limited to 200 per day, max. 2 per person\n- Kanagawa: Kamakura Beniya [First appearance] [Numbered tickets] Kurumikko, 10 pcs (tin) 2,376 yen *Sat. 9/12 only, limited to 160, max. 2 per person\n- Yamagata: Okashitsukasa Yamadaya [Numbered tickets] Hakuro Fukimame (260g) 770 yen *Sun. 9/13 only, limited to 120, max. 2 per person\n- Mie: Akafuku [First appearance] Akafuku Mizu Yokan (frozen, 1 box) 1,200 yen; Mie: Akafuku Isuzu Chaya Seasonal Yokan, Chestnut (2 pcs) 600 yen\n- Fukushima: Koike Kashiho [Live cooking] Awa Manju (10 pcs) 1,500 yen; Fukuoka: Kasanoya [Live cooking] Umegae Mochi (5 pcs) 900 yen\n- Sweet potato special: Saitama: Imofukudo [First appearance] [Live cooking] Baked sweet potato Mont Blanc soft serve 850 yen and drinkable baked sweet potato 600 yen; Kyoto: Imo Kobo IIMO raw sweet potato kenpi, thin-cut, 864 yen; Gunma: Tsubofuku (aged pot-roasted sweet potato shop) pot-roasted sweet potato pudding 490 yen and aged chilled sweet potato 600 yen (limited to 30 pudding cups and 30 potatoes per day)\n- Chilled sweets: Hyogo: &EARL GREY [First appearance] soft serve 660 yen each; Osaka: Monte Blanco Mont Blanc soft serve (hojicha, matcha, chestnut) 680 yen each\n- Miyagi: Jogi Tofu Shop [Numbered tickets] Sankaku Jogi Aburaage (4 pcs) 720 yen *Limited to 120 bags on the first day and 60 bags per day after that, max. 2 bags per person\n- Hyogo: &EARL GREY [First appearance] [Live cooking] Butter mochi (1 pc) 324 yen\n\nAbout Numbered Tickets\n\nFor products marked \"Numbered tickets,\" tickets are handed out to customers who arrive before opening, outside the store in front of Park Place 24. For details, see the special page (https://www.matsuzakaya.co.jp/ueno/topics/260909_akinoumaimono_gourmet.html).\n\nEvent Information\n- Dates: 7 days, Thursday, September 10 to Wednesday, September 16, 2026, 10:00–19:00 *Closes at 17:00 on the last day\n- Venue: Event Hall, 6F, Matsuzakaya Ueno\n- Price: Varies by product (all prices include tax)\n- Access: Unknown",
         "area": "Ueno"
       }
     },
@@ -1700,11 +1700,11 @@
       }
     },
     "235": {
-      "hash": "b73399495603dde7",
+      "hash": "5d48055e96d393df",
       "fields": {
-        "title": "Ueno Summer Festival × Inoichi Bon Odori Walking Machikon, Co-hosted by Ueno Tourism Federation, Sells Out Early",
-        "summary": "The Ueno Summer Festival × Inoichi Bon Odori Walking Machikon, a summer festival matchmaking event co-hosted by the Ueno Tourism Federation, has sold out early.",
-        "body": "[Ueno] Ueno Tourism Federation Co-hosted Machikon Sells Out Early! \"Ueno Summer Festival × Inoichi Bon Odori\"\n\nOverview\n\nThe Ueno Summer Festival × Inoichi Bon Odori Walking Machikon Summer Festival, a machikon (matchmaking event held around town) co-hosted by the Ueno Tourism Federation, has sold out early.\n\nEvent Information\n- Dates: Unknown\n- Venue: Unknown\n- Price: Unknown\n- Access: Unknown",
+        "title": "Ueno Tourism Federation Co-Hosted \"Ueno Summer Festival × Inoichi Bon Odori\" Walking Matchmaking Event Sells Out Early",
+        "summary": "The matchmaking event \"Ueno Summer Festival × Inoichi Bon Odori Walking Machikon: Summer Festival,\" co-hosted by the Ueno Tourism Federation, was announced as sold out early.",
+        "body": "[Ueno] Ueno Tourism Federation Co-Hosted Machikon Sells Out Early! \"Ueno Summer Festival × Inoichi Bon Odori\"\n\nOverview\n\nOn Saturday, August 8, 2026, the matchmaking event \"Ueno Summer Festival × Inoichi Bon Odori Walking Machikon: Summer Festival Matchmaking Stroll\" was held in Ueno. It was co-hosted by \"machicon JAPAN,\" an event e-commerce site operated by Linkbal Inc., and the Ueno Tourism Federation (general incorporated association). The event ran twice that day, and all 60 spots across both sessions were filled one week in advance, leading to an early sell-out announcement.\n\nParticipants had a reserved area at the \"75th Edo Shumi Noryo Taikai (Edo-Style Summer Festival) – Ueno Summer Festival,\" held around Ueno Park and Shinobazu Pond. Next to the \"Rin Rin Corridor,\" where about 4,000 wind chimes ring, they mingled over festival stall food and drinks. They then walked a few minutes to the \"Inoichi Bon Odori,\" held the same day, for free time to enjoy the festival as they liked, making it a tour of two festivals.\n\nAs the Tokyo Metropolitan Government Bureau of Citizens and Cultural Affairs focuses on marriage support through initiatives such as the \"Marriage Support Campaign TOKYO Hachimusubi,\" the Ueno Tourism Federation approached Linkbal saying it \"wanted to try a project linked to a local festival.\" Linkbal then took charge of planning and running the event.\n\nEvent Information\n- Date: Saturday, August 8, 2026\n  - (1) 15:00–17:00 (reception from 14:40)\n  - (2) 17:00–19:00 (reception from 16:40)\n- Location: Around Ueno Park and Shinobazu Pond, Hakamagoshi Plaza\n- Fee: Unknown\n- Access: Unknown\n- Eligibility: Men and women aged 20–39\n- Capacity: 30 people per session × 2 sessions (60 total) [Both sessions sold out]\n- Organizers: Ueno Tourism Federation (general incorporated association), Linkbal Inc. (machicon JAPAN)\n\nResults\n- In a participant survey, over 60% rated their satisfaction 4 or higher on a 5-point scale\n- More than 10 couples matched during a mingling activity held in the free time at the bon odori venue\n- Matched couples received food and drink vouchers to use at an after-party in the nearby Ueno shopping district",
         "area": "Ueno"
       }
     },
@@ -1718,20 +1718,20 @@
       }
     },
     "240": {
-      "hash": "ce4a0cadb7c0f1ca",
+      "hash": "06afdb2a8ba04570",
       "fields": {
-        "title": "Construction Begins on \"Taito-ku Matsugaya 4-chome Rental Residence Project (Tentative Name)\"",
-        "summary": "Construction has begun on a rental residence project in Matsugaya 4-chome, Taito-ku, developed by Mitsui & Co. Realty Management Ltd.",
-        "body": "Construction has begun on a rental residence project in Matsugaya 4-chome, Taito-ku, developed by Mitsui & Co. Realty Management Ltd.",
+        "title": "Construction Begins on \"(Tentative) Taito-ku Matsugaya 4-chome Rental Residence Project\"",
+        "summary": "Construction has begun on a new rental residence project in Matsugaya 4-chome, Taito-ku, developed by Mitsui & Co. Realty Management Ltd.",
+        "body": "Construction has begun on a new rental residence project in Matsugaya 4-chome, Taito-ku, developed by Mitsui & Co. Realty Management Ltd. Completion is scheduled for February 2028.\n\nThe building is being developed under the company's urban rental residence brand \"ADDREA\" and will offer a total of 49 rental units. The project aims to meet the housing needs of singles and DINKS (dual-income, no-kids couples) working in central Tokyo.\n\n## Location & Access\n\nThe Matsugaya area, where the site is located, is a neighborhood with a deep-rooted craft culture, best represented by Kappabashi Dougu Street, and is close to both Asakusa and Ueno. The entrance design draws inspiration from the area's artisan culture, with careful attention to materials and details.\n\n- 6-minute walk from Iriya Station (Tokyo Metro Hibiya Line)\n- 8-minute walk from Asakusa Station (Tsukuba Express)\n- 15-minute walk from Ueno Station (JR Yamanote Line and others)\n\n## Design\n\n- **Facade**: A timeless exterior with refined proportions and textures, independent of passing trends\n- **Entrance**: A spatial layout that draws in the outdoor environment through greenery and glass, gently connecting inside and outside\n- **Hall**: Furnishings that convey the softness of natural materials\n\n## Property Overview (Planned)\n\n- Location: 4-8-5 Matsugaya and others, Taito-ku, Tokyo\n- Site area: 348㎡ (105 tsubo)\n- Total floor area: 2,245㎡ (679 tsubo)\n- Structure/scale: Reinforced concrete (RC), 15 floors above ground\n- Zoning: Commercial district\n- Total units: 49 (1DK 〈approx. 25㎡〉: 14 units; 1LDK 〈approx. 30㎡〉: 14 units; 2LDK 〈approx. 40–50㎡〉: 21 units)\n- Parking: 2 spaces\n- Motorcycle parking: 3 spaces\n- Bicycle parking: 46 spaces\n- Completion: February 2028 (planned)\n\n*Specifications, floor areas and other details are subject to change.",
         "area": "Ueno"
       }
     },
     "241": {
-      "hash": "0b0ee75276a54c0d",
+      "hash": "99b08aee71e10196",
       "fields": {
         "title": "Shitamachi Museum Closed for Storage Fumigation and Exhibition Changeover",
-        "summary": "Closed from Monday, June 29 to Monday, July 6 for fumigation of its storage rooms and an exhibition changeover.",
-        "body": "Closed from Monday, June 29 to Monday, July 6 for fumigation of its storage rooms and an exhibition changeover.",
+        "summary": "The museum will be closed from Monday, June 29 to Monday, July 6 for storage fumigation and an exhibition changeover.",
+        "body": "The museum will be closed from Monday, June 29 to Monday, July 6 for storage fumigation and an exhibition changeover.\n\nAfter the special exhibition \"Glass Plate Negatives: The Joy of Taking Photographs\" (March 3 – June 28, 2026) ends, the museum will change over its displays for the next special exhibition.\n\n- Closure period: Monday, June 29 – Monday, July 6, 2026\n- Reason: Storage fumigation and exhibition changeover\n- Special exhibition after reopening: \"Mural: Asakusa Big Parade – The Stars of Asakusa Drawn by Koji Kata\"\n  - Dates: Tuesday, July 7 – Sunday, November 1, 2026\n  - Details: The exhibition displays Koji Kata's mural \"Asakusa Big Parade,\" painted inside a café in Nishi-Asakusa 3-chome, and introduces materials on the Asakusa stars depicted in it. Through \"Golden Bat,\" Kata's best-known work, it also explains the culture of street kamishibai (picture-card storytelling).\n\n*Schedules are subject to change. Please check the museum's announcements for the latest information.",
         "area": "Ueno"
       }
     },
@@ -1763,11 +1763,11 @@
       }
     },
     "255": {
-      "hash": "a52ed8527c4680cf",
+      "hash": "0f52003fd8c87a75",
       "fields": {
-        "title": "Reiwa 8 (FY2026) Prize Winners' Commemorative Concert",
-        "summary": "A commemorative concert by prize winners of the Sogakudo Japanese Art Song Competition.",
-        "body": "[Ueno] Sogakudo Japanese Art Song Competition Prize Winners' Concert at the Former Tokyo Music School Sogakudo Concert Hall\n\nOverview\n\nThe \"Reiwa 8 (FY2026) Prize Winners' Commemorative Concert\" will be held at the Former Tokyo Music School Sogakudo Concert Hall. The concert features prize winners of the Sogakudo Japanese Art Song Competition.\n\nThe venue, the Former Tokyo Music School Sogakudo Concert Hall, is a historic concert hall in Ueno Park. The Japanese Art Song Competition is held at the Sogakudo, and this concert introduces its prize winners to the public.\n\nSee the official website for details.\n\nEvent Information\n- Dates: TBA\n- Venue: Former Tokyo Music School Sogakudo Concert Hall\n- Admission: TBA\n- Official URL: https://www.taitogeibun.net/sougakudou/contest_j/",
+        "title": "FY2026 (Reiwa 8) Prize Winners' Commemorative Concert",
+        "summary": "A commemorative concert by prize winners of the Sogakudo Japanese Song Competition.",
+        "body": "[Ueno] Sogakudo Japanese Song Competition Prize Winners' Concert at the Former Tokyo Music School Sogakudo!\n\nOverview\n\nThe \"FY2026 (Reiwa 8) Prize Winners' Commemorative Concert\" will be held at the Former Tokyo Music School Sogakudo. It is a commemorative concert featuring prize winners of the Sogakudo Japanese Song Competition.\n\nThe Sogakudo Japanese Song Competition aims to promote Japanese art songs and foster their creative development. It has two divisions: Vocal and Composition. In FY2026 (Reiwa 8), the 37th Vocal Division and the 32nd Composition Division were held, with prize winners in each division selected in the finals and honored at an awards ceremony. This concert showcases those prize winners.\n\nThe venue, the Former Tokyo Music School Sogakudo, is a historic Meiji-era concert hall in Ueno Park with 310 seats. Please note that, as a Meiji-era building, it is not barrier-free.\n\nSee the official website for details.\n\nEvent Information\n- Dates: TBA\n- Venue: Former Tokyo Music School Sogakudo (310 seats)\n- Admission: TBA\n- Performers: Prize winners of the Sogakudo Japanese Song Competition (37th Vocal Division / 32nd Composition Division)\n- Notes: The building is not barrier-free\n- Official URL: https://www.taitogeibun.net/sougakudou/contest_j/",
         "area": "Ueno"
       }
     },
@@ -2087,11 +2087,11 @@
       }
     },
     "323": {
-      "hash": "4bdef536479245a9",
+      "hash": "d25cfb25fe8d339f",
       "fields": {
         "title": "Orient 4C's Co., Ltd. Moves Headquarters from Okachimachi to Itabashi",
         "summary": "Orient 4C's Co., Ltd. is moving its headquarters from Okachimachi to Itabashi-ku.",
-        "body": "## Orient 4C's Co., Ltd. Moves Headquarters from Okachimachi to Itabashi\n\n### Overview\n\nOrient 4C's Co., Ltd. is moving its headquarters from Okachimachi to Itabashi-ku.\n\nThe company, previously headquartered in Okachimachi, will relocate its base to Itabashi-ku. This means a company with head office functions is leaving Okachimachi, part of the Ueno area, for another ward.\n\nDetails such as the timing of the move, the exact new address, and the reason for the relocation have not been confirmed for this article at this time. We will provide updates as new information becomes available.\n\n### Relocation Summary\n\n- Company: Orient 4C's Co., Ltd.\n- Previous location: Okachimachi\n- New location: Itabashi-ku",
+        "body": "## Orient 4C's Co., Ltd. Moves Headquarters from Okachimachi to Itabashi\n\n### Overview\n\nOrient 4C's Co., Ltd. has moved its headquarters from Okachimachi to Itabashi-ku.\n\nSince its founding in 1977, the company has been based in Okachimachi, Tokyo's jewelry district. On Thursday, September 24, 2026, it moved its headquarters from Okachimachi, Taito-ku, Tokyo, to Mukaihara, Itabashi-ku, Tokyo. The new headquarters has a total floor area of about 1,856㎡, around 38% larger than the former headquarters.\n\nThe company manufactures, wholesales and retails jewelry, and also runs overseas operations. The move comes as the company marks its 50th anniversary.\n\n### Purpose of the Move\n\nThe company sees the relocation as more than a simple change of location. It views the move as a chance to carry the skills and experience it has built up into the next era. The aim is to review its internal functions and teamwork to suit today's business environment, and to rebuild its production setup so that departments can work together more smoothly.\n\nRepresentative Director Mikiya Saegusa commented: \"We do not see this relocation project as merely a 'change of location.' We see it as a new challenge: reviewing our business processes and how our teams work together, so that we can deliver greater value and service to our customers.\"\n\n### Okachimachi Wholesale Store Remains Open\n\nAlthough the headquarters has moved to Itabashi-ku, the wholesale store remains open in the Okachimachi area. The store continues to offer the same services as before, including sales of empty settings, parts and finished products, orders for processing work, and meetings with business partners.\n\nSince late June 2026, the wholesale store has been operating at the following location:\n\n- Address: Jujin Building 5F, 5-26-11 Ueno, Taito-ku, Tokyo\n- Hours: Weekdays 10:00–11:45, 13:00–17:00\n- Main services: Sales of empty settings, parts and finished products; processing orders; meetings with business partners, etc.\n\n### Relocation Details\n\n- Company: Orient 4C's Co., Ltd.\n- Representative Director: Mikiya Saegusa\n- Founded: 1977\n- Business: Jewelry manufacturing, wholesale, retail, overseas operations, etc.\n- Relocation date: Thursday, September 24, 2026\n- Former location: Okachimachi, Taito-ku, Tokyo\n- New address: 3-9-4 Mukaihara, Itabashi-ku, Tokyo 173-0036\n- New headquarters floor area: About 1,856㎡ (about 38% larger than the former headquarters)",
         "area": "Ueno"
       }
     },
@@ -2177,11 +2177,11 @@
       }
     },
     "336": {
-      "hash": "deb95a5d0383ac44",
+      "hash": "9da140901a26695e",
       "fields": {
         "title": "hololive VTuber Juufuutei Raden × Tokyo National Museum Collaboration Event",
-        "summary": "A collaboration event between Juufuutei Raden, a VTuber with hololive production, and the Tokyo National Museum in Ueno Park is being held. For the full schedule, see the details page.",
-        "body": "[Ueno] hololive VTuber Juufuutei Raden × Tokyo National Museum Collaboration Event! At the Tokyo National Museum in Ueno Park\n\nA collaboration event between Juufuutei Raden, a VTuber with hololive production, and the Tokyo National Museum in Ueno Park is being held.\n\nThis collaboration brings together a VTuber and a national museum. If you're visiting Ueno Park, why not stop by?\n\nFor the full schedule, please see the details page.\n\nEvent Information\n- Location: Tokyo National Museum (in Ueno Park)",
+        "summary": "A collaboration event between hololive production VTuber Juufuutei Raden and the Tokyo National Museum in Ueno Park will be held. See the details page for the full schedule.",
+        "body": "[Ueno] hololive VTuber Juufuutei Raden × Tokyo National Museum Collaboration Event! At the Tokyo National Museum in Ueno Park\n\nA collaboration event between hololive production VTuber Juufuutei Raden and the Tokyo National Museum in Ueno Park will be held from Wednesday, January 13, 2027 to Monday, March 22, 2027 (national holiday).\n\nThe collaboration came about because the Tokyo National Museum appreciates the activities of Juufuutei Raden, a devoted fan of Japanese art, including her introductions of the museum's special exhibitions and her major contribution to last fiscal year's crowdfunding campaign to restore the Tale of Genji folding screens. During the event, a variety of programs are planned, including a special audio guide by Juufuutei Raden for the Tohaku Collection Exhibition (Regular Exhibition), a puzzle-solving game, and a panel display of newly drawn illustrations.\n\nJuufuutei Raden is a member of ReGLOSS, part of hololive production. She loves culture and the performing arts, old and new, Japanese and Western, and is known as a VTuber who visits art museums as part of her daily routine.\n\nPre-orders for original merchandise commemorating the event have also started on ClaN MARKET as of 15:00 on Monday, September 28, 2026. The merchandise features seven illustrations drawn especially for this event: full-body illustrations titled \"Tokyo National Museum Researcher,\" \"Outing,\" and \"Museum Princess,\" plus mini-character illustrations with outfits inspired by works in the museum's collection, including the Important Cultural Property Dogu (Clay Figurine) with Goggle-like Eyes, the Important Cultural Property Domaru Armor with Kashidori-ito Lacing and Red Shoulders, and Autumn Moon at Ishiyama, from the series Eight Views of Omi (by Utagawa Hiroshige).\n\nThis is a collaboration that pairs a VTuber with a national museum. If you're visiting Ueno Park, why not stop by?\n\nFor details, please check the official event website.\n\nEvent Information\n- Dates: Wednesday, January 13, 2027 – Monday, March 22, 2027 (national holiday)\n- Venue: Tokyo National Museum (13-9 Uenokoen, Taito-ku, Tokyo; inside Ueno Park)\n- Program: Special audio guide by Juufuutei Raden for the Tohaku Collection Exhibition (Regular Exhibition), puzzle-solving game, panel display of newly drawn illustrations, and more (planned)\n- Official event website: https://raden2027.clan-entertainment.com/\n\nOriginal Merchandise Pre-order Information\n- Pre-orders open: Monday, September 28, 2026, 15:00\n- Pre-order site: ClaN MARKET (https://clan-market.com/collections/raden2027)\n- Main items: Full-body acrylic stands (3 types) 1,980 yen each (tax included); mini-character acrylic stands (4 types) 1,320 yen each (tax included); acrylic diorama 3,850 yen (tax included); ticket collection binder 3,300 yen (tax included); tote bag 3,300 yen (tax included); B2 tapestries (3 types) 4,400 yen each (tax included); trading folding-fan charms (7 types, random) 990 yen (tax included); folding-fan charm complete set (7 pieces, with bonus) 6,930 yen (tax included); trading can badges (7 types, random) 770 yen (tax included); can badge complete set (7 pieces, with bonus) 5,390 yen (tax included)\n- Online shop exclusive bonuses: A glitter can badge (1 type) with purchase of a complete set; a postcard (1 type) with purchases of eligible items totaling 5,500 yen or more (tax included) on ClaN MARKET\n- Shipping: Scheduled to ship in sequence from around late December 2026",
         "area": "Ueno"
       }
     },
@@ -2501,11 +2501,11 @@
       }
     },
     "372": {
-      "hash": "347eb6508aa6a332",
+      "hash": "e52ff6534e44e88f",
       "fields": {
-        "title": "Ueno Zoo to Relocate Polar Bear \"Icoro\"",
-        "summary": "Ueno Zoo has announced that it will relocate its polar bear \"Icoro.\"",
-        "body": "# Ueno Zoo to Relocate Polar Bear \"Icoro\"\n\n## Overview\n\nUeno Zoo has announced that it will relocate its polar bear \"Icoro.\"\n\nThis announcement about Icoro, a polar bear living at Ueno Zoo, concerns a facility in the Ueno area. Details such as where Icoro will be moved, when, and why have not been confirmed in this article at this time.\n\nIf you plan to visit Ueno Zoo to see Icoro, we recommend checking the zoo's latest information before your visit.\n\n## Basic Information\n\n- Facility: Ueno Zoo\n- Area: Ueno\n- Details: Announcement of the relocation of polar bear \"Icoro\"",
+        "title": "Ueno Zoo to Transfer Polar Bear \"Icoro\"",
+        "summary": "Ueno Zoo has announced that it will transfer its polar bear \"Icoro.\"",
+        "body": "# Ueno Zoo to Transfer Polar Bear \"Icoro\"\n\n## Overview\n\nUeno Zoo has announced that it will transfer its male polar bear \"Icoro\" to Tennoji Zoo (Osaka, Osaka Prefecture).\n\nThe transfer is part of the polar bear management plan of the Japanese Association of Zoos and Aquariums (JAZA). Ueno Zoo works with other zoos and aquariums that keep polar bears to support breeding of this rare species.\n\nThe transfer is scheduled for around late October to mid-November 2026. Icoro will go through training to get used to a transport crate and will be moved in the crate. The transfer date will be set based on how the training goes, and details will be announced later.\n\n## Viewing\n\nIcoro is scheduled to remain on display until the day before the transfer. However, the display schedule may change depending on the animal's condition, the crate training and other factors. Because Icoro is displayed in rotation with another polar bear, he may not be visible at certain times.\n\nIf you plan to visit Ueno Zoo to see Icoro, check the zoo's latest updates before you go.\n\n## After the Transfer\n\nAs of October 2, 2026, Ueno Zoo has 2 polar bears (1 male, 1 female). After Icoro leaves, it will have 1. Ueno Zoo says it hopes to bring in a male in the future.\n\nAs of August 31, 2026, 16 zoos and aquariums in Japan keep a total of 29 polar bears (11 male, 18 female).\n\n## Basic Information\n\n- Facility: Ueno Zoo\n- Area: Ueno\n- Details: Announcement of polar bear \"Icoro\" being transferred to Tennoji Zoo\n- Animal: Icoro (male, 17 years old)\n- Date of birth: December 9, 2008 (born at Sapporo Maruyama Zoo)\n- Destination: Tennoji Zoo (Osaka, Osaka Prefecture)\n- Scheduled transfer: Around late October to mid-November 2026 (date to be announced)\n- Display: Scheduled to continue until the day before the transfer (subject to change)",
         "area": "Ueno"
       }
     },
@@ -2528,20 +2528,20 @@
       }
     },
     "375": {
-      "hash": "ba9d4d1bbd2c4edc",
+      "hash": "2aa6fdf540bbb669",
       "fields": {
-        "title": "Panda Day Event at Ueno Zoo",
-        "summary": "Ueno Zoo will hold a Panda Day event. Notes on how to apply for the lecture have been added.",
-        "body": "[Ueno] Panda Day Event at Ueno Zoo!\n\nUeno Zoo will hold a Panda Day event.\n\nThe event will include a lecture, and new notes on how to apply for it have been added. If you plan to attend the lecture, check the latest information from Ueno Zoo before you apply.\n\nDetails such as the event dates and admission fees have not been announced yet. Watch for further announcements.\n\nEvent Information\n- Location: Ueno Zoo",
+        "title": "Panda Day Events at Ueno Zoo",
+        "summary": "Ueno Zoo will hold Panda Day events. Notes on how to apply for the lecture have been added.",
+        "body": "[Ueno] Panda Day Events at Ueno Zoo!\n\nUeno Zoo is holding Panda Day events. Japan's first giant pandas, Ran Ran and Kang Kang, arrived at Ueno Zoo on October 28, 1972, and in 2012 the zoo named October 28 \"Panda Day.\" To mark the day, the zoo will hold a lecture looking back on its giant panda care, an event introducing animals that share the panda's habitat, and more.\n\n## Panda Day Commemorative Lecture: \"Kiseki: 15 Years with Ri Ri and Shin Shin\"\n\nThe Giant Panda Breeding Research Project, run jointly by the Tokyo Metropolitan Government and the China Wildlife Conservation Association, ended on February 20, 2026. This lecture looks back on the 15 years of work that began on February 21, 2011.\n\nThere will be four talks:\n- Talk 1: \"The History of the Giant Panda Breeding Research Project\" (Hitoshi Suzuki, Manager, Animal Care and Exhibition Section, Ueno Zoo)\n- Talk 2: \"Same Panda, So Different? How Ri Ri and Shin Shin Differ from the Pandas up to Lin Lin\" (Hiroshi Kuramochi, Chief, West Garden Animal Care and Exhibition Unit, Ueno Zoo)\n- Talk 3: \"A Veterinarian Looks Back on These 15 Years\" (Yuzo Hirano, Chief, Animal Hospital Unit, Ueno Zoo)\n- Talk 4: \"15 Years with the Giant Pandas: The Project's Achievements and the Zoo of the Future\" (Keishi Saito, Chief, Management Strategy Unit, General Affairs Department, Tokyo Zoological Park Society)\n\nAdvance registration is required through the application form. Before applying, set your spam filter and email software to accept emails from @tokyo-zoo.net and @kintoneapp.com. Take particular care if you apply from a mobile phone. If you do not receive an automatic reply after applying, contact the Ueno Zoo Education Unit.\n\nApplications must be submitted by 23:59 on Friday, October 9, 2026. If there are more applicants than places, a lottery will be held, and only winners will be notified by email by Friday, October 16. If the same person applies more than once, all of their applications will be invalid, whether submitted as the main applicant or as a companion. Late arrivals may not be admitted, and the main applicant and companions cannot be changed after the application deadline.\n\nThe lecture will also be streamed live on the Tokyo Zoo Net YouTube channel on the day, and a recording will be available later. Anyone can watch either one (viewers pay their own data charges). Streaming details will be announced later.\n\nLecture Information\n- Date & time: Sunday, October 25, 2026, 13:30–16:00\n- Venue: Conference Room, 3rd Floor, Ueno Zoo Administration Office (details will be emailed to winners)\n- Who can attend: Open to all (content intended for upper elementary school students and older)\n- Capacity: 100 (advance registration required)\n- Fee: Free\n- Inquiries: Ueno Zoo Education Unit, 03-3828-5171 (main line) *Hours: 9:30–17:00\n\n## Panda Forest Stamp Rally\n\nThere are no giant pandas at the West Garden's Panda Forest at the moment, but it houses red pandas and pheasants that come from the same Chinese highlands as giant pandas. For Panda Day, a stamp rally will introduce the animals that share the panda's homeland.\n\n- Period: Tuesday, October 20 – Sunday, November 1, 2026 *Ends when supplies run out\n- Location: Panda Forest, West Garden\n- Who can join: Open to all (content intended for elementary school students)\n- No prizes are given\n\n## Book Release: \"Kiseki: 15 Years with Ri Ri and Shin Shin\"\n\nA new book uses photographs to trace the 15-year breeding research project carried out with Ri Ri and Shin Shin.\n\n- Release date: Late October 2026 (planned)\n- Where to buy: Little Trunk (East Garden), Petit Chameleon (West Garden) (also planned for sale on the TOKYO ZOO SHOP online store)\n- Price: 2,200 yen (tax included)\n\n## Panda Day Gift Items\n\nPanda Day commemorative goods are also on sale.\n\n- Period: From October 6, 2026 (until sold out)\n- Where to buy: Little Trunk (East Garden), Petit Chameleon (West Garden) (also sold on the TOKYO ZOO SHOP online store)\n- Items: \"A4 Clear Folder (Photo / Illustration)\" 330 yen each (tax included), \"Magnet Set\" 960 yen (tax included), \"Sticker Set\" 1,020 yen (tax included)\n\nEvent Information\n- Location: Ueno Zoo",
         "area": "Ueno"
       }
     },
     "376": {
-      "hash": "d74c2aaf57b2b625",
+      "hash": "f349b8b0d9f06874",
       "fields": {
-        "title": "Ueno Zoo \"World Gorilla Day\" Event",
-        "summary": "Ueno Zoo will hold an event for \"World Gorilla Day.\"",
-        "body": "[Ueno] Ueno Zoo to Hold \"World Gorilla Day\" Event!\n\nUeno Zoo will host an event marking \"World Gorilla Day.\"\n\nUeno Zoo is one of the Ueno area's signature attractions. This event ties in with \"World Gorilla Day,\" and it looks like a chance not to miss for anyone interested in gorillas or who visits the zoo regularly.\n\nThe dates, admission fees and event details have not been announced yet. If you're planning a visit, keep an eye out for further announcements from Ueno Zoo.\n\nIf you'd like to enjoy an animal-themed event in Ueno, be sure to check it out.\n\nEvent Information\n- Venue: Ueno Zoo",
+        "title": "Ueno Zoo Hosts \"World Gorilla Day\" Events",
+        "summary": "Ueno Zoo is holding events to mark World Gorilla Day.",
+        "body": "[Ueno] Ueno Zoo Hosts \"World Gorilla Day\" Events!\n\nUeno Zoo is holding events to mark World Gorilla Day on September 24.\n\nUeno Zoo is one of the Ueno area's best-known attractions. The events are designed as a day to learn about the current situation of wild gorillas and think about what we can do to protect them. Gorilla fans and regular zoo visitors won't want to miss them.\n\nDuring the event period, a \"Gorilla Observation Bingo\" sheet will be handed out in front of Outdoor Enclosure 1 at the Gorilla House in the East Garden. Visitors can learn about gorillas in a fun way by watching their bodies and behavior and filling in the bingo squares. Some squares are hard to spot, so see how many you can find. No prizes are offered and no pencils are lent out, so bring your own writing tools. Sheets are available while supplies last.\n\nOn Saturday, September 26, volunteers will explain the bingo items. It's a rare chance to pick up tips on what to look for.\n\nIn addition, the six zoos in Japan that keep gorillas (Chiba Zoological Park, Hamamatsu Zoological Gardens, Kyoto City Zoo, Higashiyama Zoo and Botanical Gardens, Japan Monkey Centre and Ueno Zoo) are working together to release a special video featuring their gorilla keepers, scheduled for Sunday, September 20. A poster created jointly by the six zoos is also planned to be displayed at the Gorilla House.\n\nA collection box for used mobile phones and smartphones is also permanently installed in front of Outdoor Enclosure 1 at the Gorilla House. The devices are collected by a specialist company, and money based on the amount collected is donated to the certified NPO Terra Renaissance. The funds go toward projects such as its program supporting the social reintegration of former child soldiers in the Congo. Accepted items are mobile phones (including feature phones and PHS handsets), smartphones and tablets. Be sure to erase all personal data before dropping devices in the box. Accessories such as chargers, standalone batteries, Wi-Fi routers and swollen batteries are not accepted. Note that items cannot be returned once deposited.\n\nIf you'd like to enjoy an animal-themed event in Ueno, be sure to check it out.\n\nEvent Information\n- Location: In front of and around Outdoor Enclosure 1, Gorilla House, East Garden, Ueno Zoo\n- Gorilla Observation Bingo: Thursday, September 24 – Sunday, September 27, 2026 *While supplies last\n- Volunteer talk: Saturday, September 26, 2026, 13:00–14:00 (near Outdoor Enclosure 1, Gorilla House)\n- Special video release: Scheduled for Sunday, September 20, 2026\n- Used mobile phone and smartphone collection box: Permanently installed in front of Outdoor Enclosure 1, Gorilla House\n- Other: A joint poster by the six zoos is planned to be displayed at the Gorilla House",
         "area": "Ueno"
       }
     },
@@ -2690,11 +2690,11 @@
       }
     },
     "393": {
-      "hash": "955399e0bb8634fb",
+      "hash": "86d451b55644ed55",
       "fields": {
-        "title": "Yakisoba Specialty Shop in Ueno Serving Oita-Style Yakisoba",
+        "title": "Ueno Yakisoba Specialty Shop Serving Yakisoba Born in Oita",
         "summary": "An introduction to a yakisoba specialty shop in Ueno where you can enjoy yakisoba that originated in Oita.",
-        "body": "# Yakisoba Specialty Shop in Ueno Serving Oita-Style Yakisoba\n\n## Overview\n\nUeno is home to a yakisoba specialty shop where you can try yakisoba that originated in Oita.\n\nYakisoba is an everyday dish in Japan, but what sets this shop apart is that its signature dish is the yakisoba born in Oita. Because the shop is dedicated to yakisoba, it's a good choice for anyone who wants to savor a carefully made plate.\n\nIf you're in Ueno and want to try yakisoba with a twist, it's well worth a visit.\n\n## Shop Information\n\n- Area: Ueno\n- Genre: Yakisoba specialty shop\n- Highlight: Serves yakisoba that originated in Oita",
+        "body": "# Ueno Yakisoba Specialty Shop Serving Yakisoba Born in Oita\n\n## Overview\n\nIn the Ueno–Okachimachi area, you'll find Sofuren Ueno, a yakisoba specialty shop serving yakisoba that originated in Oita.\n\nYakisoba is an everyday dish, but what sets this shop apart is that its signature is the yakisoba born in Oita. The shop is said to be known by everyone from Kyushu, and the manager declares, \"It's no longer just B-grade comfort food.\" Since the shop specializes in yakisoba, it's a good fit for anyone who wants to savor one carefully made plate.\n\nBesides yakisoba, side dishes are also available. There are \"Bite-Size Gyoza (8 pcs),\" small dumplings with thin wrappers, and the \"Premium Ham Tasting,\" which lets you compare juicy Unzen ham with dense, firm Meiho ham. Both pair well with the yakisoba.\n\nIf you'd like to try yakisoba that's a little different from the usual while in Ueno, why not stop by?\n\n## Shop Information\n\n- Name: Sofuren Ueno\n- Area: Ueno (Okachimachi)\n- Genre: Yakisoba specialty shop\n- Highlight: Yakisoba that originated in Oita\n- Side dishes:\n  - Bite-Size Gyoza (8 pcs): 490 yen\n  - Premium Ham Tasting (Unzen ham and Meiho ham): 690 yen\n\n*Information is as of publication in the October 2026 issue of Otona no Shumatsu.",
         "area": "Ueno"
       }
     },
@@ -2735,11 +2735,11 @@
       }
     },
     "398": {
-      "hash": "ef896b38f65a62ff",
+      "hash": "2fa82739aa5f0264",
       "fields": {
-        "title": "Ueno Zoo to Move Two Northern Boobooks",
-        "summary": "Ueno Zoo has announced that it will move two northern boobooks.",
-        "body": "# Ueno Zoo to Move Two Northern Boobooks\n\n## Overview\n\nUeno Zoo has announced that it will move two northern boobooks (a species of owl) kept at the zoo.\n\nThe news comes from Ueno Zoo, one of the Ueno area's best-known attractions. The announcement concerns two northern boobooks, which the zoo says will be moved.\n\nThe announcement does not say when the birds will be moved, where they are going or why. Anyone planning to visit Ueno Zoo, or who has been following the boobooks, should look out for further announcements from the zoo.\n\n## Facility Information\n\n- Facility: Ueno Zoo\n- Area: Ueno",
+        "title": "Ueno Zoo to Transfer Two Northern Boobooks",
+        "summary": "Ueno Zoo has announced that it will transfer two northern boobooks to another zoo.",
+        "body": "# Ueno Zoo to Transfer Two Northern Boobooks\n\n## Overview\n\nOn September 25, 2026, Ueno Zoo announced that it will transfer two northern boobooks from its collection.\n\nThe news comes from Ueno Zoo, one of the Ueno area's best-known attractions. The two northern boobooks, one male and one of unknown sex, will move to Hitachi City Kamine Zoo on Monday, September 28, 2026.\n\n## Background\n\nThe zoo's northern boobooks used to be displayed in the Bird House. Since May 2025, they have been on display in the East Garden Owl House while the aging Bird House is rebuilt.\n\nThey are scheduled to remain on display at Ueno Zoo until Sunday, September 27, 2026. With this transfer, Ueno Zoo will no longer keep northern boobooks. For visitors who have watched the owls at the zoo, the move marks the end of an era.\n\n## Transfer Details\n\n- Animals: 2 northern boobooks (1 male, 1 unknown)\n- Transfer date: Monday, September 28, 2026\n- Destination: Hitachi City Kamine Zoo\n- On display at Ueno Zoo: Until Sunday, September 27, 2026 (planned)\n- Display location: East Garden Owl House\n- Note: With this transfer, Ueno Zoo will no longer keep northern boobooks\n\n## Facility Information\n\n- Facility: Ueno Zoo\n- Area: Ueno",
         "area": "Ueno"
       }
     },
