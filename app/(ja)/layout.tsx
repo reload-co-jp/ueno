@@ -15,7 +15,16 @@ import {
   Title,
 } from "@/components/elements/layout"
 import { Link } from "@/components/elements/link"
-import { getI18n, getLocale, LOCALE_META, type Texts } from "@/lib/i18n"
+import { RouteAdModal } from "@/components/elements/route-ad-modal"
+import { getLatestArticles, news } from "@/lib/data"
+import {
+  getI18n,
+  getLocale,
+  isArticleTranslated,
+  LOCALE_META,
+  type Texts,
+} from "@/lib/i18n"
+import { isEventArticle } from "@/lib/types"
 import {
   jsonLdString,
   localeAlternates,
@@ -82,7 +91,15 @@ const notoSans = Noto_Sans_JP({
 })
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const { locale, path, t } = await getI18n()
+  const { locale, path, t, article } = await getI18n()
+  // 遷移時広告モーダルのおすすめ。記事データをクライアントバンドルに含めないようここで絞り込む
+  const recommendedLinks = getLatestArticles(news.length)
+    .filter((a) => isArticleTranslated(a.id, locale))
+    .slice(0, 5)
+    .map((a) => ({
+      href: path(isEventArticle(a) ? `/events/${a.id}` : `/articles/${a.id}`),
+      title: article(a).title,
+    }))
   const siteName = SITE_NAMES[locale]
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -130,11 +147,25 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         </Main>
         <Footer>
           <FooterNav />
-          <p style={{ opacity: 0.7, borderTop: "1px solid rgba(255,255,255,.2)", paddingTop: "1.5rem" }}>
+          <p
+            style={{
+              opacity: 0.7,
+              borderTop: "1px solid rgba(255,255,255,.2)",
+              paddingTop: "1.5rem",
+            }}
+          >
             &copy; {siteName}
           </p>
         </Footer>
         <BottomNav />
+        <RouteAdModal
+          links={recommendedLinks}
+          heading={t({
+            ja: "おすすめ記事",
+            en: "Recommended",
+            "zh-cn": "推荐文章",
+          })}
+        />
       </body>
       {process.env.NODE_ENV === "production" && (
         <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
