@@ -5,10 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "TZ=Asia/Tokyo next dev",
     "lint": "eslint",
     "build": "TZ=Asia/Tokyo next build",
-    "start": "next start",
+    "start": "TZ=Asia/Tokyo next start",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "scrape": "tsx scripts/1-scrape.ts",

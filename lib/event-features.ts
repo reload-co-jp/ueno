@@ -2,7 +2,7 @@
 // ページ本体とsitemapで共有し、該当イベントが無い日は noindex + sitemap除外にする
 import {
   compareEventsBySchedule,
-  getEventsInRange,
+  getActiveEventsInRange,
   getEventsOnDate,
   getOngoingEvents,
   getFutureEvents,
@@ -19,9 +19,10 @@ import {
   todayStr,
 } from "@/lib/date"
 import type { Locale, Texts } from "@/lib/i18n"
+import type { NewsArticle } from "@/lib/types"
 
 export type EventFeatureKey =
-  "today" | "weekend" | "next-week" | "month" | "free"
+  "today" | "weekend" | "next-week" | "month" | "free" | "festival" | "market"
 
 export interface EventFeature {
   key: EventFeatureKey
@@ -36,6 +37,17 @@ export interface EventFeature {
   events: ReturnType<typeof getEventsOnDate>
 }
 
+// ジャンル特集の判定。翻訳後ではなく日本語原文で判定する
+const GENRE_KEYWORDS = {
+  festival: ["祭", "まつり", "フェス"],
+  market: ["マルシェ", "マーケット", "フリマ", "蚤の市", "朝市", "骨董市"],
+}
+
+const matchesKeywords = (article: NewsArticle, keywords: string[]) => {
+  const text = `${article.title} ${article.summary} ${article.eventLocation ?? ""}`
+  return keywords.some((k) => text.includes(k))
+}
+
 const sortBySchedule = (events: ReturnType<typeof getEventsOnDate>) => {
   const today = todayStr()
   return [...events].sort((a, b) => compareEventsBySchedule(a, b, today))
@@ -44,6 +56,7 @@ const sortBySchedule = (events: ReturnType<typeof getEventsOnDate>) => {
 export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): EventFeature => {
   const today = todayStr()
   const t = <T>(texts: Texts<T>) => texts[locale]
+  const active = [...getOngoingEvents(today), ...getFutureEvents(today)]
   switch (key) {
     case "today": {
       const date = formatDate(today, locale)
@@ -80,7 +93,7 @@ export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): Ev
     case "weekend": {
       const { start, end } = thisWeekendRange()
       const dates = formatDayPair(start, end, locale)
-      const events = sortBySchedule(getEventsInRange(start, end))
+      const events = sortBySchedule(getActiveEventsInRange(start, end, today))
       const n = events.length
       return {
         key,
@@ -117,7 +130,7 @@ export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): Ev
     case "next-week": {
       const { start, end } = nextWeekRange()
       const range = formatShortRange(start, end, locale)
-      const events = sortBySchedule(getEventsInRange(start, end))
+      const events = sortBySchedule(getActiveEventsInRange(start, end, today))
       const n = events.length
       return {
         key,
@@ -154,7 +167,7 @@ export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): Ev
     case "month": {
       const { start, end } = thisMonthRange()
       const month = formatMonth(start, locale)
-      const events = sortBySchedule(getEventsInRange(start, end))
+      const events = sortBySchedule(getActiveEventsInRange(start, end, today))
       const n = events.length
       return {
         key,
@@ -189,7 +202,7 @@ export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): Ev
       }
     }
     case "free": {
-      const events = [...getOngoingEvents(today), ...getFutureEvents(today)].filter(isFreeEvent)
+      const events = active.filter(isFreeEvent)
       const n = events.length
       const title = t({ ja: "上野の無料イベント", en: "Free Events in Ueno", "zh-cn": "上野免费活动" })
       return {
@@ -216,6 +229,70 @@ export const getEventFeature = (key: EventFeatureKey, locale: Locale = "ja"): Ev
         events,
       }
     }
+    case "festival": {
+      const events = active.filter((e) => matchesKeywords(e, GENRE_KEYWORDS.festival))
+      const n = events.length
+      const title = t({ ja: "上野の祭り・フェス", en: "Festivals in Ueno", "zh-cn": "上野祭典・音乐节" })
+      return {
+        key,
+        path: "/features/festival-events",
+        label: title,
+        title: t({
+          ja: "上野の祭り・フェス情報｜開催中・開催予定",
+          en: "Festivals in Ueno | Current & Upcoming",
+          "zh-cn": "上野祭典・音乐节资讯｜正在举办・即将举办",
+        }),
+        heading: title,
+        description: t({
+          ja: `上野で開催中・開催予定の祭り・フェス${n}件を紹介。上野公園・不忍池周辺の夏まつりやフェスティバルを開催日時・会場・料金つきでまとめている。`,
+          en: `${n} current and upcoming festivals in Ueno, including summer matsuri and festivals around Ueno Park and Shinobazu Pond, with dates, venues and admission.`,
+          "zh-cn": `介绍上野正在举办及即将举办的${n}场祭典・音乐节。汇总上野公园、不忍池周边的夏日祭典与节庆活动，附举办时间、会场及费用。`,
+        }),
+        lead: t({
+          ja: "上野エリアで開催中・開催予定の祭り・フェス・フェスティバルをまとめている。",
+          en: "Festivals and matsuri currently running or coming up in the Ueno area.",
+          "zh-cn": "汇总上野地区正在举办及即将举办的祭典与节庆活动。",
+        }),
+        emptyMessage: t({
+          ja: "現在開催予定の祭り・フェスはない。",
+          en: "No festivals are currently scheduled.",
+          "zh-cn": "目前没有祭典・音乐节。",
+        }),
+        events,
+      }
+    }
+    case "market": {
+      const events = active.filter((e) => matchesKeywords(e, GENRE_KEYWORDS.market))
+      const n = events.length
+      const title = t({ ja: "上野のマルシェ・マーケット", en: "Markets in Ueno", "zh-cn": "上野市集" })
+      return {
+        key,
+        path: "/features/market-events",
+        label: title,
+        title: t({
+          ja: "上野のマルシェ・マーケット情報｜開催中・開催予定",
+          en: "Markets in Ueno | Current & Upcoming",
+          "zh-cn": "上野市集资讯｜正在举办・即将举办",
+        }),
+        heading: title,
+        description: t({
+          ja: `上野で開催中・開催予定のマルシェ・マーケット・フリマ${n}件を紹介。上野公園などで開かれる市を開催日時・会場・料金つきでまとめている。`,
+          en: `${n} current and upcoming markets and flea markets in Ueno, including those held in Ueno Park, with dates, venues and admission.`,
+          "zh-cn": `介绍上野正在举办及即将举办的${n}场市集・跳蚤市场。汇总上野公园等地的市集，附举办时间、会场及费用。`,
+        }),
+        lead: t({
+          ja: "上野エリアで開催中・開催予定のマルシェ・マーケット・フリーマーケットをまとめている。",
+          en: "Markets and flea markets currently running or coming up in the Ueno area.",
+          "zh-cn": "汇总上野地区正在举办及即将举办的市集与跳蚤市场。",
+        }),
+        emptyMessage: t({
+          ja: "現在開催予定のマルシェ・マーケットはない。",
+          en: "No markets are currently scheduled.",
+          "zh-cn": "目前没有市集。",
+        }),
+        events,
+      }
+    }
   }
 }
 
@@ -225,4 +302,6 @@ export const EVENT_FEATURE_KEYS: EventFeatureKey[] = [
   "next-week",
   "month",
   "free",
+  "festival",
+  "market",
 ]

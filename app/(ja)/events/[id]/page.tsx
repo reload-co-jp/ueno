@@ -5,11 +5,12 @@ import { FC } from "react"
 import { InArticleAd } from "@/components/elements/ad-slot"
 import { ArticleBody } from "@/components/elements/article-body"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
-import { ArticleCard, CardGrid } from "@/components/elements/card"
+import { ArticleCard, CardGrid, EVENT_STATUS_LABELS, EventStatusBadge } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
 import { SpotEvents } from "@/components/elements/spot-events"
-import { getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, allArticles, getPrimaryArticle } from "@/lib/data"
-import { formatDateRange } from "@/lib/date"
+import { getArticleImageUrl, getEvent, getRelatedArticles, getArticleSpots, getStore, allArticles, getPrimaryArticle, getEventStatus } from "@/lib/data"
+import { formatDate, formatDateRange, todayStr } from "@/lib/date"
+import { EVENT_FEATURE_KEYS, getEventFeature } from "@/lib/event-features"
 import { getI18n, isArticleTranslated, LOCALE_META } from "@/lib/i18n"
 import {
   absoluteUrl,
@@ -40,8 +41,17 @@ export const generateMetadata = async ({
   const alternates = localeAlternates(locale, `/events/${(getPrimaryArticle(original) ?? original).id}`)
   const imageUrl = getArticleImageUrl(original)
   const description = articleDescription(original, locale)
+  // 「イベント名｜開催日・会場」。会場は短い表記の場合のみ(長いtitleを避ける)
+  const spots = getArticleSpots(original)
+  const venueName =
+    event.eventLocation && event.eventLocation.length <= 20
+      ? event.eventLocation
+      : spots.length === 1
+        ? i18n.spot(spots[0]).name
+        : undefined
+  const title = `${event.title}｜${formatDateRange(event.eventStartDate, event.eventEndDate, locale)}${venueName ? `・${venueName}` : ""}`
   return {
-    title: event.title,
+    title,
     description,
     alternates,
     // 未翻訳の英語・簡体字版は日本語版と重複するため検索対象外
@@ -49,7 +59,7 @@ export const generateMetadata = async ({
     openGraph: {
       type: "website",
       url: alternates.canonical,
-      title: event.title,
+      title,
       description,
       siteName: SITE_NAMES[locale],
       locale: LOCALE_META[locale].og,
@@ -57,7 +67,7 @@ export const generateMetadata = async ({
     },
     twitter: {
       card: "summary",
-      title: event.title,
+      title,
       description,
     },
   }
@@ -81,6 +91,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
   // 料金のパースは翻訳前の日本語表記で行う
   const price = parseFeeYen(original.eventFee)
   const url = pageUrl(path(`/events/${event.id}`))
+  const status = getEventStatus(event, todayStr())
+  // このイベントを掲載中の特集ページ(同じ時期・ジャンルのイベント一覧への導線)
+  const features = EVENT_FEATURE_KEYS.map((key) => getEventFeature(key, locale)).filter((f) =>
+    f.events.some((e) => e.id === original.id)
+  )
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -148,12 +163,26 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           margin: 0,
         }}
       >
+        <EventStatusBadge status={status} label={t(EVENT_STATUS_LABELS[status])} />
         <span style={{ fontSize: ".75rem", fontWeight: 800 }}>
           {t({ ja: "開催日時", en: "Dates", "zh-cn": "举办时间" })}
         </span>
         {formatDateRange(event.eventStartDate, event.eventEndDate, locale)}
       </p>
       <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>{event.area}</p>
+      {status === "ended" && (
+        <p role="note" style={{ fontSize: ".875rem", margin: 0, padding: ".5rem .875rem", background: "var(--green-soft)" }}>
+          {t({
+            ja: "このイベントは終了した。開催予定のイベントは",
+            en: "This event has ended. See ",
+            "zh-cn": "该活动已结束。正在举办及即将举办的活动请查看",
+          })}
+          <Link href="/events" style={{ color: "var(--accent)" }}>
+            {t({ ja: "上野のイベント情報", en: "upcoming events in Ueno", "zh-cn": "上野活动资讯" })}
+          </Link>
+          {t({ ja: "を参照。", en: ".", "zh-cn": "。" })}
+        </p>
+      )}
 
       <InArticleAd />
 
@@ -192,7 +221,18 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
             </a>
           </li>
         )}
+        <li>
+          {t({ ja: "情報確認日", en: "Last checked", "zh-cn": "信息确认日" })}:{" "}
+          {formatDate(original.updatedAt ?? original.publishedAt, locale)}
+        </li>
       </ul>
+      <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
+        {t({
+          ja: "掲載内容は情報確認日時点のもの。日程変更・中止の可能性があるため、最新情報は公式サイトで確認のこと。",
+          en: "Information is as of the date last checked. Schedules may change or events may be cancelled, so please check the official website for the latest details.",
+          "zh-cn": "刊登内容以信息确认日为准。日程可能变更或取消，最新信息请以官方网站为准。",
+        })}
+      </p>
 
       {(relatedStores.length > 0 || relatedSpots.length > 0) && (
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
@@ -232,6 +272,26 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       )}
 
       <SpotEvents excludeId={original.id} spots={relatedSpots} />
+
+      {features.length > 0 && (
+        <nav
+          aria-label={t({ ja: "このイベントを掲載中の特集", en: "Featured in", "zh-cn": "收录该活动的专题" })}
+          style={{ borderTop: "1px solid var(--border)", paddingTop: "1rem" }}
+        >
+          <h2 style={{ fontSize: ".9375rem", marginBottom: ".5rem" }}>
+            {t({ ja: "このイベントを掲載中の特集", en: "Featured in", "zh-cn": "收录该活动的专题" })}
+          </h2>
+          <ul style={{ margin: 0, paddingLeft: "1.25rem", fontSize: ".875rem", lineHeight: 1.9 }}>
+            {features.map((f) => (
+              <li key={f.key}>
+                <Link href={f.path} style={{ color: "var(--accent)" }}>
+                  {f.heading}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       <RelatedLinks />
 

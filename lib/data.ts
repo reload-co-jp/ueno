@@ -170,6 +170,16 @@ export const getEventsInRange = (startStr: string, endStr: string) =>
     (e) => toDateOnly(e.eventStartDate) <= endStr && startStr <= toDateOnly(e.eventEndDate)
   )
 
+// 今週・今月等の特集向け。範囲の開始が過去でも、今日より前に終了したイベントは含めない
+export const getActiveEventsInRange = (startStr: string, endStr: string, today: string) =>
+  getEventsInRange(startStr < today ? today : startStr, endStr)
+
+export type EventStatus = "ongoing" | "upcoming" | "ended"
+
+// 日付はJST(ビルドはTZ=Asia/Tokyo)の日付文字列で比較する
+export const getEventStatus = (e: Pick<NewsArticle, "eventStartDate" | "eventEndDate">, today: string): EventStatus =>
+  toDateOnly(e.eventEndDate) < today ? "ended" : toDateOnly(e.eventStartDate) <= today ? "ongoing" : "upcoming"
+
 // 開催中(終了日が近い順)→開催予定(開始日が近い順)の並び
 export const compareEventsBySchedule = (
   a: NewsArticle & { eventStartDate: string; eventEndDate: string },

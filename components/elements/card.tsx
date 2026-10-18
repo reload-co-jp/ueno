@@ -1,8 +1,26 @@
 import { Link } from "@/components/elements/link"
 import { FC, ReactNode } from "react"
 import { NewsArticle, Spot, Store, isEventArticle } from "@/lib/types"
-import { formatDate, formatDateRange } from "@/lib/date"
-import { getI18n } from "@/lib/i18n"
+import { getEventStatus, type EventStatus } from "@/lib/data"
+import { formatDate, formatDateRange, todayStr } from "@/lib/date"
+import { getI18n, type Texts } from "@/lib/i18n"
+
+export const EVENT_STATUS_LABELS: Record<EventStatus, Texts> = {
+  ongoing: { ja: "開催中", en: "Now on", "zh-cn": "举办中" },
+  upcoming: { ja: "開催予定", en: "Upcoming", "zh-cn": "即将举办" },
+  ended: { ja: "終了", en: "Ended", "zh-cn": "已结束" },
+}
+
+// 終了済は灰色、開催中は強調色で区別する
+const STATUS_COLORS: Record<EventStatus, string> = {
+  ongoing: "var(--accent)",
+  upcoming: "var(--green)",
+  ended: "var(--secondary)",
+}
+
+export const EventStatusBadge: FC<{ status: EventStatus; label: string }> = ({ status, label }) => (
+  <span style={{ ...badgeStyle, color: STATUS_COLORS[status], marginBottom: 0, marginRight: ".375rem" }}>{label}</span>
+)
 
 export const badgeStyle: React.CSSProperties = {
   display: "inline-block",
@@ -51,6 +69,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
   const image = i18n.image(original)
   const label = i18n.category(article.category)
   const sep = t({ ja: " ・ ", en: " · ", "zh-cn": " · " })
+  const status = isEvent ? getEventStatus(article, todayStr()) : "upcoming"
   return (
     <Link
       href={isEvent ? `/events/${article.id}` : `/articles/${article.id}`}
@@ -61,6 +80,7 @@ export const ArticleCard: FC<{ article: NewsArticle }> = async ({
         <span className="card-label">{label}</span>
         {isEvent && (
           <span className="card-date">
+            <EventStatusBadge status={status} label={t(EVENT_STATUS_LABELS[status])} />
             {formatDateRange(article.eventStartDate, article.eventEndDate, locale)}
           </span>
         )}

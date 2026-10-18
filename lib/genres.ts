@@ -1,5 +1,5 @@
 // 「今日の公演」「今週の展示」等の検索クエリ向け特集ページのジャンル定義
-import { getEventsInRange, getEventsOnDate } from "@/lib/data"
+import { getActiveEventsInRange, getEventsOnDate } from "@/lib/data"
 import { thisWeekRange, todayStr } from "@/lib/date"
 import type { Texts } from "@/lib/i18n"
 import type { NewsArticle } from "@/lib/types"
@@ -56,6 +56,6 @@ export const genreEvents = (period: Period, genre: Genre) => {
   const candidates =
     period.key === "today"
       ? getEventsOnDate(todayStr())
-      : getEventsInRange(thisWeekRange().start, thisWeekRange().end)
+      : getActiveEventsInRange(thisWeekRange().start, thisWeekRange().end, todayStr())
   return candidates.filter((e) => matchesGenre(e, genre))
 }

@@ -5,7 +5,7 @@ import { InArticleAd } from "@/components/elements/ad-slot"
 import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { RelatedLinks } from "@/components/elements/related-links"
-import { compareArticles, compareEventsBySchedule, getEventsInRange, news } from "@/lib/data"
+import { compareArticles, compareEventsBySchedule, getActiveEventsInRange, news } from "@/lib/data"
 import { formatShortRange, thisWeekRange, toDateStr, todayStr } from "@/lib/date"
 import { getEventFeature } from "@/lib/event-features"
 import { getI18n, type Texts } from "@/lib/i18n"
@@ -21,7 +21,7 @@ const TITLES: Texts = {
 const getThisWeek = () => {
   const { start, end } = thisWeekRange()
   const today = todayStr()
-  const events = getEventsInRange(start, end).sort((a, b) => compareEventsBySchedule(a, b, today))
+  const events = getActiveEventsInRange(start, end, today).sort((a, b) => compareEventsBySchedule(a, b, today))
   const publishedThisWeek = news
     .filter((n) => {
       const d = toDateStr(new Date(n.publishedAt))

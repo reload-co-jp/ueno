@@ -20,7 +20,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const today = todayStr()
   const count = getOngoingEvents(today).length + getFutureEvents(today).length
   return pageMetadata({
-    title: t(TITLES),
+    title: t({
+      ja: "上野のイベント情報｜今日・今週末・無料イベント",
+      en: "Events in Ueno | Today, This Weekend & Free Events",
+      "zh-cn": "上野活动资讯｜今日・本周末・免费活动",
+    }),
     description: t({
       ja: `上野で開催中・開催予定のイベント${count}件を紹介。上野公園・東京国立博物館・東京都美術館など上野駅・御徒町周辺の展示会・マルシェ・催し物を開催日時・会場・料金つきで毎日更新。`,
       en: `${count} current and upcoming events in Ueno. Exhibitions, markets and events around Ueno Park, the Tokyo National Museum, the Tokyo Metropolitan Art Museum, Ueno Station and Okachimachi, with dates, venues and admission, updated daily.`,
@@ -31,6 +35,24 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const sectionHeadingStyle = { fontSize: "1rem", margin: "0 0 .75rem" }
+
+const chipStyle = {
+  display: "inline-block",
+  color: "var(--accent)",
+  border: "1px solid var(--border)",
+  borderRadius: "2px",
+  padding: ".375rem .75rem",
+  textDecoration: "none",
+  fontWeight: 700,
+}
+
+// 特集化していないジャンル・会場の導線(常に掲載がある一覧ページ)
+const STATIC_CHIPS: { href: string; label: Texts }[] = [
+  { href: "/features/this-week", label: { ja: "今週の上野", en: "This week", "zh-cn": "本周上野" } },
+  { href: "/exhibitions", label: { ja: "展示会・展覧会", en: "Exhibitions", "zh-cn": "展览" } },
+  { href: "/features/museums", label: { ja: "美術館・博物館", en: "Museums", "zh-cn": "美术馆・博物馆" } },
+  { href: "/spots/ueno-park", label: { ja: "上野公園のイベント", en: "Ueno Park", "zh-cn": "上野公园活动" } },
+]
 
 const Page: FC = async () => {
   const i18n = await getI18n()
@@ -76,23 +98,28 @@ const Page: FC = async () => {
         })}
       </p>
 
-      {features.length > 0 && (
-        <section>
-          <h2 style={sectionHeadingStyle}>
-            {t({ ja: "日付・条件から探す", en: "Browse by date", "zh-cn": "按日期・条件查找" })}
-          </h2>
-          <ul style={{ margin: 0, paddingLeft: "1.25rem", fontSize: ".875rem", lineHeight: 1.9 }}>
-            {features.map((f) => (
-              <li key={f.key}>
-                <Link href={f.path} style={{ color: "var(--accent)" }}>
-                  {f.heading}
-                </Link>
+      <nav aria-label={t({ ja: "日付・ジャンルから探す", en: "Browse by date or genre", "zh-cn": "按日期・类型查找" })}>
+        <h2 style={sectionHeadingStyle}>
+          {t({ ja: "日付・ジャンルから探す", en: "Browse by date or genre", "zh-cn": "按日期・类型查找" })}
+        </h2>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexWrap: "wrap", gap: ".5rem", fontSize: ".8125rem" }}>
+          {features.map((f) => (
+            <li key={f.key}>
+              <Link href={f.path} style={chipStyle}>
+                {f.label}
                 {t({ ja: `(${f.events.length}件)`, en: ` (${f.events.length})`, "zh-cn": `(${f.events.length}场)` })}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+              </Link>
+            </li>
+          ))}
+          {STATIC_CHIPS.map((c) => (
+            <li key={c.href}>
+              <Link href={c.href} style={chipStyle}>
+                {t(c.label)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <InArticleAd />
       <section>
