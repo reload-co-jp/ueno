@@ -19,6 +19,7 @@ import { todayStr } from "@/lib/date"
 import { getI18n } from "@/lib/i18n"
 import { absoluteUrl, eventListJsonLd, jsonLdString, pageMetadata, pageUrl } from "@/lib/seo"
 import { isEventArticle, type Spot } from "@/lib/types"
+import { googleMapsUrl, PlaceMap } from "@/components/elements/place-map"
 
 // 施設種別→Schema.orgの型。該当が無いものはTouristAttraction
 const SCHEMA_TYPES: Record<string, string> = {
@@ -105,7 +106,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     .filter((s) => s.id !== original.id && s.area === original.area)
     .sort((a, b) => Number(b.type === original.type) - Number(a.type === original.type))
     .slice(0, 4)
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${spot.lat},${spot.lng}`
+  const mapUrl = googleMapsUrl(spot.lat, spot.lng)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -234,6 +235,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
             </a>
           </li>
         </ul>
+        <PlaceMap lat={spot.lat} lng={spot.lng} name={spot.name} />
       </div>
 
       <InArticleAd />

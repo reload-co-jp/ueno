@@ -2,6 +2,7 @@ import { Link } from "@/components/elements/link"
 import { ComponentProps, FC, ReactNode } from "react"
 import { SearchBox } from "@/components/elements/search-box"
 import { getI18n, localePath, type Texts } from "@/lib/i18n"
+import { getSisterSites, SISTER_SITES_HEADING } from "@/lib/sister-sites"
 
 type NavItem = { href: string; label: Texts }
 
@@ -117,6 +118,27 @@ export const FooterNav: FC = async () => {
           </ul>
         </div>
       ))}
+    </nav>
+  )
+}
+
+// 姉妹サイト（東京の他エリア版）のイベント一覧への相互リンク
+export const SisterSitesNav: FC = async () => {
+  const { locale } = await getI18n()
+  const lang = locale === "ja" ? "ja" : "en"
+  const heading = SISTER_SITES_HEADING[lang]
+  return (
+    <nav aria-label={heading} className="footer-sister">
+      <p className="footer-sister__heading">{heading}</p>
+      <ul>
+        {getSisterSites("ueno").map((site) => (
+          <li key={site.id}>
+            <a href={site.url} title={site.name}>
+              {site.label[lang]}
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
   )
 }
