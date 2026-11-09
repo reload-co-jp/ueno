@@ -22,6 +22,7 @@ import {
   SITE_NAMES,
 } from "@/lib/seo"
 import { isEventArticle } from "@/lib/types"
+import { googleMapsUrl, PlaceMap } from "@/components/elements/place-map"
 
 export const generateStaticParams = () =>
   allArticles.filter(isEventArticle).map((e) => ({ id: e.id }))
@@ -110,7 +111,11 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
       name: event.eventLocation ?? venue?.name ?? event.area,
       // 住所はページ上に会場施設として表示している場合のみ
       ...(venue
-        ? { address: { "@type": "PostalAddress", streetAddress: venue.address, addressCountry: "JP" } }
+        ? {
+            address: { "@type": "PostalAddress", streetAddress: venue.address, addressCountry: "JP" },
+            geo: { "@type": "GeoCoordinates", latitude: venue.lat, longitude: venue.lng },
+            hasMap: googleMapsUrl(venue.lat, venue.lng),
+          }
         : {}),
     },
     description: event.summary,
@@ -226,6 +231,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
           {formatDate(original.updatedAt ?? original.publishedAt, locale)}
         </li>
       </ul>
+      {venue && <PlaceMap lat={venue.lat} lng={venue.lng} name={venue.name} />}
       <p style={{ fontSize: ".75rem", color: "var(--secondary)", margin: 0 }}>
         {t({
           ja: "掲載内容は情報確認日時点のもの。日程変更・中止の可能性があるため、最新情報は公式サイトで確認のこと。",

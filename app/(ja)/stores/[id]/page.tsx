@@ -9,6 +9,7 @@ import { getArticlesByStore, getStore, spots, stores } from "@/lib/data"
 import { formatDate } from "@/lib/date"
 import { getI18n } from "@/lib/i18n"
 import { jsonLdString, pageMetadata } from "@/lib/seo"
+import { googleMapsUrl, PlaceMap } from "@/components/elements/place-map"
 
 export const generateStaticParams = () => stores.map((s) => ({ id: s.id }))
 
@@ -56,6 +57,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
     name: store.name,
     address: { "@type": "PostalAddress", streetAddress: store.address, addressLocality: store.area },
     geo: { "@type": "GeoCoordinates", latitude: store.lat, longitude: store.lng },
+    hasMap: googleMapsUrl(store.lat, store.lng),
     url: store.officialUrl,
     openingHours: store.hours,
     sameAs: store.sns,
@@ -121,6 +123,7 @@ const Page: FC<{ params: Promise<{ id: string }> }> = async ({ params }) => {
             {t({ ja: "情報源", en: "Source", "zh-cn": "信息来源" })}: {store.source}
           </li>
         </ul>
+        <PlaceMap lat={store.lat} lng={store.lng} name={store.name} />
       </div>
 
       <InArticleAd />
