@@ -8,6 +8,7 @@ import {
   BottomNav,
   Footer,
   FooterNav,
+  SisterSitesNav,
   Header,
   Main,
   Nav,
@@ -37,22 +38,24 @@ import "../reset.css"
 const GA_MEASUREMENT_ID = "G-FXDVEZ8JN2"
 const ADSENSE_CLIENT_ID = "ca-pub-6542845006087970"
 
-const TAGLINES: Texts = {
-  ja: "上野地域メディア",
-  en: "Ueno Local News",
-  "zh-cn": "上野本地资讯",
+// トップページのタイトル。「上野 イベント」で検索されるようにエリア名＋イベントを先頭に置く
+const HOME_TITLES: Texts = {
+  ja: "上野のイベント情報【毎日更新】今日・今週末の予定と展覧会・新店舗",
+  en: "Ueno Events Today & This Weekend | Exhibitions & New Shops",
+  "zh-cn": "上野活动资讯【每日更新】今日・本周末活动与展览・新店",
 }
 const DESCRIPTIONS: Texts = {
-  ja: "上野エリアのイベント・新店舗・セール・展示会などの最新情報",
-  en: "The latest events, new shops, sales and exhibitions in Ueno, Tokyo",
-  "zh-cn": "东京上野地区的活动、新店、促销、展览等最新资讯",
+  ja: "上野で今日・今週末・今月に開催されるイベントを毎日更新。上野公園・東京国立博物館・東京都美術館・国立西洋美術館の展覧会、上野・御徒町のマルシェや催し物、POP UP・セール、新店舗まで上野の今がわかる地域メディア。",
+  en: "Daily-updated events in Ueno, Tokyo: exhibitions at Ueno Park, the Tokyo National Museum and the Tokyo Metropolitan Art Museum, markets and events around Ueno and Okachimachi, pop-ups, sales and new shops.",
+  "zh-cn":
+    "每日更新东京上野今日・本周末・本月的活动。上野公园、东京国立博物馆、东京都美术馆的展览，上野・御徒町的市集与活动，快闪店、促销与新店资讯。",
 }
 
 // 日本語(app/(ja))・英語/簡体字(app/[lang])の両ルートレイアウトで共用
 export const generateMetadata = async (): Promise<Metadata> => {
   const locale = await getLocale()
   const siteName = SITE_NAMES[locale]
-  const title = `${siteName} | ${TAGLINES[locale]}`
+  const title = `${HOME_TITLES[locale]}${locale === "en" ? " | " : "｜"}${siteName}`
   const description = DESCRIPTIONS[locale]
   const alternates = localeAlternates(locale, "/")
   return {
@@ -147,6 +150,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         </Main>
         <Footer>
           <FooterNav />
+          <SisterSitesNav />
           <p
             style={{
               opacity: 0.7,
