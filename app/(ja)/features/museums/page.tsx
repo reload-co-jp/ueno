@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid, SpotCard } from "@/components/elements/card"
 import { getMuseumArticles, getMuseumSpots } from "@/lib/data"
 import { getI18n, type Texts } from "@/lib/i18n"
-import { absoluteUrl, jsonLdString, pageMetadata } from "@/lib/seo"
+import { jsonLdString, pageMetadata, pageUrl } from "@/lib/seo"
 
 const TITLES: Texts = { ja: "上野の美術館まとめ", en: "Art Museums in Ueno", "zh-cn": "上野美术馆汇总" }
 const DESCRIPTIONS: Texts = {
@@ -33,7 +33,7 @@ const Page: FC = async () => {
     itemListElement: museums.map(i18n.spot).map((m, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: absoluteUrl(i18n.path(`/spots/${m.id}`)),
+      url: pageUrl(i18n.path(`/spots/${m.id}`)),
       name: m.name,
     })),
   }

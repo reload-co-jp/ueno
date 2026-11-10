@@ -1,5 +1,5 @@
 // 公開済み記事(data/news.json)のうち本文が短いものを、sourcesのページ本文を根拠に加筆する。
-// 実行: pnpm enrich-articles [最小文字数=300] [開始ID(中断再開用)]
+// 実行: pnpm enrich-articles [最小文字数=300] [開始ID(中断再開用)] [--since=YYYY-MM-DD(公開日で絞り込み)]
 // 1件ごとに保存するため中断・再実行可。新事実が得られない記事はそのまま残す。
 // 実行後 pnpm translate で翻訳を更新し、差分を人手で確認すること。
 import { readFile, writeFile } from "node:fs/promises"
@@ -9,8 +9,10 @@ import { htmlToText } from "./lib/extract"
 import { runClaudeText } from "./lib/claude-cli"
 
 const NEWS_PATH = path.join(process.cwd(), "data", "news.json")
-const MIN_LENGTH = Number(process.argv[2] ?? 300)
-const START_ID = process.argv[3]
+const SINCE = process.argv.find((a) => a.startsWith("--since="))?.slice("--since=".length)
+const args = process.argv.slice(2).filter((a) => !a.startsWith("--"))
+const MIN_LENGTH = Number(args[0] ?? 300)
+const START_ID = args[1]
 const FETCH_INTERVAL_MS = 2000
 const NO_UPDATE = "NO_UPDATE"
 
@@ -20,6 +22,7 @@ interface Article {
   category: string
   summary: string
   body: string
+  publishedAt: string
   sources: string[]
 }
 
@@ -51,7 +54,7 @@ ${sourceTexts.map((t, i) => `--- 資料${i + 1} ---\n${t}`).join("\n")}`
   const result = (await runClaudeText(prompt))?.trim()
   // CLI失敗(利用上限等)を「新情報なし」と区別し、以降の記事を誤スキップしないよう中断する
   if (result == null) {
-    console.error(`中断。再開: pnpm enrich-articles ${MIN_LENGTH} ${article.id}`)
+    console.error(`中断。再開: pnpm enrich-articles ${MIN_LENGTH} ${article.id}${SINCE ? ` --since=${SINCE}` : ""}`)
     process.exit(1)
   }
   return result && !result.includes(NO_UPDATE) && result.length > article.body.length ? result : null
@@ -60,8 +63,10 @@ ${sourceTexts.map((t, i) => `--- 資料${i + 1} ---\n${t}`).join("\n")}`
 const main = async () => {
   const articles: Article[] = JSON.parse(await readFile(NEWS_PATH, "utf-8"))
   const start = START_ID ? articles.findIndex((a) => a.id === START_ID) : 0
-  const targets = articles.slice(Math.max(start, 0)).filter((a) => a.body.length < MIN_LENGTH)
-  console.log(`対象: ${targets.length}件 (本文${MIN_LENGTH}字未満)`)
+  const targets = articles
+    .slice(Math.max(start, 0))
+    .filter((a) => a.body.length < MIN_LENGTH && (!SINCE || a.publishedAt >= SINCE))
+  console.log(`対象: ${targets.length}件 (本文${MIN_LENGTH}字未満${SINCE ? `、${SINCE}以降公開` : ""})`)
 
   for (const [i, article] of targets.entries()) {
     process.stdout.write(`[${i + 1}/${targets.length}] ${article.id} ${article.title} ... `)

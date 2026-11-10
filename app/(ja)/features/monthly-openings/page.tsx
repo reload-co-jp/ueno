@@ -4,7 +4,7 @@ import { ArticleListPage } from "@/components/elements/article-list-page"
 import { getArticlesByCategory } from "@/lib/data"
 import { formatMonth, thisMonthRange } from "@/lib/date"
 import { getI18n, type Locale, type Texts } from "@/lib/i18n"
-import { absoluteUrl, jsonLdString, pageMetadata } from "@/lib/seo"
+import { jsonLdString, pageMetadata, pageUrl } from "@/lib/seo"
 
 const textsOf = (locale: Locale): Texts<{ title: string; description: string }> => {
   const month = formatMonth(thisMonthRange().start, locale)
@@ -37,7 +37,7 @@ const Page: FC = async () => {
     itemListElement: articles.map(i18n.article).map((a, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: absoluteUrl(i18n.path(`/articles/${a.id}`)),
+      url: pageUrl(i18n.path(`/articles/${a.id}`)),
       name: a.title,
     })),
   }
