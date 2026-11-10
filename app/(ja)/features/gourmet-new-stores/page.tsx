@@ -6,7 +6,7 @@ import { Breadcrumb } from "@/components/elements/breadcrumb"
 import { ArticleCard, CardGrid } from "@/components/elements/card"
 import { getGourmetNewOpenings } from "@/lib/data"
 import { getI18n, type Texts } from "@/lib/i18n"
-import { absoluteUrl, jsonLdString, pageMetadata } from "@/lib/seo"
+import { jsonLdString, pageMetadata, pageUrl } from "@/lib/seo"
 
 const TITLES: Texts = {
   ja: "上野のグルメ・カフェ新店舗まとめ",
@@ -37,7 +37,7 @@ const Page: FC = async () => {
     itemListElement: articles.map(i18n.article).map((a, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: absoluteUrl(i18n.path(`/articles/${a.id}`)),
+      url: pageUrl(i18n.path(`/articles/${a.id}`)),
       name: a.title,
     })),
   }

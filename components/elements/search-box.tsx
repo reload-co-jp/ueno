@@ -58,7 +58,8 @@ export const SearchBox = ({
 
   const results = entries ? filterEntries(entries, query) : []
   const shown = open && results.length > 0
-  const href = (e: SearchEntry) => `${prefix}${e.h === "/" ? "" : e.h}`
+  // trailingSlash: true 構成のため末尾スラッシュ付き(リダイレクト経由の非正規URLを作らない)
+  const href = (e: SearchEntry) => `${prefix}${e.h === "/" ? "" : e.h}/`
 
   return (
     <form
