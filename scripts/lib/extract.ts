@@ -250,6 +250,7 @@ const buildPrompt = (
 - categoryは次のいずれか: event, new_opening, closing, renewal, sale, campaign, popup, new_product, exhibition, facility_news, local_news
 - 本文に明記されていない項目はnullにする。推測で埋めない。
 - areaは「上野」に関連する情報のみを対象にする。無関係な地域の情報は含めない。
+- 「上野」は東京都台東区の上野エリア(上野駅・上野公園周辺、御徒町・湯島・谷中・根津など近隣を含む)を指す。群馬県上野村・三重県伊賀市(伊賀上野)など同名の他地域で行われるものは含めない(他地域にちなんだ催しでも、会場が上野エリアなら対象)。
 ${imageCandidates.length > 0 ? "- 各項目のimage_indexには、その項目の内容に最も対応する画像候補のインデックスを入れる。1ページに複数項目がある場合、画像候補は特定の1項目にのみ対応することがある。対応する画像が無ければnullにする(他項目の画像を代用しない)。" : ""}
 ${detailLinkCandidates.length > 0 ? "- 各項目のdetail_url_indexには、その項目の詳細ページに対応するリンク候補のインデックスを入れる。対応するリンクが無ければnullにする。" : ""}
 情報源: ${source.name}
