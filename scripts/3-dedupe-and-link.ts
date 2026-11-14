@@ -22,6 +22,8 @@ import type { ExtractedItem } from "./lib/extract"
 const DUPLICATE_LOOKBACK_DAYS = 60
 const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
 const DRAFTS_DIR = path.join(process.cwd(), "data", "drafts")
+// 公開対象外と判断した記事(上野エリア外の同名地域等)。見出しだけでは判別できず再収集されるため、タイトルで恒久的に除外する
+const EXCLUDED_PATH = path.join(process.cwd(), "data", "excluded-articles.json")
 
 interface ExtractedFile {
   sourceId: string
@@ -118,6 +120,10 @@ const main = async () => {
   const seenDraftIds = new Set<string>()
   const ambiguousPairs = new Map<string, DuplicateJudgePair>()
   let skippedExisting = 0
+  let skippedExcluded = 0
+  const excluded: { title: string; reason: string }[] = existsSync(EXCLUDED_PATH)
+    ? JSON.parse(await readFile(EXCLUDED_PATH, "utf-8"))
+    : []
 
   for (const sourceId of sourceIds) {
     const dir = path.join(EXTRACTED_DIR, sourceId)
@@ -140,6 +146,11 @@ const main = async () => {
         // LLM呼び出し=トークン消費を避ける。重複記事(duplicateOf)のタイトルも別表記として照合に使う
         if (allArticles.some((n) => isSameArticle(n.title, item.title))) {
           skippedExisting++
+          continue
+        }
+
+        if (excluded.some((e) => isSameArticle(e.title, item.title))) {
+          skippedExcluded++
           continue
         }
 
@@ -295,6 +306,7 @@ const main = async () => {
   )
 
   console.log(`公開済み記事と重複のため除外 ${skippedExisting}件`)
+  console.log(`除外リスト(data/excluded-articles.json)該当 ${skippedExcluded}件`)
   console.log(`あいまい一致LLM判定 ${ambiguousPairs.size}件(バッチ問い合わせ)`)
   console.log(`記事ドラフト ${articleDrafts.length}件 -> data/drafts/articles.json`)
   console.log(`新規Entity候補 ${newEntityCandidates.length}件 -> data/drafts/new-entities.json`)
