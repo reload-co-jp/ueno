@@ -18,12 +18,28 @@ import {
 } from "./lib/dedupe"
 import type { ExtractedItem } from "./lib/extract"
 
-// LLMでの記事重複照合に渡す公開済み記事の範囲(プロンプト肥大化を避ける)
-const DUPLICATE_LOOKBACK_DAYS = 60
+// LLMでの記事重複照合に渡す公開済み記事の範囲(プロンプト肥大化を避ける)。
+// 会期の長いイベント・展示は数か月後に再収集されるため、半年分ではなく1年分を照合する
+const DUPLICATE_LOOKBACK_DAYS = 365
 const EXTRACTED_DIR = path.join(process.cwd(), "data", "extracted")
 const DRAFTS_DIR = path.join(process.cwd(), "data", "drafts")
 // 公開対象外と判断した記事(上野エリア外の同名地域等)。見出しだけでは判別できず再収集されるため、タイトルで恒久的に除外する
 const EXCLUDED_PATH = path.join(process.cwd(), "data", "excluded-articles.json")
+
+// JSTの今日(YYYY-MM-DD)
+const todayJst = () => new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10)
+
+// 抽出日付(YYYY-MM-DD想定。「2026年11月15日」「2026/11/15」も許容)をYYYY-MM-DDに正規化。解釈できなければnull
+const normalizeDate = (value: string | null): string | null => {
+  const m = value?.match(/(\d{4})\s*[-/年.]\s*(\d{1,2})\s*[-/月.]\s*(\d{1,2})/)
+  return m ? `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}` : null
+}
+
+// 終了日が過去の項目(終了済みイベント・会期終了の展示/セール等)は記事化しない
+const isEnded = (item: ExtractedItem, today: string) => {
+  const end = normalizeDate(item.end_date)
+  return end != null && end < today
+}
 
 interface ExtractedFile {
   sourceId: string
@@ -121,6 +137,8 @@ const main = async () => {
   const ambiguousPairs = new Map<string, DuplicateJudgePair>()
   let skippedExisting = 0
   let skippedExcluded = 0
+  let skippedEnded = 0
+  const today = todayJst()
   const excluded: { title: string; reason: string }[] = existsSync(EXCLUDED_PATH)
     ? JSON.parse(await readFile(EXCLUDED_PATH, "utf-8"))
     : []
@@ -151,6 +169,11 @@ const main = async () => {
 
         if (excluded.some((e) => isSameArticle(e.title, item.title))) {
           skippedExcluded++
+          continue
+        }
+
+        if (isEnded(item, today)) {
+          skippedEnded++
           continue
         }
 
@@ -307,6 +330,7 @@ const main = async () => {
 
   console.log(`公開済み記事と重複のため除外 ${skippedExisting}件`)
   console.log(`除外リスト(data/excluded-articles.json)該当 ${skippedExcluded}件`)
+  console.log(`終了済み(end_dateが過去)のため除外 ${skippedEnded}件`)
   console.log(`あいまい一致LLM判定 ${ambiguousPairs.size}件(バッチ問い合わせ)`)
   console.log(`記事ドラフト ${articleDrafts.length}件 -> data/drafts/articles.json`)
   console.log(`新規Entity候補 ${newEntityCandidates.length}件 -> data/drafts/new-entities.json`)

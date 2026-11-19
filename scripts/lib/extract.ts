@@ -249,6 +249,8 @@ const buildPrompt = (
 - 該当項目が複数あれば全て配列で返す。該当項目が無ければ空配列 [] を返す。
 - categoryは次のいずれか: event, new_opening, closing, renewal, sale, campaign, popup, new_product, exhibition, facility_news, local_news
 - 本文に明記されていない項目はnullにする。推測で埋めない。
+- 日付(opening_date・start_date・end_date)はYYYY-MM-DD形式。年が書かれていない場合は本文の文脈(掲載日等)から判断する。
+- 開催日・会期がタイトルや本文に書かれていれば(「10/9〜12」等の略記を含む)start_date・end_dateを必ず埋める。単日開催はstart_dateとend_dateを同じ日付にする。
 - areaは「上野」に関連する情報のみを対象にする。無関係な地域の情報は含めない。
 - 「上野」は東京都台東区の上野エリア(上野駅・上野公園周辺、御徒町・湯島・谷中・根津など近隣を含む)を指す。群馬県上野村・三重県伊賀市(伊賀上野)など同名の他地域で行われるものは含めない(他地域にちなんだ催しでも、会場が上野エリアなら対象)。
 ${imageCandidates.length > 0 ? "- 各項目のimage_indexには、その項目の内容に最も対応する画像候補のインデックスを入れる。1ページに複数項目がある場合、画像候補は特定の1項目にのみ対応することがある。対応する画像が無ければnullにする(他項目の画像を代用しない)。" : ""}
@@ -260,7 +262,10 @@ ${imageSection}${detailLinkSection}
 ${text}`
 }
 
-// LLMへの入力(本文テキスト+画像候補+詳細リンク候補)のハッシュ。
+// 抽出プロンプト・スキーマのバージョン。変更時に上げると、入力が同一でも再抽出される
+const EXTRACT_PROMPT_VERSION = 2
+
+// LLMへの入力(本文テキスト+画像候補+詳細リンク候補+プロンプトのバージョン)のハッシュ。
 // 取得日時が違っても入力が同一なら抽出結果も同一とみなし、LLM再抽出を省く(scripts/2-extract.ts)。
 export const extractInputHash = (source: Source, body: string, pageUrl: string): string => {
   const html = rssToHtml(body)
@@ -268,7 +273,9 @@ export const extractInputHash = (source: Source, body: string, pageUrl: string):
     ? extractDetailLinkCandidates(html, pageUrl, source.detailLinkPattern)
     : []
   return createHash("sha256")
-    .update(JSON.stringify([htmlToText(html), extractImageCandidates(html, pageUrl), detailLinks]))
+    .update(
+      JSON.stringify([EXTRACT_PROMPT_VERSION, htmlToText(html), extractImageCandidates(html, pageUrl), detailLinks])
+    )
     .digest("hex")
 }
 
